@@ -1,0 +1,97 @@
+#intro-big-box{
+  flex-wrap: wrap;
+}
+
+.intro-top, .intro-bottom{
+  height: 33.75rem;
+  justify-content: center;
+  align-items: end;
+  background: #CFE5FF;
+}
+
+.intro-bottom{
+  margin-top: 8.625rem;;
+}
+
+.intro-tobo-item{
+  display: inline-flex;
+  width: 69.4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tobo-text{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3.75rem;
+  row-gap: 2rem;
+}
+
+#intro-big-box h2{
+  color: #374151;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 140%; /* 3.5rem */
+}
+
+.tobo-img{
+  width: 46.625rem;
+}
+
+.intro-content{
+  background: #FFF;
+  padding: 8.625rem 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-content-item{
+  display: flex;
+  width: 61.75rem;
+  /*height: 27.75rem;*/
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  background: #FCFCFC;
+}
+
+.intro-content-item img{
+  width: 36.75rem;
+  height: 27.75rem;
+}
+
+/*.intro-content-text{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}*/
+
+.intro-content-text h3{
+  color: #3692FF;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+  margin-bottom: 0.75rem;
+}
+
+.intro-content-text h2{
+  letter-spacing: 0.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.intro-content-text p{
+  color: #374151;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.intro-content-item-reverse{
+  flex-direction: row-reverse;
+}
+
+.intro-content-item-reverse > .intro-content-text{
+  text-align: end;
+}
