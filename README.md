@@ -14,7 +14,7 @@
 - [x] password쪽 input 요소 오른쪽에 눈모양 아이콘 (다만 기능 요구는 없었기에 백그라운드에 이미지로 만들었습니다.)
 - [x] GA코드 설정
 - [x] 공통된 css값들을 style에 정의및 css변수등록 사용
-- [x] Netlify배포 (git)
+- [x] Netlify배포 (git) <https://pandasmarket.netlify.app/>
 - [x] PullRequest
 
 **codeit_sprint mission 1**
