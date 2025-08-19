@@ -1,7 +1,7 @@
 # 🐼 판다마켓 PANDA MARKET Front End
 
 코드잇 스프린트미션 프로젝트 판다마켓의 프론트엔드 입니다.
-![Panda Market Landing Image](./img/readme.png)
+![Panda Market Landing Image](./readme.png)
 
 ---
 ## 프로젝트 진행상황
