@@ -51,7 +51,7 @@ table {
 /* font */
 @font-face {
   font-family: 'ROKAF Sans';
-  src: url('./fonts/ROKAF\ Sans\ Medium.ttf') format('opentype')
+  src: url('.public/fonts/ROKAF\ Sans\ Medium.ttf') format('opentype')
 }
 
 * {

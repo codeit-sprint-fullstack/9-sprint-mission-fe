@@ -1,4 +1,3 @@
-
 /* misson responsive (rem)*/
 
 /*
@@ -7,15 +6,14 @@
 */
 
 html {
-  font-size: 100%; /* default: 16px */
+  font-size: 100%;
+  /* default: 16px */
 }
 
 body {
   font-size: 1rem;
   margin-top: 70px;
 }
-
-/** */
 
 nav {
   position: fixed;
@@ -49,18 +47,19 @@ nav {
   height: 40px;
 }
 
-.logo-title > a{
+.logo-title>a {
   display: inline-flex;
   text-decoration: none;
-  align-items: flex-end ;
+  align-items: flex-end;
   margin-left: 8.59px;
   font-family: "ROKAF Sans";
-  font-size: 25.633px; /* 1.6020625rem */
+  font-size: 25.633px;
+  /* 1.6020625rem */
   font-weight: 700;
   color: #3692FF;
 }
 
-.logo-box > a {
+.logo-box>a {
   background-color: #3692FF;
   padding: 12px 23px;
   border-radius: 8px;
@@ -92,14 +91,15 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 7px;
-} 
+}
 
 .hero-title {
   font-family: 'Pretendard';
 }
 
 .hero-title h1 {
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.5rem;
+  /* 40px */
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
@@ -109,7 +109,8 @@ nav {
 .hero-title a {
   color: #F9FAFB;
   text-decoration: none;
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
+  /* 20px */
   font-weight: 600;
   line-height: 32px;
 }
@@ -127,7 +128,6 @@ nav {
 /*--- section-start ---*/
 .feature-section {
   padding: 138px 344px;
-  
 }
 
 .feature-section img {
@@ -140,7 +140,6 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 64px;
-  
 }
 
 .feature-two {
@@ -149,7 +148,6 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 64px;
- 
 }
 
 .feature-title {
@@ -157,7 +155,8 @@ nav {
   flex-direction: column;
   gap: 12px;
   text-align: left;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   line-height: 26px;
   font-family: 'Pretendard';
 }
@@ -178,15 +177,18 @@ nav {
   padding-left: 30px;
   background-color: #FCFCFC;
 }
+
 .feature-one-para {
-  font-size: 1.125rem; /* =18px */
+  font-size: 1.125rem;
+  /* =18px */
   font-weight: 700;
   line-height: 26px;
   color: #3692FF;
 }
 
 .feature-one-heading {
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.5rem;
+  /* 40px */
   font-weight: 700;
   color: #374151;
   line-height: 140%;
@@ -200,13 +202,15 @@ nav {
   align-items: flex-end;
   text-align: right;
   gap: 12px;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   font-weight: 700;
   line-height: 26px;
 }
 
 .feature-two-para {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   font-weight: 700;
   line-height: 26px;
   color: #3692FF;
@@ -214,7 +218,8 @@ nav {
 }
 
 .feature-two-heading {
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.5rem;
+  /* 40px */
   font-weight: 700;
   color: #374151;
   line-height: 140%;
@@ -223,7 +228,8 @@ nav {
 }
 
 .feature-description {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
+  /* 24px */
   font-family: 'Pretendard';
   font-weight: 500;
   line-height: 32px;
@@ -245,12 +251,13 @@ nav {
 }
 
 .panda-text {
-  font-size: 2rem; /* 32px */
+  font-size: 2rem;
+  /* 32px */
   font-weight: 700;
   color: #1F2937;
   margin-bottom: 60px;
   font-family: 'Pretendard';
-  
+
 }
 
 .pandas img {
@@ -260,7 +267,7 @@ nav {
   margin-bottom: -5px;
 }
 
-/* footer section */
+/* footer-section */
 footer {
   display: flex;
   justify-content: space-between;
@@ -285,14 +292,16 @@ footer {
   color: #9CA3AF;
   text-align: center;
   font-family: 'Pretendard';
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
+  /* 16px */
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
 .footer-div a {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
+  /* 16px */
   font-weight: 400;
   line-height: normal;
   font-family: 'Pretendard';
@@ -319,7 +328,7 @@ footer {
 .here-cta,
 .footer-div a,
 .sns-images a {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* 반응형 미디어 쿼리 (깨짐방지)*/
@@ -333,7 +342,7 @@ footer {
     flex-direction: column;
     gap: 24px;
   }
-  
+
   /* 확대시 nav 요소 서로 깨짐 방지 */
   .logo-box {
     padding: 0 24px;
@@ -344,20 +353,6 @@ footer {
     padding: 24px;
     text-align: center;
   }
-
-  /* TODO 모바일 테스트 */
-  .feature-section {
-    padding: 80px 24px;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .feature-one,
-  .feature-two {
-    flex-direction: column !important;
-    text-align: center;
-    align-items: center;
-  }
 }
 
 @media screen and (max-width: 1700px) {
@@ -365,25 +360,30 @@ footer {
     width: 240px;
     height: 222px;
   }
+
   .feature-one-heading {
     font-size: 2rem;
   }
+
   .feature-one-para {
     font-size: 0.75rem;
   }
+
   .feature-description {
     font-size: 1rem;
   }
+
   .feature-two-heading {
     font-size: 2rem;
   }
+
   .feature-two-para {
     font-size: 0.75rem;
   }
 }
 
 @media screen and (max-width: 1090px) {
-  
+
   .feature-card {
     display: flex;
     flex-direction: column;
@@ -395,7 +395,7 @@ footer {
     flex-direction: column;
     padding: 0;
   }
-  
+
   .feature-section img {
     width: 240px;
     height: 222px;

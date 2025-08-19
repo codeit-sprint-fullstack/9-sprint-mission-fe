@@ -3,7 +3,8 @@
 }
 
 html {
-  font-size: 100%; /* default: 16px */
+  font-size: 100%;
+  /* default: 16px */
 }
 
 body {
@@ -59,10 +60,9 @@ input {
 
 /* eye-icon */
 .password {
-  background-image: url(../src/btn_visibility_off.svg);
+  background-image: url(../public/images/btn_visibility_off.svg);
   background-repeat: no-repeat;
   background-position: 98%;
-  
 }
 
 .btn_visibilty_icon {
@@ -93,12 +93,12 @@ form > label {
   border-radius: 9999px;
 }
 
-#submit-btn:focus {
+#submit-btn:hover {
   background-color: #3692FF;
 }
 
 /* OAuth */
-.thirth-party-auth {
+.third-party-auth {
   display: flex;
   font-family: Pretendard;
   font-size: 1remx;
@@ -113,17 +113,17 @@ form > label {
   gap: 18px;
 }
 
-.thirth-party-auth-imgs {
+.third-party-auth-imgs {
   display: flex;
   gap: 16px;
 }
 
-.thirth-party-auth-imgs img{
+.third-party-auth-imgs img {
   height: 42px;
-  width: 42px; 
+  width: 42px;
 }
 
-/* lastelement */
+/* last-element */
 .signup-para {
   display: flex;
   font-family: Pretendard;
@@ -134,15 +134,13 @@ form > label {
   align-content: center;
   gap: 4px;
   margin-top: 24px;
-
 }
 
 .signup-para-a {
   color: var(--Primary-100);
 }
 
-
 /* mission: cursor */
 a {
-  cursor:pointer;
+  cursor: pointer;
 }
