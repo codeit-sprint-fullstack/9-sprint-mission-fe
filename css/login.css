@@ -23,8 +23,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 22.24px;
-  margin-bottom: 40px;
+  gap: 1.39rem;
+  margin-bottom: 2.5rem;
 }
 
 .auth-header img {
@@ -35,7 +35,7 @@ main {
 
 .auth-header p {
   font-family: 'ROKAF Sans';
-  font-size: 64.344px;
+  font-size: 4.0215rem;
   font-style: normal;
   font-weight: 700;
   color: var(--brand-blue);
@@ -72,9 +72,9 @@ input {
 
 form > label {
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
-  line-height: 26px;
+  line-height: 1.625rem;
   margin-bottom: 16px;
 }
 
@@ -84,7 +84,7 @@ form > label {
   padding: 16px 24px;
   margin: 0 0 24px;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 32px;
   background-color: var(--Secondary-400);
@@ -101,7 +101,7 @@ form > label {
 .thirth-party-auth {
   display: flex;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1remx;
   font-weight: 500;
   line-height: 26px;
   width: 640px;
@@ -127,7 +127,7 @@ form > label {
 .signup-para {
   display: flex;
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 24px;
   justify-content: center;
