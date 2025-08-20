@@ -29,7 +29,7 @@
 }
 
 #intro-big-box h2{
-  color: #374151;
+  color: var(--secondary-700);
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 140%;
@@ -40,7 +40,7 @@
 }
 
 .intro-content{
-  background: #FFF;
+  background: white;
   padding: 8.625rem 0;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +54,7 @@
   justify-content: center;
   align-items: center;
   gap: 4rem;
-  background: #FCFCFC;
+  background: var(--bg-gray);
 }
 
 .intro-content-item img{
@@ -63,7 +63,7 @@
 }
 
 .intro-content-text h3{
-  color: #3692FF;
+  color: var(--primary-100);
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.625rem;
@@ -76,7 +76,7 @@
 }
 
 .intro-content-text p{
-  color: #374151;
+  color: var(--secondary-700);
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2rem;
