@@ -1,3 +1,5 @@
+@import url(/style/fontface.css);
+
 :root{
   --primary-100: #3692FF;
   --primary-200: #1967D6;
@@ -14,8 +16,6 @@
   --err-red: #F74747;
   --bg-gray: #FCFCFC;
 }
-
-@import url(./fontface.css);
 
 *{
   box-sizing: border-box;
