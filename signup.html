@@ -16,18 +16,30 @@
         </div>
         <form>
             <label for="email">이메일</label>
-            <input type="email" class="form_input" name="email" placeholder="이메일을 입력해주세요" required>
+            <div class="field">
+            <input type="email" class="form_input" name="이메일" placeholder="이메일을 입력해주세요" required>
+            <p class="error_msg"></p>
+            </div>
             <label for="nickname">닉네임</label>
-            <input type="text" class="form_input" name="nickname" placeholder="닉네임을 입력해주세요" required>
+            <div class="field">
+            <input type="text" class="form_input" name="닉네임" placeholder="닉네임을 입력해주세요" required>
+            <p class="error_msg"></p>
+            </div>
             <label for="password">비밀번호</label>
-            <input type="password" class="form_input" name="password" placeholder="비밀번호를 입력해주세요" required>
-            <div class="toggle_password_off" id="signup_password">
+            <div class="field">
+                <input type="password" class="form_input" name="비밀번호" placeholder="비밀번호를 입력해주세요" required>
+                <p class="error_msg"></p>
+                <div class="toggle_password">
                 <img src="img/btn_visibility_off.svg" alt="Toggle Password Visibility">
-                </div>
+            </div>
+        </div>
             <label for="password_confirm">비밀번호 확인</label>
-            <input type="password" class="form_input" name="password_confirm" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
-            <div class="toggle_password_off" id="signup_password_confirm">
+            <div class="field">
+            <input type="password" class="form_input" name="비밀번호 확인" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+            <div class="toggle_password" id="signup_password_confirm">
                 <img src="img/btn_visibility_off.svg" alt="Toggle Password Visibility">
+            </div>
+            <p class="error_msg"></p>
             </div>
             <button type="submit" id="form_button">회원가입</button>
         </form>

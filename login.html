@@ -15,15 +15,19 @@
             </a>
         </div>
             <form>
-                <label for="email">이메일</label>
-                <input type="text" name="email" class="form_input" placeholder="이메일을 입력하세요" required >
-                <br>
-                <label for="password">비밀번호</label>
-                <input type="password" class="form_input" name="password" placeholder="비밀번호를 입력하세요" required>
-                <div class="toggle_password_off">
-                <img src="img/btn_visibility_off.svg" alt="Toggle Password Visibility">
+  <label for="email">이메일</label>
+                <div class="field">
+                <input type="email" class="form_input" name="이메일" placeholder="이메일을 입력해주세요" required>
+                <p class="error_msg"></p>
                 </div>
-                <br>
+                <label for="password">비밀번호</label>
+                <div class="field">
+                    <input type="password" class="form_input" name="비밀번호" placeholder="비밀번호를 입력해주세요" required>
+                    <p class="error_msg"></p>
+                    <div class="toggle_password">
+                    <img src="img/btn_visibility_off.svg" alt="Toggle Password Visibility">
+                </div>
+        </div>
                 <button type="submit" id="form_button">로그인</button>
             </form>
             <div class="login_options">
