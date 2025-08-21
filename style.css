@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+
+::-ms-reveal {
+    display: none;
+}
+
 :root{
 /* Colors */
 --Primary-100: #3692FF;
@@ -23,7 +28,6 @@
 --Secondary-900: #111827;
 --Easy-login: #E6F2FF;
 --Error-red: #f74747;
-
 }
 
 body {
@@ -272,7 +276,6 @@ footer p{
 
 
 form{
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -280,6 +283,7 @@ form{
 }
 
 .form_input {
+    position: relative;
     color: var(--Secondary-400);
     font-size: 1rem;
     font-style: normal;
@@ -289,17 +293,34 @@ form{
 }
 
 .toggle_password_off {
-    position: absolute;
-    right: 2rem;   
-    top: 13rem;
+    right: 13rem;
     cursor: pointer;
+
 }
+
 
 input.focus {
     border-radius: 0.75rem;
     border: 1px solid var(--Primary-100);
     background: var(--Secondary-50);
     outline: none;
+}
+
+/* input.empty{
+
+} */
+
+input.invalid{
+    border-radius: 0.75rem;
+    border: 1px solid var(--Error-red);
+}
+
+.error_msg{
+        color: var(--Error-red);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 label{
@@ -322,7 +343,20 @@ label{
         border: none;
 }
 
+.field {
+    position: relative;
+}
+
+.field .toggle_password {
+    position: absolute;
+    right: 1rem;
+    top: 1.2rem;
+    cursor: pointer;
+}
+
+
 #form_button{
+    margin-top: 1.5rem;
     display: flex;
     width: 40rem;
     height: 3.5rem;
@@ -343,7 +377,7 @@ label{
     line-height: 2rem; 
 }
 
-#form_button .active{
+#form_button.active{
     background-color: var(--Primary-100);
 }
 
@@ -382,11 +416,4 @@ label{
     color: var(--Primary-100);
 }
 
-#signup_password{
-    top: 18rem;
-}
-
-#signup_password_confirm{
-    top: 25rem;
-}
 
