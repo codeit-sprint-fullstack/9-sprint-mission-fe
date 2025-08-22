@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판다마켓</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <!-- 내용 컨테이너 -->
+    <div class="signup-container">
+
+        <!-- 로고부분 -->
+        <div class="login-logo">
+            <a href="/index.html">
+                <img src="image/login-logo.png" alt="판다마켓 로고">
+            </a>
+        </div>
+
+        <!-- 회원가입폼 -->
+        <form class="signup-form">
+                <div class="signup-label">
+                    <label for="signup-id">이메일</label>
+                </div>
+                <div class="signup-input">
+                    <input id="signup-id" type="email" required placeholder="이메일을 입력해주세요">
+                </div>
+                <div class="signup-label">
+                    <label for="signup-name">닉네임</label>
+                </div>
+                <div class="signup-input">
+                    <input id="signup-name" type="text" required placeholder="닉네임을 입력해주세요">
+                </div>
+                <div class="signup-label">  
+                    <label for="signup-pw">비밀번호</label>
+                </div>
+                <div class="signup-input">
+                    <input id="signup-pw" type="password" required placeholder="비밀번호를 입력해주세요">
+                    <img class="eye-icon" src="image/secret-eye.png" alt="비밀번호 보기">
+                  </div>             
+                <div class="signup-label">  
+                    <label for="signup-pw-ck">비밀번호 확인</label>
+                </div>
+                <div class="signup-input">
+                    <input id="signup-pw-ck" type="password" required placeholder="비밀번호를 다시 한 번 입력해주세요">
+                    <img class="eye-icon" src="image/secret-eye.png" alt="비밀번호 보기">
+                </div> 
+                <button class="signup-button" type="submit">회원가입</button>        
+        </form>
+
+        <!-- 간편 로그인 -->
+        <div class="easy-login">
+            <span id="easy-text">간편 로그인하기</span>
+            <div class="social-login">
+                <a href="https://www.google.com/">
+                    <img class="google" src="image/google_logo.png" alt="google_logo">
+                </a>
+                <a href="https://www.kakaocorp.com/page/">                
+                    <img class="kakao" src="image/kakao_logo.png" alt="kakao_logo">    
+                </a>
+            </div>
+        </div>
+
+        <!-- 로그인 CTA-->
+        <div class="sign-up">
+            <span id="question-text">이미 회원이신가요?</span>
+            <a id="log-in-button" href="/login.html">로그인</a>
+        </div>
+    </div>
+</body>
+</html>

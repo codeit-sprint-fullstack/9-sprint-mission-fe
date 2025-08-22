@@ -1,0 +1,167 @@
+/* 글자 기본 크기 설정 */
+html {
+  font-size: 62.5%;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 로그인 창 */
+.login-container {
+  display:flex;
+  flex-direction: column;
+  max-width: 64rem;
+  margin:23.1rem auto 0 ;
+  gap: 2.4rem;
+}
+
+/* 로그인 로고 */
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.6rem 0
+}
+
+.login-logo img {
+  width: 39.6rem;
+  height: 13.2rem;  
+}
+
+/* 로그인 정보입력 */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-label {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.6rem;
+  margin-bottom: 1.6rem;
+  color: var(--Secondary-800, #1F2937);
+}
+
+.login-input input {
+  width: 64rem;
+  height: 5.6rem;
+  margin-bottom: 2.4rem;
+  padding: 1.6rem 2.4rem;
+  align-items: center;
+  background: var(--Cool-Gray-100, #F3F4F6);
+  border-radius: 1.2rem;
+  border: none;
+}
+
+.login-input input::placeholder {
+  color: var(--Secondary-400, #9CA3AF);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.login-input input:focus {
+  outline: 1px solid var(--brand-blue, #3692FF);
+}
+
+
+.login-input {
+  position: relative; 
+}
+
+.eye-icon {
+  position: absolute;
+  top: 2.8rem; 
+  margin-top: -1.2rem; 
+  right: 2.4rem;
+  cursor: pointer;
+  width: 2.4rem; 
+  height: 2.4rem;
+}
+
+.login-button {
+  display:flex;
+  width: 64rem;
+  height: 5.6rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
+  color: var(--Cool-Gray-100, #F3F4F6);
+  background: var(--Secondary-400, #9CA3AF);
+  text-align: center;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  border:none;
+} 
+
+/* 간편 로그인 */
+.easy-login {
+  display:flex;
+  width: 64rem;
+  height: 7.4rem;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.6rem 2.3rem;
+  background: #E6F2FF;
+  border-radius: 0.8rem;
+  align-items: center;
+}
+
+#easy-text {
+  color: var(--Secondary-800, #1F2937);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  align-items: center;
+}
+
+.google, .kakao {
+  width: 4.2rem;
+  height: 4.2rem;
+}
+
+.social-login {
+  display:flex;
+  gap:1.6rem;
+}
+
+/* 회원가입 */
+.sign-up{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+#question-text {
+  color: var(--Secondary-800, #1F2937);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.4rem;
+}
+
+#sign-up-button{
+  color: var(--Primary-100, #3692FF);
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
