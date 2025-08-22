@@ -11,6 +11,19 @@ a, button {
   box-sizing: border-box;
 }
 
+:root {
+  --Secondary-800: #1F2937;
+  --Cool-Gray-100: #F3F4F6;
+  --Secondary-400: #9CA3AF;
+  --brand-blue: #3692FF;
+  --Primary-100: #3692FF;
+}
+
+
+
+
+
+
 /* 로그인 창 */
 .login-container {
   display:flex;
@@ -45,7 +58,7 @@ a, button {
   font-weight: 700;
   line-height: 2.6rem;
   margin-bottom: 1.6rem;
-  color: var(--Secondary-800, #1F2937);
+  color: var(--Secondary-800);
 }
 
 .login-input input {
@@ -54,20 +67,20 @@ a, button {
   margin-bottom: 2.4rem;
   padding: 1.6rem 2.4rem;
   align-items: center;
-  background: var(--Cool-Gray-100, #F3F4F6);
+  background: var(--Cool-Gray-100);
   border-radius: 1.2rem;
   border: none;
 }
 
 .login-input input::placeholder {
-  color: var(--Secondary-400, #9CA3AF);
+  color: var(--Secondary-400);
   font-family: 'Pretendard', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
 }
 
 .login-input input:focus {
-  outline: 1px solid var(--brand-blue, #3692FF);
+  outline: 1px solid var(--brand-blue);
 }
 
 
@@ -92,8 +105,8 @@ a, button {
   justify-content: center;
   align-items: center;
   border-radius: 4rem;
-  color: var(--Cool-Gray-100, #F3F4F6);
-  background: var(--Secondary-400, #9CA3AF);
+  color: var(--Cool-Gray-100);
+  background: var(--Secondary-400);
   text-align: center;
   font-family: 'Pretendard', sans-serif;
   font-size: 2rem;
@@ -116,7 +129,7 @@ a, button {
 }
 
 #easy-text {
-  color: var(--Secondary-800, #1F2937);
+  color: var(--Secondary-800);
   font-family: 'Pretendard', sans-serif;
   font-size: 1.6rem;
   font-style: normal;
@@ -143,7 +156,7 @@ a, button {
 }
 
 #question-text {
-  color: var(--Secondary-800, #1F2937);
+  color: var(--Secondary-800);
   font-family: 'Pretendard', sans-serif;
   font-size: 1.4rem;
   font-style: normal;
@@ -152,7 +165,7 @@ a, button {
 }
 
 #sign-up-button{
-  color: var(--Primary-100, #3692FF);
+  color: var(--Primary-100);
   font-family: Pretendard;
   font-size: 1.4rem;
   font-style: normal;

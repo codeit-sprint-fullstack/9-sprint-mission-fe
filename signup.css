@@ -12,6 +12,18 @@ a, button {
   box-sizing: border-box;
 }
 
+
+:root {
+  --Secondary-800: #1F2937;
+  --Cool-Gray-100: #F3F4F6;
+  --Secondary-400: #9CA3AF;
+  --brand-blue: #3692FF;
+  --Primary-100: #3692FF;
+  --Cool-Gray-800: #1F2937;
+}
+
+
+
 /* 회원가입 박스 */
 .signup-container {
   margin:6rem auto 0 ;
@@ -43,7 +55,7 @@ a, button {
   font-style: normal;
   font-weight: 700;
   margin-bottom: 1.6rem;
-  color: var(--Cool-Gray-800, #1F2937);
+  color: var(--Cool-Gray-800);
 }
 
 .signup-input input {
@@ -53,19 +65,19 @@ a, button {
   width: 64rem;
   height: 5.6rem;
   border-radius: 1.2rem;
-  background: var(--Cool-Gray-100, #F3F4F6);
+  background: var(--Cool-Gray-100);
   border: none;
 }
 
 .signup-input input::placeholder {
-  color: var(--Secondary-400, #9CA3AF);
+  color: var(--Secondary-400);
   font-family: 'Pretendard', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
 }
 
 .signup-input input:focus {
-outline: 1px solid var(--brand-blue, #3692FF);
+outline: 1px solid var(--brand-blue);
 }
 
 .signup-input {
@@ -90,8 +102,8 @@ outline: 1px solid var(--brand-blue, #3692FF);
   justify-content: center;
   align-items: center;
   border-radius: 4rem;
-  color: var(--Cool-Gray-100, #F3F4F6);
-  background: var(--Secondary-400, #9CA3AF);
+  color: var(--Cool-Gray-100);
+  background: var(--Secondary-400);
   text-align: center;
   font-family: 'Pretendard';
   font-size: 2rem;
@@ -124,7 +136,7 @@ outline: 1px solid var(--brand-blue, #3692FF);
 }
 
 #easy-text {
-  color: var(--Secondary-800, #1F2937);
+  color: var(--Secondary-800);
   font-family: 'Pretendard';
   font-size: 1.6rem;
   font-style: normal;
@@ -133,7 +145,7 @@ outline: 1px solid var(--brand-blue, #3692FF);
 }
 
 #question-text {
-  color: var(--Secondary-800, #1F2937);
+  color: var(--Secondary-800);
   font-family: 'Pretendard';
   font-size: 1.4rem;
   font-style: normal;
@@ -141,7 +153,7 @@ outline: 1px solid var(--brand-blue, #3692FF);
 }
 
 #log-in-button{
-color: var(--Primary-100, #3692FF);
+color: var(--Primary-100);
 font-family: Pretendard;
 font-size: 1.4rem;
 font-style: normal;
