@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="reset.css" />
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="signup.css" />
   <title>판다마켓</title>
 
   <!-- Google tag (gtag.js) -->
@@ -15,22 +15,34 @@
     gtag('js', new Date());
 
     gtag('config', 'G-46P33X5L32');
-</script>
+  </script>
 </head>
 <body>
   <main class="main">
-    <div class="container login">
-      <a class="logo-login" href="https://pandamarket-powerima.netlify.app/"><img src="images/logo_pandamarket.svg" /></a>
+    <div class="container signup">
+      <a class="logo-signup" href="https://pandamarket-powerima.netlify.app/"><img src="images/logo_pandamarket.svg" /></a>
       <div class="container email">
         <label for="email">이메일</label>
         <input type="text" name="email" placeholder="이메일을 입력해주세요"/>
+      </div>
+      <div class="container nickname">
+        <label for="nickname">닉네임</label>
+        <input type="text" name="nickname" placeholder="닉네임을 입력해주세요"/>
       </div>
       <div class="container password">
         <label for="password">비밀번호</label>   
         <input type="password" name="password" placeholder="비밀번호를 입력해주세요" />        
         <img class="img-icon eye" src="images/ic_btn_visibility_on.svg"/>
       </div>   
-      <a class="button disabled login" href="#">로그인</a>
+
+      <div class="container password">
+        <label for="password-re">비밀번호 확인</label>   
+        <input type="password" name="password-re" placeholder="비밀번호를 다시 한 번 입력해주세요" />        
+        <img class="img-icon eye" src="images/ic_btn_visibility_on.svg"/>
+      </div>   
+      
+      
+      <a class="button disabled signup" href="#">회원가입</a>
       <div class="block sns-login">
         <span>간편 로그인하기</span>
         <div class="sns-list">
@@ -38,8 +50,8 @@
           <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="images/kakao_icon.png"/></a>
         </div>
       </div>
-      <div class="sign-up">
-        <span>판다마켓이 처음이신가요? <a href="signup.html">회원가입</a></span>
+      <div class="login">
+        <span>이미 회원이신가요? <a href="login.html">로그인</a></span>
       </div>
     </div>
   </main>  
