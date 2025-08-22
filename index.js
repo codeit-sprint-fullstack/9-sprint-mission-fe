@@ -37,7 +37,7 @@ el.forEach((e) => {
         }
     else if (e.name === '비밀번호' && e.value.trim().length < 8) {
             e.classList.add('invalid');
-            msg.textContent = `비밀번호는 8자리 이상이어야 합니다.`;
+            msg.textContent = `비밀번호를  8자리 이상 입력해 주세요.`;
             btn.classList.remove('active');
         }
     else if (e.name === '비밀번호 확인' && e.value.trim() !== document.querySelector('input[name="비밀번호"]').value.trim()) {
