@@ -43,7 +43,7 @@ html, body {
 .header a { cursor: pointer; }
 
 .logo {
-  font-family: "ROKAF Sans";
+  font-family:  'ROKAFSans', sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #3692FF;
@@ -278,7 +278,8 @@ html, body {
   padding: 32px 200px;
   height: 160px;
   background: #111827;
-  color: white;
+color: var(--Secondary-200, #E5E7EB);
+
 }
 
 .footer-inner {
@@ -287,6 +288,8 @@ html, body {
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
+  color: var(--Secondary-200, #E5E7EB);
+
 }
 
 .footer-center {
@@ -314,4 +317,10 @@ gap:12px;
 justify-content: center;
 align-items: center;
 
+}
+@font-face {
+    font-family: 'ROKAFSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/ROKAFSans-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
