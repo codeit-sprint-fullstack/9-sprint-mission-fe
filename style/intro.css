@@ -89,3 +89,7 @@
 .intro-content-item-reverse > .content-textbox{
   text-align: end;
 }
+
+.line-break{
+  display: inline-block;
+}
