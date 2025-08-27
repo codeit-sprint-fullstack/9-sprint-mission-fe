@@ -1,0 +1,326 @@
+.page-wrap {
+  width: 1920px;
+  margin: 0 auto;
+  background: white;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #111;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+  background: #ffffff;
+  font-size: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 200px;  
+  padding-right: 200px;
+  box-sizing: border-box;
+}
+
+/* 헤더 */
+.header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+.header a { cursor: pointer; }
+
+.logo {
+  font-family:  'ROKAFSans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3692FF;
+  text-decoration: none;
+  white-space: nowrap; 
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.btn-login {
+  margin-left: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  background: #3692FF;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap; 
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/*하늘색 상단 히어로 */
+.hero-wrap {
+  background: #CFE5FF;
+  padding: 0;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 80px 12.5rem 0;
+  height: 420px;
+  box-sizing: border-box;
+  gap:32px;
+
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 360px;
+  margin-bottom: 60px; 
+}
+
+.hero-left h1 {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight:700;
+  margin: 0;
+  line-height:140%;
+}
+
+.hero-left .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  height: 56px;
+  padding: 16px 40px;
+  font-family: Pretendard;
+  font-size: 16px;
+  border-radius: 9999px;
+  background-color: #3692FF;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-right img {
+  display: block;
+  width: 746px;
+  height: 340px;
+  object-fit: contain;
+}
+
+/* 카드 섹션  */
+.cards {
+  width: 100%;
+  max-width: 120rem; 
+  
+  padding: 138px 344px; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  max-width: 988px;
+  width: 100%;
+  background: #FCFCFC;
+  border-radius: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 64px;
+}
+
+.card.card-reverse {
+  flex-direction: row-reverse;
+}
+
+.card-media {
+  width: 588px;
+  height: 444px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.card-text {
+  max-width: 360px;
+  min-width: 300px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  white-space: nowrap;
+  gap: 12px;
+}
+
+.card.card-reverse .card-text {
+  text-align: right;
+}
+
+.card-text .eyebrow {
+  color: #3692FF;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  margin: 0 0 0.5rem;
+}
+
+.card-text h2 {
+  color: #374151;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: 0.8px;
+}
+
+.card-text .desc {
+  color: #374151;
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 32px;
+}
+
+/* 하단 배너  */
+.trust-wrap {
+  background: #CFE5FF;
+  padding: 0; 
+}
+
+.trust {
+  display: flex; 
+  justify-content: space-between;
+  align-items: flex-end; 
+  padding: 0 12.5rem; 
+  box-sizing: border-box;
+}
+
+.trust-left {
+  color: #374151;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin-bottom: 172.5px;
+}
+
+.trust-right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-top: 143px;
+}
+
+.trust-right img {
+  display: flex;
+  width: 746px;
+  height: 397px;
+  object-fit: contain;
+  margin: 0;
+}
+
+/*  푸터  */
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 32px 200px;
+  height: 160px;
+  background: #111827;
+color: var(--Secondary-200, #E5E7EB);
+
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  color: var(--Secondary-200, #E5E7EB);
+
+}
+
+.footer-center {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+.footer-top{
+  width: 100%;
+  height: 138px;
+  background-color: #FCFCFC;
+}
+
+.footer-right{
+display: flex;
+width:116px ;
+height: 20px;
+gap:12px;
+
+justify-content: center;
+align-items: center;
+
+}
+@font-face {
+    font-family: 'ROKAFSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/ROKAFSans-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
