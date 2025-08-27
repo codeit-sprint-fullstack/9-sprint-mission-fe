@@ -1,0 +1,175 @@
+/* 글자 기본크기 설정 */
+html {
+  font-size: 62.5%;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+:root {
+  --Secondary-800: #1F2937;
+  --Cool-Gray-100: #F3F4F6;
+  --Secondary-400: #9CA3AF;
+  --brand-blue: #3692FF;
+  --Primary-100: #3692FF;
+  --Cool-Gray-800: #1F2937;
+}
+
+
+
+/* 회원가입 박스 */
+.signup-container {
+  margin:6rem auto 0 ;
+  gap: 2.4rem;
+  max-width: 64rem;
+  display:flex;
+  flex-direction: column;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.6rem 0
+}
+
+.login-logo img {
+  width: 39.6rem;
+  height: 13.2rem;  
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-label {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+  color: var(--Cool-Gray-800);
+}
+
+.signup-input input {
+  margin-bottom: 2.4rem;
+  padding: 1.6rem 2.4rem;
+  align-items: center;
+  width: 64rem;
+  height: 5.6rem;
+  border-radius: 1.2rem;
+  background: var(--Cool-Gray-100);
+  border: none;
+}
+
+.signup-input input::placeholder {
+  color: var(--Secondary-400);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.signup-input input:focus {
+outline: 1px solid var(--brand-blue);
+}
+
+.signup-input {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 2.8rem;
+  margin-top: -1.2rem;
+  right: 2.4rem;
+  cursor: pointer;
+  width: 2.4rem; 
+  height: 2.4rem;
+}
+
+/* 회원가입 버튼 */
+.signup-button {
+  display:flex;
+  width: 64rem;
+  height: 5.6rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
+  color: var(--Cool-Gray-100);
+  background: var(--Secondary-400);
+  text-align: center;
+  font-family: 'Pretendard';
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  border:none;
+}
+
+/* 간편로그인 */
+.easy-login {
+  display:flex;
+  width: 64rem;
+  height: 7.4rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 2.3rem;
+  background: #E6F2FF;
+  border-radius: 0.8rem;
+}
+
+.google, .kakao {
+  width: 4.2rem;
+  height: 4.2rem;
+}
+
+.social-login {
+  display:flex;
+  gap:1.6rem;
+}
+
+#easy-text {
+  color: var(--Secondary-800);
+  font-family: 'Pretendard';
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  align-items: center;
+}
+
+#question-text {
+  color: var(--Secondary-800);
+  font-family: 'Pretendard';
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+#log-in-button{
+color: var(--Primary-100);
+font-family: Pretendard;
+font-size: 1.4rem;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: none;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+}
+
+.sign-up{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:0.4rem;
+}
