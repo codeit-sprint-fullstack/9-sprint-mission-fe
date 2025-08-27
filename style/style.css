@@ -46,7 +46,7 @@ a, button, input{
   cursor: pointer;
 }
 
-header{
+#header{
   position: fixed;
   height: 4.4rem;
   justify-content: center;
@@ -55,7 +55,7 @@ header{
   border-bottom: 1px solid #DFDFDF;
 }
 
-nav{
+#nav{
   display: flex;
   width: 120rem;
   height: 4.4rem;
@@ -64,7 +64,7 @@ nav{
   align-items: center;
 }
 
-footer{
+#footer{
   justify-content: center;
   align-items: flex-start;
   background: var(--secondary-900);
