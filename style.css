@@ -18,7 +18,7 @@ h2, p {
 
 /* 헤더 상단 제목과 로그인  */
 .page-header {  
-  padding: 0.5938rem 25rem;     /*  9.5px 400px  */
+  padding: 0.5938rem 12.5rem;     /*  9.5px 200px  */
   position: fixed;
   top: 0px;
   left: 0px;
