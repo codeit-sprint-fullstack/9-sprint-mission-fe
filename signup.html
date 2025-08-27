@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="login.css" />
+    <title>회원가입</title>
+  </head>
+  <body>
+    <main>
+      <div class="section">
+        <div class="logo-section">
+          <a href="/"><img src="img/panda.svg" class="logo" /></a>
+          <a href="/"><img src="img/Property 1=Typo@3x.png" class="logo-word" /></a>
+        </div>
+        <div class="login-container">
+          <div class="email">
+            <label for="email">이메일</label>
+          <input
+            name="email"
+            id="email"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+          />
+          </div>
+         <div class="nickname">
+          <label for="text">닉네임</label>
+          <input
+            name="text"
+            id="text"
+            type="text"
+            placeholder="닉네임을 입력해주세요"
+          />
+          </div>
+          <div class="password-container">
+            <label for="password">비밀번호</label>
+            <input
+              name="password"
+              id="password"
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+            />
+             <img class="password-btn" src="img/btn_visibility_off_24px.svg" alt="비밀번호">
+            </div>
+            <div class="password-container">
+            <label for="password">비밀번호 확인</label>
+            <input
+              name="password-repeat"
+              id="password-repeat"
+              type="password-repeat"
+              placeholder="비밀번호를 다시 한 번 입력해주세요"
+            />
+             <img class="password-btn" src="img/btn_visibility_off_24px.svg" alt="비밀번호">
+            </div>
+          <button><a href=/signup>회원가입</a></button>
+          <div class="s-section">
+            <div class="s-login">
+              <span>간편 로그인하기</span>
+              <div class="s-login-button">
+                <a href="https://www.google.com/" target="_blank"
+                  ><img src="img/Component 2.png"
+                /></a>
+                <a href="https://www.kakaocorp.com/page/" target="_blank"
+                  ><img src="img/Component 3.png"
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="join">
+            이미 회원이신가요?
+            <a class="join-blue" href="/login">로그인</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
