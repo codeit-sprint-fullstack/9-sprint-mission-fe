@@ -28,31 +28,9 @@ h2, p {
   justify-content: space-between;  
 }
 
-.page-header > .container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;  
-  align-items: center;
-}
-
-.page-header .logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.page-header .log-image {
+.page-header .logo-image {
   height: 3.1875rem;            /*  51px;  */
 }
-
-.page-header .title {
-  font-family: ROKAF Sans;
-  font-size: 1.6019rem;         /*  25.63px; */
-  font-weight: 700;
-  color: #3692ff;  
-  text-decoration: none;
-  margin-left: 0.5369rem;       /*  8.59; */
-}
-
 
 .button {
   background-color: #3692ff;
