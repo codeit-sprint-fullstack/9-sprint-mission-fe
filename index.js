@@ -1,31 +1,64 @@
-const el = document.querySelectorAll('.form_input');
+const el = document.querySelectorAll('input');
 const btn = document.querySelector('#form_button');
+const USER_DATA = [
+    { email: 'codeit1@codeit.com', password: "codeit101!" },
+    { email: 'codeit2@codeit.com', password: "codeit202!" },
+    { email: 'codeit3@codeit.com', password: "codeit303!" },
+    { email: 'codeit4@codeit.com', password: "codeit404!" },
+    { email: 'codeit5@codeit.com', password: "codeit505!" },
+    { email: 'codeit6@codeit.com', password: "codeit606!" },
+];
 
 
-function updateButton() {
-  let valid = true;
-  const link = document.createElement('a');
-  link.href = "items.html";
+function findUser(){
+        const INPUT_EMAIL = document.querySelector('input[type = "email"]');
+        const INPUT_PWD   = document.querySelector('input[type = "password"]');
+        
+        const exitUser = USER_DATA.some((el) => el.email === INPUT_EMAIL.value);
+        const exitUserPwd = USER_DATA.some((el) => el.password ===  INPUT_PWD.value);
 
-el.forEach((b) => {
-    if (b.value.trim() === '' || b.classList.contains('invalid')) 
-        valid = false;
-});
+        if (exitUser)
+        {
+            if (btn.textContent === '회원가입')
+                alert(`${exitUser} + signup`);
+            else 
+            {
+                if (exitUserPwd)
+                    location.href = "items.html";
+                else
+                    alert(`${exitUser} + login`);
+            }
+        } else {
+            if (btn.textContent === '회원가입')
+                location.href = "login.html";
+            else
+                alert(`${exitUser} + false`);
+        }
+    }
+
+function updateButton(user_info) { 
+    let valid = true;
+
+    el.forEach((e) => {
+        if (e.value.trim() === '' || e.classList.contains('invalid')) 
+            valid = false;
+    });
     if (valid) {
-    btn.classList.add('active');
-    btn.appendChild(link);
+        btn.classList.add('active');
+        btn.disabled = false;
     } else {
-    btn.classList.remove('active');
-    btn.removeChild(link);
-    };
+        btn.classList.remove('active');
+        btn.disabled = true;
+    }
+
 }
 
 el.forEach((e) => {
     e.addEventListener('focusin', () => {
-            e.classList.add('focus');
+            e.classList.add('focus'); 
     });
 
-    e.addEventListener('input', () => {
+    e.addEventListener('change', () => {
         const msg = e.parentElement.querySelector('.error_msg');
         const value = e.value.trim();
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,7 +82,6 @@ el.forEach((e) => {
         e.classList.remove('invalid');
         msg.textContent = '';
     };
-    
     });
     e.addEventListener('focusout', () => {
         e.classList.remove('focus');
@@ -57,14 +89,33 @@ el.forEach((e) => {
             e.classList.add('invalid');
             const msg = e.parentElement.querySelector('.error_msg');
             msg.textContent = `${e.placeholder}`;
-        } else {
+        } else if (!e.classList.contains('invalid')) {
             e.classList.remove('invalid');
             const msg = e.parentElement.querySelector('.error_msg');
             msg.textContent = '';
         }
-        updateButton();                // ← 포커스 아웃마다
+        updateButton();
     });
 });
 
 
-/// 버튼 수정 && toggle 수정 남음
+
+/// toggle_password//
+
+const passwordToggles = document.querySelectorAll('.toggle_password');
+
+el.forEach((t)=> {
+    if (t.type === 'password') {
+        const eyeIcon = t.parentElement.querySelector('img');
+        eyeIcon.addEventListener('click', () => {
+            if (t.type === 'password') {
+                t.type = 'text';
+                eyeIcon.src = 'img/btn_visibility_on.svg';
+            } else {
+                t.type = 'password';
+                eyeIcon.src = 'img/btn_visibility_off.svg';
+            }
+        });
+    }
+});
+

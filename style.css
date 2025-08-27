@@ -389,6 +389,15 @@ label{
 
 }
 
+.alert{
+    color: var(--Cool-Gray-800, #1F2937);
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
 .login_options {
     display: flex;
     width: 40rem;
@@ -425,3 +434,14 @@ label{
 }
 
 
+/*////////////////responsive-size////////////////////*/
+
+
+@media (min-width: 375px) {
+}
+
+@media (min-width: 744px) {
+}   
+
+@media (min-width: 1200px) {
+}
