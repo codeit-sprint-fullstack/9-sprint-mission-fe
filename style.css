@@ -26,6 +26,7 @@ h2, p {
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;  
+  align-items: center;
 }
 
 .page-header .logo-image {
