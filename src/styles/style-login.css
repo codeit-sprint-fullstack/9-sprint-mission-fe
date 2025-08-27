@@ -14,11 +14,16 @@ body {
   max-width: 640px;
   height: 100vh;
   margin: 0 auto;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
+
+
+/* header */
+
 
 header .logo-link {
   display: block;
@@ -30,6 +35,10 @@ header .logo-link {
 .logo-link .logo-img {
   width: 100%;
 }
+
+
+/* main */
+
 
 main {
   width: 100%;
@@ -44,7 +53,7 @@ main {
 }
 
 .form-group label {
-  color: var(--Secondary-800, #1F2937);
+  color: #1F2937;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -74,14 +83,14 @@ main {
 
 .pw-wrap {
   position: relative;
+}
 
-  img {
-    position: absolute;
-    top: 50%;
-    right: 24px;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
+.pw-wrap > img {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .login-form button {
@@ -118,8 +127,12 @@ main {
   width: 42px;
 }
 
-footer p {
-  color: var(--Secondary-800, #1F2937);
+
+/* footer */
+
+
+footer {
+  color: #1F2937;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -127,7 +140,7 @@ footer p {
 }
 
 footer .link {
-  color: var(--Primary-100, #3692FF);
+  color: #3692FF;
   line-height: normal;
   text-decoration-line: underline;
   text-decoration-style: solid;
