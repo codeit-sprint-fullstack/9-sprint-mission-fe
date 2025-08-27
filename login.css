@@ -1,10 +1,13 @@
-* {
-  box-sizing: border-box;
-
+:root {
+  /*  변수 선언   */
   --Primary-100: #3692FF;
   --Secondary-400: #9CA3AF;
   --Secondary-800: #1F2937;
   --Cool-Gray-100: #F3F4F6;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .main {
