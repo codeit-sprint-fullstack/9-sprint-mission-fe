@@ -65,8 +65,7 @@ table {
 */
 
 html {
-  font-size: 100%;
-  /* default: 16px */
+  font-size: 100%; /* default: 16px */
 }
 
 /* 전역속성 */
@@ -102,4 +101,11 @@ html {
   --font-sm: 0.8125rem;   /* 13px */
   --font-xs: 0.75rem;     /* 12px */
 } 
- 
+
+/* 
+  https://stackoverflow.com/questions/61449079/how-to-hide-the-eye-from-a-password-input-in-ms-edge-and-ie
+*/
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}

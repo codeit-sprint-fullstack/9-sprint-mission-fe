@@ -1,10 +1,10 @@
 const $email = document.getElementById("email");
 const $emailError = document.getElementById("emailError");
 const $pw = document.getElementById("password");
-const $pwError = document.getElementsByClassName("pwError");
+const $pwError = document.getElementById("pwError");
+const $pwErrorCheck = document.getElementById('pwErrorCheck');
 const $submitBtn = document.getElementById("submit-btn");
 const $login = document.getElementById("login");
-
 
 const PW_CHECK_LENGTH = 8;
 
@@ -60,19 +60,21 @@ function validateEmailField() {
 function validatePassword() {
   const value = $pw.value.trim();
   $pwError.textContent = "",
+  $pwErrorCheck.textContent = "",
   $pw.classList.remove("input-error");
 
   if (!value) {
-    $pwError.textContent = "비밀번호를 입력";
+    $pwError.textContent = "비밀번호를 입력해주세요";
+    $pwErrorCheck.textContent = "비밀번호를 입력해주세요";
+    $pw.classList.add("input-error");
+    return false;
+  } else if(value.length < PW_CHECK_LENGTH) {
+    $pwError.textContent = "8자 이상 입력해주세요";
+    $pwErrorCheck.textContent = "8자 이상 입력해주세요";
     $pw.classList.add("input-error");
     return false;
   }
 
-  if (value.length < PW_CHECK_LENGTH) {
-    $pwError.textContent = "8자 이상 입력해주세요";
-    $pw.classList.add("input-error");
-    return false;
-  }
   return true;
 }
 
