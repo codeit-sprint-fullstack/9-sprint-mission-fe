@@ -1,9 +1,11 @@
-# 🐼 판다마켓 프로젝트 (FE_sprint_mission2: signin,signup page)
+# 🐼 판다마켓 프로젝트 (FE_sprint_mission3:auth, module, reseponsive)
 > basic미션
 
 ## 요구정의사항
+**codeit_sprint_mission3 (25-08-26 ~ 25-09-02)**
 
-**codeit_sprint mission 2 (25-08-19 ~ 25-08-22)**
+
+**codeit_sprint_mission2 (25-08-19 ~ 25-08-22)**
 - [x] "판다마켓" 로고 클릭 시 루트 페이지("/") 이동
 - [x] login,signup 페이지 만들기
 - [x] login,signup 페이지 로고 위 상단 여백 동일
@@ -17,7 +19,10 @@
 - [x] Netlify배포 (git) <https://pandasmarket.netlify.app/>
 - [x] PullRequest
 
-**codeit_sprint mission 1**
+**codeit_sprint mission1**
+<details>
+<summary>접기/펼치기</summary>
+
 - [x] reset.css 설정
 - [x] 모든 크기의 관련된 값이 크고 작아지도록 (rem사용 - 미션1,미션2 동일)
 - [x] "구경하러가기"버튼 클릭 시 ('/items')로 이동
@@ -29,7 +34,7 @@
 - [x] Privacy 페이지('/privacy') 이동 (빈 페이지)
 - [x] FAQ -> ('/faq')이동
 - [x] sns 아이콘 클릭시 각각 홈페이지로 이동
-
+</details>
 ---
 
 ## 멘토님에게 남길 메시지

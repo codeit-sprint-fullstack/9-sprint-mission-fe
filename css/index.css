@@ -1,15 +1,3 @@
-/* misson responsive (rem)*/
-
-/*
-*  html(부모사이즈): https://fightingsean.tistory.com/7
-*  변환: https://www.pixelconverter.com/ko
-*/
-
-html {
-  font-size: 100%;
-  /* default: 16px */
-}
-
 body {
   font-size: 1rem;
   margin-top: 70px;
@@ -251,13 +239,12 @@ nav {
 }
 
 .panda-text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   /* 32px */
   font-weight: 700;
   color: #1F2937;
   margin-bottom: 60px;
   font-family: 'Pretendard';
-
 }
 
 .pandas img {
@@ -271,7 +258,7 @@ nav {
 footer {
   display: flex;
   justify-content: space-between;
-  background-color: #111827;
+  background-color: var(--color-secondary-900);
   /* mission 왼쪽/오른쪽 여백 유지*/
   padding: 32px 200px;
   flex-direction: row;
@@ -331,23 +318,113 @@ footer {
   cursor: pointer;
 }
 
-/* 반응형 미디어 쿼리 (깨짐방지)*/
-@media screen and (max-width: 768px) {
+/*=============================================
+=            tablet media                     =
+=============================================*/
+@media screen and (max-width: 1200px) {
+
+  .logo-box {
+    padding: 0 24px;
+  }
+
   .hero-section {
     flex-direction: column;
+    align-items: center;
     height: auto;
   }
 
+  .hero-section .hero-title {
+    gap: 24px;
+    margin-top: 84px;
+  }
+
+  .hero-section br {
+    display: none;
+  }
+
+  .hero-section picture {
+    justify-content: center;
+  }
+
+  .hero-section img {
+    margin-top: 211px;
+  }
+
+  /*----------  tfeature block  ----------*/
+  .feature-section {
+    width: 100%;
+    padding: 0;
+    margin: 24px;
+  }
+
+  .feature-section .feature-title,
+  .feature-section .feature-two-title {
+    gap: 0;
+  }
+
+  .feature-one-heading,
+  .feature-two-heading {
+    font-size: var(--font-3xl);
+    margin: 16px 0 24px;
+  }
+
+  .feature-one-para,
+  .feature-two-para {
+    font-size: var(--font-2lg);
+  }
+
+  .feature-description {
+    font-size: var(--font-2lg);
+  }
+
+  .feature-section .feature-card-br {
+    display: none;
+  }
+
+  .feature-card,
+  .feature-two-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .feature-two-card {
+    align-items: flex-end;
+  }
+
+  .feature-card img,
+  .feature-two-card img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /*----------  tpanda block  ----------*/
   .panda-content {
     flex-direction: column;
     gap: 24px;
   }
 
-  /* 확대시 nav 요소 서로 깨짐 방지 */
-  .logo-box {
-    padding: 0 24px;
+  .panda-content {
+    gap: 0;
   }
 
+  .panda-text {
+    padding: 207px 217px;
+    margin: 0;
+    font-size: var(--font-3xl);
+    line-height: 140%;
+    color: var(--color-secondary-700);
+  }
+
+  .pandas img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    margin-bottom: -5px;
+  }
+
+  /*----------  tfooter block  ----------*/
   footer {
     flex-direction: column;
     padding: 24px;
@@ -355,49 +432,116 @@ footer {
   }
 }
 
-@media screen and (max-width: 1700px) {
-  .feature-section img {
-    width: 240px;
-    height: 222px;
+/*=============================================
+=            mobile media                     =
+=============================================*/
+@media screen and (max-width: 744px) {
+  .logo-box {
+    padding: 0 24px;
   }
 
-  .feature-one-heading {
-    font-size: 2rem;
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
   }
 
-  .feature-one-para {
-    font-size: 0.75rem;
+  .hero-section .hero-title h1 {
+    gap: 18px;
+    text-align: center;
+    font-size: var(--font-3xl);
+  }
+
+  .hero-section br {
+    display: initial;
+  }
+
+  .hero-section picture {
+    justify-content: center;
+  }
+
+  .hero-section img {
+    margin-top: 132px;
+  }
+
+  /*----------  mfeature block  ----------*/
+  .feature-section {
+    width: 100%;
+    margin: 54px 16px !important;
+  }
+
+  .feature-section .feature-title,
+  .feature-section .feature-two-title {
+    gap: 0;
+  }
+
+  .feature-one-heading,
+  .feature-two-heading {
+    font-size: var(--font-2xl);
+    margin: 8px 0 16px;
+  }
+
+  .feature-one-para,
+  .feature-two-para {
+    font-size: var(--font-lg);
   }
 
   .feature-description {
-    font-size: 1rem;
+    font-size: var(--font-lg);
   }
 
-  .feature-two-heading {
-    font-size: 2rem;
+  .feature-section .feature-card-br {
+    display: none;
   }
 
-  .feature-two-para {
-    font-size: 0.75rem;
-  }
-}
-
-@media screen and (max-width: 1090px) {
-
-  .feature-card {
+  .feature-card,
+  .feature-two-card {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     padding: 0;
   }
 
   .feature-two-card {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
+    align-items: flex-end;
   }
 
-  .feature-section img {
-    width: 240px;
-    height: 222px;
+  .feature-card img,
+  .feature-two-card img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /*----------  mpanda block  ----------*/
+  .panda-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .panda-text {
+    padding: 207px 217px;
+    margin: 0;
+    font-size: var(--font-3xl);
+    line-height: 140%;
+    color: var(--color-secondary-700);
+    white-space: nowrap;
+  }
+
+  .pandas img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    margin-bottom: -5px;
+  }
+
+  /*----------  mfooter block  ----------*/
+  footer {
+    flex-direction: column;
+    padding: 24px;
+    text-align: center;
   }
 }
+
+/*
+  TODOs: html요소 검사 및 반응형 footer요소 테스트
+*/
