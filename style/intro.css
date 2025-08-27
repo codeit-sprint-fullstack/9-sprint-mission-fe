@@ -13,7 +13,7 @@
   margin-top: 8.625rem;
 }
 
-.intro-tobo-item{
+.intro-top-bottom-item{
   display: inline-flex;
   width: 69.375rem;
   gap: 0.4375rem;
@@ -21,7 +21,7 @@
   justify-content: space-between;
 }
 
-.tobo-text{
+.top-bottom-text{
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 3.75rem;
@@ -35,7 +35,7 @@
   line-height: 140%;
 }
 
-.tobo-img{
+.top-bottom-img{
   width: 46.625rem;
 }
 
