@@ -26,11 +26,14 @@
     
     <form method="POST">
       <label for="email">이메일</label>
-      <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요" aria-label="이메일을 입력해주세요">
+      <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요" aria-label="이메일을 입력해주세요" required>
       <span id="emailError" class="error"></span>
       
       <label for="pw">비밀번호</label>
-      <input id="pw" name="password" type="password" placeholder="비밀번호를 입력해주세요">
+      <div class="password-wrapper">
+        <input id="pw" name="password" type="password" placeholder="비밀번호를 입력해주세요" aria-label="비밀번호를 입력해주세요" required>
+        <img class="btn_visibility_icon" src="./public/images/btn_visibility_off.svg">
+      </div>
       <span id="pwError" class="error"></span>
       
       <button id="submit-btn" type="submit" disabled>로그인</button>

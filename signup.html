@@ -28,19 +28,25 @@
 
     <form method="POST">
       <label for="email">이메일</label>
-      <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
+      <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요" aria-label="이메일을 입력해주세요" required>
       <span id="emailError" class="error"></span>
 
       <label for="nickname">닉네임</label>
-      <input id="nickname"  name="nickname" type="text" placeholder="닉네임을 입력해주세요">
+      <input id="nickname"  name="nickname" type="text" placeholder="닉네임을 입력해주세요" aria-label="닉네임을 입력해주세요" required>
       <span id="nickNameError" class="error"></span>
 
       <label for="pw">비밀번호</label>
-      <input id="pw" class="password" name="password" type="password" placeholder="비밀번호를 입력해주세요">
+      <div class="password-wrapper">
+        <input id="pw" class="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" aria-label="비밀번호를 입력해주세요" required>
+        <img class="btn_visibility_icon" src="./public/images/btn_visibility_off.svg">
+      </div>
       <span id="pwError" class="error"></span>
-
+      
       <label for="pw-check">비밀번호 확인</label>
-      <input id="pw-check" class="password" name="passwordConfirm" type="password" placeholder="비밀번호를 입력해주세요">
+      <div class="password-wrapper">
+        <input id="pw-check" class="password" name="passwordConfirm" type="password" placeholder="비밀번호를 입력해주세요" aria-label="비밀번호를 입력해주세요" required>
+        <img class="btn_visibility_icon" src="./public/images/btn_visibility_off.svg">
+      </div>
       <span id="pwError" class="error"></span>
 
       <!--조건에 맞지 않으면 비활성화-->
