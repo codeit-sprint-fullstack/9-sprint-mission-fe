@@ -28,7 +28,7 @@
   row-gap: 2rem;
 }
 
-#intro-big-box h2{
+.item-text-main{
   color: var(--secondary-700);
   font-size: 2.5rem;
   font-weight: 700;
@@ -57,12 +57,12 @@
   background: var(--bg-gray);
 }
 
-.intro-content-item img{
+.item-img{
   width: 36.75rem;
   height: 27.75rem;
 }
 
-.intro-content-text h3{
+.item-text-sub{
   color: var(--primary-100);
   font-size: 1.125rem;
   font-weight: 700;
@@ -70,12 +70,12 @@
   margin-bottom: 0.75rem;
 }
 
-.intro-content-text h2{
+.item-textbox > .item-text-main{
   letter-spacing: 0.05rem;
   margin-bottom: 1.5rem;
 }
 
-.intro-content-text p{
+.item-text-para{
   color: var(--secondary-700);
   font-size: 1.5rem;
   font-weight: 500;
@@ -86,6 +86,6 @@
   flex-direction: row-reverse;
 }
 
-.intro-content-item-reverse > .intro-content-text{
+.intro-content-item-reverse > .content-textbox{
   text-align: end;
 }
