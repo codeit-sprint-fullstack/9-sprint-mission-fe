@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 
   --Primary-100: #3692FF;
   --Secondary-400: #9CA3AF;
@@ -47,7 +47,7 @@
   font-family: Pretendard;
   font-size: 20px;
   font-weight: 600;
-  line-height: 32px;              /*    160%    */
+  line-height: 32px;             
   width: 640px;
   height: 56px;  
   padding: 16px 124px;
@@ -68,7 +68,7 @@
   font-style: normal;
   font-size: 18px;
   font-weight: 700;
-  line-height: 26px;    /*  144.444%  */
+  line-height: 26px;    
 }
 
 .container.signup input {
@@ -82,7 +82,7 @@
   padding: 24px;
   font-size: 16px;
   font-weight: 400;
-  line-height: 26px;        /*  162.5%  */
+  line-height: 26px;       
 }
 
 
