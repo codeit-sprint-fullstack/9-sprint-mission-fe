@@ -1,0 +1,306 @@
+/* reset */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* layout */
+
+*{
+  box-sizing: border-box;
+}
+
+:root {
+  --color-textcolor1: #000000;
+  --color-primary: #F3F4F6;
+  --color-button: #9CA3AF;
+  --color-easylog: #E6F2FF;
+}
+
+body {
+  background: #FCFCFC;
+  font-family: 'Pretendard', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:0;
+}
+
+.center {
+    margin: 0 auto;
+    gap: 2.5rem;
+    width: 40rem;
+    margin-top: 3.75rem;
+    margin-bottom:11.12rem;
+}
+
+  .pglogo {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-icon {
+    width: 24.75rem;
+  }
+
+
+          .input-wrap {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+
+   input {
+      border: 0px solid #ccc;
+      background-color:var(--color-primary);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
+      width:40rem;
+      height: 3.5rem;
+    }
+
+
+          .visibility {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    right:1.5rem;
+    top:50%;
+    transform: translateY(50%);
+          }
+          
+        
+    .eye-icon-wrap {
+      position: relative;
+    }
+
+
+    input:focus {
+      border-color: #3692FF;
+      outline: none;
+      box-shadow: 0 0 5px rgba(54, 146, 255, 0.5);
+    }
+
+
+  label {
+    display: block;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.625rem;
+    gap: 1rem;
+    margin-top:2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+
+  .email {
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+    margin-top:2.5rem;
+  }
+
+  .email > .password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:var(--color-primary);
+    border-radius: 0.75rem;
+    padding-right: 1.5rem;
+  }
+
+
+  div .login-btn {
+    color:var(--color-button);
+    display: flex;
+    width: 40rem;
+    height: 3.5rem;
+  }
+
+  .easy-login {
+    background-color:var(--color-easylog);
+    border-radius: 0.5rem;
+    position: relative;
+    font-size:1rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+    width: 100%;
+    padding: 1rem 1.4rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .sns-group {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+
+  }
+
+  .sns-icon {
+    width: 2.625rem;
+    height: 2.625rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+  }
+
+  .login-btn {
+    background-color: var(--color-button);
+    border-radius: 2.5rem;
+    padding: 1rem 7.75rem;
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-link {
+    color:#ffffff
+  }
+
+  .first-message {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+
