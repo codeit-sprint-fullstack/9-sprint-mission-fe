@@ -86,7 +86,7 @@
   flex-direction: row-reverse;
 }
 
-.intro-content-item-reverse > .content-textbox{
+.intro-content-item-reverse > .item-textbox{
   text-align: end;
 }
 
