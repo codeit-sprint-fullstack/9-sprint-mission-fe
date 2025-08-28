@@ -152,6 +152,9 @@ a, button, input{
   cursor: not-allowed;
 }
 
+.line-break{
+  display: block;
+}
 
 @media screen and (max-width: 120rem) {
   nav{
