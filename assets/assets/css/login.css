@@ -204,3 +204,24 @@ input:focus {
   text-decoration: none;
   font-weight: 600;
 }
+
+
+/* 에러 메시지 스타일 */
+.error-message {
+ color: var(--error-red, #F74747);
+font-family: Pretendard;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.signup-container-error  {
+  color: #F74747;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 에러가 발생한 input 테두리 스타일 */
+.input-error {
+  border: 1px solid red;
+}

@@ -318,9 +318,103 @@ justify-content: center;
 align-items: center;
 
 }
-@font-face {
-    font-family: 'ROKAFSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/ROKAFSans-Medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+/* === Tablet (744px ~ 1199px) === */
+@media (max-width: 1199px) and (min-width: 744px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero {
+    padding: 60px 24px 0;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: auto;
+  }
+
+  .cards {
+    padding: 80px 24px;
+  }
+
+  .trust {
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .trust-right img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* === Mobile (375px ~ 743px) === */
+@media (max-width: 743px) and (min-width: 375px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px 0;
+    height: auto;
+  }
+
+  .hero-right img {
+    width: calc(100% - 32px);
+    height: auto;
+  }
+
+  .cards {
+    padding: 60px 16px;
+  }
+
+  .card {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .card.card-reverse {
+    flex-direction: column;
+  }
+
+  .card-media {
+    width: 100%;
+    height: auto;
+  }
+
+  .trust {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .trust-left {
+    margin-bottom: 40px;
+  }
+
+  .trust-right img {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer {
+    padding: 32px 16px;
+    height: auto;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
