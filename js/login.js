@@ -7,13 +7,13 @@ const USER_DATA = [
   { email: 'codeit6@codeit.com', password: "codeit606!" },
 ]
 
-const loginForm = document.querySelector("#login-form");
+const loginForm = document.querySelector(".login-form");
 const emailInput = loginForm.querySelector("#email");
 const passwordInput = loginForm.querySelector("#password");
 const passwordChkInput = loginForm.querySelector("#password-chk");
 const nicknameInput = loginForm.querySelector("#nickname");
 const formBtn = loginForm.querySelector("#submit");
-const isSignupPage = passwordChkInput && nicknameInput;
+const isSignupPage = loginForm.id === "signup";
 
 const emailValidation = function(value) {
   const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+$/;
