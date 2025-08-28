@@ -13,6 +13,7 @@ const passwordInput = loginForm.querySelector("#password");
 const passwordChkInput = loginForm.querySelector("#password-chk");
 const nicknameInput = loginForm.querySelector("#nickname");
 const formBtn = loginForm.querySelector("#submit");
+const isSignupPage = passwordChkInput && nicknameInput;
 
 const emailValidation = function(value) {
   const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+$/;
@@ -42,8 +43,6 @@ const passwordValidation = function(value, id) {
 }
 
 const loginBtnValidation = function() {
-  const isSignupPage = passwordChkInput && nicknameInput;
-
   const isEmailValid = emailValidation(emailInput.value).isValid;
   const isPasswordValid = passwordValidation(passwordInput.value, passwordInput.id).isValid;
 
@@ -85,5 +84,34 @@ const loginFormValidation = function(event) {
   validationResultProcess(validationResult, inputOutbox, warningMessage);
 }
 
+const loginUserExistens = function(email, password) {
+  const user = USER_DATA.find(user => user.email === email);
+  if (!(user && user.password === password)) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+  location.href = "/items";
+}
+
+const signUpUserExistens = function(email) {
+  const isExist = USER_DATA.some(user => user.email === email);
+  if (isExist) {
+    alert("사용 중인 이메일입니다.");
+    return;
+  }
+  location.href = "/login";
+}
+
 loginBtnValidation();
 loginForm.addEventListener("focusout", (event) => loginFormValidation(event));
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const email = formData.get('email');
+  const password = formData.get('password');
+  if(isSignupPage){
+    signUpUserExistens(email);
+  }else{
+    loginUserExistens(email, password);
+  }
+});
