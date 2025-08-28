@@ -63,7 +63,7 @@
   border: 1px solid var(--primary-100);
 }
 
-#pw-view-toggle{
+.pw-view-toggle{
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
@@ -72,7 +72,7 @@
   background: none;
 }
 
-#pw-view-toggle > img{
+.pw-view-toggle > img{
   height: 100%;
 }
 
@@ -129,8 +129,13 @@
 }
 
 .warning-message {
+  display: none;
   margin: 0.5rem 0 0 1rem;
   color: var(--err-red);
   font-size: 0.97rem;
   font-weight: 600;
+}
+
+.message-on {
+  display: block;
 }
