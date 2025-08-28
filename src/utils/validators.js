@@ -1,38 +1,101 @@
+const $id = document.getElementById("email");
+const $idError = document.getElementById("emailError");
 
-export const PW_CHECK_LENGTH = 8
-/*
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-   * ^           - 문자열 시작 (맨 앞부터 검사 시작)
-   * [^\s@]+     - 공백이나 '@'가 아닌 문자 1개 이상 (이메일 아이디 부분)
-   * [^\s@]+     - 공백이나 '@'가 아닌 문자 1개 이상 (도메인 이름 부분)
-   * \.          - '.' 문자 (도메인과 확장자 구분)
-   * [^\s@]+     - 공백이나 '@'가 아닌 문자 1개 이상 (도메인 확장자 부분)
-   * $           - 문자열 끝 (여기서 끝나야 됨)
-   * const re = new RegExp("\\^[^\s@]+@[^\s@]+\.[^\s@]+$/");
-   * @example
-   * emailPattern.test('user@example.com'); // true
-   * emailPattern.test('invalid@com');      // false
-   */
-export const EMAIL_REG = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const $pwError = document.getElementById("pwError");
+const $pw = document.getElementById("password");
+
+const $pwCheker = document.getElementById("pw-check")
+const $pwChekerError =  document.getElementById("pwErrorCheck")
+
+const $nickName = document.getElementById("nickname");
+const $nickNameError = document.getElementById("nickNameError");
+
+const PW_CHECK_LENGTH = 8;
+const MIN_NAME_LENGTH = 2;
+
+const EMAIL_REG = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /**
- * 1.     검증 이메일 
+ * 1.     검증 이메일
  * 1-1.   공백  제거 포함 이메일 형식 검증 입력값을 검증하고 오류 메시지를 표시
  * TODO   최상위 도메인 검증
- * 
- * @param {HTMLInputElement} email // input값 
- * @returns {boolean} 
+ * @returns {boolean}
  */
-export function validateEmail(email) {
-  return EMAIL_REG.test((email).trim());
+export function validateEmail() {
+  const value = $id.value.trim();
+  const isValid = EMAIL_REG.test(value);
+  if (isValid) {
+    $idError.textContent = "";
+    $id.classList.remove("input-error");
+    return true;
+  } else {
+    $idError.textContent = !value
+      ? ($idError.textContent = "이메일을 입력해주세요.")
+      : ($idError.textContent = "올바른 이메일을 입력해 주세요.");
+    $id.classList.toggle("input-error", !false);
+    return false;
+  }
 }
 
 /**
  * 2.     공백 제거한 비밀번호를, 비밀 번호 길이 검증
  * 2-1.   빈문자열 , 8자리이하 false리턴
- * @param {String} password 
- * @returns {boolean} 
+ * @returns {boolean}
  */
-export function validatePassword(password) {
-  return (password || "").trim().length >= PW_CHECK_LENGTH;
+export function validatePassword() {
+  const value = $pw.value.trim();
+  const isValid = value.length >= PW_CHECK_LENGTH;
+  // console.log(isVaild)
+  if (isValid) {
+    $pwError.textContent = "";
+    $pw.classList.remove("input-error");
+    return true;
+  } else {
+    $pwError.textContent = !value
+      ? ($pwError.textContent = "비밀번호를 입력해주세요.")
+      : ($pwError.textContent = `비밀번호는 ${PW_CHECK_LENGTH}자 이상 입력해주세요.`);
+    $pw.classList.toggle("input-error", !false);
+    return false;
+  }
+}
+/**
+ * @returns {boolean}
+ */
+export function validateNickName() {
+  const value = $nickName.value.trim();
+  const isValid = value.length >= MIN_NAME_LENGTH;
+  if (isValid) {
+    $nickNameError.textContent = "";
+    $nickName.classList.remove("input-error");
+    return true;
+  } else {
+    $nickNameError.textContent = !value
+      ? ($nickNameError.textContent = "비밀번호를 입력해주세요.")
+      : ($nickNameError.textContent = `비밀번호는 ${MIN_NAME_LENGTH}자 이상 입력해주세요.`);
+    $nickName.classList.toggle("input-error", !false);
+    return false;
+  }
+}
+/**
+ * 4.     검증 이메일
+ * 빈값일 경우, 현재 패스워드 비교 
+ * @returns {boolean}
+ */
+export function validatePasswordCheker() {
+  const value = $pwCheker.value.trim();
+  const isValid =  Boolean(value) && (value === $pw.value.trim()); 
+  console.log(value)
+  console.log($pw.value.trim())
+  if (isValid) {
+    console.log(isValid)
+    $pwChekerError.textContent = "";
+    $pwCheker.classList.remove("input-error");
+    return true;
+  } else {
+    $pwChekerError.textContent = !value || isValid
+      ? ($pwChekerError.textContent = "비밀번호를 입력해주세요.")
+      : ($pwChekerError.textContent = `비밀번호가 서로 일치하지 않습니다.`);
+    $pwCheker.classList.toggle("input-error", !false);
+    return false;
+  }
 }

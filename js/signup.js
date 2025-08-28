@@ -1,23 +1,24 @@
-import { validateEmail, validatePassword } from "../src/utils/validators.js";
+import {
+  validateEmail,
+  validateNickName,
+  validatePassword,
+  validatePasswordCheker,
+} from "../src/utils/validators.js";
 
 const $email = document.getElementById("email");
-const $emailError = document.getElementById("emailError");
-const $nickName = document.getElementById('nickname');
-const $nickNameError = document.getElementById('nickNameError');
+const $nickName = document.getElementById("nickname");
+const $nickNameError = document.getElementById("nickNameError");
 const $pw = document.getElementById("password");
-const $pwError = document.getElementById("pwError");
-const $pwCheker = document.getElementById("pw-check")
-const $pwChekerError =  document.getElementById("pwErrorCheck")
+const $pwCheker = document.getElementById("pw-check");
+const $pwChekerError = document.getElementById("pwErrorCheck");
 const $submitBtn = document.getElementById("submit-btn");
-const $login = document.getElementById("login");
 const $pwEyeBtn = document.querySelectorAll(".btn_visibility_icon");
 
 $pwEyeBtn.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener("click", () => {
     const wrapper = btn.closest(".password-wrapper");
     const input = wrapper.querySelector("input");
     const icon = wrapper.querySelector("img");
-    // input.type = input.type === 'password' ? 'text' : 'password';
 
     if (input.type === "password") {
       input.type = "text";
@@ -33,7 +34,7 @@ $pwEyeBtn.forEach((btn) => {
  * 요소에 사용할 오류 메시지
  * @param {HTMLDoc} $el -  에러내용을 출력할 span,div,...
  * @param {String} msg  -  파라미터로 받은 메시지를 해당 에러요소에 넣는다
- * 
+ *
  * @example
  * setError($emailError, '올바른 이메일을 입력..')
  */
@@ -43,10 +44,10 @@ function setError($el, msg) {
 }
 
 /**
- * 입력창 오류 스타일 
- * @param {HTMLDoc} $input - 에러 스타일을 적용할 인풋요소 
- * @param {boolean} pass     - 검증이 true일시 실행x, 아닐시 input-error style 토글   
- * 
+ * 입력창 오류 스타일
+ * @param {HTMLDoc} $input - 에러 스타일을 적용할 인풋요소
+ * @param {boolean} pass     - 검증이 true일시 실행x, 아닐시 input-error style 토글
+ *
  * @example
  * toggleInputError($emilInput, true);
  */
@@ -56,29 +57,22 @@ function toggleInputError($input, pass) {
 }
 
 function checkEmail() {
-  const isPass = validateEmail($email.value);
-  setError($emailError, isPass ? "" : "올바른 이메일을 입력해 주세요.");
-  toggleInputError($email, !isPass);
+  const isPass = validateEmail();
   return isPass;
 }
 
 function checkName() {
-  const isPass = ($nickName.value || '').trim();
-  setError($nickNameError, isPass ? "" : '닉네임을 입력해주세요');
-  toggleInputError($nickName, !isPass)
-}
-
-function checkPassword() {
-  const isPass = validatePassword($pw.value);
-  setError($pwError, isPass ? "" : "비밀번호는 8자 이상 입력해 주세요.");
-  toggleInputError($pw, !isPass);
+  const isPass = validateNickName();
   return isPass;
 }
 
-function checkPasswordConfirm() {
-  const isPass = ($pw.value || '').trim() === ($pwCheker.value || '').trim();
-  setError($pwChekerError, isPass ? "" : "비밀번호가 서로 일치하지 않습니다.")
-  toggleInputError($pwCheker, !isPass)
+function checkPassword() {
+  const isPass = validatePassword();
+  return isPass;
+}
+
+function checkPasswordCheker() {
+  const isPass = validatePasswordCheker();
   return isPass;
 }
 
@@ -91,7 +85,8 @@ function checkPasswordConfirm() {
  * @return {void}
  */
 function checkFormValid() {
-  const isValid = checkEmail() && checkName() && checkPassword() && checkPasswordConfirm();
+  const isValid =
+    checkEmail() && checkName() && checkPassword() && checkPasswordCheker();
   // !true로 토글
   $submitBtn.disabled = !isValid;
 }
@@ -102,20 +97,20 @@ $email.addEventListener("focusout", () => {
   checkFormValid();
 });
 
-$pw.addEventListener("blur", () => {
+$nickName.addEventListener("focusout", () => {
+  checkName();
+  checkFormValid();
+});
+
+$pw.addEventListener("focusout", () => {
   checkPassword();
   checkFormValid();
 });
 
-$pwCheker.addEventListener("blur", () => {
-  checkPasswordConfirm();
+$pwCheker.addEventListener("focusout", () => {
+  checkPasswordCheker();
   checkFormValid();
 });
-
-$nickName.addEventListener('blur', () => {
-  checkName();
-  checkFormValid();
-})
 
 /**
  * 4. 제출후 페이지 이동
@@ -128,7 +123,7 @@ $nickName.addEventListener('blur', () => {
  *
  */
 $submitBtn.addEventListener("click", (e) => {
-  console.log(e)
+  console.log(e);
   e.preventDefault();
   // disabled상태가 아니면 이동
   if (!$submitBtn.disabled) {
@@ -146,10 +141,9 @@ $submitBtn.addEventListener("click", (e) => {
 // $email,$pw는 이메일 입력창과 비밀번호 input을 가리키는 DOM요소 를 둘다 반복 작업수행 (valid)
 // 글자를 입력할때마다 발생하는 이벤트인 input
 // 글자를 입력할때마다 checkFormValid전달 -> 조건 만족시 버튼 활성화
-[$email, $nickName, $pw, $pwCheker].forEach((input) => {
-  input.addEventListener("input", checkFormValid);
-  input.addEventListener("focusout", checkFormValid);
-});
-
+// [$email, $nickName, $pw, $pwCheker].forEach((input) => {
+//   input.addEventListener("input", checkFormValid);
+//   input.addEventListener("focusout", checkFormValid);
+// });
 
 // TODO: 모듈화, 버튼css, 더미데이터 이용, ux(반응형,눈모양), 모달창
