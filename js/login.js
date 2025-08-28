@@ -11,13 +11,18 @@ const emailValidation = function(value) {
   return { isValid: true, message: "" };
 }
 
-const passwordValidation = function(value) {
-  let warningText = "";
+const passwordValidation = function(value, id) {
   if(!value){
     return { isValid: false, message: "비밀번호를 입력해주세요." };
   }
   if(value.length < 8){
     return { isValid: false, message: "비밀번호를 8자 이상 입력해주세요." };
+  }
+  if(id === "password-chk"){
+    const passwordValue = loginForm.querySelector("#password").value;
+    if(value !== passwordValue){
+      return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
+    }
   }
   return { isValid: true, message: "" };
 }
@@ -35,18 +40,19 @@ const loginFormValidation = function(event) {
   const inputOutbox = inputTarget.parentElement;
   const inputValue = inputTarget.value;
   const inputType = inputTarget.type;
+  const inputId = inputTarget.id;
   const warningMessage = inputOutbox.parentElement.querySelector(".warning-message");
-  let result;
+  let validationResult;
 
   if(inputType === "email"){
-    result = emailValidation(inputValue);
+    validationResult = emailValidation(inputValue);
   }else if(inputType === "password"){
-    result = passwordValidation(inputValue);
+    validationResult = passwordValidation(inputValue, inputId);
   }else{
     return
   }
 
-  validationResultProcess(result, inputOutbox, warningMessage);
+  validationResultProcess(validationResult, inputOutbox, warningMessage);
 }
 
 loginForm.addEventListener("focusout", (event) => loginFormValidation(event));
