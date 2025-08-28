@@ -70,7 +70,7 @@ const loginFormValidation = function(event) {
   }else if(inputType === "password"){
     validationResult = passwordValidation(inputValue, inputId);
   }else{
-    return
+    return loginBtnValidation();
   }
 
   validationResultProcess(validationResult, inputOutbox, warningMessage);
