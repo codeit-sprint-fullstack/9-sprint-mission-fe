@@ -1,58 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 16px;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Pretendard;
-}
-
-h2, p {
-  margin: 0;
-}
-
-/* 헤더 상단 제목과 로그인  */
-.page-header {  
-  padding: 0.5938rem 12.5rem;     /*  9.5px 200px  */
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;  
-  align-items: center;
-}
-
-.page-header .logo-image {
-  height: 3.1875rem;            /*  51px;  */
-}
-
-.button {
-  background-color: #3692ff;
-  color: #f3f4f6;
-  text-decoration: none;
-}
-
-.button.login {
-  display: flex;    
-  align-items: center;     
-  justify-content: center;
-  font-weight: 600;
-  font-size: 1rem;              /*  16px;   */
-  width: 8rem;                  /*  128px;  */
-  height: 3rem;                 /*  48px;   */
-  padding: 12px   23px;         /*  12px   23px;   */
-  border-radius: 0.5rem;        /*  8px;     */
-
-  cursor: pointer;
-}
-
 /*  메인 화면의 상단 배너    */
 .section.top {
   background-color: #cfe5ff;
@@ -162,44 +107,6 @@ h2, p {
   padding-top: 7.0313rem;     /*  112.5px;  */
 }
 
-
-/*  페이지 하단의 카피라이트와 약관 및 SNS  */
-.page-footer {
-  background-color: #111827;
-}
-
-.page-footer > .container {
-  display: flex;
-  justify-content: space-between;
-  flex-shrink: 0;
-  padding: 2rem 12.5rem 6.75rem;  /*  32px 200px 108px; */
-}
-
-.page-footer .copyright {
-  font-size: 1rem;            /*  16px; */
-  font-weight: 400;
-  color: #9CA3AF;
-  display: inline-block;
-}
-
-.page-footer .menu {
-  display: flex;
-  gap: 1.875rem;              /*  30px; */
-}
-
-.page-footer .menu-item {
-  font-size: 1rem;            /*  16px; */
-  font-weight: 400;
-  color: #E5E7EB;
-  text-decoration: none;  
-  cursor: pointer;
-}
-
-.page-footer .sns {
-  display: flex;
-  gap: 0.75rem;              /*  12px; */
-  cursor: pointer;
-}
 
 /* media 화면 너비 1920px 이하 */
 @media screen and (max-width: 1920px) {
