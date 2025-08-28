@@ -42,13 +42,9 @@ if (loginForm) {
 
     
     const checkFormValidity = () => {
-        const emailError = validateEmail(emailInput.value);
-        const passwordError = validatePassword(passwordInput.value);
-
-        updateErrorDisplay(emailInput, emailError);
-        updateErrorDisplay(passwordInput, passwordError);
-
-        submitButton.disabled = !!(emailError || passwordError);
+        const isEmailValid = !validateEmail(emailInput.value);
+        const isPasswordValid = !validatePassword(passwordInput.value);
+        submitButton.disabled = !(isEmailValid && isPasswordValid);
     };
 
 
@@ -118,3 +114,20 @@ if (signupForm) {
     }
   });
 }
+// 비밀번호 보이기/숨기기 토글
+document.querySelectorAll(".toggle-password").forEach((icon) => {
+  icon.addEventListener("click", () => {
+    const input = icon.previousElementSibling; 
+    
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "./assets/images/eyeon.svg";  // 눈뜬 아이콘
+      icon.alt = "비밀번호 보이기";
+    } else {
+      input.type = "password";
+      icon.src = "./assets/images/eyeoff.svg"; // 눈감은 아이콘
+
+      icon.alt = "비밀번호 가리기";
+    }
+  });
+});

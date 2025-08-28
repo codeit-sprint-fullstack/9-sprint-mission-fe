@@ -20,7 +20,7 @@
 
       <!-- 로그인 폼 -->
       <main class="login-main">
-        <form id="loginForm" method="post" novalidate>
+        <form id="loginForm" novalidate>
           <div class="input-group">
             <label for="loginEmail">이메일</label>
             <input
@@ -33,7 +33,7 @@
             />
             <div id="loginEmailError" class="error-message" aria-live="polite"></div>
           </div>
-
+          <!-- 비밀번호 -->
           <div class="input-group password-group">
             <label for="loginPassword">비밀번호</label>
             <div class="password-wrapper">
@@ -42,20 +42,18 @@
                 id="loginPassword"
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
-                autocomplete="off"
-                required
+               
               />
               <img
                 src="./assets/images/eyeoff.svg"
-                alt="비밀번호 보이기"
+                alt="비밀번호 숨기기"
                 class="toggle-password"
                 role="button"
-                tabindex="0"
+                
               />
-            </div>
+             </div>
             <div id="loginPasswordError" class="error-message" aria-live="polite"></div>
           </div>
-
           <button type="submit" class="btn-primary" disabled>로그인</button>
         </form>
 
