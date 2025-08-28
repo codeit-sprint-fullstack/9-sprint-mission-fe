@@ -1,0 +1,165 @@
+/*  공통 부분 CSS 정의 페이지 */
+
+:root {
+  /*  변수 선언   */
+  --Primary-100: #3692FF;
+  --Secondary-400: #9CA3AF;
+  --Secondary-800: #1F2937;
+  --Cool-Gray-100: #F3F4F6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Pretendard;
+}
+
+h2, p {
+  margin: 0;
+}
+
+
+/* 헤더 상단 제목과 로그인 버튼  */
+.page-header {  
+  padding: 9.5px 200px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+}
+
+.page-header .logo-image {
+  height: 51px;
+}
+
+.page-header > .button.login {
+  display: flex;    
+  align-items: center;     
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;  
+  width: 128px; 
+  height: 48px; 
+  padding: 12px 23px;
+  border-radius: 8px;
+}
+
+
+/*  페이지 하단의 카피라이트와 약관 및 SNS  */
+.page-footer {
+  background-color: #111827;
+}
+
+.page-footer > .container {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: 32px 200px 108px; 
+}
+
+.page-footer .copyright {
+  font-size: 16px; 
+  font-weight: 400;
+  color: #9CA3AF;
+  display: inline-block;
+}
+
+.page-footer .menu {
+  display: flex;
+  gap: 30px; 
+}
+
+.page-footer .menu-item {
+  font-size: 16px; 
+  font-weight: 400;
+  color: #E5E7EB;
+  text-decoration: none;  
+  cursor: pointer;
+}
+
+.page-footer .sns {
+  display: flex;
+  gap: 12px; 
+  cursor: pointer;
+}
+
+
+/*  공통으로 쓰일 버튼 스타일 */
+.button {
+  cursor: pointer;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+
+}
+
+.button.enabled {
+  background: var(--Primary-100);  
+}
+
+.button.disabled {
+  background: var(--Secondary-400);  
+}
+
+/* input text 스타일 */
+.input-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 16px;
+}
+
+.input-item > label {
+  color: var(--Secondary-800);
+  font-family: Pretendard;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;    
+}
+
+.input-item > input {
+  width: 100%;
+  background: var(--Cool-Gray-100);
+  color: var(--Secondary-800);
+  font-family: Pretendard;
+  font-style: normal; 
+  padding: 16px 24px;  
+  border: 0px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;       
+}
+
+.input-item > input:placeholder {
+  color: var(--Secondary-400);
+}
+
+.input-item > input:focus {
+  border: 1px solid var(--Primary-100);
+  outline: none;
+}
+
+.input-item > .img-icon {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
