@@ -43,16 +43,16 @@
         <input id="password" class="password" name="password" type="password" placeholder="비밀번호를 입력해주세요"
           aria-label="비밀번호를 입력해주세요" required>
         <img class="btn_visibility_icon" src="./public/images/btn_visibility_off.svg" alt="비밀번호 표시">
+        <span id="pwError" class="error"></span>
       </div>
-      <span id="pwError" class="error"></span>
 
       <label for="pw-check">비밀번호 확인</label>
       <div class="password-wrapper">
         <input id="pw-check" class="password" name="passwordConfirm" type="password" placeholder="비밀번호를 입력해주세요"
           aria-label="비밀번호를 입력해주세요" required>
         <img class="btn_visibility_icon" src="./public/images/btn_visibility_off.svg" alt="비밀번호 표시">
+        <span id="pwErrorCheck" class="error"></span>
       </div>
-      <span id="pwErrorCheck" class="error"></span>
 
       <!--조건에 맞지 않으면 비활성화-->
       <button id="submit-btn" type="submit" disabled>로그인</button>

@@ -4,8 +4,8 @@ const $idError = document.getElementById("emailError");
 const $pwError = document.getElementById("pwError");
 const $pw = document.getElementById("password");
 
-const $pwCheker = document.getElementById("pw-check")
-const $pwChekerError =  document.getElementById("pwErrorCheck")
+const $pwCheker = document.getElementById("pw-check");
+const $pwChekerError = document.getElementById("pwErrorCheck");
 
 const $nickName = document.getElementById("nickname");
 const $nickNameError = document.getElementById("nickNameError");
@@ -31,7 +31,7 @@ export function validateEmail() {
   } else {
     $idError.textContent = !value
       ? ($idError.textContent = "이메일을 입력해주세요.")
-      : ($idError.textContent = "올바른 이메일을 입력해 주세요.");
+      : ($idError.textContent = "잘못된 이메일 형식입니다.");
     $id.classList.toggle("input-error", !false);
     return false;
   }
@@ -78,23 +78,24 @@ export function validateNickName() {
 }
 /**
  * 4.     검증 이메일
- * 빈값일 경우, 현재 패스워드 비교 
+ * 빈값일 경우, 현재 패스워드 비교
  * @returns {boolean}
  */
 export function validatePasswordCheker() {
   const value = $pwCheker.value.trim();
-  const isValid =  Boolean(value) && (value === $pw.value.trim()); 
-  console.log(value)
-  console.log($pw.value.trim())
+  const isValid = Boolean(value) && value === $pw.value.trim();
+  console.log(value);
+  console.log($pw.value.trim());
   if (isValid) {
-    console.log(isValid)
+    console.log(isValid);
     $pwChekerError.textContent = "";
     $pwCheker.classList.remove("input-error");
     return true;
   } else {
-    $pwChekerError.textContent = !value || isValid
-      ? ($pwChekerError.textContent = "비밀번호를 입력해주세요.")
-      : ($pwChekerError.textContent = `비밀번호가 서로 일치하지 않습니다.`);
+    $pwChekerError.textContent =
+      !value || isValid
+        ? ($pwChekerError.textContent = "비밀번호를 입력해주세요.")
+        : ($pwChekerError.textContent = `비밀번호가 일치하지 않습니다.`);
     $pwCheker.classList.toggle("input-error", !false);
     return false;
   }
