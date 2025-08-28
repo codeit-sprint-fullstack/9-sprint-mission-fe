@@ -1,4 +1,9 @@
 const loginForm = document.querySelector("#login-form");
+const emailInput = loginForm.querySelector("#email");
+const passwordInput = loginForm.querySelector("#password");
+const passwordChkInput = loginForm.querySelector("#password-chk");
+const nicknameInput = loginForm.querySelector("#nickname");
+const formBtn = loginForm.querySelector("#submit");
 
 const emailValidation = function(value) {
   const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+$/;
@@ -19,7 +24,7 @@ const passwordValidation = function(value, id) {
     return { isValid: false, message: "비밀번호를 8자 이상 입력해주세요." };
   }
   if(id === "password-chk"){
-    const passwordValue = loginForm.querySelector("#password").value;
+    const passwordValue = passwordInput.value;
     if(value !== passwordValue){
       return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
     }
@@ -28,22 +33,18 @@ const passwordValidation = function(value, id) {
 }
 
 const loginBtnValidation = function() {
-  const formBtn = loginForm.querySelector("#submit");
-  const emailInput = loginForm.querySelector("#email");
-  const passwordInput = loginForm.querySelector("#password");
-  const passowrdChkInput = loginForm.querySelector("#password-chk");
-  const nicknameInput = loginForm.querySelector("#nickname");
+  const isSignupPage = passwordChkInput && nicknameInput;
 
-  if(emailValidation(emailInput.value).isValid && passwordValidation(passwordInput.value).isValid){
-    if(passowrdChkInput && nicknameInput){
-      if(passwordValidation(passowrdChkInput.value).isValid && nicknameInput.value){
-        return formBtn.disabled = false;
-      }
-      return formBtn.disabled = true;
-    }
-    return formBtn.disabled = false;
+  const isEmailValid = emailValidation(emailInput.value).isValid;
+  const isPasswordValid = passwordValidation(passwordInput.value, passwordInput.id).isValid;
+
+  if (isSignupPage) {
+    const isPasswordChkValid = passwordValidation(passwordChkInput.value, passwordChkInput.id).isValid;
+    const isNicknameValid = nicknameInput.value;
+    formBtn.disabled = !(isEmailValid && isPasswordValid && isPasswordChkValid && isNicknameValid);
+  } else { 
+    formBtn.disabled = !(isEmailValid && isPasswordValid);
   }
-  return formBtn.disabled = true;
 }
 
 const validationResultProcess = function(result, box, warning) {
