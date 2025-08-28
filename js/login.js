@@ -1,14 +1,23 @@
-const loginForm = document.getElementById("login-form");
+const loginForm = document.querySelector('#login-form');
 
 const loginFormValidation = function(event) {
-  const inputValue = event.target.value;
-  const inputName = event.target.name;
-
+  const inputTarget = event.target; 
+  const inputOutbox = inputTarget.parentElement;
+  const inputValue = inputTarget.value;
+  const inputName = inputTarget.name;
+  const warningMessage = inputOutbox.parentElement.querySelector('.warning-message');
+  
   if(!inputValue){
+    inputOutbox.classList.add("input-warning");
     if(inputName === "email"){
-      console.log("이메일이 없어");
+      warningMessage.textContent = '이메일을 입력해주세요';
     }else if(inputName === "password"){
-      console.log("패스워드가 없어");
+      warningMessage.textContent = '패스워드를 입력해주세요';
+    }
+  }else if(inputValue){
+    if(inputOutbox.classList.contains("input-warning")){
+      inputOutbox.classList.remove("input-warning");
+      warningMessage.textContent = '';
     }
   }
 }

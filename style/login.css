@@ -123,3 +123,14 @@
   text-underline-offset: auto;
   text-underline-position: from-font;
 }
+
+.input-warning {
+  border: 1px solid var(--err-red);
+}
+
+.warning-message {
+  margin: 0.5rem 0 0 1rem;
+  color: var(--err-red);
+  font-size: 0.97rem;
+  font-weight: 600;
+}
