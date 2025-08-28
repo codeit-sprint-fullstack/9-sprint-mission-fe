@@ -147,6 +147,11 @@ a, button, input{
   line-height: 3.5rem;
 }
 
+.s-btn:disabled, .l-btn:disabled{
+  background: var(--secondary-400);
+  cursor: not-allowed;
+}
+
 
 @media screen and (max-width: 120rem) {
   nav{

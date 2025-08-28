@@ -27,11 +27,31 @@ const passwordValidation = function(value, id) {
   return { isValid: true, message: "" };
 }
 
+const loginBtnValidation = function() {
+  const formBtn = loginForm.querySelector("#submit");
+  const emailInput = loginForm.querySelector("#email");
+  const passwordInput = loginForm.querySelector("#password");
+  const passowrdChkInput = loginForm.querySelector("#password-chk");
+  const nicknameInput = loginForm.querySelector("#nickname");
+
+  if(emailValidation(emailInput.value).isValid && passwordValidation(passwordInput.value).isValid){
+    if(passowrdChkInput && nicknameInput){
+      if(passwordValidation(passowrdChkInput.value).isValid && nicknameInput.value){
+        return formBtn.disabled = false;
+      }
+      return formBtn.disabled = true;
+    }
+    return formBtn.disabled = false;
+  }
+  return formBtn.disabled = true;
+}
+
 const validationResultProcess = function(result, box, warning) {
   const { isValid, message } = result;
   box.classList.toggle("input-warning", !isValid);
   warning.classList.toggle("message-on", !isValid);
   warning.textContent = message;
+  loginBtnValidation();
   return isValid;
 }
 
@@ -55,4 +75,5 @@ const loginFormValidation = function(event) {
   validationResultProcess(validationResult, inputOutbox, warningMessage);
 }
 
+loginBtnValidation();
 loginForm.addEventListener("focusout", (event) => loginFormValidation(event));
