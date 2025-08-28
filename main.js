@@ -1,5 +1,6 @@
 const el = document.querySelectorAll('input');
 const btn = document.querySelector('#form_button');
+
 const USER_DATA = [
     { email: 'codeit1@codeit.com', password: "codeit101!" },
     { email: 'codeit2@codeit.com', password: "codeit202!" },
@@ -10,6 +11,19 @@ const USER_DATA = [
 ];
 
 
+function userAlert(msg){
+    const modalStatus = document.querySelector('.modal_container');
+    const alertMsg = document.querySelector('.modal_text');
+    const alertBtn = document.querySelector('.modal_btn');
+
+    console.log (`${modalStatus}`);
+    console.log (`${alertMsg}`);
+
+    alertMsg.textContent = msg;
+    modalStatus.style.display = "flex";
+    alertBtn.addEventListener('click', () => (modalStatus.style.display = "none"));
+};
+
 function findUser(){
         const INPUT_EMAIL = document.querySelector('input[type = "email"]');
         const INPUT_PWD   = document.querySelector('input[type = "password"]');
@@ -17,22 +31,19 @@ function findUser(){
         const exitUser = USER_DATA.some((el) => el.email === INPUT_EMAIL.value);
         const exitUserPwd = USER_DATA.some((el) => el.password ===  INPUT_PWD.value);
 
-        if (exitUser)
-        {
-            if (btn.textContent === '회원가입')
-                alert(`${exitUser} + signup`);
-            else 
-            {
-                if (exitUserPwd)
-                    location.href = "items.html";
-                else
-                    alert(`${exitUser} + login`);
+        console.log (`${exitUser}`);
+        console.log (`${exitUserPwd}`);
+
+        if (btn.textContent === '회원가입'){
+            if (exitUser) {userAlert('이미 사용 중인 이메일입니다.')}
+            else {location.href = "login.html";}
+        }
+        else{
+            if (exitUser) {
+                if (exitUserPwd){location.href = "items.html"}
+                else {userAlert('비밀번호가 일치하지 않습니다')}
             }
-        } else {
-            if (btn.textContent === '회원가입')
-                location.href = "login.html";
-            else
-                alert(`${exitUser} + false`);
+            else {userAlert(`존재하지 않는 이메일입니다.`)}
         }
     }
 
@@ -93,10 +104,6 @@ el.forEach((e) => {
         updateButton();
     });
 });
-
-
-
-/// toggle_password//
 
 const passwordToggles = document.querySelectorAll('.toggle_password');
 
