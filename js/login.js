@@ -21,10 +21,6 @@ function checkPassword() {
 /**
  * 3.    이메일-비밀번호 유효성 검사
  * 3-3.  로그인 버튼 활성화 여부
- *
- * +     함수가 작업을 수행시
- *       결과로 값을 돌려주지않을때(no-return) -> void타입
- * @return {void}
  */
 function checkFormValid() {
   const isValid = checkEmail() && checkPassword();
@@ -47,9 +43,6 @@ $pw.addEventListener("focusout", () => {
 
 /**
  * 4. 제출후 페이지 이동
- *
- * -  기본 제출 동작막기
- * -  유효성 검사를 통과할시 /items 페이지로 이동
  *
  * @event submit
  * @param {SubmitEvent} e - 폼 제출 이벤트 객체
@@ -85,4 +78,3 @@ $pwEyeBtn.forEach((btn) => {
 $Test.addEventListener("click",() => {
   modalShow("hello");
 })
-// TODO: 버튼css, 더미데이터 이용

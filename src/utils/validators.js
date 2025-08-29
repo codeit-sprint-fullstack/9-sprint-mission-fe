@@ -18,7 +18,6 @@ const EMAIL_REG = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /**
  * 1.     검증 이메일
  * 1-1.   공백  제거 포함 이메일 형식 검증 입력값을 검증하고 오류 메시지를 표시
- * TODO   최상위 도메인 검증
  * @returns {boolean}
  */
 export function validateEmail() {
@@ -78,7 +77,7 @@ export function validateNickName() {
 }
 /**
  * 4.     검증 이메일
- * 빈값일 경우, 현재 패스워드 비교
+ *        빈값일 경우, 현재 패스워드 비교
  * @returns {boolean}
  */
 export function validatePasswordCheker() {
