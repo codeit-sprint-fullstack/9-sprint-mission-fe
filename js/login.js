@@ -132,7 +132,6 @@ loginForm.addEventListener("submit", (event) => {
 const pwViweBtn = document.querySelector(".pw-view-toggle");
 
 const pwViewToggle = function(event) {
-  console.log(event.currentTarget)
   const button = event.currentTarget;
   const buttonImg = button.querySelector("img");
   const pwInput = button.parentElement.querySelector("input");
