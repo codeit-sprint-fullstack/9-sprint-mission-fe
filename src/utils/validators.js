@@ -71,8 +71,8 @@ export function validateNickName() {
     return true;
   } else {
     $nickNameError.textContent = !value
-      ? ($nickNameError.textContent = "비밀번호를 입력해주세요.")
-      : ($nickNameError.textContent = `비밀번호는 ${MIN_NAME_LENGTH}자 이상 입력해주세요.`);
+      ? ($nickNameError.textContent = "닉네임을 입력해주세요.")
+      : ($nickNameError.textContent = `닉네임을 ${MIN_NAME_LENGTH}자 이상 입력해주세요.`);
     $nickName.classList.toggle("input-error", !false);
     return false;
   }
