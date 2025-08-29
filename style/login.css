@@ -134,3 +134,28 @@
   font-size: 0.97rem;
   font-weight: 600;
 }
+
+@media screen and (min-width: 744px) and (max-width: 1199px) {
+  #login-main{
+    margin: 3rem auto;
+  }
+}
+
+@media screen and (max-width: 743px) {
+  #login-main{
+    width: 100%;
+    margin: 1.5rem 1rem;
+  }
+  #login-main > *{
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #l-logo{
+    width: 12.375rem;
+  }
+  #oauth-box{
+    padding: 1rem;
+  }
+}
+
