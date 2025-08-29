@@ -128,3 +128,24 @@ loginForm.addEventListener("submit", (event) => {
     loginUserExistens(email, password);
   }
 });
+
+const pwViweBtn = document.querySelector(".pw-view-toggle");
+
+const pwViewToggle = function(event) {
+  console.log(event.currentTarget)
+  const button = event.currentTarget;
+  const buttonImg = button.querySelector("img");
+  const pwInput = button.parentElement.querySelector("input");
+  if(pwInput.type === "password"){
+    pwInput.type = "text";
+    buttonImg.src = "./img/btn_visibility_on_24px.png";
+  }else if(pwInput.type !== "password"){
+    pwInput.type = "password";
+    buttonImg.src = "./img/btn_visibility_off_24px.png";
+  }
+}
+
+pwViweBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  pwViewToggle(event);
+});
