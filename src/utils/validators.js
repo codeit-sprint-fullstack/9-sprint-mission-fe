@@ -102,3 +102,5 @@ export function validatePasswordCheker() {
     return false;
   }
 }
+
+// TODO: 클래스를 사용하여 리펙토링
