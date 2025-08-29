@@ -1,10 +1,12 @@
 import { validateEmail, validatePassword } from "../src/utils/validators.js";
+import modalShow from "../src/modal/LoginModal.js";
 
 const $email = document.getElementById("email");
 const $pw = document.getElementById("password");
 const $submitBtn = document.getElementById("submit-btn");
 const $login = document.getElementById("login");
 const $pwEyeBtn = document.querySelectorAll(".btn_visibility_icon");
+const $Test = document.querySelector('#test');
 
 function checkEmail() {
   const isPass = validateEmail();
@@ -41,6 +43,8 @@ $pw.addEventListener("focusout", () => {
   checkFormValid();
 });
 
+
+
 /**
  * 4. 제출후 페이지 이동
  *
@@ -57,7 +61,8 @@ $login.addEventListener("submit", (e) => {
   if (!$submitBtn.disabled) {
     window.location.href = "/items";
   } else {
-    window.alert("비밀번호가 일치하지 않습니다.");
+    modalShow("비밀번호가 일치하지 않습니다.")
+    // window.alert("비밀번호가 일치하지 않습니다."); -- 기본 alert창
   }
 });
 
@@ -77,4 +82,7 @@ $pwEyeBtn.forEach((btn) => {
   });
 });
 
-// TODO: 버튼css, 더미데이터 이용, ux(반응형,눈모양모
+$Test.addEventListener("click",() => {
+  modalShow("hello");
+})
+// TODO: 버튼css, 더미데이터 이용
