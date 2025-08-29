@@ -128,5 +128,3 @@ loginForm.addEventListener("submit", (event) => {
     loginUserExistens(email, password);
   }
 });
-
-//<p class="warning-message"></p> 대체하자
