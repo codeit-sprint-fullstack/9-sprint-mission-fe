@@ -1,8 +1,8 @@
 const $id = document.getElementById("email");
 const $idError = document.getElementById("emailError");
 
-const $pwError = document.getElementById("pwError");
 const $pw = document.getElementById("password");
+const $pwError = document.getElementById("pwError");
 
 const $pwCheker = document.getElementById("pw-check");
 const $pwChekerError = document.getElementById("pwErrorCheck");
@@ -57,7 +57,9 @@ export function validatePassword() {
     return false;
   }
 }
+
 /**
+ * 3.     닉네임 검증
  * @returns {boolean}
  */
 export function validateNickName() {
@@ -75,6 +77,7 @@ export function validateNickName() {
     return false;
   }
 }
+
 /**
  * 4.     검증 이메일
  *        빈값일 경우, 현재 패스워드 비교

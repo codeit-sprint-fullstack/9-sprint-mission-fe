@@ -5,6 +5,7 @@ import {
   validatePassword,
   validatePasswordCheker,
 } from "../src/utils/validators.js";
+import { USER_DATA } from "../src/db.js";
 
 const $email = document.getElementById("email");
 const $nickName = document.getElementById("nickname");
@@ -12,22 +13,7 @@ const $pw = document.getElementById("password");
 const $pwCheker = document.getElementById("pw-check");
 const $submitBtn = document.getElementById("submit-btn");
 const $pwEyeBtn = document.querySelectorAll(".btn_visibility_icon");
-
-$pwEyeBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const wrapper = btn.closest(".password-wrapper");
-    const input = wrapper.querySelector("input");
-    const icon = wrapper.querySelector("img");
-
-    if (input.type === "password") {
-      input.type = "text";
-      icon.src = "./public/images/btn_visibility_on.svg";
-    } else {
-      input.type = "password";
-      icon.src = "./public/images/btn_visibility_off.svg";
-    }
-  });
-});
+const $login = document.getElementById("login");
 
 function checkEmail() {
   const isPass = validateEmail();
@@ -60,6 +46,12 @@ function checkFormValid() {
   $submitBtn.disabled = !isValid;
 }
 
+function userSignupAuth(email) {
+  const user = USER_DATA.find((user) => user.email === email);
+  if (user) return "사용 중인 이메일입니다";
+  return "";
+}
+
 // 이벤트리스너 등록 - 이벤트 발생시 호출
 $email.addEventListener("focusout", () => {
   checkEmail();
@@ -84,22 +76,38 @@ $pwCheker.addEventListener("focusout", () => {
 /**
  * 4. 제출후 페이지 이동
  *
- * -  기본 제출 동작막기
- * -  유효성 검사를 통과할시 /items 페이지로 이동
- *
  * @event submit
  * @param {SubmitEvent} e - 폼 제출 이벤트 객체
  *
  */
-$submitBtn.addEventListener("click", (e) => {
-  console.log(e);
+$login.addEventListener("submit", (e) => {
   e.preventDefault();
-  // disabled상태가 아니면 이동
-  if (!$submitBtn.disabled) {
-    window.location.href = "/items";
+  const email = $email.value;
+
+  const authMessage = userSignupAuth(email);
+
+  if (authMessage) {
+    modalShow(authMessage);
   } else {
-    modalShow("비밀번호가 일치하지 않습니다.")
-    // window.alert("비밀번호가 일치하지 않습니다.");
+    location.href = "/login";
   }
 });
 
+/**
+ * 5. 비밀번호 표시 on/off
+ */
+$pwEyeBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const wrapper = btn.closest(".password-wrapper");
+    const input = wrapper.querySelector("input");
+    const icon = wrapper.querySelector("img");
+
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "./public/images/btn_visibility_on.svg";
+    } else {
+      input.type = "password";
+      icon.src = "./public/images/btn_visibility_off.svg";
+    }
+  });
+});
