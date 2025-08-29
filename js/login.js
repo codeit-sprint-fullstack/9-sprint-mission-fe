@@ -55,11 +55,22 @@ const loginBtnValidation = function() {
   }
 }
 
-const validationResultProcess = function(result, box, warning) {
+const validationResultProcess = function(result, box) {
   const { isValid, message } = result;
+  const boxParent = box.parentElement;
+  const warningMessage = boxParent.querySelector(".warning-message");
+
   box.classList.toggle("input-warning", !isValid);
-  warning.classList.toggle("message-on", !isValid);
-  warning.textContent = message;
+  if(!isValid && !warningMessage){
+    const newMessageElement = document.createElement("p");
+    newMessageElement.classList.add("warning-message");
+    newMessageElement.textContent = message;
+    boxParent.appendChild(newMessageElement);
+  }else if(!isValid && warningMessage){
+    warningMessage.textContent = message;
+  }else{
+    boxParent.removeChild(warningMessage);
+  }
   loginBtnValidation();
   return isValid;
 }
@@ -70,7 +81,6 @@ const loginFormValidation = function(event) {
   const inputValue = inputTarget.value;
   const inputType = inputTarget.type;
   const inputId = inputTarget.id;
-  const warningMessage = inputOutbox.parentElement.querySelector(".warning-message");
   let validationResult;
 
   if(inputType === "email"){
@@ -81,7 +91,7 @@ const loginFormValidation = function(event) {
     return loginBtnValidation();
   }
 
-  validationResultProcess(validationResult, inputOutbox, warningMessage);
+  validationResultProcess(validationResult, inputOutbox);
 }
 
 const loginUserExistens = function(email, password) {
@@ -115,3 +125,5 @@ loginForm.addEventListener("submit", (event) => {
     loginUserExistens(email, password);
   }
 });
+
+//<p class="warning-message"></p> 대체하자
