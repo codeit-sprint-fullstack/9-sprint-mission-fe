@@ -24,6 +24,37 @@ const passwordError = document.querySelector("#passwordError");
 const passwordCheckError = document.querySelector("#passwordCheckError")
 const nicknameError = document.querySelector("#nicknameError")
 
+const visibilityOn = document.getElementById('visibilityOn')
+const visibilityOff = document.getElementById('visibilityOff')
+const visibilityOnCheck = document.getElementById('visibilityOnCheck')
+const visibilityOffCheck = document.getElementById('visibilityOffCheck')
+//패스워드 토글
+
+visibilityOff.addEventListener("click", () => {
+  password.type = "text";
+  visibilityOff.style.display = "none";
+  visibilityOn.style.display = "inline";
+});
+
+visibilityOn.addEventListener("click", () => {
+  password.type = "password";
+  visibilityOn.style.display = "none";
+  visibilityOff.style.display = "inline";
+})
+
+//패스워드 확인 토글
+
+visibilityOffCheck.addEventListener("click", () => {
+  passwordCheck.type = "text";
+  visibilityOffCheck.style.display = "none";
+  visibilityOnCheck.style.display = "inline";
+});
+
+visibilityOnCheck.addEventListener("click", () => {
+  passwordCheck.type = "password";
+  visibilityOnCheck.style.display = "none";
+  visibilityOffCheck.style.display = "inline";
+})
 
 //이메일,비밀번호 에러메시지+테두리
 

@@ -207,6 +207,26 @@ input {
 }
 
 
+#visibilityOn {
+  display: none;
+}
+
+
+#visibilityOnCheck {
+  display: none;
+}
+
+
+.confirm-visibility {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+
 .eye-icon-wrap {
   position: relative;
 }

@@ -331,6 +331,10 @@ button {
   border-color: red !important;
 }
 
+#visibilityOn {
+  display: none;
+}
+
 button {
   cursor: pointer;
 }

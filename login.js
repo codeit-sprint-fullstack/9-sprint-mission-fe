@@ -15,6 +15,23 @@ const password = document.querySelector("#password");
 const emailError = document.querySelector("#emailError");
 const passwordError = document.querySelector("#passwordError")
 
+const visibilityOn = document.getElementById('visibilityOn')
+const visibilityOff = document.getElementById('visibilityOff')
+
+//패스워드 토글
+
+visibilityOff.addEventListener("click", () => {
+  password.type = "text";
+  visibilityOff.style.display = "none";
+  visibilityOn.style.display = "inline";
+});
+
+visibilityOn.addEventListener("click", () => {
+  password.type = "password";
+  visibilityOn.style.display = "none";
+  visibilityOff.style.display = "inline";
+})
+
 //이메일,비밀번호 에러메시지+테두리
 
 function validateForm() {
