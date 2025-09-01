@@ -97,10 +97,49 @@ const loginFormValidation = function(event) {
   validationResultProcess(validationResult, inputOutbox);
 }
 
+const alertMessageBox = function(message) {
+  if (document.querySelector(".alert-message-box")) {
+    return;
+  }
+
+  const messageBox = document.createElement("div");
+  messageBox.className = 'alert-message-box';
+
+  const popup = document.createElement("div");
+  popup.className = "message-popup";
+
+  const popupText = document.createElement("p");
+  popupText.className = "popup-text";
+  popupText.textContent = message;
+
+  const popupBtnWarp = document.createElement("div");
+  popupBtnWarp.className = "popup-btn-warp"
+
+  const popupBtn = document.createElement("button");
+  popupBtn.id = "popup-btn";
+  popupBtn.className = "s-btn";
+  popupBtn.textContent = "확인";
+  
+  popupBtnWarp.appendChild(popupBtn);
+  popup.appendChild(popupText);
+  popup.appendChild(popupBtnWarp);
+  messageBox.appendChild(popup);
+
+  document.body.appendChild(messageBox);
+  popupBtn.addEventListener("click", () => closeMessageBox());
+}
+
+const closeMessageBox = function() {
+  const messageBox = document.querySelector(".alert-message-box");
+  if (messageBox) {
+    messageBox.remove();
+  }
+}
+
 const loginUserExistens = function(email, password) {
   const user = USER_DATA.find(user => user.email === email);
   if (!(user && user.password === password)) {
-    alert("비밀번호가 일치하지 않습니다.");
+    alertMessageBox("비밀번호가 일치하지 않습니다.");
     return;
   }
   location.href = "/items";
@@ -109,7 +148,7 @@ const loginUserExistens = function(email, password) {
 const signUpUserExistens = function(email) {
   const isExist = USER_DATA.some(user => user.email === email);
   if (isExist) {
-    alert("사용 중인 이메일입니다.");
+    alertMessageBox("사용 중인 이메일입니다.");
     return;
   }
   location.href = "/login";
