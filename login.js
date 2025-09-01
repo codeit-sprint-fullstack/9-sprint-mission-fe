@@ -146,10 +146,10 @@ function checkInputs() {
 
 function errorPage(message) {
   document.getElementById("errorMessage").textContent = message;
-  document.getElementById("errorModal").classList.remove("modal_hidden");
+  document.getElementById("modal").classList.remove("modal_hidden");
 }
 
 document.getElementById("closeBtn").addEventListener("click", () => {
-  document.getElementById("errorModal").classList.add("modal_hidden");
+  document.getElementById("modal").classList.add("modal_hidden");
 });
 

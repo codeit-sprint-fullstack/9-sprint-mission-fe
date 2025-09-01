@@ -345,8 +345,8 @@ button:disabled {
   opacity: 0.5;
 }
 
-/*
-.modal {
+
+#modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -362,17 +362,29 @@ button:disabled {
   background: white;
   padding: 20px;
   border-radius: 8px;
+  width: 400px;
+  color: var(--color-textcolor1);
+  font-size: 0.93rem;
+  font-weight: 600;
+  margin: 1rem auto;
 }
 
 .modal_hidden {
-  display: none;
+  visibility: hidden;
 }
 
-*/
+#errorMessage {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
 
-
-
-
+button#closeBtn {
+  background: transparent;
+  color: var(--color-button);
+  border-radius: 4px;
+  margin-left: 90%;
+}
 
 /* mobile */
 

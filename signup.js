@@ -214,7 +214,7 @@ function findNickname() {
   const userNickname = USER_NICKNAME_DATA.find((el) => nicknameValue === el.nickname);
 
   if (userNickname) {
-    alert("사용중인 닉네임입니다");
+    errorPage("사용중인 닉네임입니다");
     nickname.classList.add("inputError");
   } else {
     nicknameError.textContent = "";
@@ -233,7 +233,7 @@ function findEmail() {
   const user = USER_DATA.find((el) => emailValue === el.email);
 
   if (user) {
-    alert("사용중인 이메일입니다");
+    errorPage("사용중인 이메일입니다");
   } else {
     location.href = "/login.html";
   }
@@ -262,4 +262,16 @@ function checkInputs() {
 [email, password, passwordCheck, nickname].forEach((input) => {
   input.addEventListener("input", checkInputs);
 });
+
+//에러 모달
+
+function errorPage(message) {
+  document.getElementById("errorMessage").textContent = message;
+  document.getElementById("modal").classList.remove("modal_hidden");
+}
+
+document.getElementById("closeBtn").addEventListener("click", () => {
+  document.getElementById("modal").classList.add("modal_hidden");
+});
+
 
