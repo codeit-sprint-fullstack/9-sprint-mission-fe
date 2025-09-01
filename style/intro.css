@@ -117,10 +117,6 @@
     width: 100%;
   }
 
-  .intro-top .line-break{
-    display: inline;
-  }
-
   .intro-top .l-btn{
     width: auto;
     padding: 0 7.75rem;
@@ -155,8 +151,26 @@
     max-width: 43.5rem;
   }
 
+  .intro-content-item .item-text-main{
+    font-size: 2rem;
+    line-height: 2.625rem;
+  }
+
+  .intro-content-item .item-text-sub{
+    margin-bottom: 1rem;
+  }
+
+  .intro-content-item .item-text-para{
+    font-size: 1.125rem;
+    line-height: 1.625rem; 
+  }
+
   .item-text-main .line-break{
     display: inline;
+  }
+
+  .intro-bottom .line-break{
+    display: block;
   }
 }
 
