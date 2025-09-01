@@ -1,3 +1,4 @@
+//user 더미데이터
 const USER_DATA = [
   { email: 'codeit1@codeit.com', password: "codeit101!" },
   { email: 'codeit2@codeit.com', password: "codeit202!" },
@@ -7,6 +8,7 @@ const USER_DATA = [
   { email: 'codeit6@codeit.com', password: "codeit606!" },
 ]
 
+//기본 form 요소
 const loginForm = document.querySelector(".login-form");
 const emailInput = loginForm.querySelector("#email");
 const passwordInput = loginForm.querySelector("#password");
@@ -15,6 +17,7 @@ const nicknameInput = loginForm.querySelector("#nickname");
 const formBtn = loginForm.querySelector("#submit");
 const isSignupPage = loginForm.id === "signup";
 
+//이메일 유효성 검증
 const emailValidation = function(value) {
   const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+$/;
   if(!value){
@@ -26,6 +29,7 @@ const emailValidation = function(value) {
   return { isValid: true, message: "" };
 }
 
+//비밀번호 유효성 검증
 const passwordValidation = function(value, id) {
   if(!value){
     return { isValid: false, message: "비밀번호를 입력해주세요." };
@@ -42,6 +46,7 @@ const passwordValidation = function(value, id) {
   return { isValid: true, message: "" };
 }
 
+//폼 버튼 활성화를 위한 전체 검증  
 const loginBtnValidation = function() {
   const isEmailValid = emailValidation(emailInput.value).isValid;
   const isPasswordValid = passwordValidation(passwordInput.value, passwordInput.id).isValid;
@@ -55,6 +60,7 @@ const loginBtnValidation = function() {
   }
 }
 
+//검증된 유효성 결과를 화면에 표시
 const validationResultProcess = function(result, box) {
   const { isValid, message } = result;
   const boxParent = box.parentElement;
@@ -78,6 +84,7 @@ const validationResultProcess = function(result, box) {
   loginBtnValidation();
 }
 
+//폼 유효성 검증에 대한 진입 함수
 const loginFormValidation = function(event) {
   const inputTarget = event.target; 
   const inputOutbox = inputTarget.parentElement;
@@ -97,6 +104,31 @@ const loginFormValidation = function(event) {
   validationResultProcess(validationResult, inputOutbox);
 }
 
+loginBtnValidation();//최초 진입 시 폼 기본 검증
+loginForm.addEventListener("focusout", (event) => loginFormValidation(event)); //인풋 영역 포커스아웃 시 유효성 검증 실행
+
+//비밀번호 표시와 숨김 토글을 위한 변수와 함수, 이벤트
+const pwViweBtn = document.querySelector(".pw-view-toggle");
+
+const pwViewToggle = function(event) {
+  const button = event.currentTarget;
+  const buttonImg = button.querySelector("img");
+  const pwInput = button.parentElement.querySelector("input");
+  if(pwInput.type === "password"){
+    pwInput.type = "text";
+    buttonImg.src = "./img/btn_visibility_on_24px.png";
+  }else if(pwInput.type !== "password"){
+    pwInput.type = "password";
+    buttonImg.src = "./img/btn_visibility_off_24px.png";
+  }
+}
+
+pwViweBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  pwViewToggle(event);
+});
+
+//submit 버튼 클릭 시 동작할 사용자 유무 확인 함수 및 알림 팝업을 열고 닫는 함수
 const alertMessageBox = function(message) {
   if (document.querySelector(".alert-message-box")) {
     return;
@@ -136,6 +168,7 @@ const closeMessageBox = function() {
   }
 }
 
+//로그인 버튼 클릭 시 사용자 유무 확인
 const loginUserExistens = function(email, password) {
   const user = USER_DATA.find(user => user.email === email);
   if (!(user && user.password === password)) {
@@ -145,6 +178,7 @@ const loginUserExistens = function(email, password) {
   location.href = "/items";
 }
 
+//회원가입 버튼 클릭 시 이메일 중복 여부 확인
 const signUpUserExistens = function(email) {
   const isExist = USER_DATA.some(user => user.email === email);
   if (isExist) {
@@ -154,8 +188,7 @@ const signUpUserExistens = function(email) {
   location.href = "/login";
 }
 
-loginBtnValidation();
-loginForm.addEventListener("focusout", (event) => loginFormValidation(event));
+//폼 sumit 버튼 클릭에 대한 이벤트 리스너
 loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
@@ -166,24 +199,4 @@ loginForm.addEventListener("submit", (event) => {
   }else{
     loginUserExistens(email, password);
   }
-});
-
-const pwViweBtn = document.querySelector(".pw-view-toggle");
-
-const pwViewToggle = function(event) {
-  const button = event.currentTarget;
-  const buttonImg = button.querySelector("img");
-  const pwInput = button.parentElement.querySelector("input");
-  if(pwInput.type === "password"){
-    pwInput.type = "text";
-    buttonImg.src = "./img/btn_visibility_on_24px.png";
-  }else if(pwInput.type !== "password"){
-    pwInput.type = "password";
-    buttonImg.src = "./img/btn_visibility_off_24px.png";
-  }
-}
-
-pwViweBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  pwViewToggle(event);
 });
