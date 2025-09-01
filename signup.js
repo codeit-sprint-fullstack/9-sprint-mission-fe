@@ -114,8 +114,9 @@ email.addEventListener("focusout", function () {
   } else {
     emailError.textContent = "";
     email.classList.remove("inputError");
-    signupBtn.disabled = false;
   }
+
+  checkInputs();
 });
 
 
@@ -199,8 +200,8 @@ password.addEventListener("focusout", function () {
   } else {
     passwordError.textContent = "";
     password.classList.remove("inputError");
-    signupBtn.disabled = false;
   }
+  checkInputs();
 });
 
 

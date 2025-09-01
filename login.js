@@ -79,6 +79,8 @@ email.addEventListener("focusout", function () {
     emailError.textContent = "";
     email.classList.remove("inputError");
   }
+
+  checkInputs();
 });
 
 
@@ -95,8 +97,8 @@ password.addEventListener("focusout", function () {
   } else {
     passwordError.textContent = "";
     password.classList.remove("inputError");
-    loginBtn.disabled = false;
   }
+  checkInputs();
 });
 
 //로그인 시도 및 USER_DATA에서 동일 이메일 비교
@@ -110,7 +112,7 @@ function findEmail() {
   if (user) {
     window.location.href = "/items";
   } else {
-    alert("비밀번호가 일치하지 않습니다.");
+    errorPage("비밀번호가 일치하지 않습니다.");
   }
 
 }
@@ -139,16 +141,15 @@ function checkInputs() {
 
 
 
-/*
+
 //에러 모달
 
 function errorPage(message) {
   document.getElementById("errorMessage").textContent = message;
-  document.getElementById("errorModal").classList.remove("hidden");
+  document.getElementById("errorModal").classList.remove("modal_hidden");
 }
 
 document.getElementById("closeBtn").addEventListener("click", () => {
-  document.getElementById("errorModal").classList.add("hidden");
+  document.getElementById("errorModal").classList.add("modal_hidden");
 });
 
-*/
