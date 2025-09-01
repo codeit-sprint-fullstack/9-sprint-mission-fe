@@ -449,7 +449,6 @@ button {
   }
 
   .login-icon {
-
     margin-left: 400px;
 
   }
@@ -569,7 +568,7 @@ button {
   }
 
   .section-img {
-    width: 100%;
+    width: 96%;
     height: auto;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -683,7 +682,7 @@ button {
 
 
   .section-img {
-    width: 100%;
+    width: 88%;
     height: auto;
     margin-left: 2rem;
     margin-right: 2rem;
