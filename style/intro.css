@@ -175,5 +175,60 @@
 }
 
 @media screen and (max-width: 46.4rem) {
+  .intro-top{
+    height: auto;
+    padding-top: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .intro-bottom{
+    height: auto;
+    padding-top: 7.56rem;
+    margin-top: 3.39rem;
+  }
   
+  .top-bottom-text{
+    margin-bottom: 8.2rem;
+    row-gap: 1.12rem;
+  }
+
+  .intro-top .l-btn{
+    padding: 0 4.44rem;
+    height: 3rem;
+    font-size: 1.125rem;
+    line-height: 3rem;
+  }
+
+  .top-bottom-img{
+    min-width: 28rem;
+  }
+
+  .intro-content-item{
+    padding: 1.25rem 1rem;
+  }
+
+  .top-bottom-text .item-text-main{
+    font-size: 2rem;
+  }
+
+  .intro-content-item .item-text-main{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .intro-content-item .item-text-sub{
+    font-size: 1rem;
+    line-height: 1.625rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .intro-content-item .item-text-para{
+    font-size: 1rem;
+    line-height: 1.625rem; 
+  }
+
+  .intro-top .line-break{
+    display: block;
+  }
 }
