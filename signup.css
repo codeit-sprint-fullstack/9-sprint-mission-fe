@@ -406,10 +406,23 @@ button#closeBtn {
   margin-left: 90%;
 }
 
+/*잠시..
 @media screen and (max-width: 743px) {
   body {
     padding-left: 16px;
     padding-right: 16px;
   }
 
+
+}
+  */
+
+
+/*mobile viewport : 375px ~ 743px */
+
+/*판다마켓 로고*/
+@media screen and (max-width:755px) {
+  .login-icon {
+    width: 12.37rem;
+  }
 }
