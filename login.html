@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
+    <link rel="stylesheet" href="login.css" type="text/css" />
     <link
-      rel="stylesheet"
-      href="login.css"
-      type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
     <!-- Google tag (gtag.js) -->
@@ -35,21 +33,21 @@
       <form action="">
         <div class="input-wrap">
           <label for="email">이메일</label>
-          <input type="email" placeholder="이메일을 입력해주세요" />
+          <input id="email" type="email" placeholder="이메일을 입력해주세요"/>
         </div>
+        <div id="emailError" class="error-msg"></div>
         <div class="input-wrap">
-          <label for="password">비밀번호</label>
+          <label for="password" >비밀번호</label>
           <div>
-            <input type="password" placeholder="비밀번호를 입력해주세요" />
+            <input id="password" type="password" placeholder="비밀번호를 입력해주세요"/>
             <img src="btn_visibility.png" class="visibility" />
           </div>
-        </div>
-      </form>
-      <div class="login-btn">
-        <a href="/login.html" class="login-link" style="text-decoration: none">
+          <div id="passwordError" class="error-msg"></div>
+
+        <button disabled type="button" id="login" class="login-link">
           로그인
-        </a>
-      </div>
+      </button>
+        </form>
       <div class="easy-login">
         <div class="login-text">간편 로그인하기</div>
         <div class="sns-group">
@@ -66,5 +64,6 @@
         <a href="/signup.html" class="signup-link"> 회원가입</a>
       </div>
     </div>
+    <script src="login.js"></script>
   </body>
 </html>
