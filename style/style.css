@@ -72,9 +72,14 @@ a, button, input{
   text-align: center;
 }
 
-#title, #title img{
+#title{
   width: 9.6rem;
   height: 3.2rem;
+}
+
+.logo{
+  width: 100%;
+  height: 100%;
 }
 
 #footer-box{
@@ -199,17 +204,48 @@ a, button, input{
     width: 100%;
     padding: 0 12.5rem;
   }
+
   #footer-box{
     width: 100%;
   }
 }
 
+@media screen and (max-width: 74.9rem){
+  #nav{
+    padding: 0 1.5rem;
+  }
+
+  #footer-box{
+    padding: 2rem 1.5rem;
+  }
+}
+
 @media screen and (max-width: 46.4rem) {
+  #nav{
+    padding: 0 1rem;
+  }
+  
+  #title{
+    width: 6.4rem;
+  }
+
+  #footer-box{
+    padding: 2rem 1rem;
+    flex-wrap: wrap-reverse;
+  }
+
+  #copyright{
+    width: 100%;
+    margin: 1.5rem 0 2rem;
+    text-align: start;
+  }
+
   .message-popup{
     width: 20.4rem;
     height: 13.75rem;
     padding: 1.44rem;
   }
+
   .popup-btn-warp{
     justify-content: center; 
   }
