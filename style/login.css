@@ -135,13 +135,13 @@
   font-weight: 600;
 }
 
-@media screen and (min-width: 744px) and (max-width: 1199px) {
+@media screen and (min-width: 46.5rem) and (max-width: 74.9rem) {
   #login-main{
     margin: 3rem auto;
   }
 }
 
-@media screen and (max-width: 743px) {
+@media screen and (max-width: 46.4rem) {
   #login-main{
     width: 100%;
     margin: 1.5rem 1rem;
