@@ -143,6 +143,7 @@ table {
   --color-button: #9CA3AF;
   --color-easylog: #E6F2FF;
   --color-blueButton: #3692FF;
+  --white: #ffffff;
 }
 
 body {
@@ -366,6 +367,9 @@ button:disabled {
 }
 
 
+
+/*모달 */
+
 #modal {
   position: fixed;
   top: 0;
@@ -382,7 +386,8 @@ button:disabled {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  width: 400px;
+  width: 33.75rem;
+  height: 15rem;
   color: var(--color-textcolor1);
   font-size: 0.93rem;
   font-weight: 600;
@@ -394,26 +399,23 @@ button:disabled {
 }
 
 #errorMessage {
-  margin: 1rem;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 button#closeBtn {
-  background: transparent;
-  color: var(--color-button);
-  border-radius: 4px;
-  margin-left: 90%;
-}
-
-
-@media screen and (max-width: 743px) {
-  body {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-
+  background: var(--color-blueButton);
+  color: var(--white);
+  border-radius: 0.5rem;
+  width: 7.5rem;
+  height: 3rem;
+  position: absolute;
+  margin-left: 23rem;
+  margin-top: 3rem;
+  margin-bottom: 1.75rem;
 }
 
 
@@ -425,4 +427,14 @@ button#closeBtn {
   .login-icon {
     width: 12.37rem;
   }
+}
+
+/*padding*/
+@media screen and (max-width: 743px) {
+  body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
 }
