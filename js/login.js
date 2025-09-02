@@ -117,9 +117,11 @@ const pwViewToggle = function(event) {
   if(pwInput.type === "password"){
     pwInput.type = "text";
     buttonImg.src = "./img/btn_visibility_on_24px.png";
+    buttonImg.alt = "비밀번호 표시 토글, 보임상태";
   }else if(pwInput.type !== "password"){
     pwInput.type = "password";
     buttonImg.src = "./img/btn_visibility_off_24px.png";
+    buttonImg.alt = "비밀번호 표시 토글, 숨김상태";
   }
 }
 
