@@ -205,6 +205,7 @@ input {
   right: 1.5rem;
   top: 50%;
   transform: translateY(50%);
+  cursor: pointer;
 }
 
 
@@ -225,6 +226,7 @@ input {
   right: 1.5rem;
   top: 50%;
   transform: translateY(50%);
+  cursor: pointer;
 }
 
 
@@ -314,7 +316,14 @@ button {
   align-items: end;
 }
 
-.signup-link {
+.login-link {
+  color: var(--color-blueButton);
+  text-decoration: none;
+  font-weight: 800;
+  margin-left: 0.3rem;
+}
+
+.login-link .signup-link {
   background-color: var(--color-blueButton);
   border-radius: 2.5rem;
   margin-top: 1.5rem;
