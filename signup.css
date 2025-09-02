@@ -323,7 +323,7 @@ button {
   margin-left: 0.3rem;
 }
 
-.login-link .signup-link {
+.signup-link {
   background-color: var(--color-blueButton);
   border-radius: 2.5rem;
   margin-top: 1.5rem;
