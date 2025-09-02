@@ -177,6 +177,7 @@
 @media screen and (max-width: 46.4rem) {
   .intro-top{
     height: auto;
+    overflow: hidden;
     padding-top: 3rem;
     margin-bottom: 2rem;
   }
@@ -199,7 +200,7 @@
     line-height: 3rem;
   }
 
-  .top-bottom-img{
+  .intro-top .top-bottom-img{
     min-width: 28rem;
   }
 
