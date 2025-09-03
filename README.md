@@ -51,4 +51,4 @@ _위 이미지는 판다마켓의 대표 이미지입니다._ 📸
 
 ## 배포주소
 
-https://mellifluous-empanada-fa5948.netlify.app/
+https://pandaaamarket.netlify.app/

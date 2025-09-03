@@ -1,133 +1,4 @@
-/* reset */
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* layout */
-
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -136,6 +7,8 @@ table {
   --color-primary: #F3F4F6;
   --color-button: #9CA3AF;
   --color-easylog: #E6F2FF;
+  --color-blueButton: #3692FF;
+  --white: #ffffff;
 }
 
 body {
@@ -144,163 +17,298 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:0;
+  margin: 0;
+  width: 100%;
 }
 
 .center {
-    margin: 0 auto;
-    gap: 2.5rem;
-    width: 40rem;
-    margin-top: 3.75rem;
-    margin-bottom:11.12rem;
+  margin-top: 3.75rem;
+  width: 100%;
 }
 
-  .pglogo {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+form {
+  max-width: 40rem;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
 
+.pglogo {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-icon {
+  width: 24.75rem;
+}
+
+
+.input-wrap {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+
+input {
+  border: 0px solid #ccc;
+  background-color: var(--color-primary);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  height: 3.5rem;
+}
+
+
+.visibility {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(50%);
+  cursor: pointer;
+}
+
+
+#visibilityOn {
+  display: none;
+}
+
+
+#visibilityOnCheck {
+  display: none;
+}
+
+
+.confirm-visibility {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(50%);
+  cursor: pointer;
+}
+
+
+.eye-icon-wrap {
+  position: relative;
+}
+
+
+input:focus {
+  border: 1px solid #3692FF;
+  outline: none;
+}
+
+
+label {
+  display: block;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.625rem;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+.email {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.email>.password {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary);
+  border-radius: 0.75rem;
+  padding-right: 1.5rem;
+}
+
+
+
+button {
+  border: none;
+  border-color: none;
+  padding-block: none;
+  padding-inline: none;
+  background: transparent;
+}
+
+
+/* 여기에 왜 이렇게 많은게 붙었지.. */
+
+.easy-login {
+  background-color: var(--color-easylog);
+  border-radius: 0.5rem;
+  position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  width: 100%;
+  padding: 1rem 1.4rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sns-group {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+
+}
+
+.sns-icon {
+  width: 2.625rem;
+  height: 2.625rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.login-link {
+  color: var(--color-blueButton);
+  text-decoration: none;
+  font-weight: 800;
+  margin-left: 0.3rem;
+}
+
+.signup-link {
+  background-color: var(--color-blueButton);
+  border-radius: 2.5rem;
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 2rem;
+  align-items: center;
+  width: 100%;
+  height: 3.5rem;
+}
+
+.signup-link {
+  color: #ffffff
+}
+
+.first-message {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.93rem;
+  font-weight: 600;
+  margin: 1rem 0 0;
+  padding-left: 1.5rem;
+
+}
+
+.inputError {
+  border: 1px solid;
+  border-color: red !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+button:disabled {
+  background-color: var(--color-button);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+
+/*모달 */
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 33.75rem;
+  height: 15rem;
+  color: var(--color-textcolor1);
+  font-size: 0.93rem;
+  font-weight: 600;
+  margin: 1rem auto;
+}
+
+.modal_hidden {
+  visibility: hidden;
+}
+
+#errorMessage {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+button#closeBtn {
+  background: var(--color-blueButton);
+  color: var(--white);
+  border-radius: 0.5rem;
+  width: 7.5rem;
+  height: 3rem;
+  position: absolute;
+  margin-left: 23rem;
+  margin-top: 3rem;
+  margin-bottom: 1.75rem;
+}
+
+
+
+/*mobile viewport : 375px ~ 743px */
+
+/*판다마켓 로고*/
+@media screen and (max-width:755px) {
   .login-icon {
-    width: 24.75rem;
+    width: 12.37rem;
+  }
+}
+
+/*padding*/
+@media screen and (max-width: 743px) {
+  body {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
 
-          .input-wrap {
-      position: relative;
-      margin-bottom: 1rem;
-    }
-
-
-   input {
-      border: 0px solid #ccc;
-      background-color:var(--color-primary);
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      padding: 1rem 1.5rem;
-      width:40rem;
-      height: 3.5rem;
-    }
-
-
-          .visibility {
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    right:1.5rem;
-    top:50%;
-    transform: translateY(50%);
-          }
-          
-        
-    .eye-icon-wrap {
-      position: relative;
-    }
-
-
-    input:focus {
-      border-color: #3692FF;
-      outline: none;
-      box-shadow: 0 0 5px rgba(54, 146, 255, 0.5);
-    }
-
-
-  label {
-    display: block;
-    font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.625rem;
-    gap: 1rem;
-    margin-top:2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-
-  .email {
-    display: flex;
-    flex-direction: column;
-    gap:1.5rem;
-    margin-top:2.5rem;
-  }
-
-  .email > .password {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:var(--color-primary);
-    border-radius: 0.75rem;
-    padding-right: 1.5rem;
-  }
-
-
-  div .login-btn {
-    color:var(--color-button);
-    display: flex;
-    width: 40rem;
-    height: 3.5rem;
-  }
-
-  .easy-login {
-    background-color:var(--color-easylog);
-    border-radius: 0.5rem;
-    position: relative;
-    font-size:1rem;
-    font-weight: 500;
-    line-height: 1.625rem;
-    width: 100%;
-    padding: 1rem 1.4rem;
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-  }
-
-  .sns-group {
-    display: flex;
-    gap: 1rem;
-    flex-direction: row;
-
-  }
-
-  .sns-icon {
-    width: 2.625rem;
-    height: 2.625rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-  }
-
-  .login-btn {
-    background-color: var(--color-button);
-    border-radius: 2.5rem;
-    padding: 1rem 7.75rem;
-    margin-top: 1.5rem;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .login-link {
-    color:#ffffff
-  }
-
-  .first-message {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.5rem;
-  }
-
-
+}
