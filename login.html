@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style/auth.css" />
   <title>판다마켓</title>
 
+
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-46P33X5L32"></script>
   <script>
@@ -26,14 +28,14 @@
       </div>
       <div class="input-item">
         <label for="email">이메일</label>
-        <input type="text" name="email" placeholder="이메일을 입력해주세요"/>
+        <input type="text" name="email" placeholder="이메일을 입력해주세요" required />
       </div>
       <div class="input-item">
         <label for="password">비밀번호</label>   
         <input type="password" name="password" placeholder="비밀번호를 입력해주세요" />        
         <img class="img-icon" src="images/ic_btn_visibility_on.svg"/>
       </div>   
-      <button class="button disabled auth" href="#">로그인</button>
+      <button id="btn-login" class="button disabled auth" id="btn-auth" href="#">로그인</button>
       <div class="sns-login">
         <span>간편 로그인하기</span>
         <div class="sns-list">
@@ -46,5 +48,6 @@
       </div>
     </div>  
   </div>
+  <script src="script/auth.js"></script>
 </body>
 </html>

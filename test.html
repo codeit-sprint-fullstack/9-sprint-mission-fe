@@ -4,48 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      border-radius: 8px;
-    }
-
-    .button {
-      display: inline-block;
-      width: 100%;
-      padding: 20px;
-      background: grey;
-      opacity: 50%;
-    }
-
-    .box1 {
-      width: 100%;
-      height: 200px;
-      background: red;
-      opacity: 50%;
-    }
-
-    .box2 {
-      width: 100%;
-      height: 200px;
-      background: blue;
-      opacity: 50%;
-    }
-
-  </style>
 </head>
 <body>
-
-  <div>
-    <a class="button" href="#"></a>
-    <div class="box1">
-
-    </div>
-    <div class="box2">
-
-    </div>
-  </div>
   
+
+<div id='my_div'> </div>
+
+<input type='button' 
+       onclick='insertMultiNode()' 
+       value='여러 노드 추가하기' />
+
+<ul id="ul-list">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+
+
+</ul>
+<script>
+function insertMultiNode() {
+  const tag = document.getElementById('ul-list');
+  const el = document.createElement('li');
+  el.contentText= "abv";
+  const text1 = '새 div 1, ';
+  const text2 = '새 div 2, ';
+  const text3 = '새 div 3, ';
+  
+  tag.append(el);
+  // my_div.append(text1, text2, text3);
+}
+
+
+
+</script>
 </body>
 </html>

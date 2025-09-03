@@ -21,7 +21,6 @@
 }
 
 .button.auth {
-  color: var(--Cool-Gray-100);
   text-align: center;
   text-decoration: none;
   font-family: Pretendard;
@@ -36,10 +35,6 @@
   align-items: center;
   border-radius: 40px;
   gap: 10px;
-}
-
-.button.auth:focus {
-  background: var(--Primary-100);
 }
 
 .sns-login {

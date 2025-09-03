@@ -3,6 +3,7 @@
 :root {
   /*  변수 선언   */
   --Primary-100: #3692FF;
+  --error-red: #F74747;
   --Secondary-400: #9CA3AF;
   --Secondary-800: #1F2937;
   --Cool-Gray-100: #F3F4F6;
@@ -99,20 +100,17 @@ h2, p {
 /*  공통으로 쓰일 버튼 스타일 */
 .button {
   cursor: pointer;
-  background-color: #3692ff;
-  color: #f3f4f6;
+  background-color: var(--Primary-100);  
+  color: var(--Cool-Gray-100);
   text-decoration: none;
   border-radius: 8px;
   border: none;
 
 }
 
-.button.enabled {
-  background: var(--Primary-100);  
-}
-
 .button.disabled {
-  background: var(--Secondary-400);  
+  background: var(--Secondary-400);    
+  cursor: not-allowed;
 }
 
 /* input text 스타일 */
@@ -120,7 +118,6 @@ h2, p {
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 16px;
 }
 
 .input-item > label {
@@ -130,6 +127,7 @@ h2, p {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;    
+  margin-bottom: 16px;
 }
 
 .input-item > input {
@@ -155,9 +153,24 @@ h2, p {
   outline: none;
 }
 
+.input-item > span {
+  margin-top: 8px;
+  margin-left:  16px;
+  color: var(--error-red);
+  display: none;
+}
+
+.input-item.invalid > input{
+  border: 1px solid var(--error-red);
+}
+
+.input-item.invalid > span {
+  display: block;
+}
+
 .input-item > .img-icon {
   position: absolute;
-  bottom: 16px;
+  top: 60px;
   right: 24px;
   width: 24px;
   height: 24px;
