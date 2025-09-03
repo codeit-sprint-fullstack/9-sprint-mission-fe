@@ -109,3 +109,109 @@
 }
 
 
+
+/* media 화면 너비 1200px 이상 - PC Desktop */
+@media screen and (min-width: 1200px) {
+
+  .section.top h2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section.top img {
+    width: 746px;
+  }
+}
+
+/* media 화면 너비 744px ~ 1199px  - Tablet */
+@media screen and (min-width: 744px) and (max-width: 1199px) {
+  .page-header {
+    height: 70px;
+  }
+
+  .page-header a,
+  .page-header img {
+    height: 51px;
+  }
+
+  main {
+    margin-top: 70px;
+  }
+
+  .section.top {
+    padding-top: 0;
+  }
+
+  .section.top > .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+  }
+
+  .section.top .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 84px;
+    margin-bottom: 211px;
+  }
+
+  .section.top img {
+    width: 744px;
+  }
+
+  .section.top h2 {
+    display: inline-block;
+  }
+
+  .section.top .button {
+    margin-top: 24px;
+  }
+  
+}
+
+
+/* media 화면 너비 0 ~ 744px - Mobile  */
+@media screen and (max-width: 744px) {
+  .page-header {  
+    padding: 0.5938rem 1rem;            /*  9.5px 16px  */
+    height: 70px;    
+  }
+
+  .page-header .logo-image {
+    content: url(../images/logo_pandamarket_text.svg);
+    height: 35px;
+    width: 103px;
+  }
+
+
+  main {
+    margin-top: 70px;
+  }
+
+  .section.top {
+    padding-top: 48px;
+  }
+
+  .section.top .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+  }
+
+  .section.top .content {
+    margin: 0;
+  }
+
+  .section.top img {
+    object-fit: cover;
+    margin: 132px -32px 0;
+  }
+
+  .section.top h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
