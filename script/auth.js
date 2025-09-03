@@ -1,7 +1,7 @@
 
 
 /*
-  로그인 인증 
+  로그인 인증 및 회원가입 공통
 
   2025. 08. 28 
 
@@ -16,7 +16,7 @@
 
 
 
-// 이메일 입력란 유효성 체크 - input event
+/*   이메일 입력란 유효성 체크 - input event  */
 let inputEmail = document.querySelector('input[name="email"]');
 inputEmail.addEventListener('input', (event) => {
   let span = inputEmail.parentElement.querySelector('span');
@@ -61,7 +61,7 @@ inputEmail.addEventListener('input', (event) => {
 
 
 
-// 이메일 입력란 유효성 체크 - focusout event
+/*  이메일 입력란 유효성 체크 - focusout event  */
 inputEmail.addEventListener('focusout', (event) => {
   let span;
 
@@ -81,7 +81,7 @@ inputEmail.addEventListener('focusout', (event) => {
 });
 
 
-// 비밀번호 inupt 입력란 유효성 체크 - input event
+/*   비밀번호 inupt 입력란 유효성 체크 - input event  */
 let inputPassword = document.querySelector('input[name="password"]');
 inputPassword.addEventListener('input', (event) => {  
   const PASSWORD_MIN_LENGTH = 8;
@@ -92,17 +92,16 @@ inputPassword.addEventListener('input', (event) => {
   // 비밀번호 유효성 체크 - 8자 이상
   if(inputPassword.value.length >= PASSWORD_MIN_LENGTH) { 
     inputPassword.parentElement.classList.remove('invalid');   
-
     try{
       // 모든 계정 정보 유효성 체크
       if(checkValidInputAccount(inputEmail.value, inputPassword.value, inputRePassword.value)) {
-        console.log(inputRePassword.value);
         btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
       }
+
     } catch(e) {
       // 모든 계정 정보 유효성 체크
+      console.log(e);
       if(checkValidInputAccount(inputEmail.value, inputPassword.value)) {
-        console.log(e);
         btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
       }
     }
@@ -124,7 +123,7 @@ inputPassword.addEventListener('input', (event) => {
 });
 
 
-// 비밀번호 inupt 입력란 유효성 체크  - foucsout event
+/*   비밀번호 inupt 입력란 유효성 체크  - foucsout event  */
 inputPassword.addEventListener('focusout', (event) => {  
   let span;
   
@@ -145,7 +144,7 @@ inputPassword.addEventListener('focusout', (event) => {
 });
 
 
-// 회원 로그인 버튼 클릭 시 계정 유효성 확인
+/*   회원 로그인 버튼 클릭 시 계정 유효성 확인  */
 let btnLogin = document.querySelector('.button.auth');
 btnLogin.addEventListener('click', (event) => {
   const id = document.querySelector('input[name="email"]').value;
@@ -184,35 +183,34 @@ btnLogin.addEventListener('click', (event) => {
 
 
 
-// 모든 입력란 유효성 체크
+/* 모든 입력란 유효성 체크  */
 function checkValidInputAccount(user, password, rePassword) {
   const PASSWORD_MIN_LENGTH = 8;
   let isValidUser = checkValidEmail(user);
-  let isValidPassword = password >= PASSWORD_MIN_LENGTH;
+  let isValidPassword = password.length >= PASSWORD_MIN_LENGTH;
   let isValidRePassword = false;
-  
+
   if(rePassword !== "" && (rePassword === null || rePassword === undefined)) {
     isValidRePassword = true;
-
   } else {
     isValidRePassword = isValidPassword && password === rePassword;
 
   }
-
   return isValidUser && isValidPassword && isValidRePassword;
   
 }
 
-// 아이디 또는 이메일 사용자 유효성 체크
-function checkValidEmail(user) {
-  /*
-  const email = user.map(ch => ch);
-  const indexOfAt = email.indexOf('@');
-  const indexOfDot = email.indexOf('.');
-  const id = email.slice(0, indexOfAt);
-  const hostName = email.slice(indexOfAt+1);
+
+/*  아이디 또는 이메일 사용자 유효성 체크   */
+function checkValidEmailDev(email) {
   
-  console.log(`@ . ->  email: ${email}, user: ${user}, id: ${id}, hostname: ${hostName}`);
+  const emailArr = Array.from(email);
+  const indexOfAt = emailArr.indexOf('@');
+  const indexOfDot = emailArr.indexOf('.');
+  const id = emailArr.slice(0, indexOfAt);
+  const hostName = emailArr.slice(indexOfAt+1);
+  
+  console.log(`@ . ->  email: ${emailArr}, email: ${email}, id: ${id}, hostname: ${hostName}`);
 
   const isValidId = id.some((ch) => 'a' <= ch <= 'z' || 'A' <= ch <= 'Z');
   const isValidHostName = hostName.some((ch, index) => {
@@ -223,16 +221,20 @@ function checkValidEmail(user) {
 
   console.log('isValidId : ', isValidId, " isValidHostName : ", isValidHostName);
   return isValidId && isValidHostName;
-  */
+    
+}
 
+// 아이디 또는 이메일 사용자 유효성 체크
+function checkValidEmail(email) {
+  
   // 이메일 아이디 일단 8자 이상으로 체크  
-  return user.length >= 8 ? true : false;
+  return email.length >= 8 ? true : false;
 
 }
 
 
 
-// 아이디 존재 여부 확인
+/*   아이디 존재 여부 확인  */
 function isExistEmail(email) {
 
   return USER_DATA.some((el) => el.email === email);
@@ -242,7 +244,7 @@ function isExistEmail(email) {
 
 
 
-// 올바른 계정 여부 확인 (0: 아이디 없음. 1: 비밀번호가 다름. 2: 로그인 확인. 3. 사용 중 아이디)
+/*   올바른 계정 여부 확인 (0: 아이디 없음. 1: 비밀번호가 다름. 2: 로그인 확인. 3. 사용 중 아이디)  */
 function checkAccount(user, password, authCode) {  
   let existedEmail = isExistEmail(user);
 
@@ -261,6 +263,8 @@ function checkAccount(user, password, authCode) {
   
   return account.password === password ? 2 : 1;  
 }
+
+/* 공통 부분  */
 
 // 임시 더미 데이터
 const USER_DATA = [
