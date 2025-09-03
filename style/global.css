@@ -30,10 +30,9 @@ h2, p {
 
 /* 헤더 상단 제목과 로그인 버튼  */
 .page-header {  
-  padding: 9.5px 200px;
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: #ffffff;
   display: flex;
@@ -43,6 +42,7 @@ h2, p {
 
 .page-header .logo-image {
   height: 51px;
+  content: url(../images/logo_pandamarket.svg);
 }
 
 .page-header > .button.login {
@@ -164,7 +164,7 @@ h2, p {
 }
 
 .input-item.invalid > input{
-  border: 1px solid var(--error-red);  
+  border: 1px solid var(--error-red);
 }
 
 .input-item.invalid > span {
@@ -222,3 +222,45 @@ h2, p {
   right: 28px;
 }
 
+
+/* media 화면 너비 1920px 이상 */
+@media screen and (min-width: 1920px) {
+  /*  헤더 좌우 끝 400px 여백 유지 */
+  header {  
+    padding: 0.5938rem 25rem;            /*  9.5px 200px  */    
+  }
+}
+
+
+/* media 화면 너비 1920px 미만 */
+@media screen and (max-width: 1919px) {
+  /*  헤더 좌우 끝 200px 여백 유지 */
+  .page-header {  
+    padding: 0.5938rem 12.5rem;         /*  9.5px 200px  */    
+  }
+}
+
+
+
+/* media 화면 너비 1200px 미만 */
+@media screen and (max-width: 1199px) {
+  /*  헤더 좌우 끝 24px 여백 유지 */
+  .page-header {  
+    padding: 0.625rem 1.5rem 0.5625rem; /*  10px 24px 9px  */    
+  }
+}
+
+
+/* media 화면 너비 743px 미만 - Mobile */
+@media screen and (max-width: 743px) {
+  .page-header {  
+    padding: 0.5938rem 1rem;            /*  9.5px 16px  */    
+  }
+
+  .page-header .logo-image {
+    content: url(../images/logo_pandamarket_text.svg);
+    height: 35px;
+    width: 103px;
+  }
+
+}
