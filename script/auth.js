@@ -202,30 +202,38 @@ function checkValidInputAccount(user, password, rePassword) {
 
 
 /*  아이디 또는 이메일 사용자 유효성 체크   */
-function checkValidEmailDev(email) {
-  
+function checkValidEmail(email) {
   const emailArr = Array.from(email);
-  const indexOfAt = emailArr.indexOf('@');
+  const indexOfAt = emailArr.indexOf('@') === -1 ? email.length : emailArr.indexOf('@');
   const indexOfDot = emailArr.indexOf('.');
+  const isExistAt = indexOfAt !== -1;             // '@' At 문자 검사    
   const id = emailArr.slice(0, indexOfAt);
-  const hostName = emailArr.slice(indexOfAt+1);
-  
-  console.log(`@ . ->  email: ${emailArr}, email: ${email}, id: ${id}, hostname: ${hostName}`);
+  const hostName = isExistAt ? emailArr.slice(indexOfAt + 1) : [];
+  const validIdCharArrList = Array.from('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+  const validHostCharArrList = Array.from('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.');
 
-  const isValidId = id.some((ch) => 'a' <= ch <= 'z' || 'A' <= ch <= 'Z');
-  const isValidHostName = hostName.some((ch, index) => {
-    'a'<= ch <= 'z' || 'A' <= ch <= 'Z' ||
-    (ch === '.' && (0 < index < hostName.length))
+  // 이메일 아이디 유효성 검사
+  const isValidId = id.every((ch) => validIdCharArrList.indexOf(ch) !== -1);
 
+  // 호스트 이름의 문자 유효성 검사
+  const isValidHostNameOfChar = hostName.every((ch) => validHostCharArrList.indexOf(ch) !== -1 );
+
+  // 호스트 이름의 (.) dot 유효성 검사 
+  let isValidHostNameOfDot = indexOfDot !== -1;
+  hostName.forEach((ch, index) => {
+    if ((ch === '.' && 0 === index) || (ch === '.' && hostName.length-1 === index) || (ch === '.' &&  hostName[index+1] === '.' )) {
+      isValidHostNameOfDot = false;
+    } 
   });
 
-  console.log('isValidId : ', isValidId, " isValidHostName : ", isValidHostName);
-  return isValidId && isValidHostName;
+  return isExistAt && isValidId && isValidHostNameOfChar && isValidHostNameOfDot;
     
 }
 
+
+
 // 아이디 또는 이메일 사용자 유효성 체크
-function checkValidEmail(email) {
+function checkValidEmailTemp(email) {
   
   // 이메일 아이디 일단 8자 이상으로 체크  
   return email.length >= 8 ? true : false;
