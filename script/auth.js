@@ -144,6 +144,19 @@ inputPassword.addEventListener('focusout', (event) => {
 });
 
 
+/*   비밀번호 눈 아이콘 비밀번호 표시 / 숨기기 토글 */
+let passwordToggleBtnList = document.querySelectorAll('.input-item > .img-icon');
+passwordToggleBtnList.forEach((el) => el.addEventListener("click", event => {
+  const passwordInput = event.target.parentElement.querySelector('input');
+
+  if(passwordInput.getAttribute("type") === "password") {
+    passwordInput.setAttribute("type", 'text');
+  } else {
+    passwordInput.setAttribute("type", 'password');
+  }
+}));
+
+
 /*   회원 로그인 버튼 클릭 시 계정 유효성 확인  */
 let btnLogin = document.querySelector('.button.auth');
 btnLogin.addEventListener('click', (event) => {
@@ -231,26 +244,12 @@ function checkValidEmail(email) {
 }
 
 
-
-// 아이디 또는 이메일 사용자 유효성 체크
-function checkValidEmailTemp(email) {
-  
-  // 이메일 아이디 일단 8자 이상으로 체크  
-  return email.length >= 8 ? true : false;
-
-}
-
-
-
 /*   아이디 존재 여부 확인  */
 function isExistEmail(email) {
 
   return USER_DATA.some((el) => el.email === email);
   
 }
-
-
-
 
 /*   올바른 계정 여부 확인 (0: 아이디 없음. 1: 비밀번호가 다름. 2: 로그인 확인. 3. 사용 중 아이디)  */
 function checkAccount(user, password, authCode) {  
