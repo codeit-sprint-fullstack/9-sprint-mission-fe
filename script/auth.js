@@ -35,7 +35,7 @@ inputEmail.addEventListener('input', (event) => {
     } catch(e) {
       // 모든 계정 정보 유효성 체크
       if(checkValidInputAccount(inputEmail.value, inputPassword.value)) {
-        console.log(e);
+        console.log('로그인 체크 -> ', e);
         btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
       }
     }
@@ -168,27 +168,24 @@ btnLogin.addEventListener('click', (event) => {
   // 계정 체크
   switch(checkedAccount) {
     case 0:
-      alert("아이디 혹은 이메일 주소가 잘못 되었습니다.");
+      alert_modal("아이디 혹은 이메일 주소가 잘못 되었습니다.");
       break;
 
     case 1:
-      alert("비밀번호가 맞지 않습니다.");
+      alert_modal("비밀번호가 맞지 않습니다.");
       break;
-
     case 2:
       location.replace("items.html");
       break;
-
-    case 3:
-      alert("사용중인 아이디 입니다.");
+      case 3:
+      alert_modal( "사용중인 아이디 입니다.");
       break;
-
     case 4:
       location.replace("login.html");
       break;
 
     default:
-      alert("다시 확인 바랍니다.");
+      alert_modal("다시 확인 바랍니다.");
       break;
 
   }

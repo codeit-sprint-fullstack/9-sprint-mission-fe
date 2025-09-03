@@ -105,6 +105,9 @@ h2, p {
   text-decoration: none;
   border-radius: 8px;
   border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 23px;
 
 }
 
@@ -161,7 +164,7 @@ h2, p {
 }
 
 .input-item.invalid > input{
-  border: 1px solid var(--error-red);
+  border: 1px solid var(--error-red);  
 }
 
 .input-item.invalid > span {
@@ -176,3 +179,46 @@ h2, p {
   height: 24px;
   cursor: pointer;
 }
+
+
+/*  모달  속성  */
+.modal-outter {
+  background-color: rgb(0, 0, 0, 70%);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: none;
+  z-index: 1;
+}
+
+.modal-main {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 540px;
+  height: 250px;
+  border-radius: 8px;
+  position: relative;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border: 1px solid black;
+}
+
+
+.modal-message {
+  font-size: 16px;
+  color: var(--Secondary-800);
+}
+
+.button.modal-button {
+  width: 120px;
+  height: 48px;
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+}
+
