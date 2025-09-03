@@ -61,6 +61,7 @@
 
 .section.main.even .content {
   margin: auto 4rem auto 0;   /*  auto 64px auto 0;  */
+  text-align: right;
 }
 
 .section.main .title {
