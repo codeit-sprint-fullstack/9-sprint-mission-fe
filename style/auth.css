@@ -1,4 +1,4 @@
-#login-main{
+#auth-main{
   display: block;
   width: 40rem;
   margin: 3.75rem auto;
@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-.login-form{
+.auth-form{
   margin-bottom: 1.5rem;
 }
 

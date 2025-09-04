@@ -9,13 +9,13 @@ const USER_DATA = [
 ]
 
 //기본 form 요소
-const loginForm = document.querySelector(".login-form");
-const emailInput = loginForm.querySelector("#email");
-const passwordInput = loginForm.querySelector("#password");
-const passwordChkInput = loginForm.querySelector("#password-chk");
-const nicknameInput = loginForm.querySelector("#nickname");
-const formBtn = loginForm.querySelector("#submit");
-const isSignupPage = loginForm.id === "signup";
+const authForm = document.querySelector(".auth-form");
+const emailInput = authForm.querySelector("#email");
+const passwordInput = authForm.querySelector("#password");
+const passwordChkInput = authForm.querySelector("#password-chk");
+const nicknameInput = authForm.querySelector("#nickname");
+const formSubmit = authForm.querySelector("#submit");
+const isSignupPage = authForm.id === "signup";
 
 //이메일 유효성 검증
 const emailValidation = function(value) {
@@ -47,16 +47,16 @@ const passwordValidation = function(value, id) {
 }
 
 //폼 버튼 활성화를 위한 전체 검증  
-const loginBtnValidation = function() {
+const formSubmitValidation = function() {
   const isEmailValid = emailValidation(emailInput.value).isValid;
   const isPasswordValid = passwordValidation(passwordInput.value, passwordInput.id).isValid;
 
   if (isSignupPage) {
     const isPasswordChkValid = passwordValidation(passwordChkInput.value, passwordChkInput.id).isValid;
     const isNicknameValid = nicknameInput.value;
-    formBtn.disabled = !(isEmailValid && isPasswordValid && isPasswordChkValid && isNicknameValid);
+    formSubmit.disabled = !(isEmailValid && isPasswordValid && isPasswordChkValid && isNicknameValid);
   } else { 
-    formBtn.disabled = !(isEmailValid && isPasswordValid);
+    formSubmit.disabled = !(isEmailValid && isPasswordValid);
   }
 }
 
@@ -81,11 +81,11 @@ const validationResultProcess = function(result, box) {
       boxParent.removeChild(warningMessage);
     }
   }
-  loginBtnValidation();
+  formSubmitValidation();
 }
 
 //폼 유효성 검증에 대한 진입 함수
-const loginFormValidation = function(event) {
+const authFormValidation = function(event) {
   const inputTarget = event.target; 
   const inputOutbox = inputTarget.parentElement;
   const inputValue = inputTarget.value;
@@ -98,14 +98,14 @@ const loginFormValidation = function(event) {
   }else if(inputType === "password"){
     validationResult = passwordValidation(inputValue, inputId);
   }else{
-    return loginBtnValidation();
+    return formSubmitValidation();
   }
 
   validationResultProcess(validationResult, inputOutbox);
 }
 
-loginBtnValidation();//최초 진입 시 폼 기본 검증
-loginForm.addEventListener("focusout", (event) => loginFormValidation(event)); //인풋 영역 포커스아웃 시 유효성 검증 실행
+formSubmitValidation();//최초 진입 시 폼 기본 검증
+authForm.addEventListener("focusout", (event) => authFormValidation(event)); //인풋 영역 포커스아웃 시 유효성 검증 실행
 
 //비밀번호 표시와 숨김 토글을 위한 변수와 함수, 이벤트
 const pwViweBtn = document.querySelector(".pw-view-toggle");
@@ -191,7 +191,7 @@ const signUpUserExistens = function(email) {
 }
 
 //폼 sumit 버튼 클릭에 대한 이벤트 리스너
-loginForm.addEventListener("submit", (event) => {
+authForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const email = formData.get('email');
