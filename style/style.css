@@ -44,15 +44,21 @@
 }
 
 .section.main .container {
-  width: 61.75rem;              /*  988px;  */
   display: flex;
   justify-content: center;
   background-color: #fcfcfc;
   margin: 0 auto;
+  width: 61.75rem;              /*  988px;  */
+  height: 27.75rem;             /*  444px;  */
 }
 
 .section.main.even .container {
   flex-direction: row-reverse;
+}
+
+.section.main .section-image {
+  width: 36.75rem;            /*  588px;    */
+  height: 27.75rem;           /*  444px;    */
 }
 
 .section.main.odd .content {
@@ -66,6 +72,8 @@
 
 .section.main .title {
   margin-bottom: 1.5rem;      /*  24px; */
+  display: flex;
+  flex-direction: column;
 }
 
 .tag {
@@ -146,6 +154,7 @@
     display: flex;
     flex-direction: column; 
     align-items: center;    
+    gap: 0;
   }
 
   .section.top .content {
@@ -167,7 +176,47 @@
   .section.top .button {
     margin-top: 24px;
   }
-  
+
+  .section.main {
+    padding: 24px;
+    background-color: #fcfcfc;
+  }
+ 
+
+  .section.main.odd .container,
+  .section.main.even .container { 
+    flex-direction: column;
+    gap: 24px;
+    justify-content: unset;
+    width: 696px;
+    height: unset;
+  } 
+
+
+  .section.main.odd .content,
+  .section.main.even .content {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section.main.odd .content {
+    align-items: flex-start;
+  }
+
+
+  .section.main.even .content {
+    align-items: flex-end;
+  }
+
+  .section.main .section-image {
+    width: 696px;          
+    height: 526px;          
+  }
+
+  .section.main .title {
+    flex-direction: row;
+  }
 }
 
 
@@ -191,12 +240,14 @@
 
   .section.top {
     padding-top: 48px;
+    margin-bottom: 32px;
   }
 
-  .section.top .container {
+  .section.top > .container {
     display: flex;
     flex-direction: column; 
-    align-items: center;    
+    align-items: center;   
+    gap: 0; 
   }
 
   .section.top .content {
@@ -212,6 +263,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .section.main {
+    padding: 20px 32px;;
+  }
+
+  .section.main.odd .container,
+  .section.main.even .container {
+    gap: 24px;
+    flex-direction: column;
+    width: unset;
+    height: unset;
+  }
+
+  .section.main .section-image {
+    
+    max-width: 680px;
+    width: 100%;
+    object-fit: contain;  
+  }
+
+
+  .section.main .content {
+    margin: 0;
+  }
+
+  .section.main .title {
+    display: inline-block;
   }
 
 }
