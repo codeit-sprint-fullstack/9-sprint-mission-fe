@@ -10,21 +10,20 @@ const USER_DATA = [
     { email: 'codeit6@codeit.com', password: "codeit606!" },
 ];
 
-
 function userAlert(msg){
     const modalStatus = document.querySelector('.modal_container');
-    const moodalBg = document.querySelector('.modal_overlay')
+    const modalBg = document.querySelector('.modal_overlay')
     const alertMsg = document.querySelector('.modal_text');
     const alertBtn = document.querySelector('.modal_btn');
 
-    console.log (`${modalStatus}`);
-    console.log (`${alertMsg}`);
-
     alertMsg.textContent = msg;
     modalStatus.style.display = "flex";
-        moodalBg.style.display = "unset"
-    alertBtn.addEventListener('click', () => (modalStatus.style.display = "none"));
-};
+    modalBg.style.display = "unset";
+
+    alertBtn.addEventListener('click', () => {
+    modalStatus.style.display = "none"
+    modalBg.style.display = "none"});
+}
 
 function findUser(){
         const INPUT_EMAIL = document.querySelector('input[type = "email"]');
