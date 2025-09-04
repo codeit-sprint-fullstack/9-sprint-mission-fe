@@ -22,7 +22,7 @@ function userAlert(msg){
 
     alertMsg.textContent = msg;
     modalStatus.style.display = "flex";
-    moodalBg.style.display = "unset"
+        moodalBg.style.display = "unset"
     alertBtn.addEventListener('click', () => (modalStatus.style.display = "none"));
 };
 

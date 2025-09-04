@@ -544,6 +544,7 @@ label{
 
     #container{
         margin: 1.5rem 1rem;
+        max-width: 400px;
     }
 
     label {
@@ -570,6 +571,8 @@ label{
     .btn_container{
         align-self: center;
     }
+
+
 }
 
 @media (min-width: 745px) and (max-width: 1200px) {
