@@ -67,19 +67,15 @@ const validationResultProcess = function(result, box) {
   const warningMessage = boxParent.querySelector(".warning-message");
 
   box.classList.toggle("input-warning", !isValid);
-  if(!warningMessage){
-    if(!isValid){
-      const newMessageElement = document.createElement("p");
-      newMessageElement.classList.add("warning-message");
-      newMessageElement.textContent = message;
-      boxParent.appendChild(newMessageElement);
-    }
-  }else{
-    if(!isValid){
-      warningMessage.textContent = message;
-    }else{
-      boxParent.removeChild(warningMessage);
-    }
+  if(!isValid && !warningMessage){
+    const newMessageElement = document.createElement("p");
+    newMessageElement.classList.add("warning-message");
+    newMessageElement.textContent = message;
+    boxParent.appendChild(newMessageElement);
+  }else if(!isValid){
+    warningMessage.textContent = message;
+  }else if(warningMessage){
+    boxParent.removeChild(warningMessage);
   }
   formSubmitValidation();
 }
