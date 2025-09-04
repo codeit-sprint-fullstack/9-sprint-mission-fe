@@ -23,15 +23,17 @@
           <div class="form-group">
             <label for="user-email">이메일</label>
             <input type="email" id="user-email" name="user-email" placeholder="이메일을 입력해주세요" required>
+            <p class="warning w-email"></p>
           </div>
           <!-- 비밀번호 -->
-          <div class="form-group">
-            <label for="user-pw">비밀번호</label>
-            <div class="pw-wrap">
-              <input type="password" id="user-pw" name="user-pw" placeholder="비밀번호를 입력해주세요" required>
-              <!-- 비밀번호 표시 -->
-              <img src="../assets/icons/btn_visibility_off_24px.svg" alt="비밀번호 표시">
+          <div class="form-group form-password">
+            <label for="user-password">비밀번호</label>
+            <div>
+              <input type="password" id="user-password" name="user-password" placeholder="비밀번호를 입력해주세요" required>
+              <img class="see-password" src="../assets/icons/btn_visibility_off_24px.svg" alt="비밀번호 표시">
             </div>
+              <p class="warning w-password"></p>
+            
           </div>
           <!-- 로그인 버튼 -->
           <button type="submit">로그인</button>
@@ -56,6 +58,8 @@
         <a href="./signup.html" class="link">회원가입</a>
       </p>
     </footer>
+  
+    <script src="../scripts/login.js"></script>
   </div>
 </body>
 </html>

@@ -49,7 +49,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .form-group label {
@@ -77,19 +77,35 @@ main {
     line-height: 26px;
   }
 
-.form-group input:focus {
-  outline: 1px solid #3692FF;
+.form-group .input-error {
+  border-radius: 12px;
+  border: 1px solid #F74747;
+  background: #F3F4F6;
 }
 
-.pw-wrap {
+.warning {
+  margin-top: -10px;
+  padding-left: 16px;
+  color: #F74747;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.form-password > div {
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
-.pw-wrap > img {
+img.see-password {
   position: absolute;
-  top: 50%;
+  top: 16px;
+  width: 24px;
+  height: 24px;
   right: 24px;
-  transform: translateY(-50%);
+  /* transform: translatex(-50%); */
   cursor: pointer;
 }
 
