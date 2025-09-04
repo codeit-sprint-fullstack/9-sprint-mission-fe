@@ -52,4 +52,20 @@ passwordInputNode.addEventListener('focusout', (e) => {
 passwordInputNode.addEventListener('focusin', (e) => passwordWarningNode.textContent = '');
 
 
+// 비밀번호 보기
+const seePassword = document.querySelector('#see-password');
+
+seePassword.addEventListener('mousedown', (e) => {
+  passwordInputNode.setAttribute('type', 'text');
+});
+
+seePassword.addEventListener('mouseup', (e) => {
+  passwordInputNode.setAttribute('type', 'password');
+});
+
+
+
+
+
+
 

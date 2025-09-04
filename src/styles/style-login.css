@@ -99,13 +99,12 @@ main {
   position: relative;
 }
 
-img.see-password {
+#see-password {
   position: absolute;
   top: 16px;
   width: 24px;
   height: 24px;
   right: 24px;
-  /* transform: translatex(-50%); */
   cursor: pointer;
 }
 
