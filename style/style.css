@@ -256,7 +256,9 @@
 
   .section.top img {
     object-fit: cover;
-    margin: 132px -32px 0;
+    margin: 132px 0 0;
+    max-width: 744;
+    width: 100%;
   }
 
   .section.top h2 {
@@ -266,7 +268,7 @@
   }
 
   .section.main {
-    padding: 20px 32px;;
+    padding: 20px 32px;
   }
 
   .section.main.odd .container,
