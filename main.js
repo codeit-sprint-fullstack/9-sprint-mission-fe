@@ -32,9 +32,6 @@ function findUser(){
         const exitUser = USER_DATA.some((el) => el.email === INPUT_EMAIL.value);
         const exitUserPwd = USER_DATA.some((el) => el.password ===  INPUT_PWD.value);
 
-        console.log (`${exitUser}`);
-        console.log (`${exitUserPwd}`);
-
         if (btn.textContent === '회원가입'){
             if (exitUser) {userAlert('이미 사용 중인 이메일입니다.')}
             else {location.href = "login.html";}

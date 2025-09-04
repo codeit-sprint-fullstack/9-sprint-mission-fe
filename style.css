@@ -563,6 +563,7 @@ label{
         width: 20rem;
         height: 13rem;
     }
+
     /*modal alert*/
 
     .btn_container{
@@ -582,7 +583,6 @@ label{
 
     .article_content{
         flex-direction: column;
-        /* overflow: hidden; */
     }
 
     .wrap{
