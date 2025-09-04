@@ -30,18 +30,23 @@ const emailValidation = function(value) {
 }
 
 //비밀번호 유효성 검증
-const passwordValidation = function(value, id) {
+const passwordValidation = function(value) {
   if(!value){
     return { isValid: false, message: "비밀번호를 입력해주세요." };
   }
   if(value.length < 8){
     return { isValid: false, message: "비밀번호를 8자 이상 입력해주세요." };
   }
-  if(id === "password-chk"){
-    const passwordValue = passwordInput.value;
-    if(value !== passwordValue){
-      return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
-    }
+  return { isValid: true, message: "" };
+}
+
+const passwordChkValidation = function(value) {
+  if(!value){
+    return { isValid: false, message: "비밀번호를 입력해주세요." };
+  }
+  const passwordValue = passwordInput.value;
+  if(value !== passwordValue){
+    return { isValid: false, message: "비밀번호가 일치하지 않습니다." };
   }
   return { isValid: true, message: "" };
 }
@@ -49,10 +54,10 @@ const passwordValidation = function(value, id) {
 //폼 버튼 활성화를 위한 전체 검증  
 const formSubmitValidation = function() {
   const isEmailValid = emailValidation(emailInput.value).isValid;
-  const isPasswordValid = passwordValidation(passwordInput.value, passwordInput.id).isValid;
+  const isPasswordValid = passwordValidation(passwordInput.value).isValid;
 
   if (isSignupPage) {
-    const isPasswordChkValid = passwordValidation(passwordChkInput.value, passwordChkInput.id).isValid;
+    const isPasswordChkValid = passwordChkValidation(passwordChkInput.value).isValid;
     const isNicknameValid = nicknameInput.value;
     formSubmit.disabled = !(isEmailValid && isPasswordValid && isPasswordChkValid && isNicknameValid);
   } else { 
@@ -85,14 +90,15 @@ const authFormValidation = function(event) {
   const inputTarget = event.target; 
   const inputOutbox = inputTarget.parentElement;
   const inputValue = inputTarget.value;
-  const inputType = inputTarget.type;
   const inputId = inputTarget.id;
   let validationResult;
 
-  if(inputType === "email"){
+  if(inputId === "email"){
     validationResult = emailValidation(inputValue);
-  }else if(inputType === "password"){
-    validationResult = passwordValidation(inputValue, inputId);
+  }else if(inputId === "password"){
+    validationResult = passwordValidation(inputValue);
+  }else if(inputId === "password-chk" ){
+    validationResult = passwordChkValidation(inputValue);
   }else{
     return formSubmitValidation();
   }
