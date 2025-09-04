@@ -251,7 +251,6 @@ footer p{
     flex-direction: column;
     align-items: center;
     margin-top: 3.5rem;
-    /* justify-content: center; */
     height: 100vh;
     background: var(--background);
     gap:2.5rem
@@ -348,6 +347,7 @@ label{
     cursor: pointer;
 
     /*text*/
+    
     color: var(--Secondary-100);
     text-align: center;
     font-size: 1.25rem;
@@ -417,6 +417,7 @@ label{
 
 .modal_container {
     position: absolute;
+    top: 20%;
     display: none;
     flex-flow: column wrap;
     justify-content: center;
@@ -452,6 +453,7 @@ label{
     background: var(--Primary-100);
     
     /*text*/
+
     font-weight: 600;
     color : #FFF;
     cursor: pointer;
@@ -497,10 +499,6 @@ label{
         padding: 1rem 4.4375rem;
         font-size: 1.125rem;
     }
-
-    .wrap {
-        /* white-space: pre-line; */
-    }
     
     .article_content > img {
         width: 100%;
@@ -544,7 +542,6 @@ label{
 
     #container{
         margin: 1.5rem 1rem;
-        max-width: 400px;
     }
 
     label {
@@ -571,8 +568,6 @@ label{
     .btn_container{
         align-self: center;
     }
-
-
 }
 
 @media (min-width: 745px) and (max-width: 1200px) {
