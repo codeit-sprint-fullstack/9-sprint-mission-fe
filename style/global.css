@@ -290,4 +290,10 @@ h2, p {
     grid-area: sns;  
     justify-content: flex-end;  
   }
+
+  .input-item > label {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
 }
+

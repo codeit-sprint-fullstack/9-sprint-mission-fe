@@ -7,7 +7,7 @@
 }
 
 .logo-container {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .logo-auth {
@@ -80,4 +80,26 @@
 
 .auth-check a {
   color: var(--Primary-100);
+}
+
+/* media 화면 너비 744px ~ 1199px  - Tablet */
+@media screen and (min-width: 744px) and (max-width: 1199px) {
+  .auth-container {
+    margin: 48px auto; 
+    gap: 16px;
+  }
+}
+
+/* media 화면 너비 743px 미만 - Mobile */
+@media screen and (max-width: 743px) {
+  .auth-container {
+    min-width: 343px;
+    margin: 24px 16px;
+    gap: 16px;
+  }
+
+  .auth-container .logo-auth {
+    width: 198px;
+    height: 66px;
+  }
 }
