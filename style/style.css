@@ -217,6 +217,11 @@
 
   .section.main .title {
     flex-direction: row;
+    font-size: 32px;
+  }
+
+  .section.main .description {
+    font-size: 18px;
   }
 
   .section.bottom .container {
@@ -226,7 +231,7 @@
   .section.bottom {
     margin-top: 32px;
     padding-top: 0;
-  }
+  }s
 
   .section.bottom .section-div {
     padding-top: 201px;
@@ -293,8 +298,9 @@
     width: 100%;
   }
 
-  .section.top h2 {
+  .section.top .title {
     display: flex;
+    font-size: 32px;
     flex-direction: column;
     align-items: center;
   }
@@ -308,23 +314,33 @@
     gap: 24px;
     flex-direction: column;
     align-items: center;
-    width: unset;
+    max-width: 400px;
+    width: 100%;
     height: unset;
   }
 
   .section.main .section-image {
-    max-width: 400px;
     width: 100%;
     object-fit: contain;  
   }
 
   .section.main.odd .content,
   .section.main.even .content {
+    width: 100%;
     margin: 0;
   }
 
+.section.main .tag {
+  font-size: 16px;
+}
+
   .section.main .title {
+    font-size: 24px;  
     display: inline-block;
+  }
+
+  .section.main .description {
+    font-size: 16px;
   }
 
   .section.bottom {
@@ -352,11 +368,8 @@
     object-fit: contain;  
   }
 
-  .section.main .content {
-    margin: 0;
-  }
-
   .section.bottom .title {
+    font-size: 32px;
     padding-top: 0;
     align-items: center;
   }
