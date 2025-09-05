@@ -285,7 +285,7 @@
   .section.top .section-image {
     object-fit: cover;
     margin: 132px 0 0;
-    max-width: 744;
+    max-width: 400px;
     width: 100%;
   }
 
@@ -303,13 +303,13 @@
   .section.main.even .container {
     gap: 24px;
     flex-direction: column;
+    align-items: center;
     width: unset;
     height: unset;
   }
 
   .section.main .section-image {
-    
-    max-width: 680px;
+    max-width: 400px;
     width: 100%;
     object-fit: contain;  
   }
@@ -338,6 +338,7 @@
   }
 
   .section.bottom .container {
+    align-items: center;
     gap: 131px;
   }
 
@@ -346,7 +347,6 @@
     width: 100%;
     object-fit: contain;  
   }
-
 
   .section.main .content {
     margin: 0;
