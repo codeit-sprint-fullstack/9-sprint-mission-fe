@@ -250,6 +250,10 @@
 
 /* media 화면 너비 0 ~ 744px - Mobile  */
 @media screen and (max-width: 744px) {
+  body {
+    background: #fcfcfc;
+  }
+
   .page-header {  
     padding: 0.5938rem 1rem;            /*  9.5px 16px  */
     height: 70px;    
