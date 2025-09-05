@@ -113,6 +113,8 @@
 }
 
 .section.bottom .title {
+  display: flex;
+  flex-direction: column;
   padding-top: 7.0313rem;     /*  112.5px;  */
 }
 
@@ -126,7 +128,7 @@
     flex-direction: column;
   }
 
-  .section.top img {
+  .section.top .section-image {
     width: 746px;
   }
 }
@@ -143,6 +145,7 @@
   }
 
   main {
+    background-color: #fcfcfc;
     margin-top: 70px;
   }
 
@@ -165,7 +168,7 @@
     margin-bottom: 211px;
   }
 
-  .section.top img {
+  .section.top .section-image {
     width: 744px;
   }
 
@@ -181,7 +184,6 @@
     padding: 24px;
     background-color: #fcfcfc;
   }
- 
 
   .section.main.odd .container,
   .section.main.even .container { 
@@ -204,7 +206,6 @@
     align-items: flex-start;
   }
 
-
   .section.main.even .content {
     align-items: flex-end;
   }
@@ -217,6 +218,33 @@
   .section.main .title {
     flex-direction: row;
   }
+
+  .section.bottom .container {
+    flex-direction: column;
+  }
+
+  .section.bottom {
+    margin-top: 32px;
+    padding-top: 0;
+  }
+
+  .section.bottom .section-div {
+    padding-top: 201px;
+  }
+
+  .section.bottom .container {
+    gap: 217px;
+  }
+
+  .section.bottom .title {
+    align-items: center;
+    padding: 0;
+  }
+
+  .section.bottom .section-image {
+    width: 744px;
+  }
+
 }
 
 
@@ -234,7 +262,7 @@
   }
 
 
-  main {
+  .page-main {
     margin-top: 70px;
   }
 
@@ -254,7 +282,7 @@
     margin: 0;
   }
 
-  .section.top img {
+  .section.top .section-image {
     object-fit: cover;
     margin: 132px 0 0;
     max-width: 744;
@@ -286,13 +314,47 @@
     object-fit: contain;  
   }
 
-
-  .section.main .content {
+  .section.main.odd .content,
+  .section.main.even .content {
     margin: 0;
   }
 
   .section.main .title {
     display: inline-block;
+  }
+
+  .section.bottom {
+    margin-top: 32px;
+    padding-top: 0;
+  }
+
+  .section.bottom .container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .section.bottom .section-div {
+    padding-top: 201px;
+  }
+
+  .section.bottom .container {
+    gap: 131px;
+  }
+
+  .section.bottom .section-image {
+    max-width: 400px;
+    width: 100%;
+    object-fit: contain;  
+  }
+
+
+  .section.main .content {
+    margin: 0;
+  }
+
+  .section.bottom .title {
+    padding-top: 0;
+    align-items: center;
   }
 
 }

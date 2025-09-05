@@ -232,8 +232,8 @@ h2, p {
 }
 
 
-/* media 화면 너비 1920px 미만 */
-@media screen and (max-width: 1919px) {
+/* media 화면 너비 1200px ~ 1919px - PC Desktop */
+@media screen and (min-width: 1200px) and (max-width: 1919px) {
   /*  헤더 좌우 끝 200px 여백 유지 */
   .page-header {  
     padding: 0.5938rem 12.5rem;         /*  9.5px 200px  */    
@@ -242,11 +242,16 @@ h2, p {
 
 
 
-/* media 화면 너비 1200px 미만 */
-@media screen and (max-width: 1199px) {
+/* media 화면 너비 744px ~ 1199px  - Tablet */
+@media screen and (min-width: 744px) and (max-width: 1199px) {
   /*  헤더 좌우 끝 24px 여백 유지 */
   .page-header {  
     padding: 0.625rem 1.5rem 0.5625rem; /*  10px 24px 9px  */    
+  }
+
+  
+  .page-footer > .container {
+    padding: 32px 24px 108px;
   }
 }
 
@@ -263,4 +268,7 @@ h2, p {
     width: 103px;
   }
 
+  .page-footer .container {
+    padding: 32px 16px 65px;
+  }
 }
