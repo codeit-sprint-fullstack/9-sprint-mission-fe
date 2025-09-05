@@ -1,54 +1,10 @@
-// import { getArticleList, getArticle, createArticle } from "./ArticleService.js";  
+import authEvent from './js/authModal.js';
 
 const el = document.querySelectorAll('input');
 const btn = document.querySelector('#form_button');
 
-const USER_DATA = [
-    { email: 'codeit1@codeit.com', password: "codeit101!" },
-    { email: 'codeit2@codeit.com', password: "codeit202!" },
-    { email: 'codeit3@codeit.com', password: "codeit303!" },
-    { email: 'codeit4@codeit.com', password: "codeit404!" },
-    { email: 'codeit5@codeit.com', password: "codeit505!" },
-    { email: 'codeit6@codeit.com', password: "codeit606!" },
-];
 
-
-function userAlert(msg){
-    const modalStatus = document.querySelector('.modal_container');
-    const modalBg = document.querySelector('.modal_overlay')
-    const alertMsg = document.querySelector('.modal_text');
-    const alertBtn = document.querySelector('.modal_btn');
-
-    alertMsg.textContent = msg;
-    modalStatus.style.display = "flex";
-    modalBg.style.display = "block";
-
-    alertBtn.addEventListener('click', () => {
-    modalStatus.style.display = "none"
-    modalBg.style.display = "none"});
-}
-
-function findUser(){
-        const INPUT_EMAIL = document.querySelector('input[type="email"]');
-        const INPUT_PWD   = document.querySelector('input[type="password"]');
-        
-        const exitUser = USER_DATA.some((el) => el.email === INPUT_EMAIL.value);
-        const exitUserPwd = USER_DATA.some((el) => el.password ===  INPUT_PWD.value);
-
-        if (btn.textContent === '회원가입'){
-            if (exitUser) {userAlert('이미 사용 중인 이메일입니다.')}
-            else {location.href = "login.html"}
-        }
-        else{
-            if (exitUser) {
-                if (exitUserPwd){location.href = "items.html"}
-                else {userAlert('비밀번호가 일치하지 않습니다')}
-            }
-            else {userAlert(`존재하지 않는 이메일입니다.`)}
-        }
-    }
-
-function updateButton(user_info) { 
+function updateButton() { 
     let valid = true;
 
     el.forEach((e) => {
@@ -106,7 +62,6 @@ el.forEach((e) => {
     });
 });
 
-const passwordToggles = document.querySelectorAll('.toggle_password');
 
 el.forEach((t)=> {
     if (t.type === 'password') {
@@ -122,4 +77,12 @@ el.forEach((t)=> {
         });
     }
 });
+
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!btn.classList.contains('active')) return;
+    authEvent(btn);
+});
+
+
 
