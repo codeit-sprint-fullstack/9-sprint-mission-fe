@@ -14,7 +14,7 @@ const request=(url,options={})=>{
       console.error('API 요청 중 오류 발생:', error);
     });
 };
-/*개시글 목록 가져오기*/
+/*게시글 목록 가져오기*/
 export const getArticleList = (page = 1, pageSize = 10, keyword = '') => {
   const queryParams = new URLSearchParams({ page, pageSize, keyword });
   return request(`${API_BASE_URL}/articles?${queryParams}`);
@@ -42,6 +42,7 @@ export const patchArticle = (id, articleData) => {
     body: JSON.stringify(articleData),
   });
 };
+
 /*게시글 삭제*/ 
 export const deleteArticle=(id)=>{
     return request(`{API_BASE_URL}/article/{id}`,{
