@@ -118,14 +118,18 @@ inputPassword.addEventListener('focusout', (event) => {
 
 
 /*   비밀번호 눈 아이콘 비밀번호 표시 / 숨기기 토글 */
-let passwordToggleBtnList = document.querySelectorAll('.input-item > .img-icon');
+let passwordToggleBtnList = document.querySelectorAll('.input-item .img-icon');
 passwordToggleBtnList.forEach((el) => el.addEventListener("click", event => {
   const passwordInput = event.target.parentElement.querySelector('input');
 
   if(passwordInput.getAttribute("type") === "password") {
     passwordInput.setAttribute("type", 'text');
+    passwordInput.nextElementSibling.setAttribute("src", "images/ic_btn_visibility_on.svg");
+
   } else {
     passwordInput.setAttribute("type", 'password');
+    passwordInput.nextElementSibling.setAttribute("src", "images/ic_btn_visibility_off.svg");
+    
   }
 }));
 
