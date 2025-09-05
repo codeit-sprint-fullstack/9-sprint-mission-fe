@@ -294,7 +294,7 @@
     width: 240px;
     height: 48px;
     font-size: 18px;
-    padding: 12px 70px;
+    padding: 12px 69px;
   }
 
   .section.top .content {
@@ -341,9 +341,9 @@
     margin: 0;
   }
 
-.section.main .tag {
-  font-size: 16px;
-}
+  .section.main .tag {
+    font-size: 16pxß;
+  }
 
   .section.main .title {
     font-size: 24px;  
