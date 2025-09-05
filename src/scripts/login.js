@@ -16,6 +16,7 @@ const dismatchMessage = {
 // Input 요소 노드
 const emailInputNode = document.querySelector('#user-email');
 const passwordInputNode = document.querySelector('#user-password');
+const loginBtnNode = document.querySelector('#login-btn');
 // 에러 메시지를 출력하기 위한 추가 <p> 오소 노드
 const emailWarningNode = document.querySelector('.warning.w-email');
 const passwordWarningNode = document.querySelector('.warning.w-password');
@@ -32,7 +33,6 @@ function displayWarning (inputNode, warningNode, inputType, warnigType) {
 
 // 로그인 버튼 활성화
 const activateLoginBtn = function () {
-  const loginBtnNode = document.querySelector('#login-btn');
   loginBtnNode.disabled = false;
   // 활성화 때 CSS style 적용
   loginBtnNode.classList.add('active');
@@ -99,6 +99,30 @@ seePassword.addEventListener('mousedown', (e) => {
 });
 seePassword.addEventListener('mouseup', (e) => {
   passwordInputNode.setAttribute('type', 'password');
+});
+
+
+// 사용자 데이터
+const USER_DATA = [
+  { email: 'codeit1@codeit.com', password: "codeit101!" },
+  { email: 'codeit2@codeit.com', password: "codeit202!" },
+  { email: 'codeit3@codeit.com', password: "codeit303!" },
+  { email: 'codeit4@codeit.com', password: "codeit404!" },
+  { email: 'codeit5@codeit.com', password: "codeit505!" },
+  { email: 'codeit6@codeit.com', password: "codeit606!" },
+];
+// codeit3@codeit.com
+// codeit303!
+
+
+// 로그인 버튼을 'click'하면, 사용자 인증
+loginBtnNode.addEventListener('click', () => {
+  const foundUser = USER_DATA.find(
+    (user) => user.email === emailInputNode.value && user.password === passwordInputNode.value
+  );  
+  
+  if (foundUser) location.href = '/items';
+  else alert('비밀번호가 일치하지 않습니다.'); 
 });
 
 
