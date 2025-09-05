@@ -287,6 +287,13 @@
     gap: 0; 
   }
 
+  .section.top .button.items {
+    width: 240px;
+    height: 48px;
+    font-size: 18px;
+    padding: 12px 70px;
+  }
+
   .section.top .content {
     margin: 0;
   }
