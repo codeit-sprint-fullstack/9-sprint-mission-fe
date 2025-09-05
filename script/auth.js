@@ -26,7 +26,7 @@ inputEmail.addEventListener('input', (event) => {
   if(checkValidEmail(inputEmail.value)) {
     inputEmail.parentElement.classList.remove('invalid');  
 
-    try{
+    try {
       // 모든 계정 정보 유효성 체크
       if(checkValidInputAccount(inputEmail.value, inputPassword.value, inputRePassword.value)) {
         console.log(inputRePassword.value);
@@ -42,20 +42,10 @@ inputEmail.addEventListener('input', (event) => {
 
     return;
   }
-
-
-  if(span === null || span === undefined) {
-    span = document.createElement('span');    
-    
-    inputEmail.after(span);
-  } 
-
-
   span.textContent = "잘못된 이메일 형식입니다.";
 
   inputEmail.parentElement.classList.add('invalid');  
   btnAuth.classList.add("disabled"); 
-
 
 });
 
@@ -68,13 +58,7 @@ inputEmail.addEventListener('focusout', (event) => {
   if(inputEmail.value !== "") {
     return;
   }
-  span = inputEmail.parentElement.querySelector('span');
-  if(span === null || span === undefined) {
-    span = document.createElement('span');
-    inputEmail.after(span);
-  } 
-
-
+  span = inputEmail.nextElementSibling;
   span.textContent = "이메일을 입력해 주세요.";
 
   inputEmail.parentElement.classList.add('invalid');    
