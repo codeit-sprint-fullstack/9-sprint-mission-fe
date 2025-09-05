@@ -1,23 +1,26 @@
 // 사용자가 입력한 이메일의 유효성 검증  
 const PW_MIN_LENGTH = 8;
 
+// No value 에러 메시지
 const noValueMessage = {
   email: "이메일을 입력해주세요.",
   password: "비밀번호를 입력해주세요."
 };
 
+// Dismatch 에러 메시지
 const dismatchMessage = {
   email: "잘못된 이메일 형식입니다.",
   password: `비밀번호를 ${PW_MIN_LENGTH}자 이상 입력해주세요.`
 };
 
-// input element nodes
+// Input 요소 노드
 const emailInputNode = document.querySelector('#user-email');
 const passwordInputNode = document.querySelector('#user-password');
-// element nodes for warning
+// 에러 메시지를 출력하기 위한 추가 <p> 오소 노드
 const emailWarningNode = document.querySelector('.warning.w-email');
 const passwordWarningNode = document.querySelector('.warning.w-password');
 
+// 'no value' 또는 'dismatch'에 따른 에러 메시지 출력
 function displayWarning (inputNode, warningNode, inputType, warnigType) {
   if (warnigType === 'value') {
     warningNode.textContent = noValueMessage[inputType];
@@ -27,28 +30,64 @@ function displayWarning (inputNode, warningNode, inputType, warnigType) {
   inputNode.classList.add('input-error');
 }
 
+// 로그인 버튼 활성화
+const activateLoginBtn = function () {
+  const loginBtnNode = document.querySelector('#login-btn');
+  loginBtnNode.disabled = false;
+  // 활성화 때 CSS style 적용
+  loginBtnNode.classList.add('active');
+}
+
 // 이메일 확인
-emailInputNode.addEventListener('focusout', (e) => {
+let isValidEmail = null;
+emailInputNode.addEventListener('focusout', (e) => { 
+  // 'no value'일 때,
   if (!e.target.value) {
     displayWarning(emailInputNode, emailWarningNode, 'email', 'value');
-  } else if (e.target.validity.typeMismatch) {
+    isValidEmail = false;
+  }
+  // 'dismatch'일 때, 
+  else if (e.target.validity.typeMismatch) {
     displayWarning(emailInputNode, emailWarningNode, 'email', 'dismatch');
-  } else {
+    isValidEmail = false;
+  }
+  // 조건을 충족할 때, 
+  else {
     emailInputNode.classList.remove('input-error');
+    isValidEmail = true;
+    // 로그인 버튼 활성화
+    if (isValidPassword) {
+      activateLoginBtn();
+    }
   }
 });
+// 에러 메시지 초기화
 emailInputNode.addEventListener('focusin', (e) => emailWarningNode.textContent = '');
 
 // 비밀번호 확인
-passwordInputNode.addEventListener('focusout', (e) => {
+let isValidPassword = null;
+passwordInputNode.addEventListener('focusout', (e) => {   
+  // 'no value'일 때,
   if (!e.target.value) {
     displayWarning(passwordInputNode, passwordWarningNode, 'password', 'value');
-  } else if (e.target.value.length < PW_MIN_LENGTH) {
+    isValidPassword = false;
+  } 
+  // 'dismatch'일 때,
+  else if (e.target.value.length < PW_MIN_LENGTH) {
     displayWarning(passwordInputNode, passwordWarningNode, 'password', 'dismatch');
-  } else {
+    isValidPassword = false;
+  } 
+  // 조건을 충족할 때, 
+  else {
     passwordInputNode.classList.remove('input-error');
+    isValidPassword = true;
+    // 로그인 버튼 활성화
+    if (isValidEmail) {
+      activateLoginBtn();
+    }
   }
 }); 
+// 에러 메시지 초기화
 passwordInputNode.addEventListener('focusin', (e) => passwordWarningNode.textContent = '');
 
 
@@ -58,14 +97,8 @@ const seePassword = document.querySelector('#see-password');
 seePassword.addEventListener('mousedown', (e) => {
   passwordInputNode.setAttribute('type', 'text');
 });
-
 seePassword.addEventListener('mouseup', (e) => {
   passwordInputNode.setAttribute('type', 'password');
 });
-
-
-
-
-
 
 
