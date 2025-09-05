@@ -86,12 +86,13 @@ let inputPassword = document.querySelector('input[name="password"]');
 inputPassword.addEventListener('input', (event) => {  
   const PASSWORD_MIN_LENGTH = 8;
   let btnAuth = document.querySelector('.button.auth');
-  let span = inputPassword.parentElement.querySelector('span');
+  let span = inputPassword.parentElement.nextElementSibling;
+  let inputItem = inputPassword.parentElement.parentElement;
   let inputRePassword = document.querySelector('input[name="re-password"]');
 
   // 비밀번호 유효성 체크 - 8자 이상
   if(inputPassword.value.length >= PASSWORD_MIN_LENGTH) { 
-    inputPassword.parentElement.classList.remove('invalid');   
+    inputItem.classList.remove('invalid');   
     try{
       // 모든 계정 정보 유효성 체크
       if(checkValidInputAccount(inputEmail.value, inputPassword.value, inputRePassword.value)) {
@@ -109,15 +110,9 @@ inputPassword.addEventListener('input', (event) => {
     return;
   }
 
-
-
-  if(span === null || span === undefined) {
-    span = document.createElement('span');
-    inputPassword.after(span);
-  } 
   span.textContent = "비밀번호 8자 이상 입력해 주세요.";
 
-  inputPassword.parentElement.classList.add('invalid');   
+  inputItem.classList.add('invalid');   
   btnAuth.classList.add("disabled");
 
 });
@@ -129,16 +124,10 @@ inputPassword.addEventListener('focusout', (event) => {
   
   if(inputPassword.value !== "")  return;
 
-  span = inputPassword.parentElement.querySelector('span');
-  if(span === null || span === undefined) {
-    span = document.createElement('span');
-    inputPassword.after(span);
-  } 
-
-
+  span = inputPassword.parentElement.nextElementSibling;
   span.textContent = "비밀번호를 입력해 주세요.";
 
-  inputPassword.parentElement.classList.add('invalid');  
+  inputPassword.parentElement.parentElement.classList.add('invalid');  
   btnAuth.classList.add("disabled");
 
 });

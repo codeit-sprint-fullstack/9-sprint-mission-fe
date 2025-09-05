@@ -120,7 +120,6 @@ h2, p {
 .input-item {
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 .input-item > label {
@@ -133,7 +132,7 @@ h2, p {
   margin-bottom: 16px;
 }
 
-.input-item > input {
+.input-item input {
   width: 100%;
   height: 56px;
   background: var(--Cool-Gray-100);
@@ -148,34 +147,38 @@ h2, p {
   line-height: 26px;       
 }
 
-.input-item > input:placeholder {
+.input-item > .input-wrap {
+  position: relative;
+}
+
+.input-item input:placeholder {
   color: var(--Secondary-400);
 }
 
-.input-item > input:focus {
+.input-item input:focus {
   border: 1px solid var(--Primary-100);
   outline: none;
 }
 
-.input-item > span {
-  margin-top: 8px;
-  margin-left:  16px;
-  color: var(--error-red);
+.input-item > .span-worning {
   display: none;
 }
 
-.input-item.invalid > input{
+.input-item.invalid input{
   border: 1px solid var(--error-red);
 }
 
-.input-item.invalid > span {
+.input-item.invalid > .span-worning {
+  margin-top: 8px;
+  margin-left:  16px;
+  color: var(--error-red);
   display: block;
 }
 
-.input-item > .img-icon {
+.input-item .img-icon {
   position: absolute;
-  top: 60px;
-  right: 24px;
+  top: 16px;
+  right: 14px;
   width: 24px;
   height: 24px;
   cursor: pointer;

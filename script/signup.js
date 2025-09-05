@@ -21,29 +21,25 @@ let inputRePassword = document.querySelector('input[name="re-password"]');
 inputRePassword.addEventListener('input', (event) => {  
   const PASSWORD_MIN = 8;
   let btnAuth = document.querySelector('.button.auth');
-  let span = inputRePassword.parentElement.querySelector('span');
-
+  let span = inputRePassword.parentElement.nextElementSibling;
+  let inputItem = inputRePassword.parentElement.parentElement;
+  
   // 비밀번호 재입력 유효성 체크 - 8자 이상과 비밀번호 매치 여부 확인
   if(inputRePassword.value.length >= PASSWORD_MIN && inputPassword.value === inputRePassword.value) {
-    inputRePassword.parentElement.classList.remove('invalid');   
+    inputItem.classList.remove('invalid');   
 
     // 회원 인증 버튼 비활성 여부 체크
     if(checkValidInputAccount(inputEmail.value, inputPassword.value, inputRePassword.value)) {
-      btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
+    btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
     }
 
     return;
   }
 
-
-  if(span === null || span === undefined) {
-    span = document.createElement('span');
-    inputRePassword.after(span);
-  } 
   span.textContent = inputRePassword.value.length < PASSWORD_MIN && inputPassword.value !== inputRePassword.value ? 
         "비밀번호 8자 이상 입력해 주세요."  : "비밀번호가 일치하지 않습니다.";
 
-  inputRePassword.parentElement.classList.add('invalid');   
+  inputItem.classList.add('invalid');   
   btnAuth.classList.add("disabled");
 
 });
@@ -54,17 +50,10 @@ inputRePassword.addEventListener('focusout', (event) => {
   let span;
 
   if(inputRePassword.value !== "") return;
-
-  span = inputRePassword.parentElement.querySelector('span');
-  if(span === null || span === undefined) {
-    span = document.createElement('span');
-    inputRePassword.after(span);
-  } 
-
-
+  span = inputRePassword.parentElement.nextElementSibling;
   span.textContent = "비밀번호를 입력해 주세요.";
 
-  inputRePassword.parentElement.classList.add('invalid');  
+  inputRePassword.parentElement.parentElement.classList.add('invalid');  
   btnAuth.classList.add("disabled");
 
 });
