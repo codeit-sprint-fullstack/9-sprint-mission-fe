@@ -284,10 +284,12 @@ h2, p {
 
   .page-footer .menu {
     grid-area: menu;
+    align-items: center;
   }
 
   .page-footer .sns {    
     grid-area: sns;  
+    align-items: center;
     justify-content: flex-end;  
   }
 
