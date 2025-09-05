@@ -1,3 +1,5 @@
+// import { getArticleList, getArticle, createArticle } from "./ArticleService.js";  
+
 const el = document.querySelectorAll('input');
 const btn = document.querySelector('#form_button');
 
@@ -13,29 +15,29 @@ const USER_DATA = [
 
 function userAlert(msg){
     const modalStatus = document.querySelector('.modal_container');
-    const moodalBg = document.querySelector('.modal_overlay')
+    const modalBg = document.querySelector('.modal_overlay')
     const alertMsg = document.querySelector('.modal_text');
     const alertBtn = document.querySelector('.modal_btn');
 
-    console.log (`${modalStatus}`);
-    console.log (`${alertMsg}`);
-
     alertMsg.textContent = msg;
     modalStatus.style.display = "flex";
-    moodalBg.style.display = "unset"
-    alertBtn.addEventListener('click', () => (modalStatus.style.display = "none"));
-};
+    modalBg.style.display = "block";
+
+    alertBtn.addEventListener('click', () => {
+    modalStatus.style.display = "none"
+    modalBg.style.display = "none"});
+}
 
 function findUser(){
-        const INPUT_EMAIL = document.querySelector('input[type = "email"]');
-        const INPUT_PWD   = document.querySelector('input[type = "password"]');
+        const INPUT_EMAIL = document.querySelector('input[type="email"]');
+        const INPUT_PWD   = document.querySelector('input[type="password"]');
         
         const exitUser = USER_DATA.some((el) => el.email === INPUT_EMAIL.value);
         const exitUserPwd = USER_DATA.some((el) => el.password ===  INPUT_PWD.value);
 
         if (btn.textContent === '회원가입'){
             if (exitUser) {userAlert('이미 사용 중인 이메일입니다.')}
-            else {location.href = "login.html";}
+            else {location.href = "login.html"}
         }
         else{
             if (exitUser) {
