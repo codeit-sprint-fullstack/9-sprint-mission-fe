@@ -270,5 +270,23 @@ h2, p {
 
   .page-footer .container {
     padding: 32px 16px 65px;
+    display: grid;
+    row-gap: 25px;
+    grid-template-areas: 
+      "menu sns"
+      "copyright .";
+  }
+
+  .page-footer .copyright {
+    grid-area: copyright;        
+  }
+
+  .page-footer .menu {
+    grid-area: menu;
+  }
+
+  .page-footer .sns {    
+    grid-area: sns;  
+    justify-content: flex-end;  
   }
 }
