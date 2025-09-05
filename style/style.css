@@ -270,6 +270,9 @@
     width: 103px;
   }
 
+  .page-header > .button.login {
+    min-width: 128px;
+  }
 
   .page-main {
     margin-top: 70px;
