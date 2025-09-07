@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/style-common.css">
-  <link rel="stylesheet" href="../styles/signup.css">
   <title>판다 마켓 회원가입</title>
 </head>
 <body>
@@ -17,7 +16,7 @@
     </header>
     <main>
       <!-- 회원가입 -->
-      <section class="login-form">
+      <section class="signup-form">
         <!-- 회원가입 폼 -->
         <form action="#" method="post">
           <!-- 이메일 -->
@@ -47,11 +46,11 @@
               <input type="password" id="check-password" name="check-password" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
               <img id="re-password" src="../assets/icons/btn_visibility_off_24px.svg" alt="비밀번호 표시">
             </div>
-            <p class="warning w-password"></p>
+            <p class="warning w-password" id="check-password-warning"></p>
           </div>
-          <!-- 로그인 버튼 -->
+          <!-- 회원가입 버튼 -->
           <!-- button -> submit !!!!! -->
-          <button type="button" id="login-btn" disabled>로그인</button>
+          <button type="button" id="signup-btn" disabled>회원가입</button>
         </form>
       </section>
       <!-- 간편 로그인 -->
@@ -75,7 +74,6 @@
     </footer>
   </div>
 
-  <script src="../scripts/signup.js"></script>
-  <script src="../scripts/script-common.js"></script>
+  <script src="../scripts/signup.mjs" type="module"></script>
 </body>
 </html>

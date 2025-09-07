@@ -45,7 +45,8 @@ main {
   margin-top: 40px
 }
 
-.login-form .form-group {
+.login-form .form-group,
+.signup-form .form-group {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -109,7 +110,8 @@ main {
   cursor: pointer;
 }
 
-#login-btn {
+#login-btn,
+#signup-btn {
   width: 100%;
   padding: 16px 124px;
   background-color: #9CA3AF;
@@ -123,7 +125,8 @@ main {
   line-height: 32px;
 }
 
-#login-btn.active {
+#login-btn.active,
+#signup-btn.active {
   background-color: #3692FF;
   cursor: pointer;
 }
