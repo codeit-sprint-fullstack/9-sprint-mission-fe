@@ -1,6 +1,6 @@
-// All import statements should be grouped at the very top.
+
 import { getArticleList, getArticle } from './api/ArticleService.js';
-import { getProductList, getProduct } from './api/productService.js'; // Check if filename casing is exactly 'ProductService.js'
+import { getProductList, getProduct } from './api/productService.js'; 
 
 console.log("--- Article API 연쇄 테스트 시작 ---");
 
