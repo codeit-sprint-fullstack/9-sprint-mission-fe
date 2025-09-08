@@ -21,8 +21,11 @@ export function getArticleList(page = 1, pageSize = 10, keyword = '') {
 /* 게시글 가져오기 */
 export function getArticle(id) {
   return fetch(`${API_BASE_URL}/${id}`)
-    .then((res) => {
-      if (!res.ok) throw new Error(`오류 발생! 상태 코드: ${res.status}`);
+    .then(async (res) => {
+      if (!res.ok) {
+        const errMsg = await res.text(); // 서버에서 준 에러 메시지 확인
+        throw new Error(`오류 발생! 상태 코드: ${res.status}, 내용: ${errMsg}`);
+      }
       return res.json();
     })
     .then((data) => {
