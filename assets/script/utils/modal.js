@@ -16,7 +16,7 @@ export function showModal(message, onConfirm) {
   modalMessage.textContent = message;
   modalOverlay.classList.remove('hidden');
 
-  // 이벤트 중복을 막기 위해 버튼을 복제하여 기존 이벤트를 제거
+  
   const newModalButton = originalModalButton.cloneNode(true);
   originalModalButton.parentNode.replaceChild(newModalButton, originalModalButton);
   
@@ -30,7 +30,7 @@ export function showModal(message, onConfirm) {
   newModalButton.addEventListener('click', eventHandler, { once: true });
 }
 
-// 모달 외부 클릭 시 닫기
+
 if (modalOverlay) {
   modalOverlay.addEventListener('click', (event) => {
     if (event.target === modalOverlay) {

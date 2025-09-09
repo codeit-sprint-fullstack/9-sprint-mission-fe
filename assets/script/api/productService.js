@@ -6,7 +6,7 @@ export async function getProductList(page = 1, pageSize = 10, keyword = '') {
   const url = `${PRODUCT_BASE_URL}?page=${page}&pageSize=${pageSize}&keyword=${keyword}`;
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error(`에러 발생! 상태 코드: ${res.status}`);
+    if (!res.ok) throw new Error(`에러 발생 코드: ${res.status}`);
     const data = await res.json();
     console.log('상품 목록:', data);
     return data;
@@ -19,7 +19,7 @@ export async function getProductList(page = 1, pageSize = 10, keyword = '') {
 export async function getProduct(id) {
   try {
     const res = await fetch(`${PRODUCT_BASE_URL}/${id}`);
-    if (!res.ok) throw new Error(`에러 발생! 상태 코드: ${res.status}`);
+    if (!res.ok) throw new Error(`에러 발생 코드: ${res.status}`);
     const data = await res.json();
     console.log('상품:', data);
     return data;
@@ -36,7 +36,7 @@ export async function createProduct({ name, description, price, tags, images }) 
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, description, price, tags, images }),
     });
-    if (!res.ok) throw new Error(`에러 발생! 상태 코드: ${res.status}`);
+    if (!res.ok) throw new Error(`에러 발생 코드: ${res.status}`);
     const data = await res.json();
     console.log('상품 생성 완료:', data);
     return data;
@@ -53,7 +53,7 @@ export async function patchProduct(id, { name, description, price, tags, images 
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, description, price, tags, images }),
     });
-    if (!res.ok) throw new Error(`에러 발생! 상태 코드: ${res.status}`);
+    if (!res.ok) throw new Error(`에러 발생 코드: ${res.status}`);
     const data = await res.json();
     console.log('상품 수정 완료:', data);
     return data;
@@ -66,7 +66,7 @@ export async function patchProduct(id, { name, description, price, tags, images 
 export async function deleteProduct(id) {
   try {
     const res = await fetch(`${PRODUCT_BASE_URL}/${id}`, { method: 'DELETE' });
-    if (!res.ok) throw new Error(`에러 발생! 상태 코드: ${res.status}`);
+    if (!res.ok) throw new Error(`에러 발생 코드: ${res.status}`);
     console.log(`상품 ${id}번 삭제 완료`);
     return id;
   } catch (err) {

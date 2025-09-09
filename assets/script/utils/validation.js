@@ -15,9 +15,8 @@ export const validatePassword = (password) => {
 export const validatePasswordConfirm = (password, passwordConfirm) => {
   if (password !== passwordConfirm) return "비밀번호가 일치하지 않습니다.";
   return "";
-};
+}
 
-// 공통 에러 메시지 표시 함수
 export const updateErrorDisplay = (input, errorMessage) => {
   const errorContainer = document.querySelector(`#${input.id}Error`);
   if (errorContainer) {
