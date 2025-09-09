@@ -17,6 +17,7 @@ body {
 /* Container */
 .container {
   max-width: 1920px;
+  min-width: 1200px
   margin: 0 auto;
   padding: 0 200px;
 }
@@ -31,7 +32,7 @@ body {
   background: #fff;
   border-bottom: 1px solid #DFDFDF;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0 40px;
   z-index: 10;
@@ -44,7 +45,7 @@ body {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 0 200px;
+  padding: 0 15px;
   flex-wrap: wrap;
 }
 
@@ -80,6 +81,7 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 700;
+  margin-left: auto;
   cursor: pointer;
 }
 
@@ -100,17 +102,21 @@ body {
 
 .landing-hero .landing-illustration,
 .landing-bottom .landing-illustration {
-  align-self: flex-end; /* 컨테이너 내에서 해당 요소만 바닥 정렬 */
+  align-self: flex-end; 
 }
 
-.landing-text h1 {
+.landing-text h1 { 
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.4;
+  white-space: normal;
 }
 
-.btn-primary {
-  display: inline-block;
+body .btn-primary {
+  display: flex;             
+  justify-content: center;     
+  align-items: center;         
+  padding: 12px 32px;
   margin-top: 20px;
   background-color: var(--primary-color);
   color: #fff;
@@ -230,7 +236,7 @@ body {
 .site-footer {
   background: #0f1724;
   color: #e5e7eb;
-  padding: 0 0 36px 0;
+  padding: 10px 0 36px 0;
 }
 
 .footer-inner {
@@ -242,6 +248,7 @@ body {
   max-width: 1920px;
   margin: 0 auto;
   padding: 0 200px; 
+  flex-wrap: wrap;
 }
 
 .footer-nav a {

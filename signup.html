@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입</title>
   <link rel="icon" href="panda.ico.webp">
-  <link rel="stylesheet" href="signup.css" />
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 <div class="page-container">
@@ -21,19 +22,19 @@
     <!-- 이메일 -->
     <div class="form-group">
       <label for="email">이메일</label>
-      <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요" required />
+      <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요" >
     </div>
 
     <!-- 닉네임 -->
     <div class="form-group">
       <label for="nickname">닉네임</label>
-      <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required />
+      <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" required>
     </div>
 
     <!-- 비밀번호 -->
     <div class="form-group">
       <label for="password">비밀번호</label>
-      <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요" required />
+      <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요">
       <div class="toggle-password" onclick="togglePassword('password')">
         <img src="eye-icon.png" alt="비밀번호 보기" />
       </div>
@@ -42,7 +43,7 @@
     <!-- 비밀번호 확인 -->
     <div class="form-group">
       <label for="password-confirm">비밀번호 확인</label>
-      <input type="password" id="password-confirm" name="password-confirm" placeholder="비밀번호를 다시 한 번 입력해주세요" required />
+      <input type="password" id="password-confirm" name="password-confirm" placeholder="비밀번호를 다시 한 번 입력해주세요" >
       <div class="toggle-password" onclick="togglePassword('password-confirm')">
         <img src="eye-icon.png" alt="비밀번호 보기" />
       </div>
@@ -71,5 +72,7 @@
     </p>
   </form>
 </div>
+  <script src="common.js"></script>
+  <script src="signup.js"></script>
 </body>
 </html>

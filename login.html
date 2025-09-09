@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>로그인</title>
   <link rel="icon" href="panda.ico.webp">
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 <div class="page-container">
     <form class="form-container">
       <div class="logo-container">
     <a href="index.html" class="logo-link">
-      <img src="판다 얼굴.svg" alt="판다 로고" class="logo-img"/> 
+      <img src="판다 얼굴.svg" alt="판다 로고" class="logo-img"> 
       <h1 class="form-title">판다마켓</h1></a>
       </div>
       <div class="form-group">
         <label for="email">이메일</label>
-        <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요" required />
+        <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요">
       </div>
 
       <div class="form-group">
         <label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요" required />
+        <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요">
         <div class="toggle-password" onclick="togglePassword('password')">
         <img src="eye-icon.png" alt="비밀번호 보기" />
         </div>
@@ -46,6 +47,8 @@
       </p>
     </form>
 </div>
+    <script src="common.js"></script>
+    <script src="login.js"></script> 
 </body>
 </html>
 

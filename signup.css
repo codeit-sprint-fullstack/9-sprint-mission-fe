@@ -92,9 +92,9 @@ body {
 
 .toggle-password {
   position: absolute;
-  top: 65%;
+  top: 30%;
   right: 16px;
-  transform: translateY(-50%);
+  transform: translateY(70%);
   cursor: pointer;
 }
 
@@ -118,6 +118,16 @@ body {
 .btn-primary:hover {
   background-color: #2a73cc;
 }
+
+.btn-primary:disabled {
+  background-color: var(--secondary-400); /* 회색 */
+  cursor: not-allowed;
+}
+
+.btn-primary:enabled {
+  background-color: var(--brand-blue); /* 활성화 시 파란색 */
+}
+
 
 .simple-login {
   display: flex;
@@ -159,4 +169,12 @@ body {
 .text-link {
   color: var(--brand-blue);
   text-decoration: underline;
+}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+.form-container .form-group input.input-error {
+    border: 1px solid red;
 }

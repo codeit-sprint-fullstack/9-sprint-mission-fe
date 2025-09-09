@@ -1,0 +1,182 @@
+/* --------------------------------------
+   Responsive CSS
+   Tablet: 744px ~ 1199px
+   Mobile: 375px ~ 743px
+-------------------------------------- */
+@media screen and (max-width: 1199px) and (min-width: 375px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .header {
+    padding: 0 24px;
+  }
+
+  .landing-hero,
+  .landing-bottom {
+    padding: 100px 16px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+  }
+
+  .landing-text h1,
+  .section1-title,
+  .section2-title,
+  .section3-title {
+    white-space: nowrap;
+    font-size: 1.8rem;
+  }
+
+  .landing-text h1 br,
+  .section1-title br,
+  .section2-title br,
+  .section3-title br {
+    display: none;
+  }
+
+  .landing-illustration {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    margin-top: 5vh;
+  }
+
+  .landing-hero .landing-illustration img,
+  .landing-bottom .landing-illustration img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .section-1,
+  .section-3 {
+    padding: 60px 16px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .section-2{
+    padding: 60px 16px;
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+
+  .img-landing-desktop-02,
+  .img-landing-desktop-03,
+  .img-landing-desktop-04 {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .img-home-01,
+  .img-home-02,
+  .img-home-03 {
+    width: 100%;
+    height: auto;
+  }
+
+  .section1-content,
+  .section3-content {
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .section1-hot-item,
+  .section3-hot-item{
+  margin-left: 0px;
+}
+
+  .section2-content {
+    width: 100%;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .btn-login {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .landing-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .section1-title,
+  .section2-title,
+  .section3-title {
+    font-size: 28px;
+  }
+
+  .section1-subtitle,
+  .section2-subtitle,
+  .section3-subtitle {
+    font-size: 18px;
+  }
+
+  .page-container {
+    width: 100%;
+    padding: 60px 32px;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+  }
+
+  .form-title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 743px) {
+  .container { padding: 0 32px; }
+  .header { padding: 0 16px; }
+  .logo {
+    display: none;
+  }
+
+ .footer-inner {
+    justify-content: space-between; 
+  }
+
+  .footer-nav {
+    order: 1;
+  }
+
+  .social {
+    order: 2;
+  }
+
+  .copyright {
+    order: 3;
+    flex-basis: 100%; 
+    text-align: left;
+    margin-top: 10px;
+  }
+
+    .page-container {
+    width: 100%;
+    padding: 40px 16px;
+    min-height: 100vh;
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 40px;
+    max-width: 400px;
+  }
+
+  .form-title {
+    font-size: 36px;
+  }
+}
