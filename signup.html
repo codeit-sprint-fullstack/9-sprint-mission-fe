@@ -9,11 +9,9 @@
 </head>
 <body>
     <div id="container">
-            <div class="main_logo">
-            <a href="landing.html">
-                <img src="img/login_logo.svg" alt="Logo">
+            <a href="index.html">
+                <img src="img/login_logo.svg" alt="Logo" class = "main_logo">
             </a>
-        </div>
         <form>
             <label for="email">이메일</label>
             <div class="field">
@@ -41,7 +39,7 @@
             </div>
             <p class="error_msg"></p>
             </div>
-            <button type="submit" id="form_button">회원가입</button>
+            <button type="button" id="form_button">회원가입</button>
         </form>
             <div class="login_options">
                 <p>간편 로그인 하기</p>
@@ -60,7 +58,15 @@
                 </p>
                     <a href="login.html">로그인</a> 
                 </div>
+            <div class = "modal_overlay"></div>
+            <div class = "modal_container">
+                <p class = "modal_text">testing 입니다</p>
+                <div class = "btn_container">
+                    <button class = "modal_btn" type="button">확인</button>
+                </div>
+
+            </div>
     </div>
-    <script src="index.js"></script>
+    <script src="inputAuth.js" type ="module"></script>
 </body>
 </html>

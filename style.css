@@ -30,27 +30,30 @@
 --Error-red: #f74747;
 }
 
+
 body {
     background: #fff;
     font-family: 'Pretendard';
 }
 
+/*////////// nav ////////////*/
+
 nav {
     position: fixed;
-    display: flex;
     width: 100%;
-    padding: 0.5rem 25rem;
     border-bottom: 1px solid #DFDFDF;
     background: #FFF;
-    z-index: 1;
+    z-index: 10;
+    top: 0; left: 0; 
 }
 
 .gnb_wrap {
-    display: inline-flex;
-    flex-grow: 1;
-    align-items: center;
+    display: flex;
+    align-content: center;
     justify-content: space-between;
-    
+    max-width: 1200px;
+    margin: 0.5rem auto;
+
 }
 
 .gnb_logo {
@@ -59,7 +62,6 @@ nav {
     height: 3.2rem;
     padding: 0.32rem 0 0.36rem 0;
     gap: 0.537rem;
-
     cursor: pointer;
 }
 
@@ -71,61 +73,62 @@ nav {
     background: var(--Primary-100);
     border-style: none;
     cursor: pointer;
-}
-
-.gnb_login > a{
     text-decoration: none;
     color: var(--Secondary-100);
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: 1.625rem;
-
-
 }
 
-article{
-    display: flex;
-    height: 33.75rem;
-    justify-content: center;
-    align-items: center;
-    background: var(--Article);
-}
 
-#article_top{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-    gap: 0.4rem; 
-}
-
-#img_home_top {
-    width: 46.6rem;
-    height: 21.25rem;
-    padding-right: 0;
-}
-
-.content{
-    width: 100%;
+.wrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2rem;
-    padding-bottom: 6rem;
-        white-space: nowrap;
-
+    align-items: center;
+    white-space: pre-line;
 }
 
-.content h2 {
+/*///////article section////////*/
+
+
+article{
+    padding-top: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background: var(--Article);
+    /* width: 100%; */
+    line-height: 0;
+    white-space: pre-line;
+} 
+
+.article_content{
+    display: flex;
+    align-items: center;
+    gap: 0.4375rem;
+    
+}
+
+.article_text{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    gap: 2rem;
+    padding-bottom: 6rem;
+}
+
+.article_text > h2 {
     color: var(--Secondary-700);
     font-size: 2.5rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 3.5rem;
+    line-height: 140%;
     }
 
-.content button {
+.article_text button {
     display: flex;
     justify-content: center;
     border-radius: 2.5rem;
@@ -144,42 +147,35 @@ article{
     line-height: 1.5rem;   
 }
 
-/* //////////////Content Section ////////////////////*/ 
+/*///////section////////*/
 
 section {
-    display: flex;
-    padding: 8.6rem 21.5rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    
+    padding: 8.625rem 0rem;
 }
 
 .content_div {
     background: #FCFCFC;
     display: flex;
-    width: 65rem;
-    justify-content: space-between;
     align-items: center;
+    gap: 4rem;
+    /* padding-inline-end: 2rem;  다른 방법 고안*/
 }
 
-.content_div img {
-    width: 36.75rem;
-}   
+#left {
+    flex-direction: row-reverse;
+    padding-inline-end: 0;
+    /* padding-inline-start: 2rem; */
+    text-align: right;
+}
+
 .content_div_text {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
-    padding: 0 2rem;
     gap: 0.75rem;
+    line-height: 140%;
 }
 
-.content_div .left {
-    flex-direction: row-reverse;
-}
-
-.content_div h2 {
+.content_div_text > h2 {
     color: var(--Secondary-700);
     font-size: 2.5rem;
     font-style: normal;
@@ -188,45 +184,30 @@ section {
     letter-spacing: 0.05rem;
 }
 
-.content_div p {
+.content_div_text > p {
     color: var(--Secondary-700);
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 2rem; 
 }
 
 .content_div .topic {
     color: var(--Primary-100);
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     font-weight: 700;
-    line-height: 1.625rem;
-}
-
-
-#article_bottom{
-    display: inline-flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-    gap: 4.3rem; 
-}
-
-#article_bottom .content h2{
-    padding-bottom: 4rem;
 }
 
 
 footer {
+    /* width: 100%; */
     display: flex;
-    height: 10rem;
-    padding: 2rem 12.5rem;
-    justify-content: space-between;
+    padding-top: 2rem;
+    height: 20rem;
+    justify-content: space-evenly;
     align-items: start;
-    gap: 0.625rem;
-    flex-shrink: 0;
+    /* gap: 0.625rem; */
     background: var(--Secondary-900);
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 footer p{
@@ -262,13 +243,15 @@ footer p{
     gap: 0.75rem;
 }
 
+
 /*////////////////login_page////////////////////*/
 
 #container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-top: 3.5rem;
+    /* justify-content: center; */
     height: 100vh;
     background: var(--background);
     gap:2.5rem
@@ -288,7 +271,7 @@ form{
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.625rem;
+    line-height: 150%;
     outline: none;
 }
 
@@ -304,10 +287,6 @@ input.focus {
     background: var(--Secondary-50);
     outline: none;
 }
-
-/* input.empty{
-
-} */
 
 input.invalid{
     border-radius: 0.75rem;
@@ -342,7 +321,7 @@ label{
         border: none;
 }
 
-.field {
+.field{
     position: relative;
 }
 
@@ -359,7 +338,7 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
-        background-color: var(--Secondary-400);
+    background-color: var(--Secondary-400);
 
     width: 100%;
     height: 3.5rem;
@@ -374,7 +353,7 @@ label{
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 2rem; 
+    line-height: 120%; 
 }
 
 .focus{
@@ -387,6 +366,15 @@ label{
 #form_button.active{
     background-color: var(--Primary-100);
 
+}
+
+.alert{
+    color: var(--Cool-Gray-800, #1F2937);
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .login_options {
@@ -425,3 +413,245 @@ label{
 }
 
 
+/*/////////////////Alert design ////////////////////*/
+
+.modal_container {
+    display: none;
+    position: absolute;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 34rem;
+    height: 15rem;
+    border-radius: 0.5rem;
+    background-color: #FFF;
+    text-align: center;
+    font-size: 1rem;
+    gap: 0.625rem;
+}
+
+.modal_text{
+    color : var(--Secondary-800);
+    text-align: center;
+    font-weight: 500;
+    padding: 3rem 0rem;
+}
+
+.btn_container{
+    align-self:flex-end;
+    padding: 0rem 2rem;
+}
+
+.modal_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7.5rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: var(--Primary-100);
+    
+    /*text*/
+    font-weight: 600;
+    color : #FFF;
+    cursor: pointer;
+}
+
+.modal_overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.70);
+    z-index: 0;
+}
+
+/*////////////////responsive-size////////////////////*/
+
+
+
+@media (min-width: 375px) and (max-width: 744px) {
+
+    .gnb_wrap{
+        margin: 0.5rem 1rem;
+    }
+
+    .article_content{
+        flex-direction: column;
+        /* overflow: hidden; */
+    }
+
+    
+    .article_text {
+        text-align: center; 
+        margin-bottom : 8rem;
+    }
+    
+    .article_text h2{
+        font-size: 2rem;
+    }
+
+    .article_text button{
+        padding: 1rem 4.4375rem;
+        font-size: 1.125rem;
+    }
+
+    .wrap {
+        /* white-space: pre-line; */
+    }
+    
+    .article_content > img {
+        width: 100%;
+    }
+    /*section*/
+
+    section {
+        padding: 1.5rem ;
+    }
+
+    .content_div {
+        flex-direction: column;
+    }
+    .content_div > img {
+        width: 100%;
+    }
+
+    .content_div_text > h2 {
+        font-size: 1.5rem;
+    }
+
+    .content_div_text > p {
+        font-size: 1rem;
+    }
+    .content_div_text{
+        width: 100%;
+    }
+
+    .content_div .topic {
+        color: var(--Primary-100);
+        font-size: 1rem;
+    }
+
+    #left {
+        flex-direction: column;
+        text-align: left;
+    }
+
+
+    /*/////////login/////////*/
+
+    #container{
+        margin: 1.5rem 1rem;
+    }
+
+    label {
+        font-size:0.875rem
+    }
+    .form_input{
+        width: 21.4375rem;
+    }
+
+    .login_options{
+        width: 21.4375rem;
+    }
+
+    .main_logo{   
+        width: 12rem;
+    }
+
+    .modal_container{
+        width: 20rem;
+        height: 13rem;
+    }
+
+    /*modal alert*/
+
+    .btn_container{
+        align-self: center;
+    }
+}
+
+@media (min-width: 745px) and (max-width: 1200px) {
+
+    .gnb_wrap{
+        margin: 0.5rem 2rem;
+    }
+
+    article{
+        white-space: unset;
+    }
+
+    .article_content{
+        flex-direction: column;
+    }
+
+    .wrap{
+        align-items: normal ;
+    }
+    .article_text {
+        text-align: center; 
+        margin-bottom : 8rem;
+        font-size: 2rem;
+    }
+    
+    .article_text button{
+        padding: 1rem 4.4375rem;
+        font-size: 1.1 25rem;
+    }
+
+    
+    .article_content > img {
+        width: 100%;
+    }
+    /*section*/
+
+    .wrap{
+        white-space: unset;
+    }
+    section {
+        padding: 1.5rem ;
+    }
+
+    .content_div {
+        flex-direction: column;
+    }
+    .content_div > img { 
+        width: 100%;
+    }
+
+    .content_div_text > h2 {
+        font-size: 2rem;
+    }
+
+    .content_div_text > p {
+        font-size: 1.5rem;
+        
+    }
+    .content_div_text{
+        width: 100%;
+    }
+
+    .content_div .topic {
+        color: var(--Primary-100);
+        font-size: 1rem;
+    }
+
+    #left {
+        flex-direction: column;
+        text-align: left;
+    }
+    
+    footer{
+        display: flex;
+        height: 10rem;
+        padding: 2rem 1rem;
+        gap: 0.625rem;
+    }
+
+    #container{
+        margin: 3rem 1rem;
+    }
+    
+}
