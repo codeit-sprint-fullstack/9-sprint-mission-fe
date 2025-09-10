@@ -3,19 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판다마켓</title>
+    <title>판다마켓 - 회원가입</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="signup.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NE5HC2GRVQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NE5HC2GRVQ');
-</script>
 </head>
 <body>
     <!-- 내용 컨테이너 -->
@@ -29,34 +20,41 @@
         </div>
 
         <!-- 회원가입폼 -->
-        <form class="signup-form">
-                <div class="signup-label">
-                    <label for="signup-id">이메일</label>
-                </div>
+        <form class="signup-form" onsubmit="event.preventDefault(); handleSignup();">
+            <div class="form-group">
+                <label for="signup-id" class="signup-label">이메일</label>
                 <div class="signup-input">
-                    <input id="signup-id" type="email" required placeholder="이메일을 입력해주세요">
+                    <input id="signup-id" type="email" placeholder="이메일을 입력해주세요">
                 </div>
-                <div class="signup-label">
-                    <label for="signup-name">닉네임</label>
-                </div>
+                <div id="email-error" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-name" class="signup-label">닉네임</label>
                 <div class="signup-input">
-                    <input id="signup-name" type="text" required placeholder="닉네임을 입력해주세요">
+                    <input id="signup-name" type="text" placeholder="닉네임을 입력해주세요">
                 </div>
-                <div class="signup-label">  
-                    <label for="signup-pw">비밀번호</label>
-                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-pw" class="signup-label">비밀번호</label>
                 <div class="signup-input">
-                    <input id="signup-pw" type="password" required placeholder="비밀번호를 입력해주세요">
+                    <input id="signup-pw" type="password" placeholder="비밀번호를 입력해주세요">
                     <img class="eye-icon" src="image/secret-eye.png" alt="비밀번호 보기">
-                  </div>             
-                <div class="signup-label">  
-                    <label for="signup-pw-ck">비밀번호 확인</label>
-                </div>
+                  </div>       
+                <div id="password-error" class="error-message"></div>
+            </div>
+      
+            <div class="form-group">
+                <label for="signup-pw-ck" class="signup-label">비밀번호 확인</label>
                 <div class="signup-input">
-                    <input id="signup-pw-ck" type="password" required placeholder="비밀번호를 다시 한 번 입력해주세요">
+                    <input id="signup-pw-ck" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요">
                     <img class="eye-icon" src="image/secret-eye.png" alt="비밀번호 보기">
                 </div> 
-                <button class="signup-button" type="submit">회원가입</button>        
+                <div id="password-confirm-error" class="error-message"></div>  
+            </div>
+
+            <button class="signup-button" type="submit" disabled>회원가입</button>
         </form>
 
         <!-- 간편 로그인 -->
@@ -78,5 +76,14 @@
             <a id="log-in-button" href="/login.html">로그인</a>
         </div>
     </div>
+
+    <div id="custom-alert-overlay" class="alert-overlay">
+        <div id="custom-alert" class="alert-modal">
+            <p id="alert-message"></p>
+            <button id="alert-confirm-btn">확인</button>
+        </div>
+    </div>
+    <script src="signup.js"></script>
 </body>
 </html>
+

@@ -3,21 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판다마켓</title>
+    <title>판다마켓 - 로그인</title>
     <!-- CSS리셋 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
     <!-- 프리텐다드 웹폰트 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="login.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NE5HC2GRVQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NE5HC2GRVQ');
-</script>
 </head>
 <body>
     <!-- 내용 컨테이너 -->
@@ -29,21 +20,25 @@
             </a>
         </div>
         <!-- 로그인 폼 -->
-        <form class="login-form">
-                <div class="login-label">
-                    <label for="login-id">이메일</label>
-                </div>
+        <form class="login-form" onsubmit="event.preventDefault(); handleLogin();">
+            <div class="form-group">
+                <label for="login-id" class="login-label">이메일</label>
                 <div class="login-input">
-                    <input id="login-id" type="email" required placeholder="이메일을 입력해주세요">
+                    <input id="login-id" type="email" placeholder="이메일을 입력해주세요">
                 </div>
-                <div class="login-label">  
-                    <label for="login-pw">비밀번호</label>
-                </div>
+                <div id="email-error" class="error-message"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="login-pw" class="login-label">비밀번호</label>
                 <div class="login-input">
-                    <input id="login-pw" type="password" required placeholder="비밀번호를 입력해주세요">
-                    <img class="eye-icon" src="/image/secret-eye.png" alt="비밀번호 보기">
+                    <input id="login-pw" type="password" placeholder="비밀번호를 입력해주세요">
+                    <img class="eye-icon" src="image/secret-eye.png" alt="비밀번호 보기">
                 </div> 
-                <button class="login-button" type="submit">로그인</button>
+                <div id="password-error" class="error-message"></div>
+            </div>
+
+            <button class="login-button" type="submit" disabled>로그인</button>
         </form>
         <!-- 간편 로그인 -->
         <div class="easy-login">
@@ -63,5 +58,16 @@
             <a id="sign-up-button" href="/signup.html">회원가입</a>
         </div>
     </div>
+
+    <div id="custom-alert-overlay" class="alert-overlay">
+        <div id="custom-alert" class="alert-modal">
+            <p id="alert-message"></p>
+            <button id="alert-confirm-btn">확인</button>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+
 </body>
 </html>
+

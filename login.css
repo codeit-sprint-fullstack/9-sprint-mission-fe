@@ -17,11 +17,9 @@ a, button {
   --Secondary-400: #9CA3AF;
   --brand-blue: #3692FF;
   --Primary-100: #3692FF;
+  --error-red: #F74747;
+  --Cool-Gray-800: #1F2937;
 }
-
-
-
-
 
 
 /* 로그인 창 */
@@ -29,15 +27,15 @@ a, button {
   display:flex;
   flex-direction: column;
   max-width: 64rem;
-  margin:23.1rem auto 0 ;
-  gap: 2.4rem;
+  margin:15rem auto 0 ;
+  padding: 2rem;
 }
 
 /* 로그인 로고 */
 .login-logo {
   display: flex;
   justify-content: center;
-  margin: 0 0 1.6rem 0
+  margin: 0 0 4rem 0; 
 }
 
 .login-logo img {
@@ -51,25 +49,34 @@ a, button {
   flex-direction: column;
 }
 
+.form-group {
+    margin-bottom: 2.4rem;
+}
+
 .login-label {
   font-family: 'Pretendard', sans-serif;
   font-size: 1.8rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 2.6rem;
-  margin-bottom: 1.6rem;
   color: var(--Secondary-800);
+  margin-bottom: 1.6rem; 
+  display: block; 
+}
+
+.login-input {
+  position: relative; 
+  width: 100%;
 }
 
 .login-input input {
-  width: 64rem;
+  width: 100%;
   height: 5.6rem;
-  margin-bottom: 2.4rem;
   padding: 1.6rem 2.4rem;
   align-items: center;
   background: var(--Cool-Gray-100);
   border-radius: 1.2rem;
   border: none;
+  font-size: 1.6rem;
 }
 
 .login-input input::placeholder {
@@ -83,15 +90,10 @@ a, button {
   outline: 1px solid var(--brand-blue);
 }
 
-
-.login-input {
-  position: relative; 
-}
-
 .eye-icon {
   position: absolute;
-  top: 2.8rem; 
-  margin-top: -1.2rem; 
+  top: 50%;
+  transform: translateY(-50%);
   right: 2.4rem;
   cursor: pointer;
   width: 2.4rem; 
@@ -100,7 +102,7 @@ a, button {
 
 .login-button {
   display:flex;
-  width: 64rem;
+  width: 100%;
   height: 5.6rem;
   justify-content: center;
   align-items: center;
@@ -118,7 +120,7 @@ a, button {
 /* 간편 로그인 */
 .easy-login {
   display:flex;
-  width: 64rem;
+  width: 100%;
   height: 7.4rem;
   flex-direction: row;
   justify-content: space-between;
@@ -126,6 +128,7 @@ a, button {
   background: #E6F2FF;
   border-radius: 0.8rem;
   align-items: center;
+  margin-top: 2.4rem; 
 }
 
 #easy-text {
@@ -153,6 +156,7 @@ a, button {
   justify-content: center;
   align-items: center;
   gap: 0.4rem;
+  margin-top: 2.4rem; 
 }
 
 #question-text {
@@ -170,11 +174,96 @@ a, button {
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
   text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-skip-ink: none;
-  text-decoration-thickness: auto;
-  text-underline-offset: auto;
-  text-underline-position: from-font;
 }
+
+/* 유효성 검사 */
+.error-message {
+  color: var(--error-red, #F74747);
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 0.8rem;
+  margin-left: 1.6rem;
+  display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.error-border {
+    outline: 1px solid var(--error-red) !important;
+}
+
+.login-button:disabled {
+    background-color: var(--Secondary-400);
+    cursor: not-allowed;
+}
+
+.login-button:enabled {
+    background-color: var(--brand-blue);
+    cursor: pointer;
+}
+
+.alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+
+.alert-modal {
+  width: 540px;
+  height: 250px;
+  background: #FFF;
+  border-radius: 8px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+#alert-message {
+  color: var(--Cool-Gray-800, #1F2937);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  position: absolute;
+  width: 100%;
+  top: 108px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#alert-confirm-btn {
+  display: flex;
+  width: 120px;
+  height: 48px;
+  padding: 12px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--brand-blue, #3692FF);
+  border: none;
+  color: #FFF;
+  font-family: Pretendard;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+}
+
