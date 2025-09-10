@@ -14,11 +14,16 @@ body {
   max-width: 640px;
   height: 100vh;
   margin: 0 auto;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
+
+
+/* header */
+
 
 header .logo-link {
   display: block;
@@ -31,20 +36,25 @@ header .logo-link {
   width: 100%;
 }
 
+
+/* main */
+
+
 main {
   width: 100%;
   margin-top: 40px
 }
 
-.login-form .form-group {
+.login-form .form-group,
+.signup-form .form-group {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .form-group label {
-  color: var(--Secondary-800, #1F2937);
+  color: #1F2937;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -68,34 +78,57 @@ main {
     line-height: 26px;
   }
 
-.form-group input:focus {
-  outline: 1px solid #3692FF;
+.form-group .input-error {
+  border-radius: 12px;
+  border: 1px solid #F74747;
+  background: #F3F4F6;
 }
 
-.pw-wrap {
+.warning {
+  margin-top: -10px;
+  padding-left: 16px;
+  color: #F74747;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.form-password > div {
+  margin: 0;
+  padding: 0;
   position: relative;
-
-  img {
-    position: absolute;
-    top: 50%;
-    right: 24px;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
 }
 
-.login-form button {
+#see-password,
+#re-password {
+  position: absolute;
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  right: 24px;
+  cursor: pointer;
+}
+
+#login-btn,
+#signup-btn {
   width: 100%;
   padding: 16px 124px;
   background-color: #9CA3AF;
   border: none;
   border-radius: 40px;
-  color: var(--Cool-Gray-100, #F3F4F6);
+  color: #F3F4F6;
   text-align: center;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: 32px;
+}
+
+#login-btn.active,
+#signup-btn.active {
+  background-color: #3692FF;
+  cursor: pointer;
 }
 
 .easy-login-wrap {
@@ -118,8 +151,12 @@ main {
   width: 42px;
 }
 
-footer p {
-  color: var(--Secondary-800, #1F2937);
+
+/* footer */
+
+
+footer {
+  color: #1F2937;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -127,7 +164,7 @@ footer p {
 }
 
 footer .link {
-  color: var(--Primary-100, #3692FF);
+  color: #3692FF;
   line-height: normal;
   text-decoration-line: underline;
   text-decoration-style: solid;

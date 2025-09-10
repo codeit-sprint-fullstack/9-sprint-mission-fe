@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../styles/reset.css">
-  <link rel="stylesheet" href="../styles/style-login.css">
-  <title>로그인 해주세요~~</title>
+  <link rel="stylesheet" href="../styles/style-common.css">
+  <title>판다 마켓 로그인</title>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <a href="../../index.html" class="logo-link">
-        <img src="../assets/images/panda-market.png" alt="판다 마켓 로고" class="logo-img">
+      <a class="logo-link" href="../../index.html">
+        <img class="logo-img" src="../assets/images/panda-market.png" alt="판다 마켓 로고">
       </a>
     </header>
     <main>
@@ -23,29 +23,31 @@
           <div class="form-group">
             <label for="user-email">이메일</label>
             <input type="email" id="user-email" name="user-email" placeholder="이메일을 입력해주세요" required>
+            <p class="warning w-email"></p>
           </div>
           <!-- 비밀번호 -->
-          <div class="form-group">
-            <label for="user-pw">비밀번호</label>
-            <div class="pw-wrap">
-              <input type="password" id="user-pw" name="user-pw" placeholder="비밀번호를 입력해주세요" required>
-              <!-- 비밀번호 표시 -->
-              <img src="../assets/icons/btn_visibility_off_24px.svg" alt="비밀번호 표시">
+          <div class="form-group form-password">
+            <label for="user-password">비밀번호</label>
+            <div>
+              <input type="password" id="user-password" name="user-password" placeholder="비밀번호를 입력해주세요" required>
+              <img id="see-password" src="../assets/icons/btn_visibility_off_24px.svg" alt="비밀번호 표시">
             </div>
+            <p class="warning w-password"></p>   
           </div>
           <!-- 로그인 버튼 -->
-          <button type="submit">로그인</button>
+          <!-- button -> submit !!!!! -->
+          <button type="button" id="login-btn" disabled>로그인</button>
         </form>
       </section>
       <!-- 간편 로그인 -->
       <section class="easy-login-wrap">
-        <h2>간편 로그인하기</h2>
+        <span>간편 로그인하기</span>
         <div class="icon-links-wrap">
           <a href="https://www.google.com">
-            <img class="icon-img" src="../assets/icons/google_icon@3x.png" alt="구글로 가기" class="google-favicon">
+            <img class="icon-img" src="../assets/icons/google_icon@3x.png" alt="구글로 가기">
           </a>
           <a href="https://www.kakaocorp.com/page/">
-            <img class="icon-img" src="../assets/icons/katalk_icon@3x.png" alt="카카오로 가기" class="kakao-talk-fivicon">
+            <img class="icon-img" src="../assets/icons/katalk_icon@3x.png" alt="카카오로 가기">
           </a>
         </div>
       </section>
@@ -56,6 +58,8 @@
         <a href="./signup.html" class="link">회원가입</a>
       </p>
     </footer>
+  
+    <script src="../scripts/login.mjs" type="module"></script>
   </div>
 </body>
 </html>
