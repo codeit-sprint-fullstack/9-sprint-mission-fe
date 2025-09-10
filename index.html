@@ -13,6 +13,12 @@
   </script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--og tag-->
+  <meta property="og:title" content="판다마켓" />
+  <meta property="og:url" content="https://sprint-fs9-fe-8711b7.netlify.app/" />
+  <meta property="og:image" content="https://sprint-fs9-fe-8711b7.netlify.app/readme.png" />
+  <meta property="og:description" content="일상에서 모든 물건을 거래해보세요" />
+  <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./style/reset.css">
   <link rel="stylesheet" href="./style/fontface.css">
   <link rel="stylesheet" href="./style/style.css">
@@ -22,7 +28,12 @@
 <body>
   <header id="header">
     <nav id="nav">  
-      <h1 id="title"><a href="/"><img src="./img/title.png" alt="판다마켓 타이틀"></a></h1>
+      <h1 id="title"><a class="title-logo" href="/">
+        <picture>
+          <source media="(max-width: 46.4rem)" srcset="./img/logo-text.png">
+          <img class="logo" src="./img/logo.png" alt="판다마켓 로고"/>
+        </picture>
+      </a></h1>
       <div id="nav-right">
         <a id="btn-login" class="s-btn" href="/login" >로그인</a>
       </div>
