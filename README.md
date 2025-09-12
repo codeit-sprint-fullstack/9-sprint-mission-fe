@@ -1,12 +1,39 @@
-# React + Vite
+# 🐼 판다마켓 PANDA MARKET Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+코드잇 스프린트미션 프로젝트 판다마켓의 프론트엔드 입니다.
+![Panda Market Landing Image](./readme.png)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 프로젝트 진행상황
 
-## Expanding the ESLint configuration
+### 08.24
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. 랜딩 페이지 구현
+2. 로그인 및 회원가입 페이지 구현
+
+### 09.02
+
+3. 랜딩 페이지 및 로그인 및 회원가입 페이지의 미디어 쿼리를 이용한 반응형 웹 구현
+4. 로그인 및 회원가입 페이지 이메일 및 비밀번호 값 유효성 검사 구현
+5. 로그인 및 회원가입 페이지 더미데이터를 이용한 회원 여부 검증 로직 구현
+6. 경고 팝업창 구현
+7. 파비콘 추가
+
+### 09.12
+
+8. API서버에 HTTP 메소드 요청을 하는 CRUD 함수와 이를 테스트하는 함수 구현
+9. React 적용 시작
+
+## 기술 스택
+
+### 지금까지 사용 된 스택
+
+1. HTML
+2. CSS
+3. JavaScript
+4. React
+
+### 앞으로 사용될 스택
+
+1. Next.js
