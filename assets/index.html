@@ -4,111 +4,107 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>판다마켓</title>
-   <meta property="og:title" content="판다마켓" />
+  <link rel="icon" href="./images/favicon.ico" />
+
+  <meta property="og:title" content="판다마켓" />
   <meta property="og:description" content="일상에서 모든 물건을 거래해보세요" />
   <meta property="og:image" content="https://learncode-deploy.s3.ap-northeast-2.amazonaws.com/panda-market/meta-image.png" />
   <meta property="og:url" content="https://your-netlify-domain.netlify.app/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="판다마켓" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="판다마켓" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="판다마켓" />
-<meta name="twitter:description" content="일상에서 모든 물건을 거래해보세요" />
-<meta name="twitter:image" content="https://learncode-deploy.s3.ap-northeast-2.amazonaws.com/panda-market/meta-image.png" />
-  
-  
-  
-  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="판다마켓" />
+  <meta name="twitter:description" content="일상에서 모든 물건을 거래해보세요" />
+  <meta name="twitter:image" content="https://learncode-deploy.s3.ap-northeast-2.amazonaws.com/panda-market/meta-image.png" />
+
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 </head>
 <body>
   <header class="header">
-  <div class="container header-inner">
-  
-    <div class="brand">
-      <img class="brand-logo" src="./images/panda-face.svg" alt="판다 로고" />
-      <a href="./index.html" class="logo" aria-label="판다마켓 로고">판다마켓</a>
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-logo" src="./images/panda-face.svg" alt="판다 로고" />
+        <a href="./index.html" class="logo" aria-label="판다마켓 로고">판다마켓</a>
+      </div>
+      <a href="./login.html" class="btn-login">로그인</a>
     </div>
+  </header>
 
-    
-    <a href="./login.html" class="btn-login">로그인</a>
-  </div>
-</header>
-<main class="main">
-  <!--좌(텍스트/버튼) / 우(판다 이미지) -->
-  <section class="hero-wrap">
-    <div class="container hero">
-      <div class="hero-left">
-        <h1>일상의 모든 물건을<br>거래해 보세요</h1>
-        <a href="/items" class="btn-primary">구경하러 가기</a>
+  <main class="main">
+    <!-- Hero -->
+    <section class="hero-wrap">
+      <div class="container hero">
+        <div class="hero-left">
+          <h1>일상의 모든 물건을<br>거래해 보세요</h1>
+          <a href="./items.html" class="btn-primary">구경하러 가기</a>
+        </div>
+        <div class="hero-right">
+          <img src="./images/Img_home_top.png" alt="판다 일러스트">
+        </div>
       </div>
-      <div class="hero-right">
-        <img src="./images/Img_home_top.png" alt="판다 일러스트">
-      </div>
-    </div>
-  </section>
-
-  <!--(좌/우 번갈아) -->
-  <section class="cards container">
-    <!--  좌 이미지 / 우 텍스트 -->
-    <article class="card">
-      <div class="card-media">
-        <img src="./images/Img_home_01.png" alt="인기 상품 이미지">
-      </div>
-      <div class="card-text">
-        <p class="eyebrow">Hot item</p>
-        <h2>인기 상품을<br>확인해 보세요</h2>
-        <p class="desc">가장 HOT한 중고거래 물품을<br>판다마켓에서 확인해 보세요</p>
-      </div>
-    </article>
     </section>
 
-    <!--  좌 텍스트 / 우 이미지 -->
+    <!-- Cards -->
     <section class="cards container">
-    <article class="card card-reverse">
-      <div class="card-media">
-        <img src="./images/Img_home_02.png" alt="검색 일러스트">
-      </div>
-      <div class="card-text">
-        <p class="eyebrow">Search</p>
-        <h2>구매를 원하는<br>상품을 검색하세요</h2>
-        <p class="desc">구매하고 싶은 물건을 검색해서<br>쉽게 찾아보세요</p>
-      </div>
-    </article>
+      <article class="card">
+        <div class="card-media">
+          <img src="./images/Img_home_01.png" alt="인기 상품 이미지">
+        </div>
+        <div class="card-text">
+          <p class="eyebrow">Hot item</p>
+          <h2>인기 상품을<br>확인해 보세요</h2>
+          <p class="desc">가장 HOT한 중고거래 물품을<br>판다마켓에서 확인해 보세요</p>
+        </div>
+      </article>
     </section>
 
-    <!-- 좌 이미지 / 우 텍스트 -->
     <section class="cards container">
-    <article class="card">
-      <div class="card-media">
-        <img src="./images/Img_home_03.png" alt="등록 일러스트">
-      </div>
-      <div class="card-text">
-        <p class="eyebrow">Register</p>
-        <h2>판매를 원하는<br>상품을 등록하세요</h2>
-        <p class="desc">어떤 물건이든 판매하고 싶은 상품을 <br>쉽게 등록해보세요</p>
-      </div>
-    </article>
-  </section>
+      <article class="card card-reverse">
+        <div class="card-media">
+          <img src="./images/Img_home_02.png" alt="검색 일러스트">
+        </div>
+        <div class="card-text">
+          <p class="eyebrow">Search</p>
+          <h2>구매를 원하는<br>상품을 검색하세요</h2>
+          <p class="desc">구매하고 싶은 물건을 검색해서<br>쉽게 찾아보세요</p>
+        </div>
+      </article>
+    </section>
 
-  <section>
-    <div class="footer-top"></div>
-  </section> 
-  <!-- 하단 배너(푸터 위 하늘색 섹션) -->
-  <section class="trust-wrap">
-    <div class="container trust">
-      <div class="trust-left">
-        믿을 수 있는<br>판다마켓 중고 거래
-      </div>
-      <div class="trust-right">
+    <section class="cards container">
+      <article class="card">
+        <div class="card-media">
+          <img src="./images/Img_home_03.png" alt="등록 일러스트">
+        </div>
+        <div class="card-text">
+          <p class="eyebrow">Register</p>
+          <h2>판매를 원하는<br>상품을 등록하세요</h2>
+          <p class="desc">어떤 물건이든 판매하고 싶은 상품을<br>쉽게 등록해보세요</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="footer-top"></div>
+    </section> 
+
+    <!-- Trust Section -->
+    <section class="trust-wrap">
+      <div class="container trust">
+        <div class="trust-left">
+          믿을 수 있는<br>판다마켓 중고 거래
+        </div>
+        <div class="trust-right">
           <img src="./images/Img_home_bottom.png" alt="대화하는 판다들">
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">codeit-2024</div>
@@ -119,25 +115,21 @@
 
       <div class="footer-right" aria-label="SNS">
         <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-              <img src="./images/ic_facebook.png" alt="페이스북" class="facebook" />
+          <img src="./images/ic_facebook.png" alt="페이스북" class="facebook" />
         </a>
         <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
-          <img src="./images/ic_twitter.png" target="_blank" rel="noopener" aria-label="twitter">
+          <img src="./images/ic_twitter.png" alt="트위터" />
         </a>
         <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
-          <img src="./images/ic_youtube.png" taret="_blank" rel="noopener" aria-label="youtube">
+          <img src="./images/ic_youtube.png" alt="유튜브" />
         </a>
-        
         <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="./images/ic_instagram.png" target="_blank" rel="noopener" aria-label="instagram">
+          <img src="./images/ic_instagram.png" alt="인스타그램" />
         </a>
       </div>
     </div>
   </footer>
 
- 
   <script type="module" src="./script/main.js"></script>
 </body>
-
-
 </html>
