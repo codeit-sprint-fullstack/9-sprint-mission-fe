@@ -3,9 +3,9 @@ import {
   PasswordValidator,
   PasswordCheckValidator,
   NicknameValidator,
-} from "../src/utils/validators.js";
-import modalShow from "../src/modal/LoginModal.js";
-import USER_DATA from "../src/db.js";
+} from "../../src/utils/validators.js";
+import modalShow from "../components/modal/LoginModal.js";
+import USER_DATA from "../db.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const $email = document.getElementById("email");
@@ -27,22 +27,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // 클래스 객체 생성
   const emailValidator = new EmailValidator($email, $emailError);
   const nicknameValidator = new NicknameValidator($nickName, $nickNameError);
-  const passwordValidator = new PasswordValidator($pw, $pwError);
-  const passwordChekerValidator = new PasswordCheckValidator(
+  const pwValidator = new PasswordValidator($pw, $pwError);
+  const pwChekerValidator = new PasswordCheckValidator(
     $pwCheker,
     $pwChekerError,
     $pw
   );
 
   /**
-   * 3.    이메일-비밀번호 유효성 검사
+   *     이메일-비밀번호 유효성 검사
    */
   function checkFormValid() {
     const isValid =
       emailValidator.validate() &&
       nicknameValidator.validate() &&
-      passwordValidator.validate() &&
-      passwordChekerValidator.validate();
+      pwValidator.validate() &&
+      pwChekerValidator.validate();
     $submitBtn.disabled = !isValid;
   }
 
@@ -57,30 +57,32 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   $pw.addEventListener("focusout", () => {
-    passwordValidator.validate();
+    pwValidator.validate();
     checkFormValid();
   });
 
   $pwCheker.addEventListener("focusout", () => {
-    passwordChekerValidator.validate();
+    pwChekerValidator.validate();
     checkFormValid();
   });
 
   /**
+   * 4. 제출후 페이지 이동
+   *
    * @event submit
    * @param {SubmitEvent} e - 폼 제출 이벤트 객체
    *
    */
   $login.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = $email.value;
 
+    const email = $email.value;
     const user = USER_DATA.find((user) => user.email === email);
 
     if (user) {
       modalShow("사용 중인 이메일입니다.");
     } else {
-      location.href = "/login";
+      location.href = "/login.html";
     }
   });
 
@@ -95,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (input.type === "password") {
         input.type = "text";
-        icon.src = "./public/images/btn_visibility_on.svg";
+        icon.src = "../../public/images/btn_visibility_on.svg";
       } else {
         input.type = "password";
-        icon.src = "./public/images/btn_visibility_off.svg";
+        icon.src = "../../public/images/btn_visibility_off.svg";
       }
     });
   });

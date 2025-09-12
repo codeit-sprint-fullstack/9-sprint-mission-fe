@@ -1,6 +1,6 @@
-import { EmailValidator, PasswordValidator } from "../src/utils/validators.js";
-import modalShow from "../src/modal/LoginModal.js";
-import USER_DATA from "../src/db.js";
+import modalShow from "../components/modal/LoginModal.js";
+import USER_DATA from "../db.js";
+import { EmailValidator, PasswordValidator } from "../utils/validators.js";
 
 // DOM이 로드시(방어코드)
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const $pwEyeBtn = document.querySelectorAll(".btn_visibility_icon");
 
   // 클래스 객체 생성
-  const emailValidator = new EmailValidator($email, $emailError); 
+  const emailValidator = new EmailValidator($email, $emailError);
   const passwordValidator = new PasswordValidator($pw, $pwError);
 
   /**
-   *    이메일-비밀번호 유효성 검사
+   *     이메일-비밀번호 유효성 검사
    */
   function checkFormValid() {
     const isValid = emailValidator.validate() && passwordValidator.validate();
@@ -43,13 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   $login.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = $email.value;
-    const password = $pw.value;
+    const email = $email.value.trim();
+    const password = $pw.value.trim();
 
     const user = USER_DATA.find(
       (user) => user.email === email && user.password === password
     );
-
 
     if (!user) {
       modalShow("비밀번호가 일치하지 않습니다.");
@@ -59,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /**
-   * 5. 비밀번호 표시 on/off
+   *   비밀번호 표시 on/off
    */
   $pwEyeBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -69,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (input.type === "password") {
         input.type = "text";
-        icon.src = "./public/images/btn_visibility_on.svg";
+        icon.src = "../../public/images/btn_visibility_on.svg";
       } else {
         input.type = "password";
-        icon.src = "./public/images/btn_visibility_off.svg";
+        icon.src = "../../public/images/btn_visibility_off.svg";
       }
     });
   });
