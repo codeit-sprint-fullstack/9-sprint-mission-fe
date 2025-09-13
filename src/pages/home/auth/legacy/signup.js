@@ -4,8 +4,13 @@ import {
   PasswordCheckValidator,
   NicknameValidator,
 } from "../../src/utils/validators.js";
+<<<<<<< HEAD:src/pages/home/auth/legacy/signup.js
 import modalShow from "./components/Modal/LoginModal.js";
 import USER_DATA from "../db/index.js";
+=======
+import modalShow from "../components/Modal/LoginModal.js";
+import USER_DATA from "../db.js";
+>>>>>>> 780d1c1 (Feat: 전역 스타일 진입점에 추가, 카드리스트 카드 컴포넌트 더미 추가):src/pages/signup.js
 
 document.addEventListener("DOMContentLoaded", () => {
   const $email = document.getElementById("email");
