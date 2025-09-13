@@ -1,4 +1,4 @@
-import modalShow from "../components/modal/LoginModal.js";
+import modalShow from "../components/Modal/LoginModal.js";
 import USER_DATA from "../db.js";
 import { EmailValidator, PasswordValidator } from "../utils/validators.js";
 

@@ -66,6 +66,7 @@ table {
 
 html {
   font-size: 100%; /* default: 16px */
+  font-family: var(--font-family-base);
 }
 
 /* 전역속성 */
@@ -100,6 +101,8 @@ html {
   --font-md: 0.875rem;    /* 14px */
   --font-sm: 0.8125rem;   /* 13px */
   --font-xs: 0.75rem;     /* 12px */
+
+  --font-family-base: 'Pretendard', Arial, sans-serif;
 } 
 
 /* 

@@ -4,7 +4,7 @@ import {
   PasswordCheckValidator,
   NicknameValidator,
 } from "../../src/utils/validators.js";
-import modalShow from "../components/modal/LoginModal.js";
+import modalShow from "../components/Modal/LoginModal.js";
 import USER_DATA from "../db.js";
 
 document.addEventListener("DOMContentLoaded", () => {
