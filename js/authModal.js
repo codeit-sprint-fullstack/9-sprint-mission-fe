@@ -1,4 +1,6 @@
-const USER_DATA = [
+import { userAlert } from "./alertModal.js";
+
+export const USER_DATA = [
     { email: 'codeit1@codeit.com', password: "codeit101!" },
     { email: 'codeit2@codeit.com', password: "codeit202!" },
     { email: 'codeit3@codeit.com', password: "codeit303!" },
@@ -8,21 +10,7 @@ const USER_DATA = [
 ];
 
 
-function userAlert(msg){
-    const modalStatus = document.querySelector('.modal_container');
-    const modalBg = document.querySelector('.modal_overlay')
-    const alertMsg = document.querySelector('.modal_text');
-    const alertBtn = document.querySelector('.modal_btn');
-
-        modalStatus.style.display = "flex";
-        alertMsg.textContent = msg;
-        modalBg.style.display = "unset";
-        alertBtn.addEventListener('click', () => {
-        modalStatus.style.display = "none"
-        modalBg.style.display = "none"});
-}
-
-export default function findUser(btn){
+export function findUser(btn){
     const INPUT_EMAIL = document.querySelector('input[type="email"]');
     const INPUT_PWD   = document.querySelector('input[type="password"]');
 
@@ -30,7 +18,7 @@ export default function findUser(btn){
 
     if (btn.textContent === '회원가입'){
         if (foundUser) {
-            userAlert('이미 사용 중인 이메일입니다.');
+            userAlert('이미 사용 중인 이메일입니다.', foundUser);
         } else {
             window.location.href = "./login.html";
         }
@@ -40,10 +28,13 @@ export default function findUser(btn){
             if (foundUser.password === INPUT_PWD.value) {
                 window.location.href = "./items.html";
             } else {
-                userAlert('비밀번호가 일치하지 않습니다');
+                userAlert('비밀번호가 일치하지 않습니다', foundUser);
             }
         } else {
-            userAlert(`존재하지 않는 이메일입니다.`);
+            userAlert(`존재하지 않는 이메일입니다.`, foundUser);
         }
     }
 }
+
+
+

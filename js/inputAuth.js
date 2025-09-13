@@ -1,27 +1,6 @@
-import authEvent from './js/authModal.js';
+import { updateButton } from "../client.mjs";
 
-const el = document.querySelectorAll('input');
-const btn = document.querySelector('#form_button');
-
-
-function updateButton() { 
-    let valid = true;
-
-    el.forEach((e) => {
-        if (e.value.trim() === '' || e.classList.contains('invalid')) 
-            valid = false;
-    });
-    if (valid) {
-        btn.classList.add('active');
-        btn.disabled = false;
-    } else {
-        btn.classList.remove('active');
-        btn.disabled = true;
-    }
-
-}
-
-el.forEach((e) => {
+export function updateInput(e, btn){
     e.addEventListener('focusin', () => e.classList.add('focus'));
     e.addEventListener('change', () => {
         const msg = e.parentElement.querySelector('.error_msg');
@@ -57,32 +36,9 @@ el.forEach((e) => {
             e.classList.remove('invalid');
             const msg = e.parentElement.querySelector('.error_msg');
             msg.textContent = '';
+        } else {
+            e.classList.remove ('invaild');
         }
         updateButton();
     });
-});
-
-
-el.forEach((t)=> {
-    if (t.type === 'password') {
-        const eyeIcon = t.parentElement.querySelector('img');
-        eyeIcon.addEventListener('click', () => {
-            if (t.type === 'password') {
-                t.type = 'text';
-                eyeIcon.src = 'img/btn_visibility_on.svg';
-            } else {
-                t.type = 'password';
-                eyeIcon.src = 'img/btn_visibility_off.svg';
-            }
-        });
-    }
-});
-
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (!btn.classList.contains('active')) return;
-    authEvent(btn);
-});
-
-
-
+}
