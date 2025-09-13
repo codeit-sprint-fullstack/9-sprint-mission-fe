@@ -15,9 +15,10 @@ import {
 } from "./api-functions/ProductService.js";
 
 //
-// Article APIs
+// Article APIs =====================================================
 //
-// GET /articles
+
+// // GET /articles
 // const paramsForGettingArticles = {
 //   page: 2,
 //   pageSize: 12,
@@ -26,12 +27,12 @@ import {
 // const articles = await getArticles(paramsForGettingArticles);
 // console.log(articles);
 
-// GET /articles/:id
+// // GET /articles/:id
 // const ARTICLE_GET_ID = 4340;
 // const articleGotten = await getArticle(ARTICLE_GET_ID);
 // console.log(articleGotten);
 
-// POST /articles
+// // POST /articles
 // const newArticle = {
 //   title: "게시글 제목입니다.",
 //   content: "게시글 내용입니다..",
@@ -40,7 +41,7 @@ import {
 // const createdArticle = await createArticle(newArticle);
 // console.log(createdArticle);
 
-// PATCH /articles/:id
+// // PATCH /articles/:id
 // const ARTICLE_PATCH_ID = 4340;
 // const articleToPatch = {
 //   title: "수정!!할 제목입니다.",
@@ -48,15 +49,16 @@ import {
 // const patchedArticle = await patchArticle(ARTICLE_PATCH_ID, articleToPatch);
 // console.log(patchedArticle);
 
-// DELETE /articles/:id
+// // DELETE /articles/:id
 // const ARTICLE_DELETE_ID = 4340;
-// const deletedArticle = await deleteArticle(ARTICLE_DELETE_ID);
-// console.log(deletedArticle);
+// const deletedArticleID = await deleteArticle(ARTICLE_DELETE_ID);
+// console.log(deletedArticleID);
 
 //
-// Product APIs
+// Product APIs =====================================================
 //
-// GET /products
+
+// // GET /products
 // const paramsForProducts = {
 //   page: 3,
 //   pageSize: 11,
@@ -65,12 +67,12 @@ import {
 // const productList = await getProductList(paramsForProducts);
 // console.log(productList);
 
-// GET /products/:id
-// const PRODUCT_GET_ID = 2020;
+// // GET /products/:id
+// const PRODUCT_GET_ID = 1859;
 // const productGotten = await getProduct(PRODUCT_GET_ID);
 // console.log(productGotten);
 
-// POST / products;
+// // POST / products;
 // const newProduct = {
 //   name: "LG그램",
 //   description: "Srting...",
@@ -81,8 +83,8 @@ import {
 // const postedProduct = await createProduct(newProduct);
 // console.log(postedProduct);
 
-// PATCH /products/:id
-// const PRODUCT_PATCH_ID = 2020;
+// // PATCH /products/:id
+// const PRODUCT_PATCH_ID = 2057;
 // const productToPatch = {
 //   name: "LG그램 2025 (수정)",
 // };
@@ -90,6 +92,6 @@ import {
 // console.log(patchedProduct);
 
 // DELETE /products/:id
-// const PRODUCT_DELETE_ID = 2020;
-// const deletedProduct = await deleteProduct(PRODUCT_DELETE_ID);
-// console.log(deletedProduct);
+// const PRODUCT_DELETE_ID = 1859;
+// const deletedProductID = await deleteProduct(PRODUCT_DELETE_ID);
+// console.log(deletedProductID);
