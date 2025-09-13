@@ -26,7 +26,7 @@ export function findUser(btn){
     else {
         if (foundUser) {
             if (foundUser.password === INPUT_PWD.value) {
-                window.location.href = "./items.html";
+                window.location.href = "../pages/items.html";
             } else {
                 userAlert('비밀번호가 일치하지 않습니다', foundUser);
             }

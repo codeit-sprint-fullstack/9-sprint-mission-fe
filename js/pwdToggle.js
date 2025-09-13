@@ -5,10 +5,10 @@ export function eyeToggle(t){
         eyeIcon.addEventListener('click', () => {
             if (t.type === 'password') {
                 t.type = 'text';
-                eyeIcon.src = './img/btn_visibility_on.svg';
+                eyeIcon.src = '../img/btn_visibility_on.svg';
             } else {
                 t.type = 'password';
-                eyeIcon.src = './img/btn_visibility_off.svg';
+                eyeIcon.src = '../img/btn_visibility_off.svg';
             }
         });
     }

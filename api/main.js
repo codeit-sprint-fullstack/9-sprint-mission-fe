@@ -4,7 +4,7 @@ import {
     createArticle,
     patchArticle,
     deleteArticle,
-} from "./api/articleService.js";
+} from "./articleService.js";
 
 import {
     getProductList,
@@ -12,7 +12,7 @@ import {
     createProduct,
     patchProduct,
     deleteProduct,
-} from "./api/productService.js";
+} from "./productService.js";
 
 
   // --- Article API ---  //

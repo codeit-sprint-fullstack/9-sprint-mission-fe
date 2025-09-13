@@ -1,4 +1,4 @@
-import { updateButton } from "../client.mjs";
+import { updateButton } from "./updateBtn.js";
 
 export function updateInput(e, btn){
     e.addEventListener('focusin', () => e.classList.add('focus'));
