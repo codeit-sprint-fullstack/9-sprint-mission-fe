@@ -16,25 +16,25 @@
 
 
 
-/*   이메일 입력란 유효성 체크 - input event  */
-let inputEmail = document.querySelector('input[name="email"]');
-inputEmail.addEventListener('input', (event) => {
-  let span = inputEmail.parentElement.querySelector('span');
+/*   이메일 입력란 유효성 체크 - focusout event  */
+const inputEmailForFocusOutEvent = document.querySelector('input[name="email"]');
+inputEmailForFocusOutEvent.addEventListener('focusout', (event) => {
+  let span = inputEmailForFocusOutEvent.parentElement.querySelector('span');
   let btnAuth = document.querySelector('.button.auth');
 
   // 이메일 유효성 검증
-  if(checkValidEmail(inputEmail.value)) {
-    inputEmail.parentElement.classList.remove('invalid');  
+  if(checkValidEmail(inputEmailForFocusOutEvent.value)) {
+    inputEmailForFocusOutEvent.parentElement.classList.remove('invalid');  
 
     try {
       // 모든 계정 정보 유효성 체크
-      if(checkValidInputAccount(inputEmail.value, inputPassword.value, inputRePassword.value)) {
+      if(checkValidInputAccount(inputEmailForFocusOutEvent.value, inputPassword.value, inputRePassword.value)) {
         console.log(inputRePassword.value);
         btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
       }
     } catch(e) {
       // 모든 계정 정보 유효성 체크
-      if(checkValidInputAccount(inputEmail.value, inputPassword.value)) {
+      if(checkValidInputAccount(inputEmailForFocusOutEvent.value, inputPassword.value)) {
         console.log('로그인 체크 -> ', e);
         btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
       }
@@ -42,26 +42,85 @@ inputEmail.addEventListener('input', (event) => {
 
     return;
   }
+
+
+  if(span === null || span === undefined) {
+    span = document.createElement('span');    
+    
+    inputEmailForFocusOutEvent.after(span);
+  } 
+
+
   span.textContent = "잘못된 이메일 형식입니다.";
 
-  inputEmail.parentElement.classList.add('invalid');  
+  inputEmailForFocusOutEvent.parentElement.classList.add('invalid');  
   btnAuth.classList.add("disabled"); 
 
 });
 
+/*   이메일 입력란 유효성 체크 - input event  */
+/*  기획 요구사항 따라 focusout 사용하기 위해 주석 - 기능상 문제 없음
+let inputEmailForInputEvent = document.querySelector('input[name="email"]');
+inputEmailForInputEvent.addEventListener('input', (event) => {
+  let span = inputEmailForInputEvent.parentElement.querySelector('span');
+  let btnAuth = document.querySelector('.button.auth');
+
+  // 이메일 유효성 검증
+  if(checkValidEmail(inputEmailForInputEvent.value)) {
+    inputEmailForInputEvent.parentElement.classList.remove('invalid');  
+
+    try{
+      // 모든 계정 정보 유효성 체크
+      if(checkValidInputAccount(inputEmailForInputEvent.value, inputPassword.value, inputRePassword.value)) {
+        console.log(inputRePassword.value);
+        btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
+      }
+    } catch(e) {
+      // 모든 계정 정보 유효성 체크
+      if(checkValidInputAccount(inputEmailForInputEvent.value, inputPassword.value)) {
+        console.log('로그인 체크 -> ', e);
+        btnAuth.classList.remove("disabled"); // 회원 인증 버튼 활성화
+      }
+    }
+
+    return;
+  }
+
+
+  if(span === null || span === undefined) {
+    span = document.createElement('span');    
+    
+    inputEmailForInputEvent.after(span);
+  } 
+
+
+  span.textContent = "잘못된 이메일 형식입니다.";
+
+  inputEmailForInputEvent.parentElement.classList.add('invalid');  
+  btnAuth.classList.add("disabled"); 
+
+
+});
+*/
 
 
 /*  이메일 입력란 유효성 체크 - focusout event  */
-inputEmail.addEventListener('focusout', (event) => {
+inputEmailForInputEvent.addEventListener('focusout', (event) => {
   let span;
 
-  if(inputEmail.value !== "") {
+  if(inputEmailForInputEvent.value !== "") {
     return;
   }
-  span = inputEmail.nextElementSibling;
+  span = inputEmailForInputEvent.parentElement.querySelector('span');
+  if(span === null || span === undefined) {
+    span = document.createElement('span');
+    inputEmailForInputEvent.after(span);
+  } 
+
+
   span.textContent = "이메일을 입력해 주세요.";
 
-  inputEmail.parentElement.classList.add('invalid');    
+  inputEmailForInputEvent.parentElement.classList.add('invalid');    
 });
 
 
