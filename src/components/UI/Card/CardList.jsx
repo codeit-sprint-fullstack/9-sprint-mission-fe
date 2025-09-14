@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { Card } from "./Card";
 import { getProductList } from "@/api/ProductService";
 import { SearchX } from "lucide-react";
@@ -37,15 +38,56 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
 
   return (
     <div className={styles.cardContainer}>
+=======
+import Card from "./Card";
+import styles from './CardList.module.css'
+import { getProduct, getProductList } from '@/api/ProductService'
+
+function CardList({ type }) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        let data = [];
+        if(type === 'favorite') {
+          data = await getProductList(1,4,'','favorite');
+        } else {
+          data = await getProduct(); // 전체상품
+        }
+        setProducts(data.list);
+      } catch (err) {
+        console.error('Failed getProcut:', err)
+      }
+    }
+
+    fetchProduct()
+  }, [type])
+
+  return (
+    <div className={type === 'favorite' ? styles.favoriteContainer : styles.cardContainer}>
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
       {products.map((item) => (
         <Card
           key={item.id}
           name={item.name}
           price={item.price}
           images={item.images}
+<<<<<<< HEAD
           loading={loading}
         />
       ))}
     </div>
   );
 }
+=======
+          type={type}
+        />
+      ))}
+    </div>
+  )
+}
+
+
+export default CardList;
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)

@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+=======
+.favoriteContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
   gap: 24px;
   padding-top: var(--font-lg);
 }
 
+<<<<<<< HEAD
 .emptyQuery {
   display: flex;
   flex-direction: column;
@@ -39,4 +47,11 @@
   .cardContainer {
     grid-template-columns: repeat(2, 1fr);
   }
+=======
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 24px;
+  padding-top: var(--font-lg);
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 }

@@ -49,6 +49,7 @@
   font-family: var(--font-family-base);
   font-size: var(--font-xs);
   font-weight: 500;
+<<<<<<< HEAD
 }
 
 /*--------- skeleton-section ----------*/
@@ -139,4 +140,6 @@
     width: 168px;
     height: 168px;
   }
+=======
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 }

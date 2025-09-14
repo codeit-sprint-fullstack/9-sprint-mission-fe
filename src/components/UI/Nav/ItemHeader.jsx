@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useBreakPoint } from "@/hooks/useBreakpoint";
 import { Link, NavLink } from "react-router-dom";
 import styles from './ItemHeader.module.css';
@@ -5,11 +6,17 @@ import styles from './ItemHeader.module.css';
 export function ItemHeader() {
   const { isDesktop, isTablet, isMobile } = useBreakPoint();
 
+=======
+import styles from './ItemHeader.module.css';
+
+function ItemHeader() {
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
   return (
     <nav className={styles.logoContainer}>
       <div className={styles.logoBox}>
         <div className={styles.logo}>
           <div>
+<<<<<<< HEAD
             <Link className={styles.logoTitleLink} to="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</Link>
           </div>
           <div className={styles.logoParaContainer}>
@@ -37,3 +44,19 @@ export function ItemHeader() {
     </nav >
   );
 }
+=======
+            <a className={styles.logoTitleLink} href="/"><img className={styles.logoImg} src="../../../public/images/logo.png" alt="pandamarket" />판다마켓</a>
+          </div>
+          <div className={styles.logoParaContainer}>
+            <p className={styles.logoPara}>자유게시판</p>
+            <p className={styles.logoPara}>중고마켓</p>
+          </div>
+        </div>
+        <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
+      </div>
+    </nav>
+  )
+}
+
+export default ItemHeader
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)

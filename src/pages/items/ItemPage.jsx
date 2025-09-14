@@ -1,7 +1,8 @@
-import ItemHeader from "@/components/Nav/ItemHeader"
-import DropDown from "@/components/Button/DropDown"
+import ItemHeader from "@/components/UI/Nav/ItemHeader"
+import DropDown from "@/components/UI/Button/DropDown"
 import Footer from "@/components/Footer"
-import CardList from "@/components/Card/CardList"
+import CardList from "@/components/UI/Card/CardList"
+import Input from "@/components/UI/Input/Input"
 import styles from './itempage.module.css'
 
 export default function ItemPage() {
@@ -12,14 +13,14 @@ export default function ItemPage() {
 
         <div className={styles.bestItemList}>
           <p className={styles.bestItemPara}>베스트 상품</p>
-          <CardList />
+          <CardList type={'favorite'} />
         </div>
 
         <div>
           <div className={styles.sellItemContainer}>
             <p className={styles.sellItemPara}>판매 중인 상품</p>
             <div className={styles.sellItemFilter}>
-              <input className={styles.sellItemInput} placeholder="검색할 상품을 입력해주세요" />
+              <Input />
               <button className={styles.sellItemButton} >상품 등록하기</button>
               <DropDown />
             </div>

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 import {app} from '@/constants/api'
+=======
+import axios from "axios";
+
+const app = axios.create({
+  baseURL: "https://panda-market-api.vercel.app",
+});
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 
 /**
  *
@@ -39,6 +47,22 @@ export async function getProduct() {
   try {
     const res = await app.get(`products`);
     return res.data
+<<<<<<< HEAD
+=======
+  } catch (err) {
+    console.log(err.status);
+    console.log(err.message);
+    throw new Error("상품 리스트를 가져오지 못했습니다.");
+  } finally {
+    console.log("getProduct 실행 완료");
+  }
+}
+
+export async function getProductCardList() {
+  try {
+    const res = await app.get(`products`);
+    return res.data
+>>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
   } catch (err) {
     console.log(err.status);
     console.log(err.message);
