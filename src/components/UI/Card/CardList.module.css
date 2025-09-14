@@ -53,5 +53,21 @@
   grid-template-columns: repeat(5,1fr);
   gap: 24px;
   padding-top: var(--font-lg);
+<<<<<<< HEAD
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+}
+
+@media screen and (max-width: 1200px){
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  } 
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }

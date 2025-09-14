@@ -15,10 +15,14 @@
   flex-direction: row;
   align-items: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
   justify-content: space-around;
 =======
   justify-content: space-between;
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+  justify-content: space-around;
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
   width: 100%;
 }
 
@@ -54,6 +58,9 @@
   gap: 16px;
   align-items: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }
 
 @media screen and (max-width: 1200px) {
@@ -86,6 +93,9 @@
     margin-left: 16px;
   }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }

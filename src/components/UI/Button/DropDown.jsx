@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from "react";
 import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -42,10 +43,13 @@ export function DropDown({ deviceType, onChange, page }) {
       )}
 =======
 import { ChevronDown, ChevronUp } from "lucide-react";
+=======
+import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 import { useState } from "react";
 import styles from "./DropDown.module.css"
 
-function Button() {
+function DropDown({ deviceType }) {
   const [showPanel, setShowPanel] = useState(false);
 
   const handleOnClick = () => {
@@ -54,6 +58,7 @@ function Button() {
 
   return (
     <div className={styles.dropdownContainer}>
+<<<<<<< HEAD
       <button
         className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
         onClick={handleOnClick}>
@@ -65,6 +70,26 @@ function Button() {
           <ChevronUp width={24} height={24} />}
       </button>
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+      {deviceType !== 'mobile' ? (
+        <button
+          className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
+          onClick={handleOnClick}>
+          최신순
+          {showPanel
+            ?
+            <ChevronDown width={24} height={24} />
+            :
+            <ChevronUp width={24} height={24} />}
+        </button>
+      ) : (
+        <button
+          className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
+          onClick={handleOnClick}>
+            <ArrowDownWideNarrow width={24} height={24} />
+        </button>
+      )}
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 
       {showPanel && (
         <ul className={styles.dropdownFilter}>
@@ -80,7 +105,7 @@ function Button() {
 }
 =======
           <li className={`${styles.dropdownElement} ${styles.topElement}`}>최신순</li>
-          <hr className={styles.dropdownHorizen}/>
+          <hr className={styles.dropdownHorizen} />
           <li className={styles.dropdownElement}>좋아요순</li>
         </ul>
       )}
@@ -89,5 +114,9 @@ function Button() {
 
 }
 
+<<<<<<< HEAD
 export default Button;
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+export default DropDown;
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)

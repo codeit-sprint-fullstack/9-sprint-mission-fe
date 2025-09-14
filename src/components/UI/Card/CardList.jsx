@@ -43,15 +43,18 @@ import Card from "./Card";
 import styles from './CardList.module.css'
 import { getProductList } from '@/api/ProductService'
 
-function CardList({ currentPage, itemsPerPage, setTotalItems, type, keyword }) {
+function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, type, keyword }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // undefined시 작동지연
+    if (!itemsPerPage) return;
+
     async function fetchProduct() {
       try {
         let data = [];
         if (type === 'favorite') {
-          data = await getProductList(1, 4, '', 'favorite');
+          data = await getProductList(1, favoritePerPage, '', 'favorite');
         } else {
           data = await getProductList(currentPage, itemsPerPage, keyword); // 전체상품
         }
@@ -63,7 +66,7 @@ function CardList({ currentPage, itemsPerPage, setTotalItems, type, keyword }) {
     }
 
     fetchProduct()
-  }, [type, currentPage, itemsPerPage, setTotalItems, keyword]);
+  }, [type, currentPage, itemsPerPage, setTotalItems, keyword, favoritePerPage]);
 
   return (
     <div className={type === 'favorite' ? styles.favoriteContainer : styles.cardContainer}>

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useBreakPoint } from "@/hooks/useBreakpoint";
 import { Link, NavLink } from "react-router-dom";
 import styles from './ItemHeader.module.css';
@@ -11,6 +12,14 @@ import styles from './ItemHeader.module.css';
 
 function ItemHeader() {
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+import { useBreakPoint } from "@/hooks/useBreakpoint"
+import styles from './ItemHeader.module.css';
+
+function ItemHeader() {
+  const { isDesktop, isTablet, isMobile } = useBreakPoint();
+
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
   return (
     <nav className={styles.logoContainer}>
       <div className={styles.logoBox}>
@@ -52,7 +61,12 @@ function ItemHeader() {
             <p className={styles.logoPara}>중고마켓</p>
           </div>
         </div>
-        <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
+        {isDesktop && (
+          <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
+        )}
+        {(isTablet || isMobile) && (
+          <img className={styles.logoAvatar} src="/public/images/default_user_logo.svg" alt="asd"/>
+        )}
       </div>
     </nav>
   )

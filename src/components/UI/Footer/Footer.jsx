@@ -5,13 +5,20 @@ export function Footer({ type }) {
 =======
 import styles from './Footer.module.css'
 
+<<<<<<< HEAD
 function Footer() {
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+function Footer({ type }) {
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.footerDiv}>
         <p className={styles.footerDivPara}>@codeit - 2024</p>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
         {type === 'mobile' ? (
           <div className={styles.footerBottom}>
             <div className={styles.footerLink}>
@@ -39,6 +46,7 @@ function Footer() {
             </div>
           </>
         )}
+<<<<<<< HEAD
       </div>
     </footer>
   );
@@ -54,6 +62,8 @@ function Footer() {
           <a className={styles.footerDivLikes} href="https://www.instagram.com/" target="_blank"><img src="/images/sns/ic_instagram.svg" alt="instagram" /></a>
           <a className={styles.footerDivLikes} href="https://www.twitter.com/" target="_blank"><img src='/images/sns/ic_twitter.svg' alt="twitter" /></a>
         </div>
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
       </div>
     </footer>
   )

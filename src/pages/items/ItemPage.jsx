@@ -6,18 +6,36 @@ import Input from "@/components/UI/Input/Input"
 import styles from './itempage.module.css'
 import { Pagination } from "@/components/Pagination/Pagination"
 import { usePagination } from "@/hooks/usePagination"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useBreakPoint } from "@/hooks/useBreakpoint"
 
 export default function ItemPage() {
   const [keyword, setKeyword] = useState('');
+  const [itemsPerPage, setItemsPerPage] = useState(null);
+  const [favoritePerPage, setFavoritePerPage] = useState(null);
+
+  // custom hooks
+  const { isTablet, isMobile } = useBreakPoint();
+  // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
+  useEffect(() => {
+    if (isMobile) {
+      setItemsPerPage(4);
+      setFavoritePerPage(1);
+    } else if (isTablet) {
+      setItemsPerPage(6);
+      setFavoritePerPage(2);
+    } else {
+      setItemsPerPage(10);
+      setFavoritePerPage(4);
+    }
+  }, [isMobile, isTablet])
 
   const {
     currentPage,
-    itemsPerPage,
     setTotalItems,
     goToPage,
     totalPages
-  } = usePagination(1, 10)
+  } = usePagination(1, itemsPerPage)
 
   // search
   const handleSearch = (value) => {
@@ -25,6 +43,7 @@ export default function ItemPage() {
     goToPage(1); // 검색 시 첫페이지로
   }
 
+  console.log(isMobile)
   return (
     <>
       <ItemHeader />
@@ -36,19 +55,33 @@ export default function ItemPage() {
             type={'favorite'}
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}
+            favoritePerPage={favoritePerPage}
             setTotalItems={setTotalItems}
           />
         </div>
 
-        <div>
-          <div className={styles.sellItemContainer}>
-            <p className={styles.sellItemPara}>판매 중인 상품</p>
-            <div className={styles.sellItemFilter}>
-              <Input onSearch={handleSearch} />
-              <button className={styles.sellItemButton} >상품 등록하기</button>
-              <DropDown />
+        <div className={styles.sellItemContainerPostion}>
+          {!isMobile ? (
+            <div className={styles.sellItemContainer}>
+              <p className={styles.sellItemPara}>판매 중인 상품</p>
+              <div className={styles.sellItemFilter}>
+                <Input className={styles.sellItemInput} onSearch={handleSearch} />
+                <button className={styles.sellItemButton} >상품 등록하기</button>
+                <DropDown />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className={styles.sellItemContainer}>
+              <div className={styles.sellItemTop}>
+                <p className={styles.sellItemPara}>판매 중인 상품</p>
+                <button className={styles.sellItemButton}>상품 등록하기</button>
+              </div>
+              <div className={styles.sellItemFilter}>
+                <Input className={styles.sellItemInput} onSearch={handleSearch} />
+                <DropDown deviceType={"mobile"} />
+              </div>
+            </div>
+          )}
           <CardList
             currentPage={currentPage}
             itemsPerPage={itemsPerPage}
@@ -66,7 +99,11 @@ export default function ItemPage() {
           onPageChange={goToPage}
         />
       </div>
-      <Footer />
+      {isMobile ? (
+        <Footer type={'mobile'} />
+      ) : (
+        <Footer />
+      )}
     </>
   )
 }

@@ -50,6 +50,7 @@
   font-size: var(--font-xs);
   font-weight: 500;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 /*--------- skeleton-section ----------*/
@@ -114,6 +115,10 @@
 }
 
 /* --------- media-qeury -------------*/
+=======
+}
+
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 @media screen and (max-width: 1200px) {
   .favoriteImage {
     width: 343px;
@@ -127,6 +132,7 @@
     width: 168px;
     height: 168px;
   }
+<<<<<<< HEAD
 
   .skeletonWrapper {
     display: flex;
@@ -142,4 +148,6 @@
   }
 =======
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }

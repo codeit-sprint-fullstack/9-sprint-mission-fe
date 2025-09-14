@@ -8,10 +8,14 @@
   flex: 1;
   padding: 9px 20px 9px 40px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   background-color: var(--color-secondary-100);
 =======
   background-color: var(--color-secondary-200);
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+  background-color: var(--color-secondary-100);
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
   color: var(--color-secondary-400);
   font-family: var(--font-family-base);
   font-weight: 400;
@@ -28,6 +32,9 @@
   z-index: 1;
   color: var(--color-secondary-400);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }
 
 @media screen and (max-width:1200px) {
@@ -42,6 +49,9 @@
     width: 288px;
     height: 42px;
   }
+<<<<<<< HEAD
 =======
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+>>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }
