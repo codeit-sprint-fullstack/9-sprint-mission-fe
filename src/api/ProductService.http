@@ -1,8 +1,8 @@
 ## ProductService
-GET https://panda-market-api-crud.vercel.app/products
+GET https://panda-market-api.vercel.app/products
 
 ###
-GET https://panda-market-api-crud.vercel.app/products?page=1&pageSize=10&keyword=테스트 상품
+GET https://panda-market-api.vercel.app/products?page=1&pageSize=10&orderBy=recent
 
 ###
 POST https://panda-market-api-crud.vercel.app/products

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const app = axios.create({
-  baseURL: "https://panda-market-api-crud.vercel.app",
+  baseURL: "https://panda-market-api.vercel.app",
 });
 
 /**
@@ -41,8 +41,21 @@ export async function createProduct(name, description, price, tags, images) {
 
 export async function getProduct() {
   try {
-    const res = await app.get("products");
-    return res.data;
+    const res = await app.get(`products`);
+    return res.data
+  } catch (err) {
+    console.log(err.status);
+    console.log(err.message);
+    throw new Error("상품 리스트를 가져오지 못했습니다.");
+  } finally {
+    console.log("getProduct 실행 완료");
+  }
+}
+
+export async function getProductCardList() {
+  try {
+    const res = await app.get(`products`);
+    return res.data
   } catch (err) {
     console.log(err.status);
     console.log(err.message);
@@ -57,10 +70,10 @@ export async function getProduct() {
  * @param {Number} pageSize
  * @param {Number} keyword
  */
-export async function getProductList(page, pageSize, keyword) {
+export async function getProductList(page=1, pageSize=10, keyword='', orderBy='recent') {
   try {
     const res = await app.get(
-      `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}`
+      `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`
     );
     return res.data;
   } catch (err) {
