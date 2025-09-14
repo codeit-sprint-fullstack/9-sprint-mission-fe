@@ -58,40 +58,50 @@ import {
 // Product APIs =====================================================
 //
 
-// // GET /products
-// const paramsForProducts = {
-//   page: 3,
-//   pageSize: 11,
-//   keyword: "",
-// };
-// const productList = await getProductList(paramsForProducts);
-// console.log(productList);
+// 1. 상품리스트 조회
+const paramsForProductList = {
+  page: 3,
+  pageSize: 20,
+  keyword: "",
+};
+// console.log(await getProductList(paramsForProductList));
 
-// // GET /products/:id
-// const PRODUCT_GET_ID = 1859;
-// const productGotten = await getProduct(PRODUCT_GET_ID);
-// console.log(productGotten);
+// 2. 특정 상품 조회
+const targetIDForGetProduct = 1846;
+// console.log(await getProduct(targetIDForGetProduct));
 
-// // POST / products;
-// const newProduct = {
-//   name: "LG그램",
-//   description: "Srting...",
-//   price: 1000,
-//   tags: ["전자제품", "컴퓨터"],
-//   images: ["https://example1.com/...", "https://example2.com/..."],
-// };
-// const postedProduct = await createProduct(newProduct);
-// console.log(postedProduct);
+// 3. 신규 상품 등록
+const newProduct = {
+  name: "LG그램",
+  description: "Srting...",
+  price: 1000,
+  tags: ["전자제품", "컴퓨터"],
+  images: ["https://example1.com/...", "https://example2.com/..."],
+};
+console.log(await createProduct(newProduct));
 
-// // PATCH /products/:id
-// const PRODUCT_PATCH_ID = 2057;
-// const productToPatch = {
-//   name: "LG그램 2025 (수정)",
-// };
-// const patchedProduct = await patchProduct(PRODUCT_PATCH_ID, productToPatch);
-// console.log(patchedProduct);
+// 4. 기존 상품 수정
+const targetIDForPatchProduct = 2070;
+const productToPatch = {
+  name: "LG그램 2025 (수정)",
+};
+// console.log(await patchProduct(targetIDForPatchProduct, productToPatch));
 
-// DELETE /products/:id
-// const PRODUCT_DELETE_ID = 1859;
-// const deletedProductID = await deleteProduct(PRODUCT_DELETE_ID);
-// console.log(deletedProductID);
+// 5. 기존 상품 삭제
+const targetIDForDeleteProduct = 2070;
+// console.log(await deleteProduct(targetIDForDeleteProduct));
+
+// 1~5번 API를 한번에 실행시키기 (Promise.all)
+// const [getList, getInfo, newInfo, patchInfo, delelteInfo] = await Promise.all([
+//   getProductList(paramsForProductList),
+//   getProduct(targetIDForGetProduct),
+//   createProduct(newProduct),
+//   patchProduct(targetIDForPatchProduct, productToPatch),
+//   deleteProduct(targetIDForDeleteProduct),
+// ])
+//   .then((getList) => console.log(`상품리스트 조회: \n${getList}`))
+//   .then((getInfo) => console.log(`상품 조회: \n${getInfo}`))
+//   .then((newInfo) => console.log(`등록한 상품: \n${newInfo}`))
+//   .then((patchInfo) => console.log(`수정한 상품: \n${patchInfo}`))
+//   .then((delelteInfo) => console.log(`삭제한 상품: \n${delelteInfo}`))
+//   .catch((error) => console.error(error));
