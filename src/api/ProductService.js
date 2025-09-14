@@ -52,19 +52,6 @@ export async function getProduct() {
   }
 }
 
-export async function getProductCardList() {
-  try {
-    const res = await app.get(`products`);
-    return res.data
-  } catch (err) {
-    console.log(err.status);
-    console.log(err.message);
-    throw new Error("상품 리스트를 가져오지 못했습니다.");
-  } finally {
-    console.log("getProduct 실행 완료");
-  }
-}
-
 /**
  * @param {Number} page
  * @param {Number} pageSize
