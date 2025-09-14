@@ -58,6 +58,7 @@
   color: var(--color-secondary-600);
   font-family: var(--font-family-base);
 <<<<<<< HEAD
+<<<<<<< HEAD
   font-size: var(--font-2lg);
   font-weight: 700;
   line-height: 26px;
@@ -113,4 +114,9 @@
   }
 =======
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+  font-size: var(--font-2lg);
+  font-weight: 700;
+  line-height: 26px;
+>>>>>>> d9004cb (Design: 자유게시판, 중고마켓 글자크기 조정)
 }
