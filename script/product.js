@@ -13,7 +13,7 @@ import { URL_PRODUCT, DEFAULT_PRODUCT_OBJ } from "./api_common";
 
 /* article 목록 조회 - GET Request 이용  */
 async function getProductList(pageNum=1, pageSize=10, keyword='', order='recent') {
-    const res = await fetch(`${URL_ARTICLE}?page=${pageNum}&pageSize=${pageSize}&orderBy=${order}`);
+    const res = await fetch(`${PRODUCT_URL}?page=${pageNum}&pageSize=${pageSize}&orderBy=${order}`);
     const data = await res.json();
 
     return data;
@@ -21,7 +21,7 @@ async function getProductList(pageNum=1, pageSize=10, keyword='', order='recent'
 
 /* article 조회 - GET Request 이용  */
 async function getProduct(id=1) {
-    const res = await fetch(`${URL_PRODUCT}/${id}`);
+    const res = await fetch(`${PRODUCT_URL}/${id}`);
     const data = await res.json();
 
     return data;
@@ -29,7 +29,7 @@ async function getProduct(id=1) {
 
 /* article 생성 - POST Request 이용  */
 async function createProduct(obj= DEFAULT_PRODUCT_OBJ) {
-    const res = await fetch(URL_PRODUCT, {
+    const res = await fetch(PRODUCT_URL, {
         mothod: 'POST',
         body: JSON.stringyfy(obj),
         headers: {
@@ -42,7 +42,7 @@ async function createProduct(obj= DEFAULT_PRODUCT_OBJ) {
 
 /* article 삭제 - DELETE Request 이용 */
 async function deleteProduct(id) {
-    const res = await fetch(`${URL_PRODUCT}/${id}`, {
+    const res = await fetch(`${PRODUCT_URL}/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-type': 'application/json',
