@@ -20,7 +20,11 @@ export function usePagination(initialPage = 1, itemsPerPage = 10) {
     goToPage(currentPage - 1);
   };
 
+<<<<<<< HEAD
   return {
+=======
+  return { 
+>>>>>>> 60cd233 (Feat: pagination기능 구현)
     currentPage,
     totalPages,
     totalItems,
@@ -29,6 +33,10 @@ export function usePagination(initialPage = 1, itemsPerPage = 10) {
     goToPage,
     next,
     prev,
+<<<<<<< HEAD
     setCurrentPage,
+=======
+    setCurrentPage
+>>>>>>> 60cd233 (Feat: pagination기능 구현)
   };
 }

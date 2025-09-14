@@ -1,8 +1,12 @@
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import styles from './Pagination.module.css';
+<<<<<<< HEAD
 /**
  * @see https://www.notion.so/Pagination-jsx-26f856d064408013b3eef306e810566e?source=copy_link
  */
+=======
+
+>>>>>>> 60cd233 (Feat: pagination기능 구현)
 export function Pagination({ currentPage, totalPages, onPageChange }) {
   const MAX_VISIBLE = 5;
   const half = Math.floor(MAX_VISIBLE / 2);
@@ -11,10 +15,15 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   let endPage = Math.min(totalPages, startPage + MAX_VISIBLE - 1);
 
   // 페이지 끝에 가까울 때 startPage 조정합니다.
+<<<<<<< HEAD
   // endPage가 totalPages를 넘으면 조정
   if (endPage > totalPages) {
     endPage = totalPages;
     startPage = Math.max(1, endPage - MAX_VISIBLE + 1);
+=======
+  if (endPage - startPage < MAX_VISIBLE - 1) {
+    startPage = Math.max(1, endPage = MAX_VISIBLE + 1)
+>>>>>>> 60cd233 (Feat: pagination기능 구현)
   }
 
   const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
@@ -47,5 +56,9 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
         />
       </div>
     </div>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> 60cd233 (Feat: pagination기능 구현)
 }

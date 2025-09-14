@@ -1,11 +1,24 @@
 import ItemHeader from "@/components/UI/Nav/ItemHeader"
 import DropDown from "@/components/UI/Button/DropDown"
-import Footer from "@/components/Footer"
+import Footer from "@/components/UI/Footer/Footer"
 import CardList from "@/components/UI/Card/CardList"
 import Input from "@/components/UI/Input/Input"
 import styles from './itempage.module.css'
+import { Pagination } from "@/components/Pagination/Pagination"
+import { usePagination } from "@/hooks/usePagination"
 
 export default function ItemPage() {
+
+  const {
+    currentPage,
+    itemsPerPage,
+    setTotalItems,
+    goToPage,
+    totalPages
+
+  } = usePagination(1, 10)
+  
+  console.log(totalPages)
   return (
     <>
       <ItemHeader />
@@ -13,7 +26,7 @@ export default function ItemPage() {
 
         <div className={styles.bestItemList}>
           <p className={styles.bestItemPara}>베스트 상품</p>
-          <CardList type={'favorite'} />
+          <CardList type={'favorite'} currentPage={currentPage} itemsPerPage={itemsPerPage} setTotalItems={setTotalItems}/>
         </div>
 
         <div>
@@ -25,19 +38,17 @@ export default function ItemPage() {
               <DropDown />
             </div>
           </div>
-          <CardList />
+          <CardList currentPage={currentPage} itemsPerPage={itemsPerPage} setTotalItems={setTotalItems} />
         </div>
       </main>
 
       <div>
         {/** pagination */}
-        <ul className={styles.pagination}>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-        </ul>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={goToPage}
+        />
       </div>
       <Footer />
     </>
