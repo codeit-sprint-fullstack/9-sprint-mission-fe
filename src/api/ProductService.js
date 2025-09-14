@@ -58,6 +58,7 @@ export async function getProduct() {
   }
 }
 
+<<<<<<< HEAD
 export async function getProductCardList() {
   try {
     const res = await app.get(`products`);
@@ -72,6 +73,8 @@ export async function getProductCardList() {
   }
 }
 
+=======
+>>>>>>> 0a83451 (Feat: API keyword를 활용한 검색기능 구현)
 /**
  * @param {Number} page
  * @param {Number} pageSize

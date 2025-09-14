@@ -28,12 +28,26 @@ export function Input({ onSearch }) {
 =======
 import styles from './Input.module.css'
 import { Search } from 'lucide-react';
+import { useState } from 'react'
 
-function Input() {
+function Input({ onSearch }) {
+  const [keyword, setKeyword] = useState('');
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      onSearch(keyword);
+    }
+  };
+
   return (
     <div className={styles.InputContainer}>
-      <Search className={styles.InputIcon}  width={24} height={24}/>
-      <input className={styles.ItemInput} placeholder="검색할 상품을 입력해주세요" />
+      <Search className={styles.InputIcon} width={24} height={24} />
+      <input
+        className={styles.ItemInput}
+        placeholder="검색할 상품을 입력해주세요"
+        onChange={(e) => setKeyword(e.target.value.trim())}
+        onKeyDown={handleKeyDown}
+      />
     </div>
   )
 }
