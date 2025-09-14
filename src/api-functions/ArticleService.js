@@ -1,79 +1,113 @@
 // 'Article' 관련 API 함수들을 모아두는 곳
 
-const BASE_URL = new URL("https://panda-market-api-crud.vercel.app/articles");
+const BASE_URL = "https://panda-market-api-crud.vercel.app/articles";
 
-async function getArticles(params = {}) {
-  // URL.searchParams: URL query parameters -> 읽기와 수정을 편리하게.
+// 1. 게시글 리스트 조회
+function getArticles(params = {}) {
+  const url = new URL(BASE_URL);
+
   Object.keys(params).forEach((key) =>
-    BASE_URL.searchParams.append(key, params[key])
+    url.searchParams.append(key, params[key])
   );
-  // HTTP method: default 'GET'
-  const res = await fetch(BASE_URL);
-  // res.status: number -> res.ok: Boolean
-  if (!res.ok) {
-    throw new Error("게시글들을 가져오는데 실패했습니다.");
-  } else {
-    const articlesGotten = await res.json();
-    return articlesGotten;
-  }
+
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`게시글들을 가져오는데 실패했습니다. (${res.status})`);
+      } else {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error("API 또는 네트워크 오류입니다.", error);
+      throw error;
+    });
 }
 
-async function getArticle(targetID) {
-  const res = await fetch(BASE_URL + `/${targetID}`);
+// 2. 특정 게시글 조회
+function getArticle(targetID) {
+  const url = BASE_URL + `/${targetID}`;
 
-  if (!res.ok) {
-    throw new Error("해당 게시글을 가져오는데 실패했습니다.");
-  } else {
-    const articleGotten = await res.json();
-    return articleGotten;
-  }
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(
+          `해당 게시글을 가져오는데 실패했습니다. (${res.status})`
+        );
+      } else {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error("API 또는 네트워크 오류입니다.", error);
+      throw error;
+    });
 }
 
-async function createArticle(articleToPost) {
-  const res = await fetch(BASE_URL, {
+// 3. 신규 게시글 작성
+function createArticle(articleToPost) {
+  return fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(articleToPost),
-  });
-
-  if (!res.ok) {
-    throw new Error("게시글 작성에 실패했습니다.");
-  } else {
-    const articlePosted = await res.json();
-    return articlePosted;
-  }
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`게시글 작성에 실패했습니다. (${res.status})`);
+      } else {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error("API 또는 네트워크 오류입니다.", error);
+      throw error;
+    });
 }
 
-async function patchArticle(targetID, articleToPatch) {
-  const res = await fetch(BASE_URL + `/${targetID}`, {
+// 4. 특정 게시글 수정
+function patchArticle(targetID, articleToPatch) {
+  const url = BASE_URL + `/${targetID}`;
+
+  return fetch(url, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(articleToPatch),
-  });
-
-  if (!res.ok) {
-    throw new Error("게시글 수정에 실패했습니다.");
-  } else {
-    const articlePatched = await res.json();
-    return articlePatched;
-  }
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`게시글 수정에 실패했습니다. (${res.status})`);
+      } else {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error("API 또는 네트워크 오류입니다.", error);
+      throw error;
+    });
 }
 
-async function deleteArticle(targetID) {
-  const res = await fetch(BASE_URL + `/${targetID}`, {
-    method: "DELETE",
-  });
+// 5. 특정 게시글 삭제
+function deleteArticle(targetID) {
+  const url = BASE_URL + `/${targetID}`;
 
-  if (!res.ok) {
-    throw new Error("게시글 삭제에 실패했습니다.");
-  } else {
-    const articleDeleted = await res.json();
-    return articleDeleted;
-  }
+  return fetch(url, {
+    method: "DELETE",
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("게시글 삭제에 실패했습니다.");
+      } else {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error("API 또는 네트워크 오류입니다.", error);
+      throw error;
+    });
 }
 
 export { getArticles, getArticle, createArticle, patchArticle, deleteArticle };

@@ -1,18 +1,18 @@
 // 'Product' 관련 API 함수들을 모아두는 곳
 
 // 공통 fetch 함수
-async function fetchAPI(url, options = {}, errorMessage) {
-  try {
-    const res = await fetch(url, options);
-    if (!res.ok) {
-      throw new Error(`${errorMessage} (${res.status})`);
-    }
-    return await res.json();
-  } catch (error) {
-    console.error("API 또는 네트워크 오류입니다.", error);
-    return null;
-  }
-}
+// async function fetchAPI(url, options = {}, errorMessage) {
+//   try {
+//     const res = await fetch(url, options);
+//     if (!res.ok) {
+//       throw new Error(`${errorMessage} (${res.status})`);
+//     }
+//     return await res.json();
+//   } catch (error) {
+//     console.error("API 또는 네트워크 오류입니다.", error);
+//     return null;
+//   }
+// }
 
 const BASE_URL = "https://panda-market-api-crud.vercel.app/products";
 
