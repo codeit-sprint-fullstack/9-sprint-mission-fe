@@ -50,3 +50,18 @@
   font-size: var(--font-xs);
   font-weight: 500;
 }
+
+@media screen and (max-width: 1200px) {
+  .favoriteImage {
+    width: 343px;
+    height: 343px;
+    border-radius: 20.176px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardImage {
+    width: 168px;
+    height: 168px;
+  }
+}

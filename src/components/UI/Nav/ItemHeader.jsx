@@ -1,6 +1,9 @@
+import { useBreakPoint } from "@/hooks/useBreakpoint"
 import styles from './ItemHeader.module.css';
 
 function ItemHeader() {
+  const { isDesktop, isTablet, isMobile } = useBreakPoint();
+
   return (
     <nav className={styles.logoContainer}>
       <div className={styles.logoBox}>
@@ -13,7 +16,12 @@ function ItemHeader() {
             <p className={styles.logoPara}>중고마켓</p>
           </div>
         </div>
-        <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
+        {isDesktop && (
+          <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
+        )}
+        {(isTablet || isMobile) && (
+          <img className={styles.logoAvatar} src="/public/images/default_user_logo.svg" alt="asd"/>
+        )}
       </div>
     </nav>
   )

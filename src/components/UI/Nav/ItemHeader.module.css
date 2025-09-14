@@ -61,3 +61,44 @@
   font-weight: 700;
   line-height: 26px;
 }
+
+@media screen and (max-width: 1200px) {
+  .logoBox {
+    justify-content: space-between;
+    padding: 24px;
+    max-width: 1200px;
+  }
+
+  .logoAvatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logoBox {
+    justify-content: space-between;
+    padding: 16px;
+    max-width: 768px;
+  }
+
+  .logoImg {
+    display: none;
+  }
+
+  .logoTitleLink {
+    margin-left: 0;
+    font-size: 20.202px;
+    /* 1.6020625rem */
+    font-weight: 700;
+  }
+
+  .logoPara {
+    font-size: var(--font-lg);
+  }
+
+  .logoParaContainer {
+    gap: 8px;
+    padding-left: 8px;
+  }
+}

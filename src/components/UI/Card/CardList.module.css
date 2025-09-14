@@ -12,3 +12,16 @@
   gap: 24px;
   padding-top: var(--font-lg);
 }
+
+@media screen and (max-width: 1200px){
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  } 
+}

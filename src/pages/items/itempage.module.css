@@ -1,10 +1,10 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin: 0 auto;
   padding: 0 360px;
-  gap: 40px;
+  gap: 39px;
   max-width: 1920px;
 }
 
@@ -12,18 +12,22 @@
   padding-top: 26px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 100%;
+  max-width: 1920px;
 }
 
 .bestItemPara {
-  text-align: start;
   font-family: var(--font-family-base);
   color: var(--color-secondary-900);
   font-size: var(--font-xl);
   font-weight: 700;
   line-height: 32px;
+}
+
+.sellItemContainerPostion{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
 }
 
 .sellItemContainer {
@@ -78,4 +82,33 @@
   display: flex;
   justify-content: center;
   margin: 30px;
+}
+
+@media screen and (max-width: 1200px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    gap: 40px;
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sellItemContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sellItemTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-right: 45px;
+    width: 100%;
+  }
+
 }
