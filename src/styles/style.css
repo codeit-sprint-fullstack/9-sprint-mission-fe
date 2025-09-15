@@ -64,6 +64,21 @@ a, button, input{
   align-items: center;
 }
 
+#nav-left{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem
+}
+
+.nav-menu{
+  padding: 0 0.94rem;
+  color: var(--secondary-600);
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+}
+
 .main{
   justify-content: center;
   margin-top: 4.4rem;
@@ -130,7 +145,7 @@ a, button, input{
 
 .s-btn{
   display: inline-block;
-  width: 8rem;
+  padding: 0 1.4375rem;
   height: 3rem;
   border: none;
   border-radius: 0.5rem;
@@ -140,6 +155,11 @@ a, button, input{
   font-size: 1rem;
   font-weight: 600;
   line-height: 3rem;
+}
+
+.s-btn.compact{
+  height: 2.6rem;
+  line-height: 2.6rem;
 }
 
 .l-btn{
@@ -230,7 +250,17 @@ a, button, input{
   }
   
   #title{
-    width: 6.4rem;
+    width: 5rem;
+    height: auto;
+  }
+
+  #nav-left{
+    gap: 0.5rem;
+  }
+
+  .nav-menu{
+    padding: 0 0.5rem 0 0 ;
+    font-size: 1rem;
   }
 
   #footer-box{
