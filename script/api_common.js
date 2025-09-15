@@ -7,7 +7,7 @@
 */
 
 export const ARTICLE_URL= 'https://panda-market-api-crud.vercel.app/articles';
-export const UPRODUCT_URL = 'https://panda-market-api-crud.vercel.app/products';
+export const PRODUCT_URL = 'https://panda-market-api-crud.vercel.app/products';
 export const RANDOM_IMAGE_URL = 'https://cdn.pixabay.com/photo/2025/04/24/22/36/beach-9556784_1280.jpg';
 
 export const DEFAULT_ARTICLE_OBJ = {
