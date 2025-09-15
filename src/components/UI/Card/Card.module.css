@@ -51,6 +51,68 @@
   font-weight: 500;
 }
 
+/*--------- skeleton-section ----------*/
+.skeletonWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 10px;
+  padding: 20px;
+}
+
+.skeletonImage {
+  width: 221px;
+  height: 221px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonTitle {
+  position: absolute;
+  bottom: -1px;
+  width: 150px;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonPrice {
+  position: absolute;
+  bottom: -20px;
+  width: 150px;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonTextShort {
+  width: 60%;
+}
+
+/* 스켈레톤 애니메이션 */
+@keyframes shimmer {
+  0% {
+    background-position: -100%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}
+
+.skeletonImage,
+.skeletonTitle {
+  background: linear-gradient(90deg,
+      #e0e0e0 25%,
+      #f5f5f5 50%,
+      #e0e0e0 75%);
+  background-size: 200% 100%;
+}
+
+/* --------- media-qeury -------------*/
 @media screen and (max-width: 1200px) {
   .favoriteImage {
     width: 343px;
@@ -61,6 +123,19 @@
 
 @media screen and (max-width: 768px) {
   .cardImage {
+    width: 168px;
+    height: 168px;
+  }
+
+  .skeletonWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 0;
+    padding: 0;
+  }
+
+  .skeletonImage {
     width: 168px;
     height: 168px;
   }

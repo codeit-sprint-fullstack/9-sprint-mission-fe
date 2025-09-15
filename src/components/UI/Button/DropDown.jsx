@@ -12,8 +12,8 @@ function DropDown({ deviceType, onChange, page }) {
 
   const handleOnChange = (value) => {
     onChange?.(value);
-    if(value === 'recent') setFilterTitle('최신순');
-    else if(value === 'favorite') setFilterTitle('좋아요순');
+    if (value === 'recent') setFilterTitle('최신순');
+    else if (value === 'favorite') setFilterTitle('좋아요순');
     setShowPanel(false);
     page(1)
   }
@@ -35,7 +35,7 @@ function DropDown({ deviceType, onChange, page }) {
         <button
           className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
           onClick={handleOnClick}>
-            <ArrowDownWideNarrow width={24} height={24} />
+          <ArrowDownWideNarrow width={24} height={24} />
         </button>
       )}
 

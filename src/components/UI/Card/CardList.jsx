@@ -5,11 +5,13 @@ import { getProductList } from '@/api/ProductService'
 
 function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, type, keyword, sortType }) {
   const [products, setProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     // undefined시 작동지연
     if (!itemsPerPage) return;
 
+    setLoading(true);
     async function fetchProduct() {
       try {
         let data = [];
@@ -22,9 +24,10 @@ function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, t
         setTotalItems(data.totalCount);
       } catch (err) {
         console.error('Failed getProduct:', err);
+      } finally {
+        setLoading(false);
       }
     }
-
     fetchProduct()
   }, [type, currentPage, itemsPerPage, setTotalItems, keyword, favoritePerPage, sortType]);
 
@@ -37,6 +40,7 @@ function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, t
           price={item.price}
           images={item.images}
           type={type}
+          loading={isLoading}
         />
       ))}
     </div>
