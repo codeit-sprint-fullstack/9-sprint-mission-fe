@@ -9,8 +9,10 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   let endPage = Math.min(totalPages, startPage + MAX_VISIBLE - 1);
 
   // 페이지 끝에 가까울 때 startPage 조정합니다.
-  if (endPage - startPage < MAX_VISIBLE - 1) {
-    startPage = Math.max(1, endPage = MAX_VISIBLE + 1)
+  // endPage가 totalPages를 넘으면 조정
+  if (endPage > totalPages) {
+    endPage = totalPages;
+    startPage = Math.max(1, endPage - MAX_VISIBLE + 1);
   }
 
   const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
