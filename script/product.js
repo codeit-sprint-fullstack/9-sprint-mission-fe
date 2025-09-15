@@ -19,21 +19,21 @@ class Product {
     
 
     /* product 상세 조회 - get */
-    async getProduct(id=1) {
+    async getProduct(id) {
         
         return this.getProductAxios(id);
     }
 
 
     /* product 목록 조회 - get  */
-    async getProductList(pageNum=1, pageSize=10, orderBy='recent', keyword='')  {
+    async getProductList(pageNum, pageSiz, orderBy, keyword)  {
     
-        return this.getProductListFetch(pageNum=1, pageSize=10, orderBy='recent', keyword='') ;
+        return this.getProductListFetch(pageNum, pageSiz, orderBy, keyword) ;
     }
 
 
     /* product 생성 - post  */
-    async createProduct(obj= DEFAULT_PRODUCT_OBJ) {
+    async createProduct(obj) {
 
         return this.createProductAxios(obj);
     }
@@ -47,17 +47,9 @@ class Product {
 
 
     /* product 수정 - PATCH Request 이용    */
-    async updateProduct(obj= DEFAULT_PRODUCT_OBJ) {
-        const res = await fetch(URL, {
-            method: 'PATCH',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-type': 'application/json',
-            },
+    async updateProduct(id, obj) {
 
-        });
-
-        return;
+        return this.updateProductAxios(id, obj);
     }
 
 
@@ -197,7 +189,7 @@ class Product {
     }
 
     /* product 삭제 - axios delete */
-    async deleteProductAxios(id) {
+    async deleteProductAxios(id = 1) {
         const url = Product.DEFAULT_URL + '/' + id;
         let data;
 
@@ -238,19 +230,64 @@ class Product {
 
         }
 
+        return data;
+    }
+
+
+    /* product 수정 - axios patch   */
+    async updateProductAxios(id = 1, obj= DEFAULT_PRODUCT_OBJ) {
+        const url = Product.DEFAULT_URL + '/' + id;
+        let data;
+
+        await axios.patch(url, obj).then((res) => {
+            data = res.data;
+
+        }).catch((err) => {
+            console.log(err);
+
+        });
+        
+        console.log('data -> ', data);
 
         return data;
     }
 
 
+    /* product 수정 - fetch patch    */
+    async updateProductFetch(id = 1, obj= DEFAULT_PRODUCT_OBJ) {
+
+        const url = Product.DEFAULT_URL + '/' + id;
+        let data; 
+
+        try {
+            const res = await fetch(url, {
+                method: 'PATCH',
+                body: JSON.stringify(obj),
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            });
+
+            data = await res.json();
+            
+            console.log('data -> ', data);
+
+        } catch(err) {
+            console.log(err);
+
+        }
+        
+
+        return data;
+    }
 
 }
 
 
 (async function main() {
     const product = new Product();
-    product.getProduct(2075);
-    const data =  await product.deleteProduct(2075);
+    product.getProduct(2074);
+    const data =  await product.updateProduct(2074);
     
-    console.log('result -> ', product.deleteProduct, data);
+    console.log('result -> ', product.updateProduct, data);
 })();
