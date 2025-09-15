@@ -115,10 +115,13 @@
 }
 
 /* --------- media-qeury -------------*/
+<<<<<<< HEAD
 =======
 }
 
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
+=======
+>>>>>>> 476b6f9 (Feat: 스켈레톤 구현)
 @media screen and (max-width: 1200px) {
   .favoriteImage {
     width: 343px;
@@ -133,6 +136,9 @@
     height: 168px;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 476b6f9 (Feat: 스켈레톤 구현)
 
   .skeletonWrapper {
     display: flex;
@@ -146,8 +152,11 @@
     width: 168px;
     height: 168px;
   }
+<<<<<<< HEAD
 =======
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 =======
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
+=======
+>>>>>>> 476b6f9 (Feat: 스켈레톤 구현)
 }

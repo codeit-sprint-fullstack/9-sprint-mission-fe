@@ -44,7 +44,6 @@ export default function ItemPage() {
     goToPage(1); // 검색 시 첫페이지로
   }
 
-  console.log(isMobile)
   return (
     <>
       <ItemHeader />
@@ -68,7 +67,7 @@ export default function ItemPage() {
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
                 <button className={styles.sellItemButton} >상품 등록하기</button>
-                <DropDown onChange={setSortType} page={goToPage}/>
+                <DropDown onChange={setSortType} page={goToPage} />
               </div>
             </div>
           ) : (
