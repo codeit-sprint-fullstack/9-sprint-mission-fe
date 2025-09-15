@@ -9,14 +9,34 @@ export function Footer() {
       <div id="footer-box">
         <p id="copyright">©codeit - 2024</p>
         <ul id="cs-list">
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/faq">FAQ</a></li>
+          <li>
+            <a href="/privacy">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/faq">FAQ</a>
+          </li>
         </ul>
         <ul id="sns-list">
-          <li><a href="https://facebook.com" target='_blank'><img src={ facebookIcon } /></a></li>
-          <li><a href="https://x.com" target='_blank'><img src={ twitterIcon } /></a></li>
-          <li><a href="https://youtube.com" target='_blank'><img src={ youtubeIcon } /></a></li>
-          <li><a href="https://instagram.com" target='_blank'><img src={ instagramIcon } /></a></li>
+          <li>
+            <a href="https://facebook.com" target="_blank">
+              <img src={facebookIcon} />
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com" target="_blank">
+              <img src={twitterIcon} />
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com" target="_blank">
+              <img src={youtubeIcon} />
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" target="_blank">
+              <img src={instagramIcon} />
+            </a>
+          </li>
         </ul>
       </div>
     </footer>
