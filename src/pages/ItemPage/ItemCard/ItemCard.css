@@ -1,0 +1,61 @@
+.item-card{
+  width: 13.8rem;
+  height: 19.8rem;
+}
+
+.item-card.best{
+  width: 17.6rem;
+  height: 23.6rem;
+}
+
+.item-img {
+  display: block;
+  width: 13.8rem;
+  height: 13.8rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background: #000;
+}
+
+.item-card.best > .item-img{
+  width: 17.6rem;
+  height: 17.6rem;
+}
+
+.item-text-wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+}
+
+.item-title{
+  color: var(--secondary-800);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.item-price{
+  color: var(--secondary-800);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+}
+
+.item-likes{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; 
+}
+
+.likes-icon{
+  width: 0.8rem;
+  height: 0.7rem;
+}
+
+.likes-count{
+  color: var(--secondary-600);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.125rem;
+}
