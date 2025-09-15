@@ -3,7 +3,7 @@
 /*
     2025. 09. 04
 
-    미션 4 - pandamarket controller 구현
+    미션 4 - product controller 구현
         api 주소를 이용해서 데이터를 처리
 */
 
@@ -12,15 +12,14 @@ import { PRODUCT_URL, DEFAULT_PRODUCT_OBJ } from "./api_common.js";
 import axios from 'axios';
 
 
-class Product {
+export default class Product {
 
     static DEFAULT_URL = PRODUCT_URL;
     static DEFAULT_PRODUCT_CONTENTS = DEFAULT_PRODUCT_OBJ;
-    
 
     /* product 상세 조회 - get */
     async getProduct(id) {
-        
+    
         return this.getProductAxios(id);
     }
 
@@ -60,10 +59,10 @@ class Product {
         let data;
 
         await axios.get(url).then((res) => {
-            data = res.data;
-
+            data = res.data;            
+            
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
 
@@ -85,7 +84,7 @@ class Product {
 
             console.log('data -> ', data);
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
 
@@ -107,9 +106,9 @@ class Product {
 
         await axios.get(url).then((res) => {
             data = res.data;
-
+            
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
 
@@ -131,9 +130,9 @@ class Product {
         try {
             const res = await fetch(url);
             data = await res.json();
-
+            console.log('res -> ', res);
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
         }
 
         console.log('data -> ', data);
@@ -152,7 +151,7 @@ class Product {
             data = res.data;
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
 
@@ -179,7 +178,7 @@ class Product {
             data = await res.json();
 
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
 
@@ -197,7 +196,7 @@ class Product {
             data = res.data;
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
         
@@ -226,7 +225,7 @@ class Product {
             console.log('data -> ', data);
 
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
 
@@ -243,7 +242,7 @@ class Product {
             data = res.data;
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
         
@@ -273,7 +272,7 @@ class Product {
             console.log('data -> ', data);
 
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
         
@@ -282,12 +281,3 @@ class Product {
     }
 
 }
-
-
-(async function main() {
-    const product = new Product();
-    product.getProduct(2074);
-    const data =  await product.updateProduct(2074);
-    
-    console.log('result -> ', product.updateProduct, data);
-})();

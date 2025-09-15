@@ -1,7 +1,7 @@
 /*
     2025. 09. 04
 
-    미션 4 - pandamarket controller 구현
+    미션 4 - article controller 구현
         api 주소를 이용해서 데이터를 처리
 */
 
@@ -9,11 +9,10 @@
 import { ARTICLE_URL, DEFAULT_ARTICLE_OBJ } from "./api_common.js";
 import axios from 'axios';
 
-class Article {
+export default class Article {
 
     static DEFAULT_URL = ARTICLE_URL;
     static DEFAULT_ARTICLE_CONTENTS = DEFAULT_ARTICLE_OBJ;
-
 
     /* article 상세 조회 */
     async getArticle(id) {
@@ -63,7 +62,7 @@ class Article {
             console.log(res.data);
 
         }).catch((err) => {
-            console.log(err);      
+            console.log(`[${err.code}] ${err.response.status} Error`);    
         
         });
 
@@ -81,7 +80,7 @@ class Article {
             data = await res.json();
 
         } catch (err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
 
@@ -106,7 +105,7 @@ class Article {
             console.log(data);
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
 
@@ -131,7 +130,7 @@ class Article {
             console.log(data);
 
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
 
@@ -149,7 +148,7 @@ class Article {
             data = res.data;
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
 
@@ -178,7 +177,7 @@ class Article {
             console.log('data = > ', data);
 
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         }
 
@@ -195,7 +194,7 @@ class Article {
             data = res.data;
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
         });
             
         console.log('data -> ', data);        
@@ -220,7 +219,7 @@ class Article {
             data = await res.json();
             console.log('data -> ', data);
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
         }
 
         return data;
@@ -236,7 +235,7 @@ class Article {
             data = res.data;      
 
         }).catch((err) => {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
 
         });
 
@@ -262,7 +261,7 @@ class Article {
             data = res;
             console.log('res -> ', res);
         } catch(err) {
-            console.log(err);
+            console.log(`[${err.code}] ${err.response.status} Error`);
         }
 
         console.log('data -> ', data);
@@ -272,13 +271,3 @@ class Article {
 
 
 }
-
-
-(async function main() {
-
-    const article = new Article();
-
-    const data = await article.updateArticle(4465);
-    
-    console.log('data = > ', article.updateArticle, data);
-})();
