@@ -2,7 +2,6 @@ import { Heart } from "lucide-react";
 import styles from "./Card.module.css";
 
 function Card({ name, price, images, type, loading }) {
-  console.log(loading)
   return (
     <>
       {loading ? (

@@ -8,35 +8,36 @@ import { Pagination } from "@/components/Pagination/Pagination"
 import { usePagination } from "@/hooks/usePagination"
 import { useEffect, useState } from "react"
 import { useBreakPoint } from "@/hooks/useBreakpoint"
+import FavoriteCardList from "@/components/UI/Card/FavoriteCard"
 
 export default function ItemPage() {
+
   const [keyword, setKeyword] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(null);
-  const [favoritePerPage, setFavoritePerPage] = useState(null);
   const [sortType, setSortType] = useState('recent');
 
   // custom hooks
   const { isTablet, isMobile } = useBreakPoint();
-  // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
-  useEffect(() => {
-    if (isMobile) {
-      setItemsPerPage(4);
-      setFavoritePerPage(1);
-    } else if (isTablet) {
-      setItemsPerPage(6);
-      setFavoritePerPage(2);
-    } else {
-      setItemsPerPage(10);
-      setFavoritePerPage(4);
-    }
-  }, [isMobile, isTablet])
-
   const {
     currentPage,
     setTotalItems,
     goToPage,
     totalPages
   } = usePagination(1, itemsPerPage)
+  // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
+
+  useEffect(() => {
+    if (isMobile) {
+      setItemsPerPage(4);
+    } else if (isTablet) {
+      setItemsPerPage(6);
+    } else {
+      setItemsPerPage(10);
+    }
+  }, [isMobile, isTablet])
+
+  const initialItemPerPage = isMobile ? 4 : isTablet ? 6 : 10
+  const initialFavoritePerPage = isMobile ? 1 : isTablet ? 2 : 4;
 
   // search
   const handleSearch = (value) => {
@@ -51,12 +52,10 @@ export default function ItemPage() {
 
         <div className={styles.bestItemList}>
           <p className={styles.bestItemPara}>베스트 상품</p>
-          <CardList
+          <FavoriteCardList
             type={'favorite'}
             currentPage={currentPage}
-            itemsPerPage={itemsPerPage}
-            favoritePerPage={favoritePerPage}
-            setTotalItems={setTotalItems}
+            page={initialFavoritePerPage}
           />
         </div>
 
@@ -84,10 +83,11 @@ export default function ItemPage() {
           )}
           <CardList
             currentPage={currentPage}
-            itemsPerPage={itemsPerPage}
-            setTotalItems={setTotalItems}
+            page={initialItemPerPage}
             keyword={keyword}
             sortType={sortType}
+            setTotalItems={setTotalItems}
+            backKeyword={handleSearch}
           />
         </div>
       </main>

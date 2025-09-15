@@ -1,25 +1,22 @@
-import { useEffect, useState } from "react";
 import Card from "./Card";
+import { useEffect, useState } from "react";
+import { getProductList } from "@/api/ProductService";
 import styles from './CardList.module.css'
-import { getProductList } from '@/api/ProductService'
+import { SearchX } from "lucide-react";
 
-function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, type, keyword, sortType }) {
+function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
   const [products, setProducts] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // undefined시 작동지연
-    if (!itemsPerPage) return;
+    if (!page) return;
 
     setLoading(true);
     async function fetchProduct() {
       try {
         let data = [];
-        if (type === 'favorite') {
-          data = await getProductList(1, favoritePerPage, '', 'favorite');
-        } else {
-          data = await getProductList(currentPage, itemsPerPage, keyword, sortType); // 전체상품
-        }
+        data = await getProductList(currentPage, page, keyword, sortType); // 전체상품
         setProducts(data.list);
         setTotalItems(data.totalCount);
       } catch (err) {
@@ -29,18 +26,23 @@ function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, t
       }
     }
     fetchProduct()
-  }, [type, currentPage, itemsPerPage, setTotalItems, keyword, favoritePerPage, sortType]);
+  }, [currentPage, page, keyword, sortType, setTotalItems]);
+
+  const handleClick = () => {
+    backKeyword('')
+  }
+
+  if (!products.length) return <div className={styles.emptyQuery}><SearchX />검색 결과가 없습니다.<button onClick={handleClick}>검색초기화</button></div>;
 
   return (
-    <div className={type === 'favorite' ? styles.favoriteContainer : styles.cardContainer}>
+    <div className={styles.cardContainer}>
       {products.map((item) => (
         <Card
           key={item.id}
           name={item.name}
           price={item.price}
           images={item.images}
-          type={type}
-          loading={isLoading}
+          loading={loading}
         />
       ))}
     </div>

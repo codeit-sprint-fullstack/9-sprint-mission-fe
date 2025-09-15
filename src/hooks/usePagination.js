@@ -20,7 +20,7 @@ export function usePagination(initialPage = 1, itemsPerPage = 10) {
     goToPage(currentPage - 1);
   };
 
-  return { 
+  return {
     currentPage,
     totalPages,
     totalItems,
@@ -29,6 +29,6 @@ export function usePagination(initialPage = 1, itemsPerPage = 10) {
     goToPage,
     next,
     prev,
-    setCurrentPage
+    setCurrentPage,
   };
 }

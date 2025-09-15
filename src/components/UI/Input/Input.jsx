@@ -6,6 +6,7 @@ function Input({ onSearch }) {
   const [keyword, setKeyword] = useState('');
 
   const handleKeyDown = (e) => {
+    e.preventDefault()
     if (e.key === 'Enter') {
       onSearch(keyword);
     }
