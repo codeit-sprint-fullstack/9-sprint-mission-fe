@@ -2,9 +2,6 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import styles from './Pagination.module.css';
 
 export function Pagination({ currentPage, totalPages, onPageChange }) {
-  console.log(currentPage)
-  console.log(totalPages)
-  console.log(onPageChange)
   const MAX_VISIBLE = 5;
   const half = Math.floor(MAX_VISIBLE / 2);
 
