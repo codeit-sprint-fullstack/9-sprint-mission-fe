@@ -26,9 +26,9 @@ class Product {
 
  
     /* product 목록 조회 - GET Request 이용  */
-    async getProductList(pageNum=1, pageSize=10, orderBy='recent', keyword='') {
+    async getProductList(pageNum=1, pageSize=10, orderBy='recent', keyword='')  {
      
-        return this.getProductListFetch();
+        return this.getProductListFetch(pageNum=1, pageSize=10, orderBy='recent', keyword='') ;
     }
 
 
@@ -166,7 +166,7 @@ class Product {
 (async function main() {
     const product = new Product();
 
-    const data =  await product.getProduct(12);
+    const data =  await product.getProductList();
     
-    console.log('result -> ', product.getProduct, data);
+    console.log('result -> ', product.getProductList, data);
 })();
