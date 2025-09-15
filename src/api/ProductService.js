@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {app} from '@/constants/api'
 =======
 import axios from "axios";
@@ -7,6 +8,9 @@ const app = axios.create({
   baseURL: "https://panda-market-api.vercel.app",
 });
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+import {app} from '@/constants/api'
+>>>>>>> 23c86a2 (Style: api axios라이브러리로 하나로 변경)
 
 /**
  *
