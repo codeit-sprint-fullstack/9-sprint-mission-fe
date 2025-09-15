@@ -17,6 +17,7 @@ class Article {
 
     /* article 상세 조회 */
     async getArticle(id) {
+
         return this.getArticleAxios(id);
 
     }
@@ -24,6 +25,7 @@ class Article {
 
     /* article 목록 조회 - orderby: 글 정렬 방식 recent/like, keyword: 검색 키워드  */
     async getArticleList(pageNumber = 1, pageSize = 10, orderBy = 'recent', keyword='') {
+
         return this.getArticleListFetch(pageNumber = 1, pageSize = 10, orderBy = 'recent', keyword='');
 
     }
@@ -31,6 +33,7 @@ class Article {
     
     /* article 생성 - { image: 'imgurl', content: 본문, title: 제목 } */
     async createArticle(obj) {
+
         return this.createArticleAxios(obj);
 
     }
@@ -38,22 +41,15 @@ class Article {
 
     /* article 삭제 - DELETE  */
     async deleteArticle(id) {
+
         return this.deleteArticleAxios(id);
     }
     
 
     /* article 수정 - UPDATE    */
-    async updateArticle(obj= DEFAULT_ARTICLE_OBJ) {
-        const res = await fetch(URL, {
-            method: 'PATCH',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-type': 'application/json',
-            },
+    async updateArticle(id, obj= DEFAULT_ARTICLE_OBJ) {
 
-        });
-
-        return;
+        return this.updateArticleAxios(id, obj);
     }
 
 
@@ -282,7 +278,7 @@ class Article {
 
     const article = new Article();
 
-    const data = await article.updateArticleFetch(4465);
+    const data = await article.updateArticle(4465);
     
-    console.log('data = > ', article.updateArticleFetch, data);
+    console.log('data = > ', article.updateArticle, data);
 })();
