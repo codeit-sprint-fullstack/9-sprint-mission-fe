@@ -79,7 +79,7 @@ a, button, input{
   line-height: 1.625rem;
 }
 
-.main{
+#main{
   justify-content: center;
   margin-top: 4.4rem;
 }
