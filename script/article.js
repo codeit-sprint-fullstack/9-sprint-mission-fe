@@ -36,6 +36,27 @@ class Article {
     }
     
 
+    /* article 삭제 - DELETE  */
+    async deleteArticle(id) {
+        return this.deleteArticleAxios(id);
+    }
+    
+
+    /* article 수정 - UPDATE    */
+    async updateArticle(obj= DEFAULT_ARTICLE_OBJ) {
+        const res = await fetch(URL, {
+            method: 'PATCH',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-type': 'application/json',
+            },
+
+        });
+
+        return;
+    }
+
+
     /* article 상세 조회 - aios Get  */
     async getArticleAxios(id = 1) {
         const url = Article.DEFAULT_URL + '/' + id;
@@ -169,35 +190,90 @@ class Article {
     }
 
 
-    /* article 삭제 - DELETE Request 이용 */
-    async deleteArticle(id) {
+    /* article 삭제 - axios delete */
+    async deleteArticleAxios(id=1) {
+        const url = Article.DEFAULT_URL + '/' + id;
+        let data;
 
-        const res = await fetch(`${ARTICLE_URL}/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            
+        await axios.delete(url).then((res) => {
+            data = res.data;
+
+        }).catch((err) => {
+            console.log(err);
         });
-
-        return;
+            
+        console.log('data -> ', data);        
+            
+        return data;
     }
     
 
+    /* article 삭제 - fetch delete 이용 */
+    async deleteArticleFetch(id=1) {
+        const url = Article.DEFAULT_URL + '/' + id;
+        let data;
 
-    /* article 수정 - PATCH Request 이용    */
-    async patchArticle(obj= DEFAULT_ARTICLE_OBJ) {
-        const res = await fetch(URL, {
-            method: 'PATCH',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-type': 'application/json',
-            },
+        try {
+            const res = await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json',
+                },                
+            });
+
+            data = await res.json();
+            console.log('data -> ', data);
+        } catch(err) {
+            console.log(err);
+        }
+
+        return data;
+    }
+
+
+    /* article 수정 - axios patch   */
+    async updateArticleAxios(id=1, obj = Article.DEFAULT_ARTICLE_CONTENTS) {
+        const url = Article.DEFAULT_URL + '/' + id;
+        let data;
+        
+        await axios.patch(url, obj).then((res) => {
+            data = res.data;      
+
+        }).catch((err) => {
+            console.log(err);
 
         });
 
-        return;
+        console.log('data -> ', data);
+
+        return data;
     }
+
+
+      /* article 수정 - fetch patch    */
+    async updateArticleFetch(id=1, obj = Article.DEFAULT_ARTICLE_CONTENTS) {
+        const url = Article.DEFAULT_URL + '/' + id;
+        let data;
+
+        try {
+            const res = await fetch(url, {
+                method: 'PATCH',
+                body: JSON.stringify(obj),
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            });
+            data = res;
+            console.log('res -> ', res);
+        } catch(err) {
+            console.log(err);
+        }
+
+        console.log('data -> ', data);
+
+        return data;
+    }
+
 
 }
 
@@ -206,7 +282,7 @@ class Article {
 
     const article = new Article();
 
-    const data = await article.createArticle();
+    const data = await article.updateArticleFetch(4465);
     
-    console.log('data = > ', article.createArticle, data);
+    console.log('data = > ', article.updateArticleFetch, data);
 })();
