@@ -22,11 +22,15 @@
 body{
   background: var(--bg-gray);
   margin: 0 auto;
+  font-family: 'Pretendard';
+  font-style: normal;
+}
+
+#root{ 
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  font-family: 'Pretendard';
-  font-style: normal;
+  width: 100%;
 }
 
 header, main, section, footer{
