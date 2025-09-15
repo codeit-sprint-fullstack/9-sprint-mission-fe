@@ -16,14 +16,20 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
 
   // 페이지 끝에 가까울 때 startPage 조정합니다.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b137d4f (Fix: 페이징네이션 마지막펭지  31부터 스킵되는 현상 수정)
   // endPage가 totalPages를 넘으면 조정
   if (endPage > totalPages) {
     endPage = totalPages;
     startPage = Math.max(1, endPage - MAX_VISIBLE + 1);
+<<<<<<< HEAD
 =======
   if (endPage - startPage < MAX_VISIBLE - 1) {
     startPage = Math.max(1, endPage = MAX_VISIBLE + 1)
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+>>>>>>> b137d4f (Fix: 페이징네이션 마지막펭지  31부터 스킵되는 현상 수정)
   }
 
   const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
