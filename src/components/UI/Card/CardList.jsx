@@ -3,7 +3,7 @@ import Card from "./Card";
 import styles from './CardList.module.css'
 import { getProductList } from '@/api/ProductService'
 
-function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, type, keyword }) {
+function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, type, keyword, sortType }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, t
         if (type === 'favorite') {
           data = await getProductList(1, favoritePerPage, '', 'favorite');
         } else {
-          data = await getProductList(currentPage, itemsPerPage, keyword); // 전체상품
+          data = await getProductList(currentPage, itemsPerPage, keyword, sortType); // 전체상품
         }
         setProducts(data.list);
         setTotalItems(data.totalCount);
@@ -26,7 +26,7 @@ function CardList({ currentPage, itemsPerPage, favoritePerPage, setTotalItems, t
     }
 
     fetchProduct()
-  }, [type, currentPage, itemsPerPage, setTotalItems, keyword, favoritePerPage]);
+  }, [type, currentPage, itemsPerPage, setTotalItems, keyword, favoritePerPage, sortType]);
 
   return (
     <div className={type === 'favorite' ? styles.favoriteContainer : styles.cardContainer}>

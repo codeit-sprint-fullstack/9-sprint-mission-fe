@@ -2,11 +2,20 @@ import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import styles from "./DropDown.module.css"
 
-function DropDown({ deviceType }) {
+function DropDown({ deviceType, onChange, page }) {
   const [showPanel, setShowPanel] = useState(false);
+  const [filterTitle, setFilterTitle] = useState('최신순');
 
   const handleOnClick = () => {
     setShowPanel(!showPanel);
+  }
+
+  const handleOnChange = (value) => {
+    onChange?.(value);
+    if(value === 'recent') setFilterTitle('최신순');
+    else if(value === 'favorite') setFilterTitle('좋아요순');
+    setShowPanel(false);
+    page(1)
   }
 
   return (
@@ -15,7 +24,7 @@ function DropDown({ deviceType }) {
         <button
           className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
           onClick={handleOnClick}>
-          최신순
+          {filterTitle}
           {showPanel
             ?
             <ChevronDown width={24} height={24} />
@@ -33,9 +42,9 @@ function DropDown({ deviceType }) {
       {showPanel && (
         <ul className={styles.dropdownFilter}>
           {/** 두가지 클래스를 붙이려면 템플릿 리터럴 사용 */}
-          <li className={`${styles.dropdownElement} ${styles.topElement}`}>최신순</li>
+          <li onClick={() => handleOnChange('recent')} className={`${styles.dropdownElement} ${styles.topElement}`}>최신순</li>
           <hr className={styles.dropdownHorizen} />
-          <li className={styles.dropdownElement}>좋아요순</li>
+          <li onClick={() => handleOnChange('favorite')} className={styles.dropdownElement}>좋아요순</li>
         </ul>
       )}
     </div>

@@ -13,6 +13,7 @@ export default function ItemPage() {
   const [keyword, setKeyword] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(null);
   const [favoritePerPage, setFavoritePerPage] = useState(null);
+  const [sortType, setSortType] = useState('recent');
 
   // custom hooks
   const { isTablet, isMobile } = useBreakPoint();
@@ -67,7 +68,7 @@ export default function ItemPage() {
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
                 <button className={styles.sellItemButton} >상품 등록하기</button>
-                <DropDown />
+                <DropDown onChange={setSortType} page={goToPage}/>
               </div>
             </div>
           ) : (
@@ -78,7 +79,7 @@ export default function ItemPage() {
               </div>
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
-                <DropDown deviceType={"mobile"} />
+                <DropDown deviceType={"mobile"} onChange={setSortType} page={goToPage} />
               </div>
             </div>
           )}
@@ -87,6 +88,7 @@ export default function ItemPage() {
             itemsPerPage={itemsPerPage}
             setTotalItems={setTotalItems}
             keyword={keyword}
+            sortType={sortType}
           />
         </div>
       </main>
