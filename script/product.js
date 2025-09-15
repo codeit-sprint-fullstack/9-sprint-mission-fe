@@ -24,32 +24,27 @@ class Product {
         return this.getProductAxios(id);
     }
 
- 
-    /* product 목록 조회 - GET Request 이용  */
+
+    /* product 목록 조회 - get  */
     async getProductList(pageNum=1, pageSize=10, orderBy='recent', keyword='')  {
-     
+    
         return this.getProductListFetch(pageNum=1, pageSize=10, orderBy='recent', keyword='') ;
     }
 
 
-    /* product 생성 - POST Request 이용  */
+    /* product 생성 - post  */
     async createProduct(obj= DEFAULT_PRODUCT_OBJ) {
- 
+
         return this.createProductAxios(obj);
     }
 
-    /* product 삭제 - DELETE Request 이용 */
-    async deleteProduct(id) {
-        const res = await fetch(`${PRODUCT_URL}/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            
-        });
 
-        return;
+    /* product 삭제 - delete */
+    async deleteProduct(id) {   
+
+        return this.deleteProductFetch(id);
     }
+
 
     /* product 수정 - PATCH Request 이용    */
     async updateProduct(obj= DEFAULT_PRODUCT_OBJ) {
@@ -68,7 +63,7 @@ class Product {
 
     
     /* product 상세 조회 - axios get */
-    async getProductAxios(id=1) {
+    async getProductAxios(id = 1) {
         const url = Product.DEFAULT_URL + '/' + id;
         let data;
 
@@ -88,7 +83,7 @@ class Product {
 
 
     /* product 상세 조회 - fetch get */
-    async getProductFetch(id=1) {
+    async getProductFetch(id = 1) {
         const url = Product.DEFAULT_URL + '/' + id;
         let data;
 
@@ -200,13 +195,62 @@ class Product {
 
         return data;
     }
+
+    /* product 삭제 - axios delete */
+    async deleteProductAxios(id) {
+        const url = Product.DEFAULT_URL + '/' + id;
+        let data;
+
+        await axios.delete(url).then((res) => {
+            data = res.data;
+
+        }).catch((err) => {
+            console.log(err);
+
+        });
+        
+        console.log('data -> ', data);
+
+        return data;
+    }
+
+
+        /* product 삭제 - fetch delete */
+    async deleteProductFetch(id = 1) {
+        const url = Product.DEFAULT_URL + '/' + id;
+        let data;
+
+        try {
+            const res = await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+
+            });
+
+            data = await res.json();            
+            
+            console.log('data -> ', data);
+
+        } catch(err) {
+            console.log(err);
+
+        }
+
+
+        return data;
+    }
+
+
+
 }
 
 
 (async function main() {
     const product = new Product();
-
-    const data =  await product.createProduct();
+    product.getProduct(2075);
+    const data =  await product.deleteProduct(2075);
     
-    console.log('result -> ', product.createProduct, data);
+    console.log('result -> ', product.deleteProduct, data);
 })();
