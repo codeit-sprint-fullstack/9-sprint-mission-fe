@@ -1,6 +1,8 @@
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import styles from './Pagination.module.css';
-
+/**
+ * @see https://www.notion.so/Pagination-jsx-26f856d064408013b3eef306e810566e?source=copy_link
+ */
 export function Pagination({ currentPage, totalPages, onPageChange }) {
   const MAX_VISIBLE = 5;
   const half = Math.floor(MAX_VISIBLE / 2);
