@@ -36,8 +36,11 @@ function Card({ name, price, images, type}) {
 
 =======
 function Card({ name, price, images, type, loading }) {
+<<<<<<< HEAD
   console.log(loading)
 >>>>>>> 476b6f9 (Feat: 스켈레톤 구현)
+=======
+>>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
   return (
     <>
       {loading ? (

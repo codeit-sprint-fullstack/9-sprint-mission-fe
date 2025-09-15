@@ -21,10 +21,14 @@ export function usePagination(initialPage = 1, itemsPerPage = 10) {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   return {
 =======
   return { 
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+  return {
+>>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
     currentPage,
     totalPages,
     totalItems,
@@ -34,9 +38,13 @@ export function usePagination(initialPage = 1, itemsPerPage = 10) {
     next,
     prev,
 <<<<<<< HEAD
+<<<<<<< HEAD
     setCurrentPage,
 =======
     setCurrentPage
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+    setCurrentPage,
+>>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
   };
 }
