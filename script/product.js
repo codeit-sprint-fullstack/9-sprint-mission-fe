@@ -34,15 +34,8 @@ class Product {
 
     /* product 생성 - POST Request 이용  */
     async createProduct(obj= DEFAULT_PRODUCT_OBJ) {
-        const res = await fetch(PRODUCT_URL, {
-            mothod: 'POST',
-            body: JSON.stringyfy(obj),
-            headers: {
-                'Content-type': 'application/json',
-            },
-        });
-
-        return;
+ 
+        return this.createProductAxios(obj);
     }
 
     /* product 삭제 - DELETE Request 이용 */
@@ -84,7 +77,8 @@ class Product {
 
         }).catch((err) => {
             console.log(err);
-        })
+
+        });
 
         console.log('data -> ', data);
 
@@ -130,7 +124,7 @@ class Product {
         }).catch((err) => {
             console.log(err);
 
-        }) 
+        });
 
         console.log('data -> ', data);
 
@@ -160,13 +154,59 @@ class Product {
         return data;
     }
 
+
+    
+    /* product 생성 - axios post */
+    async createProductAxios(obj= DEFAULT_PRODUCT_OBJ) {
+        const url = Product.DEFAULT_URL;
+        let data;
+
+        await axios.post(url, obj).then((res) => {
+            data = res.data;
+
+        }).catch((err) => {
+            console.log(err);
+
+        });
+
+        console.log('data -> ', data);
+
+        return data;
+    }
+
+    
+    /* product 생성 - fetch post  */
+    async createProductFetch(obj= DEFAULT_PRODUCT_OBJ) {
+        const url = Product.DEFAULT_URL;
+        let data;
+
+        try {
+            const res = await fetch(PRODUCT_URL, {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            });
+
+            data = await res.json();
+
+        } catch(err) {
+            console.log(err);
+
+        }
+
+        console.log('data -> ', data);
+
+        return data;
+    }
 }
 
 
 (async function main() {
     const product = new Product();
 
-    const data =  await product.getProductList();
+    const data =  await product.createProduct();
     
-    console.log('result -> ', product.getProductList, data);
+    console.log('result -> ', product.createProduct, data);
 })();
