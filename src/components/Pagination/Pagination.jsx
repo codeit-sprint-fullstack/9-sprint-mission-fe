@@ -1,12 +1,18 @@
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import styles from './Pagination.module.css';
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * @see https://www.notion.so/Pagination-jsx-26f856d064408013b3eef306e810566e?source=copy_link
  */
 =======
 
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+/**
+ * @see https://www.notion.so/Pagination-jsx-26f856d064408013b3eef306e810566e?source=copy_link
+ */
+>>>>>>> 9a1652f (Docs: 페이지네이션 문서추가)
 export function Pagination({ currentPage, totalPages, onPageChange }) {
   const MAX_VISIBLE = 5;
   const half = Math.floor(MAX_VISIBLE / 2);
