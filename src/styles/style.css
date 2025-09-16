@@ -84,6 +84,12 @@ a, button, input{
   margin-top: 4.4rem;
 }
 
+/*분리 필요*/
+.item-main{
+  width: 75rem;
+  flex-wrap: wrap;
+}
+
 #footer{
   justify-content: center;
   align-items: flex-start;
