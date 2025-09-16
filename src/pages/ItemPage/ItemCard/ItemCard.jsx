@@ -1,9 +1,11 @@
+import React from 'react';
+import clsx from 'clsx';
 import style from './ItemCard.module.css';
 import likesIcon from '@/assets/img/ic_likes.svg';
 
-export function ItemCard() {
+export function ItemCard({ isParentBest }) {
   return (
-    <div className={style.itemCard}>
+    <div className={clsx(style.itemCard, { [style.best]: isParentBest })}>
       <img className={style.itemImg} src="/" alt="상품 이미지" />
       <div className={style.itemTextWrap}>
         <h3 className={style.itemTitle}>제목</h3>
