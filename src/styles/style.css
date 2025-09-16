@@ -17,13 +17,13 @@
 
 *{
   box-sizing: border-box;
+  font-family: 'Pretendard';
+  font-style: normal;
 }
 
 body{
   background: var(--bg-gray);
   margin: 0 auto;
-  font-family: 'Pretendard';
-  font-style: normal;
 }
 
 #root{ 
@@ -164,8 +164,8 @@ a, button, input{
 }
 
 .s-btn.compact{
-  height: 2.6rem;
-  line-height: 2.6rem;
+  height: 2.625rem;
+  line-height: 2.625rem;
 }
 
 .l-btn{
@@ -227,6 +227,71 @@ a, button, input{
   width: 100%;
   display: flex;
   justify-content: flex-end; 
+}
+
+.dropdown-menu{
+  width: 8rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2.625rem;
+  text-align: center;
+  color: var(--secondary-800);
+}
+
+.dropdown-menu button{
+  width: 100%;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+.dropdown-menu > .dropdown-menu-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 2.625rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--secondary-200);
+  background: white;
+}
+
+.dropdown-icon{
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.dropdown-icon > img{
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu-selecte{
+  display: none;
+  width: 8rem;
+  margin-top: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--secondary-200);
+  background: white;
+  position: relative;
+  z-index: 0;
+}
+
+.dropdown-menu-selecte.on{
+  display: block;
+}
+
+.dropdown-menu-selecte > li{
+  width: 100%;
+  height: 2.625rem;
+  border-bottom: 1px solid var(--secondary-200);;
+}
+
+.dropdown-menu-selecte > li:last-child{
+  border-bottom: none;
 }
 
 @media screen and (max-width: 120rem) {
