@@ -3,16 +3,23 @@ body {
 }
 
 .wrapper {
-  max-width: 1920px;
+  width: 100%;
   margin: 0 auto;
 }
 
-@media (min-width: 1921px) {
+@media (max-width: 1199px) {
   .wrapper {
-    max-width: none;
-  }
+    min-width: 744px;
+  }  
 }
 
+@media (max-width: 743px) {
+  .wrapper {
+    min-width: 375px;
+  }  
+}
+
+  
 * {
   box-sizing: border-box;
 }
