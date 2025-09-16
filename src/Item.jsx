@@ -1,8 +1,10 @@
+import { BestItemsSection } from './pages/ItemPage/BestItemsSection';
+
 function Item() {
   return (
-    <>
-      <h1>아이템 영역</h1>
-    </>
+    <main id="main">
+      <BestItemsSection />
+    </main>
   );
 }
 
