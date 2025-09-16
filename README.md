@@ -2,4 +2,4 @@
 
 ### 🌐 배포 주소
 
-https://scintillating-mochi-d8e464.netlify.app/
+https://pandamarket-fs-9.netlify.app/

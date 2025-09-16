@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <a class="logo-link" href="/">
+      <a class="logo-link" href="../index.html">
         <img
           class="logo-img"
           src="../assets/logo/logo_panda_face_big.png"
@@ -34,16 +34,6 @@
       </div>
 
       <div class="input-group">
-        <label for="nickname">닉네임</label>
-        <input
-          id="nickname"
-          name="nickname"
-          type="text"
-          placeholder="닉네임을 입력해주세요"
-        />
-      </div>
-
-      <div class="input-group">
         <label for="password">비밀번호</label>
         <input
           id="password"
@@ -61,25 +51,7 @@
         </button>
       </div>
 
-      <div class="input-group">
-        <label for="password-confirm">비밀번호 확인</label>
-        <input
-          id="password-confirm"
-          name="password-confirm"
-          type="password"
-          placeholder="비밀번호를 다시 한 번 입력해주세요"
-        />
-        <div id="password-confirm-error" class="error-message"></div>
-        <button class="btn-visibility" type="button">
-          <img
-            class="btn-visibility-img"
-            src="../assets/icon/btn_visibility_off.svg"
-            alt="비밀번호 보기"
-          />
-        </button>
-      </div>
-
-      <button class="btn-primary" type="button">회원가입</button>
+      <button class="btn-primary" type="button" disabled>로그인</button>
 
       <!-- 모달 -->
       <div class="modal">
@@ -113,13 +85,13 @@
       </div>
 
       <div class="text-link">
-        <span class="text-primary">이미 회원이신가요?</span>
-        <a class="link-primary" href="../pages/login.html">로그인</a>
+        <span class="text-primary">판다마켓이 처음이신가요?</span>
+        <a class="link-primary" href="../pages/signup.html">회원가입</a>
       </div>
     </main>
 
     <script type="module" src="../script/validation.js"></script>
-    <script type="module" src="../script/signup.js"></script>
+    <script type="module" src="../script/login.js"></script>
     <script type="module" src="../script/visibility.js"></script>
   </body>
 </html>
