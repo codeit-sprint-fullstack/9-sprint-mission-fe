@@ -1,18 +1,22 @@
 import React from 'react';
 import clsx from 'clsx';
-import style from './ItemCard.module.css';
+import styles from './ItemCard.module.css';
 import likesIcon from '@/assets/img/ic_likes.svg';
 
-export function ItemCard({ isParentBest }) {
+export function ItemCard({ itemValue, isParentBest = false }) {
   return (
-    <div className={clsx(style.itemCard, { [style.best]: isParentBest })}>
-      <img className={style.itemImg} src="/" alt="상품 이미지" />
-      <div className={style.itemTextWrap}>
-        <h3 className={style.itemTitle}>제목</h3>
-        <p className={style.itemPrice}>30000원</p>
-        <p className={style.itemLikes}>
-          <img className={style.likesIcon} src={likesIcon} alt="좋아요" />
-          <span className={style.likesCount}>320</span>
+    <div className={clsx(styles.itemCard, { [styles.best]: isParentBest })}>
+      <img
+        className={styles.itemImg}
+        src={itemValue.images[0]}
+        alt="상품 이미지"
+      />
+      <div className={styles.itemTextWrap}>
+        <h3 className={styles.itemTitle}>{itemValue.name}</h3>
+        <p className={styles.itemPrice}>{itemValue.price}</p>
+        <p className={styles.itemLikes}>
+          <img className={styles.likesIcon} src={likesIcon} alt="좋아요" />
+          <span className={styles.likesCount}>{itemValue.favoriteCount}</span>
         </p>
       </div>
     </div>
