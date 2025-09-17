@@ -7,7 +7,7 @@ function App() {
     <ItemProvider>
       <main className="main item-main">
         <BestItemsSection />
-        {/* <SalesItemsSection /> */}
+        <SalesItemsSection />
       </main>
     </ItemProvider>
   );
