@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
 import { SalesItemList } from '@/pages/ItemPage/SalesItemList';
 import { ItemContext } from '@/contexts/ItemContext.js';
+import { Pagination } from '@/components/Pagenation';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 
@@ -12,6 +13,9 @@ export function SalesItemsSection() {
       itemList: salesItemList,
       isLoading,
       error,
+      currentPage,
+      totalPages,
+      goToPage,
       handleSearchTermChange,
       handleOrderByChange,
     },
@@ -86,6 +90,11 @@ export function SalesItemsSection() {
       ) : (
         <SalesItemList itemList={salesItemList} />
       )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={goToPage}
+      />
     </section>
   );
 }
