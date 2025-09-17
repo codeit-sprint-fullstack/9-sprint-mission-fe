@@ -9,13 +9,12 @@ class Validator {
     this.$error = $error;
   }
 
-  // 앞뒤 공백을 제거한 값을 가져온다.
   get Value() {
     return this.$input.value.trim();
   }
 
-  showError(msg) {
-    this.$error.textContent = msg;
+  showError(message) {
+    this.$error.textContent = message;
     this.$input.classList.add("input-error");
   }
 
@@ -24,7 +23,6 @@ class Validator {
     this.$input.classList.remove("input-error");
   }
 
-  // export 한 코드만 사용
   validate() {
     throw new Error("해당 코드는 하위 클래스에서 구현이 되어야 합니다");
   }
@@ -76,7 +74,7 @@ export class NicknameValidator extends Validator {
     const value = this.Value;
 
     if (!value) {
-      this.showError("닉네임을 입력해주세요");
+      this.showError("닉네임을 입력해주세요.");
       return false;
     }
 
@@ -113,7 +111,7 @@ export class PasswordValidator extends Validator {
     }
 
     if (value.length < this.minLength) {
-      this.showError(`비밀번호는 ${this.minLength}자 이상 입력해주세요`);
+      this.showError(`비밀번호는 ${this.minLength}자 이상 입력해주세요.`);
       return false;
     }
 
@@ -137,14 +135,14 @@ export class PasswordCheckValidator extends Validator {
 
   validate() {
     const value = this.Value;
-    const origin = this.$compare.value.trim();
+    const original = this.$compare.value.trim();
 
     if (!value) {
       this.showError("비밀번호를 입력해주세요.");
       return false;
     }
 
-    if (value !== origin) {
+    if (value !== original) {
       this.showError("비밀번호가 일치하지 않습니다.");
       return false;
     }
