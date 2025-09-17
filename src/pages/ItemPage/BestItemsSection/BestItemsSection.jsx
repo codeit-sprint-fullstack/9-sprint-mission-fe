@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './BestItemsSection.module.css';
 import { BestItemList } from '../BestItemList';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import clsx from 'clsx';
 import styles from './ItemCard.module.css';
 import likesIcon from '@/assets/img/ic_likes.svg';
