@@ -1,7 +1,7 @@
 import React from 'react';
 //import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
-import { ItemCard } from '@/pages/ItemPage/ItemCard';
+import { SalesItemList } from '@/pages/ItemPage/SalesItemList';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 
@@ -42,16 +42,7 @@ export function SalesItemsSection() {
           </ul>
         </div>
       </div>
-      <div className={styles.itemLsit}>
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
-      </div>
+      <SalesItemList />
     </section>
   );
 }
