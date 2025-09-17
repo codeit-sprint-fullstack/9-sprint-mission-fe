@@ -130,5 +130,100 @@
   </div>
 </footer>
 
+<script type="module">
+  ////////////// article 
+  import { getArticleList, getArticle, createArtscle, patchArticle, deleteArticle } from './ArticleService.js';
+
+  window.getArticleList = getArticleList;
+  window.createArticle = createArticle;
+  window.patchArticle = patchArticle;
+  window.deleteArticle = deleteArticle;
+
+  // 1️⃣ Article 리스트 확인
+  getArticleList();
+
+  // 2️⃣ 새 글 생성 후 ID 받아서 Update / Delete
+  createArticle({ 
+    title: '테스트 글', 
+    content: '이것은 테스트용 내용입니다.', 
+    image: 'https://via.placeholder.com/150' 
+  }).then(created => {
+    const newId = created.id;
+    console.log('생성된 글 ID:', newId);
+
+// 3️⃣ 생성한 글 단일 조회
+getArticle(newId).then(data => console.log('조회된 글:', data));
+
+// 4️⃣ 글 수정
+patchArticle(newId, { 
+  title: '수정된 테스트 글', 
+  content: '수정된 내용 test', 
+  image: 'https://via.placeholder.com/150' 
+}).then(updated => console.log('수정 완료:', updated));
+
+// 5️⃣ 글 삭제
+deleteArticle(newId).then(id => console.log('삭제 완료, ID:', id));
+  });
+
+
+
+  ////////////// product 
+import { 
+    getProductList, 
+    getProduct, 
+    createProduct, 
+    patchProduct, 
+    deleteProduct 
+  } from './ProductService.js';
+
+  // 브라우저 콘솔에서 직접 호출 가능하게
+  window.getProductList = getProductList;
+  window.getProduct = getProduct;
+  window.createProduct = createProduct;
+  window.patchProduct = patchProduct;
+  window.deleteProduct = deleteProduct;
+
+  // 1️⃣ Product 리스트 확인
+  getProductList().then(list => {
+    console.log('전체 상품 리스트:', list);
+  });
+
+  // 2️⃣ 새 상품 생성 후 ID 받아서 Update / Delete
+  createProduct({ 
+    name: '테스트 상품', 
+    description: '이것은 테스트용 상품입니다.', 
+    price: 10000, 
+    tags: ['테스트', '샘플'], 
+    images: ['https://via.placeholder.com/150'] 
+  }).then(created => {
+    console.log('생성된 상품:', created);
+    const newId = created.id;
+    console.log('생성된 상품 ID:', newId);
+
+    // 3️⃣ 생성한 상품 단일 조회
+    getProduct(newId).then(product => {
+      console.log('단일 상품 조회:', product);
+    });
+
+    // 4️⃣ 상품 수정
+    patchProduct(newId, { 
+      name: '수정된 테스트 상품', 
+      description: '수정된 내용test', 
+      price: 12000, 
+      tags: ['수정'], 
+      images: ['https://via.placeholder.com/150'] 
+    }).then(updated => {
+      console.log('수정된 상품:', updated);
+    });
+
+    // 5️⃣ 상품 삭제
+    deleteProduct(newId).then(deletedId => {
+      console.log('삭제된 상품 ID:', deletedId);
+    });
+  });
+</script>
+
+
+
 </body>
 </html>
