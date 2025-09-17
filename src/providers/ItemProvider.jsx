@@ -19,6 +19,14 @@ export const ItemProvider = ({ children }) => {
   const [salesSearchTerm, setSalesSearchTerm] = useState('');
   const [salesOrderBy, setSalesOrderBy] = useState('recent');
 
+  const handleSearchTermChange = (value) => {
+    setSalesSearchTerm(value);
+  };
+
+  const handleOrderByChange = (value) => {
+    setSalesOrderBy(value);
+  };
+
   useEffect(() => {
     const getBestItems = async () => {
       setIsBestLoading(true);
@@ -51,7 +59,7 @@ export const ItemProvider = ({ children }) => {
           orderBy: salesOrderBy,
         };
         if (salesSearchTerm) {
-          params.search = salesSearchTerm;
+          params.keyword = salesSearchTerm;
         }
         const data = await getProductList(params);
         setSalesItemList(data.list);
@@ -74,8 +82,8 @@ export const ItemProvider = ({ children }) => {
       itemList: salesItemList,
       isLoading: isSalesLoading,
       error: salesError,
-      setSearchTerm: setSalesSearchTerm,
-      setSalesOrderBy: setSalesOrderBy,
+      handleSearchTermChange,
+      handleOrderByChange,
     },
   };
 

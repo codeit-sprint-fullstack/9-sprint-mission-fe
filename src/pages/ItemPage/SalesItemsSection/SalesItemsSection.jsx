@@ -1,11 +1,29 @@
-import React from 'react';
+import { useContext } from 'react';
 //import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
 import { SalesItemList } from '@/pages/ItemPage/SalesItemList';
+import { ItemContext } from '@/contexts/ItemContext.js';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 
 export function SalesItemsSection() {
+  const {
+    sales: {
+      itemList: salesItemList,
+      isLoading,
+      error,
+      handleSearchTermChange,
+    },
+  } = useContext(ItemContext);
+
+  const handleSearchInput = (event) => {
+    handleSearchTermChange(event.target.value);
+  };
+
+  // const handleOrderDropDwon = (event) => {
+  //   handleOrderByChange(event.target.value);
+  // };
+
   return (
     <section id={styles.salesItemSection}>
       <div className={styles.sectionTopWrap}>
@@ -15,6 +33,7 @@ export function SalesItemsSection() {
           <input
             id="serch-input"
             type="text"
+            onKeyUp={handleSearchInput}
             placeholder="검색할 상품을 입력해주세요"
           />
         </div>
@@ -42,7 +61,13 @@ export function SalesItemsSection() {
           </ul>
         </div>
       </div>
-      <SalesItemList />
+      {isLoading ? (
+        <p>로딩 중...</p>
+      ) : error ? (
+        <p>에러가 발생했습니다...</p>
+      ) : (
+        <SalesItemList itemList={salesItemList} />
+      )}
     </section>
   );
 }
