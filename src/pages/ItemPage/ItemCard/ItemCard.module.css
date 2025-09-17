@@ -12,6 +12,7 @@
   display: block;
   width: 13.8rem;
   height: 13.8rem;
+  object-fit: cover;
   border-radius: 1rem;
   margin-bottom: 1rem;
   background: #000;
