@@ -1,16 +1,16 @@
 import React from 'react';
 //import clsx from 'clsx';
-import style from './SalesItemsSection.module.css';
+import styles from './SalesItemsSection.module.css';
 import { ItemCard } from '@/pages/ItemPage/ItemCard';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 
 export function SalesItemsSection() {
   return (
-    <section id={style.salesItemSection}>
-      <div className={style.sectionTopWrap}>
-        <h2 className={style.sectionTitle}>판매 중인 상품</h2>
-        <div className={style.inputWrap}>
+    <section id={styles.salesItemSection}>
+      <div className={styles.sectionTopWrap}>
+        <h2 className={styles.sectionTitle}>판매 중인 상품</h2>
+        <div className={styles.inputWrap}>
           <img src={searchIcon} alt="검색" />
           <input
             id="serch-input"
@@ -42,7 +42,7 @@ export function SalesItemsSection() {
           </ul>
         </div>
       </div>
-      <div className={style.itemLsit}>
+      <div className={styles.itemLsit}>
         <ItemCard />
         <ItemCard />
         <ItemCard />
