@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="../styles/auth.css" />
+    <link rel="icon" href="../assets/logo/favicon.ico" />
+  </head>
+  <body>
+    <header>
+      <a class="logo-link" href="../index.html">
+        <img
+          class="logo-img"
+          src="../assets/logo/logo_panda_face_big.png"
+          alt="판다마켓 로고"
+        />
+        <span class="logo-text">판다마켓</span>
+      </a>
+    </header>
+
+    <main>
+      <div class="input-group">
+        <label for="email">이메일</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="이메일을 입력해주세요"
+        />
+        <div id="email-error" class="error-message"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="nickname">닉네임</label>
+        <input
+          id="nickname"
+          name="nickname"
+          type="text"
+          placeholder="닉네임을 입력해주세요"
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="password">비밀번호</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+        />
+        <div id="password-error" class="error-message"></div>
+        <button class="btn-visibility" type="button">
+          <img
+            class="btn-visibility-img"
+            src="../assets/icon/btn_visibility_off.svg"
+            alt="비밀번호 보기"
+          />
+        </button>
+      </div>
+
+      <div class="input-group">
+        <label for="password-confirm">비밀번호 확인</label>
+        <input
+          id="password-confirm"
+          name="password-confirm"
+          type="password"
+          placeholder="비밀번호를 다시 한 번 입력해주세요"
+        />
+        <div id="password-confirm-error" class="error-message"></div>
+        <button class="btn-visibility" type="button">
+          <img
+            class="btn-visibility-img"
+            src="../assets/icon/btn_visibility_off.svg"
+            alt="비밀번호 보기"
+          />
+        </button>
+      </div>
+
+      <button class="btn-primary" type="button">회원가입</button>
+
+      <!-- 모달 -->
+      <div class="modal">
+        <div class="modal-content">
+          <p id="modal-message">어쩌구</p>
+          <button class="modal-close-btn" type="button">확인</button>
+        </div>
+      </div>
+
+      <div class="simple-login">
+        <div class="simple-login-contents">
+          <p class="simple-login-text">간편 로그인하기</p>
+          <div class="btn-simple-login-group">
+            <a href="https://www.google.com/">
+              <img
+                class="btn-simple-login"
+                src="../assets/icon/ic_google.png"
+                alt="구글 로그인"
+              />
+            </a>
+
+            <a href="https://www.kakaocorp.com/page/">
+              <img
+                class="btn-simple-login"
+                src="../assets/icon/ic_kakaotalk.png"
+                alt="카카오톡 로그인"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-link">
+        <span class="text-primary">이미 회원이신가요?</span>
+        <a class="link-primary" href="../pages/login.html">로그인</a>
+      </div>
+    </main>
+
+    <script type="module" src="../script/validation.js"></script>
+    <script type="module" src="../script/signup.js"></script>
+    <script type="module" src="../script/visibility.js"></script>
+  </body>
+</html>
