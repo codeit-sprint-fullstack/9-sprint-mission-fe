@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-//import clsx from 'clsx';
+import { useState, useContext } from 'react';
+import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
 import { SalesItemList } from '@/pages/ItemPage/SalesItemList';
 import { ItemContext } from '@/contexts/ItemContext.js';
@@ -13,16 +13,23 @@ export function SalesItemsSection() {
       isLoading,
       error,
       handleSearchTermChange,
+      handleOrderByChange,
     },
   } = useContext(ItemContext);
+  const [isDropDownActive, setIsDropDownActive] = useState(false);
 
   const handleSearchInput = (event) => {
     handleSearchTermChange(event.target.value);
   };
 
-  // const handleOrderDropDwon = (event) => {
-  //   handleOrderByChange(event.target.value);
-  // };
+  const handleDropDownBtnClick = () => {
+    setIsDropDownActive(!isDropDownActive);
+  };
+
+  const handleOrderDropDwonSelect = (event) => {
+    handleOrderByChange(event.target.value);
+    setIsDropDownActive(false);
+  };
 
   return (
     <section id={styles.salesItemSection}>
@@ -41,7 +48,10 @@ export function SalesItemsSection() {
           상품 등록하기
         </a>
         <div className="dropdown-menu">
-          <button className="dropdown-menu-btn">
+          <button
+            className="dropdown-menu-btn"
+            onClick={handleDropDownBtnClick}
+          >
             <span className="dropdown-state">최신순</span>
             <picture>
               <img
@@ -51,12 +61,20 @@ export function SalesItemsSection() {
               />
             </picture>
           </button>
-          <ul className="dropdown-menu-selecte">
+          <ul
+            className={clsx('dropdown-menu-selecte', {
+              on: isDropDownActive,
+            })}
+          >
             <li>
-              <button>최신순</button>
+              <button value="recent" onClick={handleOrderDropDwonSelect}>
+                최신순
+              </button>
             </li>
             <li>
-              <button>좋아요순</button>
+              <button value="favorite" onClick={handleOrderDropDwonSelect}>
+                좋아요순
+              </button>
             </li>
           </ul>
         </div>
