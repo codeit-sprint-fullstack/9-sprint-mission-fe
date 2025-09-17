@@ -12,6 +12,14 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
     totalPages,
   );
 
+  const handleClickArrow = (event) => {
+    if (event.target.value === 'prev') {
+      onPageChange(lastPageOfGroup - 1);
+    } else if (event.target.value === 'next') {
+      onPageChange(lastPageOfGroup + 1);
+    }
+  };
+
   const pageNumbers = Array.from(
     { length: lastPageOfGroup - firstPageOfGroup + 1 },
     (_, i) => firstPageOfGroup + i,
@@ -20,7 +28,8 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
     <div className={styles.pagination}>
       <button
-        onClick={() => onPageChange(firstPageOfGroup - 1)}
+        value="prev"
+        onClick={handleClickArrow}
         disabled={currentPageGroup === 1}
         className={styles.pageButton}
       >
@@ -39,7 +48,8 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
         </button>
       ))}
       <button
-        onClick={() => onPageChange(lastPageOfGroup + 1)}
+        value="next"
+        onClick={handleClickArrow}
         disabled={lastPageOfGroup >= totalPages}
         className={styles.pageButton}
       >
