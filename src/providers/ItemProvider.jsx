@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { usePagination } from '@/hooks/usePagination';
 import { getProductList } from '../api/ProductService.js';
 import { ItemContext } from '@/contexts/ItemContext.js';
 
 const BEST_ITEM_PAGE_SIZE = 4;
 const SALES_ITEM_PAGE_SIZE = 10;
-const ITEM_PAGE_NUM = 1;
+const ITEM_PAGE_DEFULT = 1;
 
 export const ItemProvider = ({ children }) => {
   // State for Best Items
@@ -27,13 +28,18 @@ export const ItemProvider = ({ children }) => {
     setSalesOrderBy(value);
   };
 
+  const { currentPage, totalPages, setTotalItems, goToPage } = usePagination(
+    ITEM_PAGE_DEFULT,
+    SALES_ITEM_PAGE_SIZE,
+  );
+
   useEffect(() => {
     const getBestItems = async () => {
       setIsBestLoading(true);
       setBestError(null);
       try {
         const data = await getProductList({
-          page: ITEM_PAGE_NUM,
+          page: ITEM_PAGE_DEFULT,
           pageSize: BEST_ITEM_PAGE_SIZE,
           orderBy: 'favorite',
         });
@@ -54,7 +60,7 @@ export const ItemProvider = ({ children }) => {
       setSalesError(null);
       try {
         const params = {
-          page: ITEM_PAGE_NUM,
+          page: currentPage,
           pageSize: SALES_ITEM_PAGE_SIZE,
           orderBy: salesOrderBy,
         };
@@ -62,7 +68,9 @@ export const ItemProvider = ({ children }) => {
           params.keyword = salesSearchTerm;
         }
         const data = await getProductList(params);
+        console.log(data);
         setSalesItemList(data.list);
+        setTotalItems(data.totalCount);
       } catch (err) {
         setSalesError(err);
       } finally {
@@ -70,7 +78,7 @@ export const ItemProvider = ({ children }) => {
       }
     };
     getSalesItems();
-  }, [salesSearchTerm, salesOrderBy]);
+  }, [salesSearchTerm, salesOrderBy, currentPage, setTotalItems]);
 
   const contextValue = {
     best: {
@@ -82,6 +90,9 @@ export const ItemProvider = ({ children }) => {
       itemList: salesItemList,
       isLoading: isSalesLoading,
       error: salesError,
+      currentPage,
+      totalPages,
+      goToPage,
       handleSearchTermChange,
       handleOrderByChange,
     },
