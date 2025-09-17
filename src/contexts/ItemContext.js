@@ -6,6 +6,8 @@ export const ItemContext = createContext({
   currentPage: 1,
   totalPages: 1,
   isLoading: false,
+  setSearchTerm: () => console.warn('setSearchTerm not implemented'),
+  salesOrderBy: () => console.warn('salesOrderBy not implemented'),
 });
 
 export const useItems = () => {
