@@ -1,0 +1,147 @@
+/* ✅ LoginPage 전용 wrapper */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;   /* 화면 높이 꽉 차게 */
+  background-color: #fcfcfc;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  background-color: #fcfcfc;
+  padding: 40px 20px;
+}
+
+/* 로고 영역 */
+.login-header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-decoration: none;
+}
+
+.login-brand-logo {
+  width: 100px;
+  height: auto;
+}
+
+.login-logo {
+  color: #3692FF;
+  font-family: "ROKAF Sans";
+  font-size: 48px;
+  font-weight: 700;
+}
+
+/* 로그인 폼 */
+.login-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+input {
+  width: 100%;
+  max-width: 640px;
+  height: 56px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: none;
+  background: #F3F4F6;
+  font-size: 16px;
+  color: #1F2937;
+}
+
+input::placeholder {
+  color: #9CA3AF;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #3692FF;
+}
+
+.btn-primary {
+  padding: 16px;
+  border-radius: 40px;
+  border: none;
+  background-color: #3692FF;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 소셜 로그인 */
+.social-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  padding: 16px 23px;
+  border-radius: 8px;
+  background: #E6F2FF;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-btn.google {
+  background: #fff;
+}
+
+.social-btn.kakao {
+  background: #FEE500;
+}
+
+/* 회원가입 안내 */
+.login-signup {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.login-signup a {
+  color: #3692FF;
+  text-decoration: none;
+  font-weight: 600;
+}

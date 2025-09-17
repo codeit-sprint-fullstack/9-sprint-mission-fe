@@ -1,0 +1,122 @@
+/* 공통 컨테이너 */
+.container {
+  width: 100%;           /* 항상 화면 가로 100% 차지 */
+  max-width: 1920px;     /* 최대 폭은 모니터 해상도 고려 */
+  margin: 0 auto;
+  padding: 0 40px;       /* 기본 좌우 여백 */
+  box-sizing: border-box;
+}
+
+/* 히어로 영역 (상단 배너) */
+.hero-wrap {
+  width: 100%;           /* 화면 전체 차지 */
+  background: #CFE5FF;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding: 80px 40px;    /* 좌우 여백 */
+  box-sizing: border-box;
+}
+
+.hero-left h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+/* 카드 섹션 */
+.cards {
+  width: 100%;            /* 전체 폭 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  padding: 100px 40px;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 1200px;       /* 카드 내용은 중앙에 정렬 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FCFCFC;
+  border-radius: 16px;
+  padding: 40px;
+  gap: 40px;
+}
+
+.card.card-reverse {
+  flex-direction: row-reverse;
+}
+
+.card-media img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
+/* 하단 배너 */
+.trust-wrap {
+  width: 100%;
+  background: #CFE5FF;
+  padding: 80px 40px;
+  box-sizing: border-box;
+}
+
+.trust {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1199px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .trust {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+  }
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 743px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .card-text h2 {
+    font-size: 24px;
+  }
+}
