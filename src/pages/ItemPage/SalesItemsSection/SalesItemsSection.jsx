@@ -21,6 +21,7 @@ export function SalesItemsSection() {
     },
   } = useContext(ItemContext);
   const [isDropDownActive, setIsDropDownActive] = useState(false);
+  const [dropDownState, setDropDownState] = useState('recent');
 
   const handleSearchInput = (event) => {
     handleSearchTermChange(event.target.value);
@@ -32,6 +33,7 @@ export function SalesItemsSection() {
 
   const handleOrderDropDwonSelect = (event) => {
     handleOrderByChange(event.target.value);
+    setDropDownState(event.target.value);
     setIsDropDownActive(false);
   };
 
@@ -56,7 +58,9 @@ export function SalesItemsSection() {
             className="dropdown-menu-btn"
             onClick={handleDropDownBtnClick}
           >
-            <span className="dropdown-state">최신순</span>
+            <span className="dropdown-state">
+              {dropDownState === 'recent' ? '최신순' : '좋아요순'}
+            </span>
             <picture>
               <img
                 className="dropdown-icon"
