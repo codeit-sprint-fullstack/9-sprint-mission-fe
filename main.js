@@ -1,8 +1,9 @@
 
+import { getArticleList, getArticle, createArticle, patchArticle, deleteArticle } from "./ArticleService.js";
+import { getProductList, getProduct, createProduct, patchProduct, deleteProduct } from "./ProductService.js";
+
 
 //article
-
-import { getArticleList, getArticle, createArticle, patchArticle, deleteArticle } from "./ArticleService.js";
 
 async function articleFlow() {
 
@@ -41,8 +42,6 @@ async function articleFlow() {
 articleFlow();
 
 //product
-
-import { getProductList, getProduct, createProduct, patchProduct, deleteProduct } from "./ProductService.js";
 
 
 async function productFlow() {
