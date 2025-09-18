@@ -103,8 +103,3 @@ export async function deleteProduct(id) {
   }
 }
 
-//연결 성공
-
-export function testProduct() {
-  console.log("연결 성공!");
-}

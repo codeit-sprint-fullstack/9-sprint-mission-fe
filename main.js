@@ -1,9 +1,5 @@
 
 
-import { testArticle } from "./ArticleService.js"
-import { testProduct } from "./ProductService.js"
-
-
 //article
 
 import { getArticleList, getArticle, createArticle, patchArticle, deleteArticle } from "./ArticleService.js";
@@ -98,7 +94,4 @@ async function productFlow() {
 
 productFlow();
 
-
-testArticle();
-testProduct();
 

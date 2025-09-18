@@ -100,9 +100,3 @@ export function deleteArticle(id) {
       console.error('게시글 삭제 실패', err));
 }
 
-
-//연결 성공
-
-export function testArticle() {
-  console.log("연결 성공!");
-}
