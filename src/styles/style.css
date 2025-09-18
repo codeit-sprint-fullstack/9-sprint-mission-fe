@@ -85,8 +85,9 @@ a, button, input{
 }
 
 .item-main{
-  width: 75rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #footer{
