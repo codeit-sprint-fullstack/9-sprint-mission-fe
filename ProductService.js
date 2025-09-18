@@ -6,16 +6,15 @@
 
 export async function getProductList(params = {}) {
   try {
-    const url = new URL('https://panda-market-api-crud.vercel.app/products')
-    Object.keys(params).forEach((key) =>
-      url.searchParams.append(key, params[key])
-    );
+    const url = new URL('https://panda-market-api-crud.vercel.app/products');
+    url.search = new URLSearchParams(params).toString();
+
 
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return await res.json();
   } catch (err) {
-    cosnole.error('상품 목록 조회 실패', err);
+    console.error('상품 목록 조회 실패', err);
   }
 }
 
