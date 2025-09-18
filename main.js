@@ -4,9 +4,6 @@
 
 import { getArticleList, getArticle, createArticle, patchArticle, deleteArticle } from "./ArticleService.js";
 
-getArticleList().then(list => {
-});
-
 async function articleFlow() {
 
   try {
@@ -16,16 +13,16 @@ async function articleFlow() {
       content: '게시글 내용',
       image: 'https://via.placeholder.com/150'
     });
-    const newPost = created.id;
-    console.log('생성된 글', newPost);
+    const newPostId = created.id;
+    console.log('생성된 글', newPostId);
 
     //조회
-    const data = await getArticle(newPost);
+    const data = await getArticle(newPostId);
     console.log('단일 게시글 조회', data);
 
 
     //수정
-    const updated = await patchArticle(newPost, {
+    const updated = await patchArticle(newPostId, {
       title: '수정된 테스트 게시글',
       content: '수정된 테스트 게시글입니다',
       image: 'https://via.placeholder.com/150'
@@ -33,7 +30,7 @@ async function articleFlow() {
     console.log('게시글 수정 완료', updated);
 
     //삭제
-    const deleted = await deleteArticle(newPost);
+    const deleted = await deleteArticle(newPostId);
     console.error('삭제된 게시글', deleted);
 
   } catch (err) {
@@ -49,9 +46,8 @@ import { getProductList, getProduct, createProduct, patchProduct, deleteProduct 
 
 
 async function productFlow() {
+
   try {
-
-
     const list = await getProductList();
     console.log('전체 상품 목록:', list);
 
@@ -64,16 +60,16 @@ async function productFlow() {
       images: ['https://via.placeholder.com/150']
     });
 
-    const newId = created.id;
+    const newProductId = created.id;
     console.log('생성된 상품', created);
 
     //조회
-    const product = await getProduct(newId);
+    const product = await getProduct(newProductId);
     console.log('단일 상품 조회', product);
 
 
     //수정
-    const updated = await patchProduct(newId, {
+    const updated = await patchProduct(newProductId, {
       name: '수정된 테스트 상품',
       description: '수정된 테스트 상품입니다',
       price: 9000,
@@ -85,7 +81,7 @@ async function productFlow() {
 
 
     //삭제
-    const deleted = await deleteProduct(newId);
+    const deleted = await deleteProduct(newProductId);
     console.error('삭제된 상품', deleted);
   } catch (err) {
     console.error('상품 오류 발생', err);
