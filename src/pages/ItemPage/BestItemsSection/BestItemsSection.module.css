@@ -12,3 +12,11 @@
   line-height: 2rem;
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 74.9rem){
+  #bestItemSection{width: 43.5rem;}
+}
+
+@media screen and (max-width: 46.4rem) {
+  #bestItemSection{width: 21.4rem;}
+}
