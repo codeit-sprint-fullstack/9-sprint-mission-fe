@@ -2,9 +2,18 @@ import { useState, useEffect } from 'react';
 import { usePagination } from '@/hooks/usePagination';
 import { getProductList } from '../api/ProductService.js';
 import { ItemContext } from '@/contexts/ItemContext.js';
+import { useWindowSize } from '@/hooks/useWindowSize.js';
 
-const BEST_ITEM_PAGE_SIZE = 4;
-const SALES_ITEM_PAGE_SIZE = 10;
+const BEST_ITEM_PAGE_SIZE = {
+  PC: 4,
+  TABLET: 2,
+  MOBILE: 1,
+};
+const SALES_ITEM_PAGE_SIZE = {
+  PC: 10,
+  TABLET: 6,
+  MOBILE: 4,
+};
 const ITEM_PAGE_DEFULT = 1;
 
 export const ItemProvider = ({ children }) => {
@@ -20,6 +29,8 @@ export const ItemProvider = ({ children }) => {
   const [salesSearchTerm, setSalesSearchTerm] = useState('');
   const [salesOrderBy, setSalesOrderBy] = useState('recent');
 
+  const windowSize = useWindowSize();
+
   const handleSearchTermChange = (value) => {
     setSalesSearchTerm(value);
   };
@@ -30,7 +41,7 @@ export const ItemProvider = ({ children }) => {
 
   const { currentPage, totalPages, setTotalItems, goToPage } = usePagination(
     ITEM_PAGE_DEFULT,
-    SALES_ITEM_PAGE_SIZE,
+    SALES_ITEM_PAGE_SIZE[windowSize],
   );
 
   useEffect(() => {
@@ -38,11 +49,12 @@ export const ItemProvider = ({ children }) => {
       setIsBestLoading(true);
       setBestError(null);
       try {
-        const data = await getProductList({
+        const params = {
           page: ITEM_PAGE_DEFULT,
-          pageSize: BEST_ITEM_PAGE_SIZE,
+          pageSize: BEST_ITEM_PAGE_SIZE[windowSize],
           orderBy: 'favorite',
-        });
+        };
+        const data = await getProductList(params);
         setBestItemList(data.list);
       } catch (err) {
         setBestError(err);
@@ -52,16 +64,17 @@ export const ItemProvider = ({ children }) => {
     };
 
     getBestItems();
-  }, []);
+  }, [windowSize]);
 
   useEffect(() => {
     const getSalesItems = async () => {
+      console.log(windowSize);
       setIsSalesLoading(true);
       setSalesError(null);
       try {
         const params = {
           page: currentPage,
-          pageSize: SALES_ITEM_PAGE_SIZE,
+          pageSize: SALES_ITEM_PAGE_SIZE[windowSize],
           orderBy: salesOrderBy,
         };
         if (salesSearchTerm) {
@@ -78,7 +91,7 @@ export const ItemProvider = ({ children }) => {
       }
     };
     getSalesItems();
-  }, [salesSearchTerm, salesOrderBy, currentPage, setTotalItems]);
+  }, [salesSearchTerm, salesOrderBy, currentPage, setTotalItems, windowSize]);
 
   const contextValue = {
     best: {
