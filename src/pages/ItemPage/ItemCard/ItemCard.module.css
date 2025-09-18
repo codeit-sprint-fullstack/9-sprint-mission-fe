@@ -60,3 +60,27 @@
   font-weight: 500;
   line-height: 1.125rem;
 }
+
+@media screen and (max-width: 74.9rem){
+  .itemCard.best{
+    width: 21.4rem;
+    height: 27.1rem;
+  }
+
+  .itemCard.best > .itemImg{
+    width: 21.4rem;
+    height: 21.4rem;
+  }
+}
+
+@media screen and (max-width: 46.4rem) {
+  .itemCard{
+    width: 10.5rem;
+    height: 16.5rem;
+  }
+
+  .itemCard > .itemImg{
+    width: 10.5rem;
+    height: 10.5rem;
+  }
+}
