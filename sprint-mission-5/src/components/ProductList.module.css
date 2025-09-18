@@ -1,0 +1,8 @@
+.ProductList {
+  list-style: none;
+  padding: 0;
+}
+
+.ProductListItem {
+  margin: 10px;
+}
