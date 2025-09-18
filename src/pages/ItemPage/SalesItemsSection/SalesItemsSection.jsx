@@ -6,6 +6,7 @@ import { ItemContext } from '@/contexts/ItemContext.js';
 import { Pagination } from '@/components/Pagenation';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
+import DropDownIcon from '@/assets/img/ic_sort.svg';
 
 export function SalesItemsSection() {
   const {
@@ -50,29 +51,31 @@ export function SalesItemsSection() {
             placeholder="검색할 상품을 입력해주세요"
           />
         </div>
-        <a href="" className="s-btn compact">
+        <a href="" className={clsx('s-btn', 'compact', styles.newItemBtn)}>
           상품 등록하기
         </a>
-        <div className="dropdown-menu">
+        <div className={styles.dropdownMenu}>
           <button
-            className="dropdown-menu-btn"
+            className={styles.dropdownMenuBtn}
             onClick={handleDropDownBtnClick}
           >
-            <span className="dropdown-state">
+            <span className={styles.dropdownState}>
               {dropDownState === 'recent' ? '최신순' : '좋아요순'}
             </span>
             <picture>
+              <source media="(max-width: 46.4rem)" srcSet={DropDownIcon} />
               <img
-                className="dropdown-icon"
+                className={styles.dropdownIcon}
                 src={arrowDownIcon}
                 alt="정렬메뉴"
               />
             </picture>
           </button>
           <ul
-            className={clsx('dropdown-menu-selecte', {
-              on: isDropDownActive,
-            })}
+            className={clsx(
+              styles.dropdownMenuSelecte,
+              isDropDownActive && styles.on,
+            )}
           >
             <li>
               <button value="recent" onClick={handleOrderDropDwonSelect}>
