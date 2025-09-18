@@ -15,5 +15,11 @@ export const useWindowSize = () => {
     };
   }, []);
 
-  return windowSize;
+  if(windowSize < 744){
+    return "MOBILE"
+  }else if(windowSize < 1200){
+    return "TABLET"
+  }else{
+    return "PC"
+  }
 };
