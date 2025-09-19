@@ -52,9 +52,8 @@ function LoginPage() {
               <div id="loginPasswordError" className="error-message" aria-live="polite"></div>
             </div>
 
-            <button type="submit" className="btn-primary" disabled>
-              로그인
-            </button>
+             <button type="submit" class="btn-primary" disabled>로그인</button>
+
           </form>
 
           {/* 소셜 로그인 */}

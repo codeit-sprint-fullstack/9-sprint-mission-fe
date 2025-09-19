@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 
-
 import imgTop from '../assets/images/Img_home_top.png';
 import img01 from '../assets/images/Img_home_01.png';
 import img02 from '../assets/images/Img_home_02.png';
 import img03 from '../assets/images/Img_home_03.png';
 import imgBottom from '../assets/images/Img_home_bottom.png';
-import '../assets/css/header.css';  
+
+
+
+
 import '../assets/css/styles.css';  
+
 function HomePage() {
   return (
     <main className="main">
@@ -73,6 +76,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+   
 
     </main>
   );
