@@ -13,10 +13,10 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   );
 
   const handleClickArrow = (event) => {
-    if (event.target.value === 'prev') {
+    if (event.target.classList.contains('prev')) {
       onPageChange(firstPageOfGroup - 1);
       console.log(currentPageGroup);
-    } else if (event.target.value === 'next') {
+    } else if (event.target.classList.contains('next')) {
       onPageChange(lastPageOfGroup + 1);
       console.log(currentPageGroup);
     }
@@ -30,12 +30,11 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
     <div className={styles.pagination}>
       <button
-        value="prev"
         onClick={handleClickArrow}
         disabled={currentPageGroup === 1}
-        className={styles.pageButton}
+        className={clsx(styles.pageButton, 'prev')}
       >
-        <img src={arrowL} alt="이전 페이지 묶음" />
+        <img className="prev" src={arrowL} alt="이전 페이지 묶음" />
       </button>
       {pageNumbers.map((pageNumber) => (
         <button
@@ -53,9 +52,9 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
         value="next"
         onClick={handleClickArrow}
         disabled={lastPageOfGroup >= totalPages}
-        className={styles.pageButton}
+        className={clsx(styles.pageButton, 'next')}
       >
-        <img src={arrowR} alt="다음 페이지 묶음" />
+        <img className="next" src={arrowR} alt="다음 페이지 묶음" />
       </button>
     </div>
   );
