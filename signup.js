@@ -24,10 +24,10 @@ const passwordError = document.querySelector("#passwordError");
 const passwordCheckError = document.querySelector("#passwordCheckError")
 const nicknameError = document.querySelector("#nicknameError")
 
-const visibilityOn = document.getElementById('visibilityOn')
-const visibilityOff = document.getElementById('visibilityOff')
-const visibilityOnCheck = document.getElementById('visibilityOnCheck')
-const visibilityOffCheck = document.getElementById('visibilityOffCheck')
+const visibilityOn = document.querySelector('#visibilityOn')
+const visibilityOff = document.querySelector('#visibilityOff')
+const visibilityOnCheck = document.querySelector('#visibilityOnCheck')
+const visibilityOffCheck = document.querySelector('#visibilityOffCheck')
 //패스워드 토글
 
 visibilityOff.addEventListener("click", () => {
@@ -266,12 +266,12 @@ function checkInputs() {
 //에러 모달
 
 function errorPage(message) {
-  document.getElementById("errorMessage").textContent = message;
-  document.getElementById("modal").classList.remove("modal_hidden");
+  document.querySelector("#errorMessage").textContent = message;
+  document.querySelector("#modal").classList.remove("modal_hidden");
 }
 
-document.getElementById("closeBtn").addEventListener("click", () => {
-  document.getElementById("modal").classList.add("modal_hidden");
+document.querySelector("#closeBtn").addEventListener("click", () => {
+  document.querySelector("#modal").classList.add("modal_hidden");
 });
 
 

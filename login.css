@@ -63,7 +63,7 @@ input {
 }
 
 
-.visibility {
+.passwordVisibility {
   position: absolute;
   width: 1.5rem;
   height: 1.5rem;
@@ -173,9 +173,6 @@ button {
   border: none;
   width: 100%;
   height: 3.5rem;
-}
-
-.login-link {
   color: var(--white);
 }
 
