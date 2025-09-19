@@ -1,44 +1,36 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+/* 전체 로그인 컨테이너 */
+.login-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 24px;
   background-color: #fcfcfc;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-container {
-  width:100%;
-gap:40px;
-
-  background-color: #fcfcfc;
-
   flex-direction: column;
   align-items: center;
-
+  gap: 40px;
+  box-sizing: border-box;
 }
 
+/* 로고 + 텍스트 나란히 배치 */
 .login-header a {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;  /* ← 텍스트를 로고 옆에 붙이기 위해 */
   gap: 20px;
   text-decoration: none;
 }
 
 .brand-logo {
-  width: 103.529px;
-  height: 103.88px;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
 }
 
 .logo {
   color: #3692FF;
   font-family: "ROKAF Sans";
-  font-size: 66.344px;
-  font-style: normal;
+  font-size: 48px;
   font-weight: 700;
   line-height: normal;
 }
@@ -58,6 +50,7 @@ form {
   width: 100%;
 }
 
+/* 입력 필드 */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -70,38 +63,36 @@ label {
   font-family: Pretendard;
   font-size: 18px;
   font-weight: 700;
-  line-height: 26px;
 }
 
 input {
-  width: 640px;
+  width: 100%;
+  max-width: 640px;
   height: 56px;
   padding: 16px 24px;
   border-radius: 12px;
   border: none;
   background: #F3F4F6;
-  color: #9CA3AF;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
-  line-height: 26px;
-
-  /* 사용자가 입력하는 텍스트 색상 */
   color: #1F2937;
-  
-
+  box-sizing: border-box;
 }
+
 input::placeholder {
   color: #9CA3AF;
 }
-
 
 input:focus {
   outline: none;
   border: 2px solid #3692FF;
 }
 
+/* 버튼 */
 .btn-primary {
+  width: 100%;
+  max-width: 640px;
   padding: 16px;
   border: none;
   border-radius: 40px;
@@ -112,7 +103,7 @@ input:focus {
   cursor: pointer;
 }
 
-/* 비밀번호 보기 아이콘 위치 */
+/* 비밀번호 wrapper */
 .password-wrapper {
   position: relative;
   width: 100%;
@@ -136,14 +127,15 @@ input:focus {
 /* 소셜 로그인 */
 .social-login {
   display: flex;
-  width: 640px;
+  width: 100%;
+  max-width: 640px;
   height: 74px;
   padding: 16px 23px;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
   background: #E6F2FF;
+  box-sizing: border-box;
 }
 
 .social-login p {
@@ -151,7 +143,6 @@ input:focus {
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
-  line-height: 42px;
   margin: 0;
 }
 
@@ -185,7 +176,7 @@ input:focus {
   background-color: #FEE500;
 }
 
-/* 회원가입 */
+/* 회원가입 문구 */
 .signup-container {
   display: flex;
   justify-content: center;
@@ -205,30 +196,45 @@ input:focus {
   text-decoration: none;
   font-weight: 600;
 }
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 16px;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
 
-/*모달 스타일 */
+.signup-container {
+  width: 100%;
+  max-width: 640px;
+  background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
 
+
+/* 모달 스타일 */
 .modal-overlay {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000; 
+  z-index: 2000;
 }
 
-
 .modal-content {
-  position: relative; 
-
-  width: 438px; 
-  height: 188.5px; 
+  position: relative;
+  width: 438px;
+  height: 188.5px;
   padding: 24px;
-  gap: 24px;
   border-radius: 12px;
   background-color: white;
   display: flex;
@@ -237,19 +243,16 @@ input:focus {
   justify-content: center;
 }
 
-
 .modal-message {
-color: var(--Cool-Gray-800, #1F2937);
-text-align: center;
-font-family: Pretendard;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+  color: #1F2937;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .modal-button {
-position: absolute;
+  position: absolute;
   bottom: 24px;
   right: 24px;
   width: 74px;
@@ -262,6 +265,7 @@ position: absolute;
   border: none;
   cursor: pointer;
 }
+
 .hidden {
   display: none;
 }

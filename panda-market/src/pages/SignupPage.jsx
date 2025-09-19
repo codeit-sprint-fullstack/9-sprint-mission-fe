@@ -49,8 +49,9 @@ function SignupPage() {
               </div>
               <div id="signupPasswordConfirmError" className="error-message" aria-live="polite"></div>
             </div>
-          <button type="submit" class="btn-primary" disabled>회원가입</button>
-            
+
+            {/* 🔧 class → className 오타 수정 */}
+            <button type="submit" className="btn-primary" disabled>회원가입</button>
           </form>
 
           {/* 소셜 로그인 */}
