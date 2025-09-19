@@ -14,9 +14,11 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
 
   const handleClickArrow = (event) => {
     if (event.target.value === 'prev') {
-      onPageChange(lastPageOfGroup - 1);
+      onPageChange(firstPageOfGroup - 1);
+      console.log(currentPageGroup);
     } else if (event.target.value === 'next') {
       onPageChange(lastPageOfGroup + 1);
+      console.log(currentPageGroup);
     }
   };
 
