@@ -1,7 +1,7 @@
 import { Heart } from "lucide-react";
 import styles from "./Card.module.css";
 
-function Card({ name, price, images, type, loading }) {
+export function Card({ name, price, images, type, loading }) {
   return (
     <>
       {loading ? (
@@ -29,5 +29,3 @@ function Card({ name, price, images, type, loading }) {
     </>
   )
 }
-
-export default Card;

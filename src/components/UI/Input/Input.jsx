@@ -1,8 +1,9 @@
-import styles from './Input.module.css'
-import { Search } from 'lucide-react';
 import { useState } from 'react'
+import { Search } from 'lucide-react';
 
-function Input({ onSearch }) {
+import styles from './Input.module.css'
+
+export function Input({ onSearch }) {
   const [keyword, setKeyword] = useState('');
 
   const handleKeyDown = (e) => {
@@ -24,5 +25,3 @@ function Input({ onSearch }) {
     </div>
   )
 }
-
-export default Input;

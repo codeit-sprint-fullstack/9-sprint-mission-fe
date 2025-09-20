@@ -1,10 +1,11 @@
-import Card from "./Card";
 import { useEffect, useState } from "react";
+import { Card } from "./Card";
 import { getProductList } from "@/api/ProductService";
-import styles from './CardList.module.css'
 import { SearchX } from "lucide-react";
 
-function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
+import styles from './CardList.module.css'
+
+export function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -48,6 +49,3 @@ function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKey
     </div>
   )
 }
-
-
-export default CardList;

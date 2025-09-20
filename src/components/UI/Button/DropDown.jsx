@@ -1,8 +1,9 @@
-import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
+
 import styles from "./DropDown.module.css"
 
-function DropDown({ deviceType, onChange, page }) {
+export function DropDown({ deviceType, onChange, page }) {
   const [showPanel, setShowPanel] = useState(false);
   const [filterTitle, setFilterTitle] = useState('최신순');
 
@@ -49,7 +50,4 @@ function DropDown({ deviceType, onChange, page }) {
       )}
     </div>
   )
-
 }
-
-export default DropDown;
