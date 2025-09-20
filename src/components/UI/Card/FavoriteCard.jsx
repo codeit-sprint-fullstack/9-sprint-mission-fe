@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
-import styles from './FavoriteCardList.module.css'
+import { Card } from "./Card";
 import { getProductList } from "@/api/ProductService";
 
-function FavoriteCardList({ page }) {
+import styles from './FavoriteCardList.module.css'
+
+export function FavoriteCardList({ page }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -39,6 +40,3 @@ function FavoriteCardList({ page }) {
     </div>
   )
 }
-
-
-export default FavoriteCardList;

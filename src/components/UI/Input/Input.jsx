@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react';
 import { Search } from 'lucide-react';
 
@@ -28,9 +29,14 @@ export function Input({ onSearch }) {
 =======
 import styles from './Input.module.css'
 import { Search } from 'lucide-react';
+=======
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
 import { useState } from 'react'
+import { Search } from 'lucide-react';
 
-function Input({ onSearch }) {
+import styles from './Input.module.css'
+
+export function Input({ onSearch }) {
   const [keyword, setKeyword] = useState('');
 
   const handleKeyDown = (e) => {
@@ -51,7 +57,11 @@ function Input({ onSearch }) {
       />
     </div>
   )
+<<<<<<< HEAD
 }
 
 export default Input;
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+}
+>>>>>>> b606bca (Rename: 컨벤션 지키기)

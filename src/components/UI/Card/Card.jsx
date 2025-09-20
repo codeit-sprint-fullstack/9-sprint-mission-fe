@@ -3,6 +3,7 @@ import styles from "./Card.module.css";
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export function Card({ name, price, images, type, loading }) {
   return (
     <>
@@ -41,6 +42,9 @@ function Card({ name, price, images, type, loading }) {
 >>>>>>> 476b6f9 (Feat: 스켈레톤 구현)
 =======
 >>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
+=======
+export function Card({ name, price, images, type, loading }) {
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
   return (
     <>
       {loading ? (
@@ -67,7 +71,11 @@ function Card({ name, price, images, type, loading }) {
       )}
     </>
   )
+<<<<<<< HEAD
 }
 
 export default Card;
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+}
+>>>>>>> b606bca (Rename: 컨벤션 지키기)

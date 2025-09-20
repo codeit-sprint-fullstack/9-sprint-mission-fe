@@ -16,7 +16,7 @@ function ItemHeader() {
 import { useBreakPoint } from "@/hooks/useBreakpoint"
 import styles from './ItemHeader.module.css';
 
-function ItemHeader() {
+export function ItemHeader() {
   const { isDesktop, isTablet, isMobile } = useBreakPoint();
 
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
@@ -25,6 +25,7 @@ function ItemHeader() {
       <div className={styles.logoBox}>
         <div className={styles.logo}>
           <div>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <Link className={styles.logoTitleLink} to="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</Link>
           </div>
@@ -55,6 +56,9 @@ function ItemHeader() {
 }
 =======
             <a className={styles.logoTitleLink} href="/"><img className={styles.logoImg} src="../../../public/images/logo.png" alt="pandamarket" />판다마켓</a>
+=======
+            <a className={styles.logoTitleLink} href="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</a>
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
           </div>
           <div className={styles.logoParaContainer}>
             <p className={styles.logoPara}>자유게시판</p>
@@ -65,12 +69,16 @@ function ItemHeader() {
           <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
         )}
         {(isTablet || isMobile) && (
-          <img className={styles.logoAvatar} src="/public/images/default_user_logo.svg" alt="asd"/>
+          <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="asd"/>
         )}
       </div>
     </nav>
   )
+<<<<<<< HEAD
 }
 
 export default ItemHeader
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+}
+>>>>>>> b606bca (Rename: 컨벤션 지키기)

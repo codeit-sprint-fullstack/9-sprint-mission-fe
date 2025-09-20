@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 <<<<<<< HEAD
 import { Card } from "./Card";
@@ -43,12 +44,16 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
 =======
 >>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
 import Card from "./Card";
+=======
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
 import { useEffect, useState } from "react";
+import { Card } from "./Card";
 import { getProductList } from "@/api/ProductService";
-import styles from './CardList.module.css'
 import { SearchX } from "lucide-react";
 
-function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
+import styles from './CardList.module.css'
+
+export function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -109,8 +114,12 @@ function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKey
       ))}
     </div>
   )
+<<<<<<< HEAD
 }
 
 
 export default CardList;
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
+=======
+}
+>>>>>>> b606bca (Rename: 컨벤션 지키기)

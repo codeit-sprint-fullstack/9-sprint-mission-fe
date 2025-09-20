@@ -1,10 +1,18 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from "react";
 import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
 
 import styles from "./DropDown.module.css";
 
+=======
+import { useState } from "react";
+import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
+
+import styles from "./DropDown.module.css"
+
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
 export function DropDown({ deviceType, onChange, page }) {
   const [showPanel, setShowPanel] = useState(false);
   const [filterTitle, setFilterTitle] = useState('최신순');
@@ -124,8 +132,8 @@ function DropDown({ deviceType, onChange, page }) {
       )}
     </div>
   )
-
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 export default Button;
@@ -133,3 +141,5 @@ export default Button;
 =======
 export default DropDown;
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
+=======
+>>>>>>> b606bca (Rename: 컨벤션 지키기)

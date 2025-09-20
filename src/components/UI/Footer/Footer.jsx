@@ -6,11 +6,15 @@ export function Footer({ type }) {
 import styles from './Footer.module.css'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Footer() {
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
 =======
 function Footer({ type }) {
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
+=======
+export function Footer({ type }) {
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.footerDiv}>
@@ -67,7 +71,11 @@ function Footer({ type }) {
       </div>
     </footer>
   )
+<<<<<<< HEAD
 }
 
 export default Footer;
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+}
+>>>>>>> b606bca (Rename: 컨벤션 지키기)
