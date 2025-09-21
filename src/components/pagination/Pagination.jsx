@@ -6,12 +6,10 @@ function Pagination() {
   const { page, totalPages, setPage } = useMarket();
   const maxVisible = 5;
 
-  let start = Math.max(1, page - 2);
-  let end = Math.min(totalPages, start + maxVisible - 1);
-
-  if (end - start < maxVisible - 1) {
-    start = Math.max(1, end - maxVisible + 1);
-  }
+  // 🔽 블록 단위 계산
+  const block = Math.floor((page - 1) / maxVisible);
+  const start = block * maxVisible + 1;
+  const end = Math.min(start + maxVisible - 1, totalPages);
 
   return (
     <div className={styles.pagination}>

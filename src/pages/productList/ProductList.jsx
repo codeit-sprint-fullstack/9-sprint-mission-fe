@@ -1,11 +1,19 @@
-import { useMarket } from "@/context/MarketContext";
-import ProductCard from "@/productCard/ProductCard";
-import Pagination from "@/pagination/Pagination";
+import { useRef } from "react";
+import { useMarket } from "@/hooks/useMarket";
+import ProductCard from "@/components/productCard/ProductCard";
+import Pagination from "@/components/pagination/Pagination";
 import styles from "./ProductList.module.css";
 import ic_search from "@/img/ic_search.svg";
 
 function ProductList() {
-  const { products, keyword, setKeyword, order, setOrder } = useMarket();
+  const { products, setKeyword, order, setOrder } = useMarket();
+  const inputRef = useRef(null);
+
+  const handleSearchChange = () => {
+    if (inputRef.current) {
+      setKeyword(inputRef.current.value);
+    }
+  };
 
   return (
     <section className={styles.section}>
@@ -15,11 +23,11 @@ function ProductList() {
           <div className={styles.searchWrapper}>
             <img src={ic_search} className={styles.searchIcon} alt="검색돋보기" />
             <input
+              ref={inputRef}
               className={styles.search}
               type="text"
               placeholder="검색할 상품을 입력해주세요"
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
+              onChange={handleSearchChange}
             />
           </div>
           <button className={styles.registerBtn}>상품 등록하기</button>

@@ -4,9 +4,9 @@ const api = axios.create({
     baseURL: "https://panda-market-api.vercel.app",
 });
 
-export async function getProductList({ page, pageSize, order, keyword} = {}) {
+export async function getProductList({ page, pageSize, orderBy, keyword} = {}) {
     try {
-        const res = await api.get("/products", { params: { page, pageSize, order, keyword} });
+        const res = await api.get("/products", { params: { page, pageSize, orderBy, keyword} });
         const data = res.data;
         const totalPages = data.totalCount
         ? Math.ceil(data.totalCount / pageSize)

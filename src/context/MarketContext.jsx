@@ -7,7 +7,7 @@ export function MarketProvider({ children }) {
   const [bestProducts, setBestProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const [order, setOrder] = useState("recent");
+  const [orderBy  , setOrder] = useState("recent");
   const [keyword, setKeyword] = useState("");
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -33,15 +33,21 @@ export function MarketProvider({ children }) {
 
   useEffect(() => {
     async function fetchData() {
-      const best = await getProductList({ order: "favorite", page: 1, pageSize: bestPageSize });
-      setBestProducts(best?.list || []);
+      const best = await getProductList({ orderBy : "favorite", page: 1, pageSize: bestPageSize });
+      if (best&& best.list)
+        setBestProducts(best.list)
+      else setBestProducts([])
 
-      const list = await getProductList({ order, page, pageSize, keyword });
-      setProducts(list?.list || []);
-      setTotalPages(list?.totalCount ? Math.ceil(list.totalCount / pageSize) : 1);
+      const list = await getProductList({ orderBy , page, pageSize, keyword });
+      if (list && list.list)
+        setProducts(list.list);
+      else setProducts([]);
+      if (list&& list.totalCount)
+        setTotalPages(Math.ceil(list.totalCount / pageSize))
+      else setTotalPages(1)
     }
     fetchData();
-  }, [page, order, keyword, pageSize, bestPageSize]);
+  }, [page, orderBy , keyword, pageSize, bestPageSize]);
 
   return (
     <MarketContext.Provider
@@ -50,7 +56,7 @@ export function MarketProvider({ children }) {
         products,
         page,
         setPage,
-        order,
+        orderBy ,
         setOrder,
         keyword,
         setKeyword,
