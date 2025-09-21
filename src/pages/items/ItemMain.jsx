@@ -4,7 +4,6 @@ import ItemPage from './ItemPage';
 import '../../../style.css' // react에서는 루트 속성을 가져와야된다.
 
 // 바닐라 js, React가 혼합 다음 미션때 마이그레이션
-// api/*.Http는 추후 문서화
 createRoot(document.getElementById('items-root')).render(
   <StrictMode>
     <ItemPage />

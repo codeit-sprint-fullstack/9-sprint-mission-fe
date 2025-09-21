@@ -40,11 +40,15 @@ export function Input({ onSearch }) {
   const [keyword, setKeyword] = useState('');
 
   const handleKeyDown = (e) => {
-    e.preventDefault()
     if (e.key === 'Enter') {
       onSearch(keyword);
     }
   };
+
+  const handleOnChange = (e) => {
+    const value = e.target.value
+    setKeyword(value)
+  }
 
   return (
     <div className={styles.InputContainer}>
@@ -52,7 +56,7 @@ export function Input({ onSearch }) {
       <input
         className={styles.ItemInput}
         placeholder="검색할 상품을 입력해주세요"
-        onChange={(e) => setKeyword(e.target.value.trim())}
+        onChange={handleOnChange}
         onKeyDown={handleKeyDown}
       />
     </div>
