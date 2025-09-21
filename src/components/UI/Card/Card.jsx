@@ -22,6 +22,7 @@ export function Card({ name, price, images, type, loading }) {
           <img className={type === 'favorite' ? styles.favoriteImage : styles.cardImage}
             src={images?.[0] || "/images/logo.png"}
 <<<<<<< HEAD
+<<<<<<< HEAD
             alt="image" />
           <div className={styles.cardDescription}>
             <p className={styles.cardTitle}>{name}</p>
@@ -64,6 +65,8 @@ export function Card({ name, price, images, type, loading }) {
             src={images?.[0] || "../../../public/images/logo.png"}
 =======
 >>>>>>> 464d10a (Style: 가독성을 위해 임포트 위치 정렬, 정적파일 주소 수정)
+=======
+>>>>>>> 0a089e7 (Style: 가독성을 위해 임포트 위치 정렬, 정적파일 주소 수정)
             alt="image" />
           <div className={styles.cardDescription}>
             <p className={styles.cardTitle}>{name}</p>
