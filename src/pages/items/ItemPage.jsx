@@ -6,14 +6,13 @@ import { ItemHeader } from "@/components/UI/Nav/ItemHeader"
 import { DropDown } from "@/components/UI/Button/DropDown"
 import { Footer } from "@/components/UI/Footer/Footer"
 import { CardList } from "@/components/UI/Card/CardList"
-import { FavoriteCardList } from "@/components/UI/Card/FavoriteCard"
+import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList"
 import { Input } from "@/components/UI/Input/Input"
 import { Pagination } from "@/components/Pagination/Pagination"
 
 import styles from './ItemPage.module.css'
 
 export default function ItemPage() {
-
   const [keyword, setKeyword] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(null);
   const [sortType, setSortType] = useState('recent');
@@ -55,8 +54,6 @@ export default function ItemPage() {
         <div className={styles.bestItemList}>
           <p className={styles.bestItemPara}>베스트 상품</p>
           <FavoriteCardList
-            type={'favorite'}
-            currentPage={currentPage}
             page={initialFavoritePerPage}
           />
         </div>
