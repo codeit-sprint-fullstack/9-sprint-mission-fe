@@ -4,8 +4,12 @@ import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 =======
 import { useState } from "react";
+<<<<<<< HEAD
 import { useOutletContext } from "react-router-dom";
 >>>>>>> d185975 (Style: NavLink로 active시 3692FF색상변경, 호버시 navlink호비서 3692FF)
+=======
+import { Link, useOutletContext } from "react-router-dom";
+>>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
 import { usePagination } from "@/hooks/usePagination";
 
 import { Pagination } from "@/components/Pagination/Pagination";
@@ -117,7 +121,7 @@ export function ItemsPage() {
               <p className={styles.sellItemPara}>판매 중인 상품</p>
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
-                <button className={styles.sellItemButton} >상품 등록하기</button>
+                <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
                 <DropDown onChange={setSortType} page={goToPage} />
               </div>
             </div>

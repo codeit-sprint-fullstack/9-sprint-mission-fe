@@ -25,7 +25,11 @@ export function ProductPage() {
 import { useEffect, useState } from "react"
 =======
 import { useState } from "react"
+<<<<<<< HEAD
 >>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
+=======
+import { Link } from "react-router-dom"
+>>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
 import { usePagination } from "@/hooks/usePagination"
 import { useOutletContext } from "react-router-dom"
 
@@ -115,10 +119,14 @@ export function ProductPage() {
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
 =======
                 <button className={styles.sellItemButton} >상품 등록하기</button>
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+                <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
+>>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
                 <DropDown onChange={setSortType} page={goToPage} />
               </div>
             </div>

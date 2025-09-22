@@ -68,9 +68,13 @@
   font-weight: 600;
   line-height: 26px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   text-decoration: none;
 =======
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+  text-decoration: none;
+>>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
   cursor: pointer;
 
   &:hover {
