@@ -1,4 +1,5 @@
 import './LandingPage.css';
+import { Link } from 'react-router';
 import ImgHomeTop from '@/assets/img/Img_home_top.png';
 import ImgHomeBottom from '@/assets/img/Img_home_bottom.png';
 import ImgHome01 from '@/assets/img/Img_home_01.png';
@@ -16,9 +17,9 @@ export function LandingPage() {
               <span class="line-break">일상의 모든 물건을 </span>
               <span class="line-break">거래해 보세요</span>
             </h2>
-            <a class="l-btn" href="/items">
+            <Link class="l-btn" to="/items">
               구경하러 가기
-            </a>
+            </Link>
           </div>
           <img
             class="top-bottom-img"
