@@ -1,9 +1,9 @@
 import { BestItemsSection } from './BestItemsSection';
 import { SalesItemsSection } from './SalesItemsSection';
 import { ItemProvider } from '@/providers/ItemProvider';
-import './ItemPage.css';
+import './ItemsPage.css';
 
-export function ItemPage() {
+export function ItemsPage() {
   return (
     <ItemProvider>
       <main className="main item-main">

@@ -1,5 +1,5 @@
 import styles from './SalesItemList.module.css';
-import { ItemCard } from '@/pages/ItemPage/ItemCard';
+import { ItemCard } from '@/pages/ItemsPage/ItemCard';
 
 export function SalesItemList({ itemList }) {
   return (

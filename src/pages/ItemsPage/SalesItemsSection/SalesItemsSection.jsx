@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
-import { SalesItemList } from '@/pages/ItemPage/SalesItemList';
+import { SalesItemList } from '@/pages/ItemsPage/SalesItemList';
 import { ItemContext } from '@/contexts/ItemContext.js';
 import { Pagination } from '@/components/Pagenation';
 import { useWindowSize } from '@/hooks/useWindowSize';

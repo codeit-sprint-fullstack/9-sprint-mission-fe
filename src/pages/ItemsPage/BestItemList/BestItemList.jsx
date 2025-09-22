@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styles from './BestItemList.module.css';
-import { ItemCard } from '@/pages/ItemPage/ItemCard';
+import { ItemCard } from '@/pages/ItemsPage/ItemCard';
 import { ItemContext } from '@/contexts/ItemContext.js';
 
 export function BestItemList() {
