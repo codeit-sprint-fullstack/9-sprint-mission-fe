@@ -110,11 +110,12 @@ export function SalesItemsSection() {
                 최신순
               </button>
             </li>
-            <li>
+            {/* 요구사항에 따른 임시적 주석 */}
+            {/* <li>
               <button value="favorite" onClick={handleOrderDropDwonSelect}>
                 좋아요순
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
