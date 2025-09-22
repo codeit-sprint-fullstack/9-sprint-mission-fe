@@ -2,6 +2,7 @@ import facebookIcon from '@/assets/img/ic_facebook.png';
 import twitterIcon from '@/assets/img/ic_twitter.png';
 import youtubeIcon from '@/assets/img/ic_youtube.png';
 import instagramIcon from '@/assets/img/ic_instagram.png';
+import './Footer.css';
 
 export function Footer() {
   return (

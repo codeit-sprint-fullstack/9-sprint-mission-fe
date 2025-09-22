@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import logo from '@/assets/img/logo.png';
 import logoText from '@/assets/img/logo_text.png';
 import { NavMenuWrap } from './NavMenuWrap';
+import './Header.css';
 
 export function Header() {
   return (
