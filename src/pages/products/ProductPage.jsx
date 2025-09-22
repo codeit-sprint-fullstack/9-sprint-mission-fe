@@ -10,9 +10,9 @@ import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList"
 import { Input } from "@/components/UI/Input/Input"
 import { Pagination } from "@/components/Pagination/Pagination"
 
-import styles from './ItemPage.module.css'
+import styles from './ProductPage.module.css'
 
-export default function ItemPage() {
+export function ProductPage() {
   const [keyword, setKeyword] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(null);
   const [sortType, setSortType] = useState('recent');
