@@ -30,15 +30,21 @@ export function ProductLayout() {
       <ItemHeader />
       <Outlet context={{ isMobile, isTablet, itemsPerPage }} />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
       {isMobile ? (
         <Footer type={'mobile'} />
       ) : (
         <Footer />
       )}
+<<<<<<< HEAD
     </>
   );
 =======
       <Footer />
+=======
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
     </>
   )
 >>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)

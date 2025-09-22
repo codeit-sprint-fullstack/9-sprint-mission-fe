@@ -18,7 +18,7 @@ export function SignUpPage() {
   const [passwordCheckerError, setPasswordCheckerError] = useState('');
 =======
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { LoginModal } from '@/components/Modal/LoginModal'
 import { AuthTitle } from './components/AuthTitle'
 import { EmailValidator, NicknameValidator, PasswordValidator, PasswordCheckValidator } from '@/utils/validators-react'
@@ -240,10 +240,14 @@ export function SignUpPage() {
       </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       <p className="signup-para">이미 회원이신가요?<Link className='signup-para-a' to="/login">로그인</Link></p>
 =======
       <p className="signup-para">이미 회원이신가요?<a href="login">로그인</a></p>
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+      <p className="signup-para">이미 회원이신가요?<Link className='signup-para-a' to="/login">로그인</Link></p>
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"사용 중인 이메일입니다."} />
       }

@@ -28,6 +28,7 @@ export function ItemHeader() {
           <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Link className={styles.logoTitleLink} to="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</Link>
           </div>
           <div className={styles.logoParaContainer}>
@@ -60,6 +61,9 @@ export function ItemHeader() {
 =======
             <a className={styles.logoTitleLink} href="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</a>
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
+=======
+            <Link className={styles.logoTitleLink} to="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</Link>
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
           </div>
           <div className={styles.logoParaContainer}>
             <p className={styles.logoPara}>자유게시판</p>
@@ -67,7 +71,7 @@ export function ItemHeader() {
           </div>
         </div>
         {isDesktop && (
-          <a className={styles.logoBoxLink} href="login">로그인</a>
+          <Link className={styles.logoBoxLink} to="/login">로그인</Link>
         )}
         {(isTablet || isMobile) && (
           <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="판다마켓 로고" />

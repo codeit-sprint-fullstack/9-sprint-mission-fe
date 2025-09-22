@@ -40,7 +40,7 @@ import styles from './ProductPage.module.css'
 import { useOutletContext } from "react-router-dom"
 
 export function ProductPage() {
-  const {isMobile, isTablet, itemsPerPage } = useOutletContext()
+  const { isMobile, isTablet, itemsPerPage } = useOutletContext()
   const [keyword, setKeyword] = useState('');
   const [sortType, setSortType] = useState('recent');
 
@@ -96,8 +96,11 @@ export function ProductPage() {
 
   return (
     <>
+<<<<<<< HEAD
       <ItemHeader />
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
       <main className={styles.mainContainer}>
 
         <div className={styles.bestItemList}>
@@ -144,9 +147,12 @@ export function ProductPage() {
         </div>
       </main>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
       <div>
         {/** pagination */}
         <Pagination
@@ -155,6 +161,7 @@ export function ProductPage() {
           onPageChange={goToPage}
         />
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     </>
@@ -165,6 +172,9 @@ export function ProductPage() {
       ) : (
         <Footer />
       )}
+=======
+
+>>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
     </>
   )
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
