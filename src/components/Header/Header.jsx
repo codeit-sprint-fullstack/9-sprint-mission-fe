@@ -3,8 +3,13 @@ import logo from '@/assets/img/logo.png';
 import logoText from '@/assets/img/logo_text.png';
 import { NavMenuWrap } from './NavMenuWrap';
 import './Header.css';
+import { useLocation } from 'react-router';
+import clsx from 'clsx';
 
 export function Header() {
+  const { pathname } = useLocation();
+  const isIndexPage = pathname === '/' ? true : false;
+
   return (
     <header id="header">
       <nav id="nav">
@@ -17,10 +22,17 @@ export function Header() {
               </picture>
             </Link>
           </h1>
-          <NavMenuWrap />
+          {!isIndexPage && <NavMenuWrap />}
         </div>
         <div id="nav-right">
-          <a id="btn-login" className="s-btn compact" href="/login">
+          <a
+            id="btn-login"
+            className={clsx('s-btn', {
+              'intro-nav-btn': isIndexPage,
+              compact: !isIndexPage,
+            })}
+            href="/login"
+          >
             로그인
           </a>
         </div>
