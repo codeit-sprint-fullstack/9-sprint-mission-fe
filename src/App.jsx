@@ -6,6 +6,7 @@ import { SignUpPage } from "@/pages/home/auth/SignUpPage";
 import { ProductPage } from "@/pages/products/ProductPage";
 import { ProductLayout } from "@/pages/products/ProductLayout";
 import { ItemsPage } from "@/pages/products/Items/page";
+import { RegistraionPage } from "@/pages/products/registration/page";
 
 export function App() {
   return (
@@ -14,8 +15,9 @@ export function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/products" element={<ProductLayout />} >
-        <Route index element={<ProductPage/>}/>
-        <Route path="/products/items" element={<ItemsPage/>}/>
+        <Route index element={<ProductPage />} />
+        <Route path="/products/items" element={<ItemsPage />} />
+        <Route path="/products/registration" element={<RegistraionPage />} />
       </Route>
     </Routes>
   )

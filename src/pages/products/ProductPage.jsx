@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { usePagination } from "@/hooks/usePagination"
 import { useOutletContext } from "react-router-dom"
 
@@ -49,7 +50,7 @@ export function ProductPage() {
               <p className={styles.sellItemPara}>판매 중인 상품</p>
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
-                <button className={styles.sellItemButton} >상품 등록하기</button>
+                <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
                 <DropDown onChange={setSortType} page={goToPage} />
               </div>
             </div>
