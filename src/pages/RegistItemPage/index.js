@@ -1,0 +1,1 @@
+export { RegistItemPage } from './RegistItemPage';
