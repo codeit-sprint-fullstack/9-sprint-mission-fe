@@ -66,7 +66,7 @@ export function ItemHeader() {
           </div>
         </div>
         {isDesktop && (
-          <a className={styles.logoBoxLink} href="../../pages/login.html">로그인</a>
+          <a className={styles.logoBoxLink} href="login">로그인</a>
         )}
         {(isTablet || isMobile) && (
           <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="asd"/>

@@ -67,7 +67,10 @@
   font-size: var(--font-lg);
   font-weight: 600;
   line-height: 26px;
+<<<<<<< HEAD
   text-decoration: none;
+=======
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
   cursor: pointer;
 
   &:hover {

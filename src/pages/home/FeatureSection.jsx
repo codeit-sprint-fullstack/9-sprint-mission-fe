@@ -46,5 +46,9 @@ export function FeatureSection() {
         </div>
       </section>
     </main>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 }

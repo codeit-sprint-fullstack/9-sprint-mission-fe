@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginModal } from '@/components/Modal/LoginModal';
@@ -15,6 +16,25 @@ export function SignUpPage() {
   const [nicknameError, setNicknameError] = useState('');
   const [passwordChecker, setPasswordChecker] = useState('');
   const [passwordCheckerError, setPasswordCheckerError] = useState('');
+=======
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { LoginModal } from '@/components/Modal/LoginModal'
+import { AuthTitle } from './components/AuthTitle'
+import { EmailValidator, NicknameValidator, PasswordValidator, PasswordCheckValidator } from '@/utils/validators-react'
+import USER_DATA from '@/db'
+import './login.css'
+
+export function SignUpPage() {
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('')
+  const [nickName, setNickName] = useState('');
+  const [nicknameError, setNicknameError] = useState('');
+  const [passwordChecker, setPasswordChecker] = useState('');
+  const [passwordCheckerError, setPasswordCheckerError] = useState('')
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordCheckerVisible, setPasswordCheckerVisible] = useState(false);
@@ -24,6 +44,7 @@ export function SignUpPage() {
   const navigate = useNavigate();
 
   const handleEmailValueChange = (e) => {
+<<<<<<< HEAD
     setEmail(e.target.value.trim());
     setEmailError(EmailValidator(email));
   };
@@ -64,10 +85,53 @@ export function SignUpPage() {
     }
 
     const user = USER_DATA.find((u) => u.email === email);
+=======
+    setEmail(e.target.value.trim())
+    setEmailError(EmailValidator(email))
+  }
+
+  const handleNicknameValueChange = (e) => {
+    setNickName(e.target.value.trim())
+    setNicknameError(NicknameValidator(nickName))
+  }
+
+  const handlePasswordValueChange = (e) => {
+    setPassword(e.target.value.trim())
+    setPasswordError(PasswordValidator(password))
+  }
+
+  const handlePasswordCheckvalueChange = (e) => {
+    setPasswordChecker(e.target.value.trim())
+    setPasswordCheckerError(PasswordCheckValidator(passwordChecker, password))
+  }
+
+  const handlepasswordCheckFouseOut = () => {
+    setPasswordCheckerError(PasswordCheckValidator(passwordChecker, password))
+  }
+
+  const handlePasswordVisible = () => {
+    setPasswordVisible(!passwordVisible)
+  }
+
+  const handlePasswordCheckerVisible = () => {
+    setPasswordCheckerVisible(!passwordCheckerVisible)
+  }
+
+  const handleFormEvent = (e) => {
+    e.preventDefault()
+
+    if (emailError || nicknameError || passwordError || passwordCheckerError) {
+      alert("입력값을 확인해주세요.")
+      return;
+    }
+
+    const user = USER_DATA.find((u) => u.email === email)
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
     if (user) {
       setShowModal(true);
     } else {
+<<<<<<< HEAD
       navigate("/login");
     }
   };
@@ -75,6 +139,15 @@ export function SignUpPage() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+=======
+      navigate("/login")
+    }
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+  }
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
   return (
     <main>
@@ -166,10 +239,18 @@ export function SignUpPage() {
         </div>
       </div>
 
+<<<<<<< HEAD
       <p className="signup-para">이미 회원이신가요?<Link className='signup-para-a' to="/login">로그인</Link></p>
+=======
+      <p className="signup-para">이미 회원이신가요?<a href="login">로그인</a></p>
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"사용 중인 이메일입니다."} />
       }
     </main>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 }

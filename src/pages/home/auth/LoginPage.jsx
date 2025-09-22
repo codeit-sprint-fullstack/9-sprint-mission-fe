@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
@@ -5,11 +6,21 @@ import USER_DATA from '@/db';
 import { AuthTitle } from '@/pages/home/auth/components/AuthTitle';
 import { LoginModal } from '@/components/Modal/LoginModal';
 import './login.css';
+=======
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
+import USER_DATA from '@/db';
+import { AuthTitle } from '@/pages/home/auth/components/AuthTitle'
+import { LoginModal } from '@/components/Modal/LoginModal';
+import './login.css'
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+<<<<<<< HEAD
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -35,6 +46,32 @@ export function LoginPage() {
   const handlePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
+=======
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate()
+
+  const handleEmailValueChange = (e) => {
+    setEmail(e.target.value.trim())
+  }
+
+  const handleEmailFouseOut = () => {
+    setEmailError(EmailValidator(email))
+  }
+
+  const handlePasswordValueChange = (e) => {
+    setPassword(e.target.value.trim())
+  }
+
+  const handlePasswordFouseOut = () => {
+    setPasswordError(PasswordValidator(password))
+  }
+  const handlePasswordVisible = () => {
+    setPasswordVisible(!passwordVisible)
+  }
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
   const handleFormEvent = (e) => {
     e.preventDefault();
@@ -43,6 +80,7 @@ export function LoginPage() {
       (u) => u.email === email && u.password === password);
 
     if (!user) {
+<<<<<<< HEAD
       setShowModal(true);
     } else {
       navigate('/products');
@@ -52,6 +90,17 @@ export function LoginPage() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+=======
+      setShowModal(true)
+    } else {
+      navigate('/products')
+    }
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+  }
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
   return (
     <main>
@@ -104,11 +153,19 @@ export function LoginPage() {
         </div>
       </div>
 
+<<<<<<< HEAD
       <p className="signup-para">판다마켓이 처음이신가요?<Link className="signup-para-a" to="/signup">회원가입</Link></p>
+=======
+      <p className="signup-para">판다마켓이 처음이신가요?<a className="signup-para-a" href="/signup">회원가입</a></p>
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"비밀번호가 일치하지 않습니다."} />
       }
     </main>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 }

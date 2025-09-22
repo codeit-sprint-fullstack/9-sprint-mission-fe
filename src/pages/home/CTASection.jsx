@@ -16,5 +16,9 @@ export function CTASection() {
         </div>
       </div>
     </section>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 }
