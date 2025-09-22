@@ -14,6 +14,7 @@ function ItemHeader() {
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 =======
 import { useBreakPoint } from "@/hooks/useBreakpoint"
+import { Link } from "react-router-dom";
 import styles from './ItemHeader.module.css';
 
 export function ItemHeader() {
@@ -62,14 +63,14 @@ export function ItemHeader() {
           </div>
           <div className={styles.logoParaContainer}>
             <p className={styles.logoPara}>자유게시판</p>
-            <p className={styles.logoPara}>중고마켓</p>
+            <Link to="/products/items"><p className={styles.logoPara}>중고마켓</p></Link>
           </div>
         </div>
         {isDesktop && (
           <a className={styles.logoBoxLink} href="login">로그인</a>
         )}
         {(isTablet || isMobile) && (
-          <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="asd"/>
+          <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="판다마켓 로고" />
         )}
       </div>
     </nav>

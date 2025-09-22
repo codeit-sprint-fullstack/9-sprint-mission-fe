@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { usePagination } from "@/hooks/usePagination";
@@ -71,4 +72,11 @@ export function ItemsPage() {
       </main>
     </>
   );
+=======
+
+export function ItemsPage() {
+  <>
+  <div>ites..</div>
+  </>
+>>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
 }

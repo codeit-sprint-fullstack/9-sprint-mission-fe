@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { usePagination } from "@/hooks/usePagination";
@@ -22,8 +23,10 @@ export function ProductPage() {
   // custom hooks
 =======
 import { useEffect, useState } from "react"
+=======
+import { useState } from "react"
+>>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
 import { usePagination } from "@/hooks/usePagination"
-import { useBreakPoint } from "@/hooks/useBreakpoint"
 
 import { ItemHeader } from "@/components/UI/Nav/ItemHeader"
 import { DropDown } from "@/components/UI/Button/DropDown"
@@ -34,15 +37,21 @@ import { Input } from "@/components/UI/Input/Input"
 import { Pagination } from "@/components/Pagination/Pagination"
 
 import styles from './ProductPage.module.css'
+import { useOutletContext } from "react-router-dom"
 
 export function ProductPage() {
+  const {isMobile, isTablet, itemsPerPage } = useOutletContext()
   const [keyword, setKeyword] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState(null);
   const [sortType, setSortType] = useState('recent');
 
+  const initialItemPerPage = isMobile ? 4 : isTablet ? 6 : 10;
+  const initialFavoritePerPage = isMobile ? 1 : isTablet ? 2 : 4;
   // custom hooks
+<<<<<<< HEAD
   const { isTablet, isMobile } = useBreakPoint();
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+>>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
   const {
     currentPage,
     setTotalItems,
@@ -56,6 +65,7 @@ export function ProductPage() {
   } = usePagination(1, itemsPerPage)
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
+<<<<<<< HEAD
   useEffect(() => {
     if (isMobile) {
       setItemsPerPage(4);
@@ -70,6 +80,8 @@ export function ProductPage() {
   const initialFavoritePerPage = isMobile ? 1 : isTablet ? 2 : 4;
 
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+>>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
   // search
   const handleSearch = (value) => {
     setKeyword(value);
