@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { usePagination } from "@/hooks/usePagination"
-import { useBreakPoint } from "@/hooks/useBreakpoint"
 
 import { ItemHeader } from "@/components/UI/Nav/ItemHeader"
 import { DropDown } from "@/components/UI/Button/DropDown"
@@ -11,14 +10,16 @@ import { Input } from "@/components/UI/Input/Input"
 import { Pagination } from "@/components/Pagination/Pagination"
 
 import styles from './ProductPage.module.css'
+import { useOutletContext } from "react-router-dom"
 
 export function ProductPage() {
+  const {isMobile, isTablet, itemsPerPage } = useOutletContext()
   const [keyword, setKeyword] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState(null);
   const [sortType, setSortType] = useState('recent');
 
+  const initialItemPerPage = isMobile ? 4 : isTablet ? 6 : 10;
+  const initialFavoritePerPage = isMobile ? 1 : isTablet ? 2 : 4;
   // custom hooks
-  const { isTablet, isMobile } = useBreakPoint();
   const {
     currentPage,
     setTotalItems,
@@ -26,19 +27,6 @@ export function ProductPage() {
     totalPages
   } = usePagination(1, itemsPerPage)
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
-
-  useEffect(() => {
-    if (isMobile) {
-      setItemsPerPage(4);
-    } else if (isTablet) {
-      setItemsPerPage(6);
-    } else {
-      setItemsPerPage(10);
-    }
-  }, [isMobile, isTablet])
-
-  const initialItemPerPage = isMobile ? 4 : isTablet ? 6 : 10
-  const initialFavoritePerPage = isMobile ? 1 : isTablet ? 2 : 4;
 
   // search
   const handleSearch = (value) => {
