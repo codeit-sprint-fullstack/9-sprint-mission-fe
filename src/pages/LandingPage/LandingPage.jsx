@@ -8,6 +8,7 @@ import ImgHome03 from '@/assets/img/Img_home_03.png';
 export function LandingPage() {
   return (
     <main class="main" id="intro-big-box">
+      <title>판다마켓</title>
       <section class="intro-top">
         <div class="intro-top-bottom-item">
           <div class="top-bottom-text">

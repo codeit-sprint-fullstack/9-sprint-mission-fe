@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import logo from '@/assets/img/logo.png';
 import logoText from '@/assets/img/logo_text.png';
 import { NavMenuWrap } from './NavMenuWrap';
@@ -8,12 +9,12 @@ export function Header() {
       <nav id="nav">
         <div id="nav-left">
           <h1 id="title">
-            <a className="title-logo" href="/">
+            <Link className="title-logo" to="/">
               <picture>
                 <source media="(max-width: 46.4rem)" srcSet={logoText} />
                 <img className="logo" src={logo} alt="판다마켓 로고" />
               </picture>
-            </a>
+            </Link>
           </h1>
           <NavMenuWrap />
         </div>

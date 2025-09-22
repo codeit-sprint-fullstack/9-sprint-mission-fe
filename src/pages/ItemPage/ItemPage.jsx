@@ -6,6 +6,7 @@ export function ItemPage() {
   return (
     <ItemProvider>
       <main className="main item-main">
+        <title>판다마켓-중고마켓</title>
         <BestItemsSection />
         <SalesItemsSection />
       </main>
