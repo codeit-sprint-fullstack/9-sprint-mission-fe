@@ -10,7 +10,7 @@ export function ItemHeader() {
       <div className={styles.logoBox}>
         <div className={styles.logo}>
           <div>
-            <a className={styles.logoTitleLink} href="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</a>
+            <Link className={styles.logoTitleLink} to="/"><img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />판다마켓</Link>
           </div>
           <div className={styles.logoParaContainer}>
             <p className={styles.logoPara}>자유게시판</p>
@@ -18,7 +18,7 @@ export function ItemHeader() {
           </div>
         </div>
         {isDesktop && (
-          <a className={styles.logoBoxLink} href="login">로그인</a>
+          <Link className={styles.logoBoxLink} to="/login">로그인</Link>
         )}
         {(isTablet || isMobile) && (
           <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="판다마켓 로고" />

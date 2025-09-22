@@ -13,7 +13,7 @@ import styles from './ProductPage.module.css'
 import { useOutletContext } from "react-router-dom"
 
 export function ProductPage() {
-  const {isMobile, isTablet, itemsPerPage } = useOutletContext()
+  const { isMobile, isTablet, itemsPerPage } = useOutletContext()
   const [keyword, setKeyword] = useState('');
   const [sortType, setSortType] = useState('recent');
 
@@ -36,7 +36,6 @@ export function ProductPage() {
 
   return (
     <>
-      <ItemHeader />
       <main className={styles.mainContainer}>
 
         <div className={styles.bestItemList}>
@@ -78,7 +77,6 @@ export function ProductPage() {
           />
         </div>
       </main>
-
       <div>
         {/** pagination */}
         <Pagination
@@ -87,11 +85,7 @@ export function ProductPage() {
           onPageChange={goToPage}
         />
       </div>
-      {isMobile ? (
-        <Footer type={'mobile'} />
-      ) : (
-        <Footer />
-      )}
+
     </>
   )
 }

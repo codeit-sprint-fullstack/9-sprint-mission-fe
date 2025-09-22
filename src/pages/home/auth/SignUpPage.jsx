@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { LoginModal } from '@/components/Modal/LoginModal'
 import { AuthTitle } from './components/AuthTitle'
 import { EmailValidator, NicknameValidator, PasswordValidator, PasswordCheckValidator } from '@/utils/validators-react'
@@ -166,7 +166,7 @@ export function SignUpPage() {
         </div>
       </div>
 
-      <p className="signup-para">이미 회원이신가요?<a href="login">로그인</a></p>
+      <p className="signup-para">이미 회원이신가요?<Link className='signup-para-a' to="/login">로그인</Link></p>
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"사용 중인 이메일입니다."} />
       }

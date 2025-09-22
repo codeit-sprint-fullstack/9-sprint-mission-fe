@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
 import USER_DATA from '@/db';
@@ -103,7 +103,7 @@ export function LoginPage() {
         </div>
       </div>
 
-      <p className="signup-para">판다마켓이 처음이신가요?<a className="signup-para-a" href="/signup">회원가입</a></p>
+      <p className="signup-para">판다마켓이 처음이신가요?<Link className="signup-para-a" to="/signup">회원가입</Link></p>
 
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"비밀번호가 일치하지 않습니다."} />

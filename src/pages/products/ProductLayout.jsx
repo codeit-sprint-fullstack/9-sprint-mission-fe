@@ -21,7 +21,11 @@ export function ProductLayout() {
     <>
       <ItemHeader />
       <Outlet context={{ isMobile, isTablet, itemsPerPage }} />
-      <Footer />
+      {isMobile ? (
+        <Footer type={'mobile'} />
+      ) : (
+        <Footer />
+      )}
     </>
   )
 }

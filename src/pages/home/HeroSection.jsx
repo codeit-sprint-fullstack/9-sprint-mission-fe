@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export function HeroSection() {
   return (
@@ -7,7 +8,7 @@ export function HeroSection() {
           일상의 모든 물건을<br />
           거래해 보세요
         </h1>
-        <a href="/products" id="load-react">구경하러 가기</a>
+        <Link to="/products" id="load-react">구경하러 가기</Link>
       </div>
 
       {/*https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture */}
