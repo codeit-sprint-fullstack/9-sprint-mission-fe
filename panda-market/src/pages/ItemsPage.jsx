@@ -1,96 +1,71 @@
-import { useState, useEffect, useCallback } from 'react'; 
-import { getProductList, getBestProducts } from '../api/productService'; 
-import ProductCard from '../components/ProductCard';
-import Pagination from '../components/Pagination';
+// src/pages/ItemsPage.jsx
+import { useState } from "react";
+import { useProducts } from "../hooks/useProducts";
+import { usePagination } from "../hooks/usePagination";
+import { useSearchFilter } from "../hooks/useSearchFilter";
+import ProductCard from "../components/ProductCard";
+import Pagination from "../components/Pagination";
+import "./ItemsPage.css";
 
 function ItemsPage() {
-  const [products, setProducts] = useState([]);
-  const [bestProducts, setBestProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const [sortBy, setSortBy] = useState('latest');
+  const { keyword, setKeyword, sortBy, setSortBy } = useSearchFilter();
+  const { products, totalPages, loading } = useProducts(currentPage, 12, keyword, sortBy);
+  const { pageNumbers, hasPrev, hasNext } = usePagination(currentPage, totalPages);
 
-
-  const fetchProducts = useCallback(async () => {
-
-    const data = await getProductList(currentPage, 10, searchKeyword, sortBy);
-    setProducts(data.list);
-    setTotalPages(data.totalPages);
-  }, [currentPage, searchKeyword, sortBy]); 
-
-  const fetchBestProducts = async () => {
-    const data = await getBestProducts();
-    setBestProducts(data.list);
-  };
-
-  useEffect(() => {
-    fetchBestProducts();
-  }, []);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]); 
-  
-
-  const handleSearchChange = (e) => {
-    setSearchKeyword(e.target.value);
-    setCurrentPage(1);
-  };
-
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  // 임시 베스트 상품 → 실제 API 있으면 따로 fetch
+  const bestProducts = products.slice(0, 4);
 
   return (
-    <section className="products container">
-      <div className="best-products">
+    <div className="items-page">
+      {/* 베스트 상품 */}
+      <section className="best-products">
         <h2>베스트 상품</h2>
-        <ul className="product-list">
-          {bestProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <div className="best-grid">
+          {bestProducts.map((p) => (
+            <ProductCard key={p.id} product={p} />
           ))}
-        </ul>
-      </div>
+        </div>
+      </section>
 
-      <div className="selling-products">
-        <div className="products-header">
+      {/* 판매 중인 상품 */}
+      <section className="all-products">
+        <div className="toolbar">
           <h2>판매 중인 상품</h2>
-          <div className="search-sort-controls">
-            <input 
-              type="text" 
-              placeholder="상품 검색" 
-              value={searchKeyword} 
-              onChange={handleSearchChange} 
-              className="search-input"
+          <div className="controls">
+            <input
+              type="text"
+              placeholder="검색어 입력"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
             />
-            <select 
-              value={sortBy} 
-              onChange={handleSortChange} 
-              className="sort-dropdown"
-            >
-              <option value="latest">최신 순</option>
-              <option value="favorite">좋아요 순</option>
+            <button className="btn-upload">상품 등록하기</button>
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="latest">최신순</option>
+              <option value="like">좋아요순</option>
             </select>
           </div>
         </div>
-        <ul className="product-list">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+
+        {loading && <p>로딩 중...</p>}
+
+        <div className="product-grid">
+          {products.map((p) => (
+            <ProductCard key={p.id} product={p} />
           ))}
-        </ul>
-        <Pagination 
-          currentPage={currentPage} 
-          totalPages={totalPages} 
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </section>
+        </div>
+      </section>
+
+      {/* ✅ 푸터 바로 위에 페이지네이션 */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        pageNumbers={pageNumbers}
+        hasPrev={hasPrev}
+        hasNext={hasNext}
+        onPageChange={setCurrentPage}
+      />
+    </div>
   );
 }
 

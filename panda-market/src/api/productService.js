@@ -1,35 +1,33 @@
-// ✅ axios 인스턴스 한 번만 불러오기
-import axios from "../utils/axios.js";
+// src/api/productService.js
+import axios from "../utils/axios";
 
-const PRODUCT_BASE_URL = "/products";
+const PRODUCT_BASE_URL = "/products"; // ✅ 추가
 
-/* 상품 목록 가져오기 */
-// sortBy 파라미터를 추가하고, 기본값을 'latest'로 설정합니다.
-export async function getProductList(page = 1, pageSize = 10, keyword = "", sortBy = "latest") {
+export async function getProductList(page = 1, pageSize = 12, keyword = "", sortBy = "latest") {
   try {
     const res = await axios.get(PRODUCT_BASE_URL, {
-      // params에 sortBy를 추가합니다.
       params: { page, pageSize, keyword, sortBy },
     });
-    console.log("상품 목록:", res.data);
-    return res.data;
+    console.log("📦 API 응답:", res.data);
+    return { items: res.data.list || [], totalPages: 1 };
   } catch (err) {
-    console.error("상품 목록 불러오기 실패:", err.message);
-    return { list: [], totalPages: 0 };
+    console.error("상품 목록 불러오기 실패:", err);
+    return { items: [], totalPages: 1 };
   }
 }
-/* 단일 상품 가져오기 */
+
+
+// ✅ 단일 상품 가져오기
 export async function getProduct(id) {
   try {
     const res = await axios.get(`${PRODUCT_BASE_URL}/${id}`);
-    console.log("상품:", res.data);
     return res.data;
   } catch (err) {
     console.error("상품 불러오기 실패:", err.message);
   }
 }
 
-/* 상품 생성 */
+// ✅ 상품 생성
 export async function createProduct({ name, description, price, tags, images }) {
   try {
     const res = await axios.post(PRODUCT_BASE_URL, {
@@ -39,14 +37,13 @@ export async function createProduct({ name, description, price, tags, images }) 
       tags,
       images,
     });
-    console.log("상품 생성 완료:", res.data);
     return res.data;
   } catch (err) {
     console.error("상품 생성 실패:", err.message);
   }
 }
 
-/* 상품 수정 */
+// ✅ 상품 수정
 export async function patchProduct(id, { name, description, price, tags, images }) {
   try {
     const res = await axios.patch(`${PRODUCT_BASE_URL}/${id}`, {
@@ -56,33 +53,42 @@ export async function patchProduct(id, { name, description, price, tags, images 
       tags,
       images,
     });
-    console.log("상품 수정 완료:", res.data);
     return res.data;
   } catch (err) {
     console.error("상품 수정 실패:", err.message);
   }
 }
 
-/* 상품 삭제 */
+// ✅ 상품 삭제
 export async function deleteProduct(id) {
   try {
     await axios.delete(`${PRODUCT_BASE_URL}/${id}`);
-    console.log(`상품 ${id}번 삭제 완료`);
     return id;
   } catch (err) {
     console.error("상품 삭제 실패:", err.message);
   }
 }
 
-/* 베스트 상품 조회 */
-export async function getBestProducts(page = 1, pageSize = 4) {
+export async function getBestProducts() {
   try {
     const res = await axios.get(PRODUCT_BASE_URL, {
-      params: { page, pageSize, sort: "favorite" },
+      params: { page: 1, pageSize: 100 }
     });
-    console.log("베스트 상품:", res.data);
-    return res.data;
+
+    const data = res.data;
+    const items = data.list;
+
+    if (!Array.isArray(items)) {
+      console.error("데이터가 배열이 아닙니다:", items);
+      return { list: [] };
+    }
+
+    const sorted = items.sort((a, b) => b.likes - a.likes);
+    const best = sorted.slice(0, 4);
+    return { list: best };
   } catch (err) {
     console.error("베스트 상품 불러오기 실패:", err.message);
+    return { list: [] };
   }
 }
+

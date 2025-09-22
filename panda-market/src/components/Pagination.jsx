@@ -1,5 +1,4 @@
-
-
+// src/components/Pagination.jsx
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -7,17 +6,17 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   }
 
   return (
-    <nav className="pagination-nav">
-      <ul className="pagination">
-        {pageNumbers.map(number => (
-          <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-            <button onClick={() => onPageChange(number)} className="page-link">
-              {number}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="pagination">
+      {pageNumbers.map((number) => (
+        <button
+          key={number}
+          className={`page-btn ${currentPage === number ? "active" : ""}`}
+          onClick={() => onPageChange(number)}
+        >
+          {number}
+        </button>
+      ))}
+    </div>
   );
 }
 
