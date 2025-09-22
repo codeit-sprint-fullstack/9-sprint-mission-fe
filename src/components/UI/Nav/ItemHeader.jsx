@@ -14,7 +14,7 @@ function ItemHeader() {
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 =======
 import { useBreakPoint } from "@/hooks/useBreakpoint"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from './ItemHeader.module.css';
 
 export function ItemHeader() {
@@ -40,6 +40,7 @@ export function ItemHeader() {
             >
               중고마켓
             </NavLink>
+<<<<<<< HEAD
           </div>
         </div>
         {
@@ -68,16 +69,22 @@ export function ItemHeader() {
           <div className={styles.logoParaContainer}>
             <p className={styles.logoPara}>자유게시판</p>
             <Link to="/products/items"><p className={styles.logoPara}>중고마켓</p></Link>
+=======
+>>>>>>> d185975 (Style: NavLink로 active시 3692FF색상변경, 호버시 navlink호비서 3692FF)
           </div>
         </div>
-        {isDesktop && (
-          <Link className={styles.logoBoxLink} to="/login">로그인</Link>
-        )}
-        {(isTablet || isMobile) && (
-          <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="판다마켓 로고" />
-        )}
-      </div>
-    </nav>
+        {
+          isDesktop && (
+            <Link className={styles.logoBoxLink} to="/login">로그인</Link>
+          )
+        }
+        {
+          (isTablet || isMobile) && (
+            <img className={styles.logoAvatar} src="/images/default_user_logo.svg" alt="판다마켓 로고" />
+          )
+        }
+      </div >
+    </nav >
   )
 <<<<<<< HEAD
 }

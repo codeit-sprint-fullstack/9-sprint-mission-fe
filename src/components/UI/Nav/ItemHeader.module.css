@@ -63,6 +63,9 @@
   font-weight: 700;
   line-height: 26px;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d185975 (Style: NavLink로 active시 3692FF색상변경, 호버시 navlink호비서 3692FF)
   text-decoration: none;
 
   &:hover {
@@ -72,8 +75,11 @@
 
 .active {
   color: #3692FF;
+<<<<<<< HEAD
 =======
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
+=======
+>>>>>>> d185975 (Style: NavLink로 active시 3692FF색상변경, 호버시 navlink호비서 3692FF)
 }
 
 @media screen and (max-width: 1200px) {

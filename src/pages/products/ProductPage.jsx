@@ -27,17 +27,15 @@ import { useEffect, useState } from "react"
 import { useState } from "react"
 >>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
 import { usePagination } from "@/hooks/usePagination"
+import { useOutletContext } from "react-router-dom"
 
-import { ItemHeader } from "@/components/UI/Nav/ItemHeader"
 import { DropDown } from "@/components/UI/Button/DropDown"
-import { Footer } from "@/components/UI/Footer/Footer"
 import { CardList } from "@/components/UI/Card/CardList"
 import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList"
 import { Input } from "@/components/UI/Input/Input"
 import { Pagination } from "@/components/Pagination/Pagination"
 
 import styles from './ProductPage.module.css'
-import { useOutletContext } from "react-router-dom"
 
 export function ProductPage() {
   const { isMobile, isTablet, itemsPerPage } = useOutletContext()

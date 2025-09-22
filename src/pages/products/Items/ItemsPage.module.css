@@ -53,7 +53,10 @@
   font-size: var(--font-lg);
   font-weight: 600;
   line-height: 26px;
+<<<<<<< HEAD
   text-decoration: none;
+=======
+>>>>>>> d185975 (Style: NavLink로 active시 3692FF색상변경, 호버시 navlink호비서 3692FF)
   cursor: pointer;
 
   &:hover {
