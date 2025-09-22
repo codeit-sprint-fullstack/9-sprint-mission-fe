@@ -8,6 +8,7 @@ import { useWindowSize } from '@/hooks/useWindowSize';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 import DropDownIcon from '@/assets/img/ic_sort.svg';
+import { Link } from 'react-router';
 
 export function SalesItemsSection() {
   const {
@@ -44,9 +45,12 @@ export function SalesItemsSection() {
   if (windowSize === 'MOBILE') {
     inputWrapChange = (
       <>
-        <a href="" className={clsx('s-btn', 'compact', styles.newItemBtn)}>
+        <Link
+          to="/registration"
+          className={clsx('s-btn', 'compact', styles.newItemBtn)}
+        >
           상품 등록하기
-        </a>
+        </Link>
         <div className={styles.inputWrap}>
           <img src={searchIcon} alt="검색" />
           <input
@@ -70,9 +74,12 @@ export function SalesItemsSection() {
             placeholder="검색할 상품을 입력해주세요"
           />
         </div>
-        <a href="" className={clsx('s-btn', 'compact', styles.newItemBtn)}>
+        <Link
+          to="/registration"
+          className={clsx('s-btn', 'compact', styles.newItemBtn)}
+        >
           상품 등록하기
-        </a>
+        </Link>
       </>
     );
   }
