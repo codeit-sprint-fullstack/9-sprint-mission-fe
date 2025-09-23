@@ -50,7 +50,6 @@ function SignupPage() {
               <div id="signupPasswordConfirmError" className="error-message" aria-live="polite"></div>
             </div>
 
-            {/* 🔧 class → className 오타 수정 */}
             <button type="submit" className="btn-primary" disabled>회원가입</button>
           </form>
 

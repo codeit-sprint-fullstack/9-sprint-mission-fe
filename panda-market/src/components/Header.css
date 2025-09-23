@@ -1,0 +1,80 @@
+/* src/components/Header.css */
+
+/* 기본 헤더 */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* 컨테이너 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고 */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #2979ff;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 메뉴 */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  color: #2979ff;
+}
+
+/* 로그인 버튼 */
+.btn-login {
+  background-color: #2979ff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn-login:hover {
+  background-color: #185ad6;
+}
+
+/* ItemsPage 전용 헤더 */
+.header.header-items {
+  border-bottom: 2px solid #ff5722; /* 필요하면 색상 수정 */
+}

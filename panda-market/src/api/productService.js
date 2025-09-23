@@ -1,7 +1,6 @@
-// src/api/productService.js
 import axios from "../utils/axios";
 
-const PRODUCT_BASE_URL = "/products"; // ✅ 추가
+const PRODUCT_BASE_URL = "/products"; 
 
 export async function getProductList(page = 1, pageSize = 12, keyword = "", sortBy = "latest") {
   try {
@@ -17,7 +16,8 @@ export async function getProductList(page = 1, pageSize = 12, keyword = "", sort
 }
 
 
-// ✅ 단일 상품 가져오기
+/* 단일 상품 가져오기*/
+
 export async function getProduct(id) {
   try {
     const res = await axios.get(`${PRODUCT_BASE_URL}/${id}`);
@@ -27,7 +27,7 @@ export async function getProduct(id) {
   }
 }
 
-// ✅ 상품 생성
+/*상품 생성*/
 export async function createProduct({ name, description, price, tags, images }) {
   try {
     const res = await axios.post(PRODUCT_BASE_URL, {
@@ -43,7 +43,7 @@ export async function createProduct({ name, description, price, tags, images }) 
   }
 }
 
-// ✅ 상품 수정
+/*상품 수정*/
 export async function patchProduct(id, { name, description, price, tags, images }) {
   try {
     const res = await axios.patch(`${PRODUCT_BASE_URL}/${id}`, {
@@ -59,7 +59,7 @@ export async function patchProduct(id, { name, description, price, tags, images 
   }
 }
 
-// ✅ 상품 삭제
+/*상품 삭제*/
 export async function deleteProduct(id) {
   try {
     await axios.delete(`${PRODUCT_BASE_URL}/${id}`);

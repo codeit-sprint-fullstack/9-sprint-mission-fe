@@ -1,12 +1,23 @@
-// src/hooks/usePagination.js
-export const usePagination = (currentPage, totalPages) => {
+export function usePagination(currentPage, totalPages) {
   const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
+  const maxVisible = 5; 
+
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+  let endPage = startPage + maxVisible - 1;
+
+
+  if (endPage > totalPages) {
+    endPage = totalPages;
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(i);
   }
 
-  const hasPrev = currentPage > 1;
-  const hasNext = currentPage < totalPages;
-
-  return { pageNumbers, hasPrev, hasNext };
-};
+  return {
+    pageNumbers,
+    hasPrev: currentPage > 1,
+    hasNext: currentPage < totalPages,
+  };
+}

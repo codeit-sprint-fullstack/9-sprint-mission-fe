@@ -1,41 +1,36 @@
-// src/hooks/useProducts.js
 import { useEffect, useState } from "react";
-import { getProductList } from "../api/productService";
+import axios from "../utils/axios";
 
-export function useProducts(page = 1, pageSize = 12, keyword = "", sortBy = "latest") {
+export function useProducts(page, limit, keyword, sortBy) {
   const [products, setProducts] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
-    setLoading(true);
+    async function fetchProducts() {
+      setLoading(true);
+      try {
+        const res = await axios.get("/products", {
+          params: {
+            page,
+            limit,
+            keyword,
+            sortBy,
+          },
+        });
 
-    getProductList(page, pageSize, keyword, sortBy)
-      .then((res) => {
-        if (isMounted) {
-          let items = res.items || res.list || [];
+        setProducts(res.data.list || []);
+        const totalCount = res.data.totalCount || 0;
+        setTotalPages(Math.ceil(totalCount / limit));
+      } catch (err) {
+        console.error("상품 불러오기 실패:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-          // ✅ 클라이언트 단에서 정렬 처리
-          if (sortBy === "like") {
-            items = [...items].sort((a, b) => b.favoriteCount - a.favoriteCount);
-          } else if (sortBy === "priceAsc") {
-            items = [...items].sort((a, b) => a.price - b.price);
-          } else if (sortBy === "priceDesc") {
-            items = [...items].sort((a, b) => b.price - a.price);
-          }
-          // latest는 API에서 기본 제공한다고 가정
-
-          setProducts(items);
-          setTotalPages(res.totalPages || 1);
-        }
-      })
-      .finally(() => setLoading(false));
-
-    return () => {
-      isMounted = false;
-    };
-  }, [page, pageSize, keyword, sortBy]);
+    fetchProducts();
+  }, [page, limit, keyword, sortBy]);
 
   return { products, totalPages, loading };
 }

@@ -1,21 +1,36 @@
-// src/components/Pagination.jsx
-function Pagination({ currentPage, totalPages, onPageChange }) {
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+import "./Pagination.css";
 
+function Pagination({ currentPage, totalPages, pageNumbers, hasPrev, hasNext, onPageChange }) {
   return (
     <div className="pagination">
-      {pageNumbers.map((number) => (
+      {/* 이전 버튼 */}
+      <button
+        className="page-btn"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={!hasPrev}
+      >
+        &lt;
+      </button>
+
+      {/* 페이지 번호 */}
+      {pageNumbers.map((num) => (
         <button
-          key={number}
-          className={`page-btn ${currentPage === number ? "active" : ""}`}
-          onClick={() => onPageChange(number)}
+          key={num}
+          className={`page-btn ${currentPage === num ? "active" : ""}`}
+          onClick={() => onPageChange(num)}
         >
-          {number}
+          {num}
         </button>
       ))}
+
+      {/* 다음 버튼 */}
+      <button
+        className="page-btn"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={!hasNext}
+      >
+        &gt;
+      </button>
     </div>
   );
 }

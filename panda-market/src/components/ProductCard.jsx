@@ -1,4 +1,3 @@
-// src/components/ProductCard.jsx
 import "./ProductCard.css";
 import heartIcon from "../assets/images/ic_heart.svg"; 
 

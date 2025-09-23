@@ -57,15 +57,15 @@ gap: 10px;
   border-radius: 5px;
 }
 .btn-upload {
-  background-color: #2979ff;
-  color: white;
-  border: none;
-  padding: 10px 20px;  /* ← 세로/가로 여백 조정 */
-  border-radius: 5px;
-  cursor: pointer;
-  min-width: 150px;    /* ← 버튼 최소 가로 길이 지정 */
-  text-align: center;
-  font-size: 14px;
+  display: flex;
+height: 42px;
+padding: 12px 23px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+color:white;
+border-radius: 8px;
+background: var(--Primary-100, #3692FF);
 }
 
 .btn-upload:hover {
@@ -78,11 +78,11 @@ gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
-/* 페이지네이션을 가운데 배치 */
+
 .pagination-nav {
   display: flex;
   justify-content: center;
-  margin: 30px 0; /* 위아래 여백 */
+  margin: 30px 0; 
 }
 
 .pagination {
@@ -105,7 +105,7 @@ gap: 10px;
 }
 
 .pagination .active {
-  background: #2979ff;
+  background: #2F80ED;
   color: white;
   font-weight: bold;
 }
