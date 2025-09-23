@@ -14,7 +14,10 @@ export function ProductCard({ product, imageSize }) {
       />
       <h3 className={styles.productName}>{product.name}</h3>
       <p className={styles.productPrice}>{product.price} 원</p>
-      <img src={heartIcon} alt="좋아요 버튼" className={styles.heart} />
+      <div className={styles.heartCount}>
+        <img src={heartIcon} alt="좋아요 버튼" className={styles.heart} />
+        <span className={styles.favoriteCount}>{product.favoriteCount}</span>
+      </div>
     </div>
   )
 }
