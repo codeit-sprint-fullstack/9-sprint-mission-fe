@@ -11,7 +11,7 @@ import { instance } from "@/constants/api";
 export async function createItems(name, description, price, tags) {
   try {
     const res = await instance.post(
-      `api/products`,
+      `api/items`,
       {
         name,
         description,
@@ -30,7 +30,7 @@ export async function createItems(name, description, price, tags) {
     console.log(err.message);
     throw new Error("Post 요청을 실패 하였습니다.");
   } finally {
-    console.log("createProduct 실행 완료");
+    console.log("createItems 실행 완료");
   }
 }
 
@@ -43,7 +43,7 @@ export async function getItems() {
     console.log(err.message);
     throw new Error("상품 리스트를 가져오지 못했습니다.");
   } finally {
-    console.log("getProduct 실행 완료");
+    console.log("getItems 실행 완료");
   }
 }
 
@@ -55,12 +55,12 @@ export async function getItems() {
 export async function getItemsList(
   page = 1,
   pageSize = 10,
-  keyword = "",
+  // keyword = "",
   orderBy = "recent"
 ) {
   try {
     const res = await instance.get(
-      `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`
+      `api/items?page=${page}&limit=${pageSize}&orderBy=${orderBy}`
     );
     return res.data;
   } catch (err) {
@@ -68,7 +68,7 @@ export async function getItemsList(
     console.log(err.message);
     throw new Error("상품 리스트를 가져오지 못했습니다.");
   } finally {
-    console.log("getProductList 실행 완료");
+    console.log("getItemsList 실행 완료");
   }
 }
 
@@ -77,7 +77,7 @@ export async function getItemsList(
  */
 export async function patchItems(productId) {
   try {
-    const res = await instance.patch(`products/${productId}`, {
+    const res = await instance.patch(`api/items/${productId}`, {
       name: "change",
       description: "change",
     });
@@ -87,7 +87,7 @@ export async function patchItems(productId) {
     console.log(err.message);
     throw new Error("Patch 요청을 실패 하였습니다.");
   } finally {
-    console.log("patchProduct 실행 완료");
+    console.log("patchItems 실행 완료");
   }
 }
 
@@ -96,14 +96,14 @@ export async function patchItems(productId) {
  */
 export async function deleteItems(productId) {
   try {
-    const res = await instance.delete(`products/${productId}`);
+    const res = await instance.delete(`api/items/${productId}`);
     return res.data;
   } catch (err) {
     console.log(err.status);
     console.log(err.message);
     throw new Error("delete 요청을 실패 하였습니다.");
   } finally {
-    console.log("deleteProduct 실행 완료");
+    console.log("deleteItems 실행 완료");
   }
 }
 
