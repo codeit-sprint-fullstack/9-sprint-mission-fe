@@ -31,7 +31,7 @@ export default function ProductList() {
   const [keyword, setKeyword] = useState("");
 
   const fetchSortedData = async ({ orderBy, page, pageSize, keyword }) => {
-    const products = await getProducts({ orderBy, page, pageSize });
+    const products = await getProducts({ orderBy, page, pageSize, keyword });
     setItemList(products.list);
     setTotalPageNum(Math.ceil(products.totalCount / pageSize));
   }
