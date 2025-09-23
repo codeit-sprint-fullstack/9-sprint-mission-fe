@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
 import USER_DATA from '@/db';
 import { AuthTitle } from '@/pages/home/auth/components/AuthTitle';
+<<<<<<< HEAD
 import { LoginModal } from '@/components/Modal/LoginModal';
 import './login.css';
 =======
@@ -19,11 +20,16 @@ import { AuthTitle } from '@/pages/home/auth/components/AuthTitle'
 import { LoginModal } from '@/components/Modal/LoginModal';
 import './login.css'
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+import { LoginModal } from '@/components/Modal/LoginModal';
+import './login.css';
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+<<<<<<< HEAD
 <<<<<<< HEAD
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -53,29 +59,39 @@ export function LoginPage() {
 =======
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+=======
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
   const [showModal, setShowModal] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleEmailValueChange = (e) => {
-    setEmail(e.target.value.trim())
-  }
+    setEmail(e.target.value.trim());
+  };
 
   const handleEmailFouseOut = () => {
-    setEmailError(EmailValidator(email))
-  }
+    setEmailError(EmailValidator(email));
+  };
 
   const handlePasswordValueChange = (e) => {
-    setPassword(e.target.value.trim())
-  }
+    setPassword(e.target.value.trim());
+  };
 
   const handlePasswordFouseOut = () => {
-    setPasswordError(PasswordValidator(password))
-  }
+    setPasswordError(PasswordValidator(password));
+  };
+
   const handlePasswordVisible = () => {
+<<<<<<< HEAD
     setPasswordVisible(!passwordVisible)
   }
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+    setPasswordVisible(!passwordVisible);
+  };
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   const handleFormEvent = (e) => {
     e.preventDefault();
@@ -84,6 +100,7 @@ export function LoginPage() {
       (u) => u.email === email && u.password === password);
 
     if (!user) {
+<<<<<<< HEAD
 <<<<<<< HEAD
       setShowModal(true);
     } else {
@@ -96,15 +113,23 @@ export function LoginPage() {
   };
 =======
       setShowModal(true)
+=======
+      setShowModal(true);
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
     } else {
-      navigate('/products')
+      navigate('/products');
     }
-  }
+  };
 
   const handleCloseModal = () => {
+<<<<<<< HEAD
     setShowModal(false)
   }
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+    setShowModal(false);
+  };
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   return (
     <main>
@@ -172,8 +197,12 @@ export function LoginPage() {
       }
     </main>
 <<<<<<< HEAD
+<<<<<<< HEAD
   );
 =======
   )
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+  );
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

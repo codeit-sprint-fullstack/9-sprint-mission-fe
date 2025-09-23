@@ -163,8 +163,12 @@ export function RegistraionPage() {
       </div>
     </form>
 <<<<<<< HEAD
+<<<<<<< HEAD
   );
 =======
   )
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+  );
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

@@ -51,7 +51,7 @@ import { Card } from "./Card";
 import { getProductList } from "@/api/ProductService";
 import { SearchX } from "lucide-react";
 
-import styles from './CardList.module.css'
+import styles from './CardList.module.css';
 
 export function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
   const [products, setProducts] = useState([]);
@@ -74,12 +74,12 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
         setLoading(false);
       }
     }
-    fetchProduct()
+    fetchProduct();
   }, [currentPage, page, keyword, sortType, setTotalItems]);
 
   const handleClick = () => {
-    backKeyword('')
-  }
+    backKeyword('');
+  };
 
   if (!products.length) return <div className={styles.emptyQuery}><SearchX />검색 결과가 없습니다.<button onClick={handleClick}>검색초기화</button></div>;
 
@@ -103,6 +103,7 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
       ))}
     </div>
   );
+<<<<<<< HEAD
 }
 =======
           type={type}
@@ -123,3 +124,6 @@ export default CardList;
 =======
 }
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
+=======
+}
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)

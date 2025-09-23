@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 import styles from './Footer.module.css';
 
 export function Footer({ type }) {
@@ -70,6 +73,7 @@ export function Footer({ type }) {
 >>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
       </div>
     </footer>
+<<<<<<< HEAD
   )
 <<<<<<< HEAD
 }
@@ -79,3 +83,7 @@ export default Footer;
 =======
 }
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
+=======
+  );
+}
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)

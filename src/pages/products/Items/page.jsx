@@ -18,6 +18,7 @@ import { DropDown } from "@/components/UI/Button/DropDown";
 import { CardList } from "@/components/UI/Card/CardList";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import styles from './ItemsPage.module.css';
 
 export function ItemsPage() {
@@ -91,9 +92,12 @@ export function ItemsPage() {
 >>>>>>> f60f038 (feat: items페이지 추가, Outlet Context로 products페이지 코드 수정)
 =======
 import styles from './ItemsPage.module.css'
+=======
+import styles from './ItemsPage.module.css';
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
 export function ItemsPage() {
-  const { isMobile, isTablet, itemsPerPage } = useOutletContext()
+  const { isMobile, isTablet, itemsPerPage } = useOutletContext();
   const [keyword, setKeyword] = useState('');
   const [sortType, setSortType] = useState('recent');
 
@@ -104,13 +108,13 @@ export function ItemsPage() {
     setTotalItems,
     goToPage,
     totalPages
-  } = usePagination(1, itemsPerPage)
+  } = usePagination(1, itemsPerPage);
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
   const handleSearch = (value) => {
     setKeyword(value);
     goToPage(1); // 검색 시 첫페이지로
-  }
+  };
 
   return (
     <>
@@ -153,6 +157,10 @@ export function ItemsPage() {
         />
       </main>
     </>
+<<<<<<< HEAD
   )
 >>>>>>> d185975 (Style: NavLink로 active시 3692FF색상변경, 호버시 navlink호비서 3692FF)
+=======
+  );
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

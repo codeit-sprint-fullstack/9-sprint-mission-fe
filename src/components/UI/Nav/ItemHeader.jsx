@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useBreakPoint } from "@/hooks/useBreakpoint";
 import { Link, NavLink } from "react-router-dom";
 import styles from './ItemHeader.module.css';
@@ -14,6 +15,9 @@ function ItemHeader() {
 >>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
 =======
 import { useBreakPoint } from "@/hooks/useBreakpoint"
+=======
+import { useBreakPoint } from "@/hooks/useBreakpoint";
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 import { Link, NavLink } from "react-router-dom";
 import styles from './ItemHeader.module.css';
 
@@ -85,6 +89,7 @@ export function ItemHeader() {
         }
       </div >
     </nav >
+<<<<<<< HEAD
   )
 <<<<<<< HEAD
 }
@@ -94,3 +99,7 @@ export default ItemHeader
 =======
 }
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
+=======
+  );
+}
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)

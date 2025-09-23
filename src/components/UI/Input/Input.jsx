@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 import { useState } from 'react';
 import { Search } from 'lucide-react';
 
@@ -25,6 +28,7 @@ export function Input({ onSearch }) {
       />
     </div>
   );
+<<<<<<< HEAD
 }
 =======
 import styles from './Input.module.css'
@@ -69,3 +73,6 @@ export default Input;
 =======
 }
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
+=======
+}
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)

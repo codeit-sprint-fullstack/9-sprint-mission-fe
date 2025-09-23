@@ -69,8 +69,12 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
   );
 =======
   )
 >>>>>>> 60cd233 (Feat: pagination기능 구현)
+=======
+  );
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

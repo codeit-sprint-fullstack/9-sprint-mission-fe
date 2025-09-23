@@ -1,9 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { usePagination } from "@/hooks/usePagination";
 import { useOutletContext } from "react-router-dom";
+<<<<<<< HEAD
 
 import { DropDown } from "@/components/UI/Button/DropDown";
 import { CardList } from "@/components/UI/Card/CardList";
@@ -32,17 +36,19 @@ import { Link } from "react-router-dom"
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
 import { usePagination } from "@/hooks/usePagination"
 import { useOutletContext } from "react-router-dom"
+=======
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
-import { DropDown } from "@/components/UI/Button/DropDown"
-import { CardList } from "@/components/UI/Card/CardList"
-import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList"
-import { Input } from "@/components/UI/Input/Input"
-import { Pagination } from "@/components/Pagination/Pagination"
+import { DropDown } from "@/components/UI/Button/DropDown";
+import { CardList } from "@/components/UI/Card/CardList";
+import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList";
+import { Input } from "@/components/UI/Input/Input";
+import { Pagination } from "@/components/Pagination/Pagination";
 
-import styles from './ProductPage.module.css'
+import styles from './ProductPage.module.css';
 
 export function ProductPage() {
-  const { isMobile, isTablet, itemsPerPage } = useOutletContext()
+  const { isMobile, isTablet, itemsPerPage } = useOutletContext();
   const [keyword, setKeyword] = useState('');
   const [sortType, setSortType] = useState('recent');
 
@@ -60,11 +66,15 @@ export function ProductPage() {
     goToPage,
     totalPages
 <<<<<<< HEAD
+<<<<<<< HEAD
   } = usePagination(1, itemsPerPage);
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
 =======
   } = usePagination(1, itemsPerPage)
+=======
+  } = usePagination(1, itemsPerPage);
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
 <<<<<<< HEAD
@@ -89,12 +99,16 @@ export function ProductPage() {
     setKeyword(value);
     goToPage(1); // 검색 시 첫페이지로
 <<<<<<< HEAD
+<<<<<<< HEAD
   };
 
   return (
     <>
 =======
   }
+=======
+  };
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   return (
     <>
@@ -172,6 +186,7 @@ export function ProductPage() {
 
     </>
   );
+<<<<<<< HEAD
 =======
       {isMobile ? (
         <Footer type={'mobile'} />
@@ -184,4 +199,6 @@ export function ProductPage() {
     </>
   )
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

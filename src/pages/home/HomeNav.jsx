@@ -28,8 +28,12 @@ export function HomeNav() {
       </div>
     </nav>
 <<<<<<< HEAD
+<<<<<<< HEAD
   );
 =======
   )
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
+=======
+  );
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

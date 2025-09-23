@@ -76,6 +76,7 @@ export function Card({ name, price, images, type, loading }) {
         </div>
       )}
     </>
+<<<<<<< HEAD
   )
 <<<<<<< HEAD
 }
@@ -85,3 +86,7 @@ export default Card;
 =======
 }
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
+=======
+  );
+}
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)

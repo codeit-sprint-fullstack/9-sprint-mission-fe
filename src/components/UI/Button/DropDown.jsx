@@ -10,7 +10,7 @@ import styles from "./DropDown.module.css";
 import { useState } from "react";
 import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
 
-import styles from "./DropDown.module.css"
+import styles from "./DropDown.module.css";
 
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
 export function DropDown({ deviceType, onChange, page }) {
@@ -120,6 +120,7 @@ function DropDown({ deviceType, onChange, page }) {
       )}
     </div>
   );
+<<<<<<< HEAD
 }
 =======
           <li className={`${styles.dropdownElement} ${styles.topElement}`}>최신순</li>
@@ -132,6 +133,8 @@ function DropDown({ deviceType, onChange, page }) {
       )}
     </div>
   )
+=======
+>>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }
 <<<<<<< HEAD
 
