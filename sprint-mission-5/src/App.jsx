@@ -1,31 +1,28 @@
-import React, { useState } from 'react';
-import TopBar from './components/TopBar';
-import Footer from './components/Footer';
+
+
+import TopBar from '@/components/TopBar';
+import Footer from '@/components/Footer';
 import ProductList from './components/ProductList';
 import BestProduct from './components/BestProduct';
-import style from './App.module.css';
+import ItemProvider from './provider/ItemProvider';
+import PaginationBar from './Pagination/Pagination';
+import styles from './App.module.css';
+import DropdownList from './components/DropdownList';
 
-function App(items) {
-  /* const [order, setOrder] = useState('createdAt')
-  const sortedItems = items.sort((a, b) => b[order] - a[order])
-*/
-  const handleNewestClick = () => setOrder('createdAt');
-  const handleBestClick = () => setOrder('favorite');
+function App() {
+
   return (
     <>
-      <h1 className={style.title}>판다마켓</h1>
-      <TopBar />
-      <section>
-        <h2>베스트 상품</h2>
-        <BestProduct />
-      </section>
+      <ItemProvider>
+        <h1 className={styles.title}>판다마켓</h1>
+        <TopBar />
+        <main className={styles.mainSection}>
+          <BestProduct />
 
-      <section>
-        <button onClick={handleNewestClick}>최신순</button>
-        <button onClick={handleBestClick}>베스트순</button>
-       {/*} <ProductList items={sortedItems} /> */}
-      </section>
-      <Footer />
+          <ProductList />
+        </main>
+        <Footer />
+      </ItemProvider>
     </>
   );
 }

@@ -1,0 +1,45 @@
+.productCard {
+  border: none;
+  width: 13.8rem;
+  height: 19.8rem;
+  padding: 12px;
+  cursor: pointer;
+}
+
+
+.productImgLarge {
+  display: block;
+  object-fit: cover;
+  border-radius: 1rem;
+  width: 18rem;
+  height: 18rem;
+}
+
+.productImgSmall {
+  display: block;
+  object-fit: cover;
+  border-radius: 1rem;
+  width: 220px;
+  height: 220px;
+}
+
+
+.productName {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+}
+
+.productPrice {
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.625rem;
+  margin-top: 0.38rem;
+}
+
+.heart {
+  width: 1rem;
+  height: 1rem;
+}
