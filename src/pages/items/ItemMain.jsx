@@ -8,4 +8,4 @@ createRoot(document.getElementById('items-root')).render(
   <StrictMode>
     <ItemPage />
   </StrictMode>
-)
+);

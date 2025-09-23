@@ -1,5 +1,5 @@
-import modalShow from "../components/Modal/LoginModal.js";
-import USER_DATA from "../db.js";
+import modalShow from "./components/Modal/LoginModal.js";
+import USER_DATA from "../db/index.js";
 import { EmailValidator, PasswordValidator } from "../utils/validators.js";
 
 // DOM이 로드시(방어코드)

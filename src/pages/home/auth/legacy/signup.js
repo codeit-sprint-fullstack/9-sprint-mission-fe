@@ -4,8 +4,8 @@ import {
   PasswordCheckValidator,
   NicknameValidator,
 } from "../../src/utils/validators.js";
-import modalShow from "../components/Modal/LoginModal.js";
-import USER_DATA from "../db.js";
+import modalShow from "./components/Modal/LoginModal.js";
+import USER_DATA from "../db/index.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const $email = document.getElementById("email");
