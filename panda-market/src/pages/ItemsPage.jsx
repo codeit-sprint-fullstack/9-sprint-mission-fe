@@ -5,8 +5,6 @@ import { useSearchFilter } from "../hooks/useSearchFilter";
 import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 import "./ItemsPage.css";
-import HeaderItems from "../components/HeaderItems"; 
-
 function ItemsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const { keyword, setKeyword, sortBy, setSortBy } = useSearchFilter();
@@ -26,7 +24,7 @@ function ItemsPage() {
   return (
     <div className="items-page">
       {/* Items 전용 헤더 */}
-      <HeaderItems />
+
 
       {/* 베스트 상품 */}
       <section className="best-products">
