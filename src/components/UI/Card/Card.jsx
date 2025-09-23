@@ -20,9 +20,13 @@ export function Card({ name, price, images, type, loading }) {
       ) : (
         <div className={styles.cardContainer}>
           <img className={type === 'favorite' ? styles.favoriteImage : styles.cardImage}
+<<<<<<< HEAD
             src={images?.[0] || "/images/logo.png"}
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+            src={images?.[0] || "/images/default_items_img.svg"}
+>>>>>>> 5406a51 (Fix: 엔드포인트 수정 및 기타 오류수정)
             alt="image" />
           <div className={styles.cardDescription}>
             <p className={styles.cardTitle}>{name}</p>

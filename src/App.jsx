@@ -8,7 +8,7 @@ import { ProductPage } from "@/pages/products/ProductPage";
 <<<<<<< HEAD
 import { ProductLayout } from "@/pages/products/ProductLayout";
 import { ItemsPage } from "@/pages/products/Items/page";
-import { ItemsDetailPage } from "@/pages/product/Items/ItemsDetailPage/page";
+import { ItemsDetailPage } from "@/pages/products/Items/Items-detail/page";
 import { RegistraionPage } from "@/pages/products/registration/page";
 <<<<<<< HEAD
 =======

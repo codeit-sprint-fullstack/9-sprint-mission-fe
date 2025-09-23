@@ -15,7 +15,7 @@ import { usePagination } from "@/hooks/usePagination";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { Input } from "@/components/UI/Input/Input";
 import { DropDown } from "@/components/UI/Button/DropDown";
-import { CardList } from "@/components/UI/Card/CardList";
+import { MyCardList } from "@/components/UI/Card/MyCardList";
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -66,7 +66,7 @@ export function ItemsPage() {
               </div>
             </div>
           )}
-          <CardList
+          <MyCardList
             currentPage={currentPage}
             page={initialItemPerPage}
             keyword={keyword}
