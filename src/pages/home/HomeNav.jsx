@@ -10,11 +10,17 @@ import { Link } from "react-router-dom";
 export function HomeNav() {
   return (
     <nav>
+<<<<<<< HEAD
       <div class="logo-box">
         <div class="logo">
           <div class="logo-title">
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+      <div className="logo-box">
+        <div className="logo">
+          <div className="logo-title">
+>>>>>>> 282bda3 (Style: HomeNav -> class를 className으로 수정)
             <Link to="/"><img src="/images/logo.png" alt="pandamarket"/>판다마켓</Link>
 =======
             <a href="/"><img src="/images/logo.png" alt="pandamarket"/>판다마켓</a>
