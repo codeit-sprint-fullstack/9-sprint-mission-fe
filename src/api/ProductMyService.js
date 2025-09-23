@@ -1,20 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import {app} from '@/constants/api'
-=======
-import axios from "axios";
-
-const app = axios.create({
-  baseURL: "https://panda-market-api.vercel.app",
-});
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-=======
-import {app} from '@/constants/api'
->>>>>>> 23c86a2 (Style: api axios라이브러리로 하나로 변경)
-=======
-import { app } from "@/constants/api";
->>>>>>> a9a6fea (Feat: 백엔드 서버 API 추가)
+import { instance } from "@/constants/api";
 
 /**
  *
@@ -24,16 +8,15 @@ import { app } from "@/constants/api";
  * @param {String[]} tags > Tag
  * @param {String[]} images > UrlType pattern: ^https://...
  */
-export async function createProduct(name, description, price, tags, images) {
+export async function createItems(name, description, price, tags) {
   try {
-    const res = await app.post(
-      `/products`,
+    const res = await instance.post(
+      `api/products`,
       {
         name,
         description,
         price,
         tags,
-        images,
       },
       {
         headers: {
@@ -51,16 +34,10 @@ export async function createProduct(name, description, price, tags, images) {
   }
 }
 
-export async function getProduct() {
+export async function getItems() {
   try {
-    const res = await app.get(`products`);
-<<<<<<< HEAD
-    return res.data
-<<<<<<< HEAD
-=======
-=======
+    const res = await instance.get(`products`);
     return res.data;
->>>>>>> a9a6fea (Feat: 백엔드 서버 API 추가)
   } catch (err) {
     console.log(err.status);
     console.log(err.message);
@@ -70,36 +47,19 @@ export async function getProduct() {
   }
 }
 
-<<<<<<< HEAD
-export async function getProductCardList() {
-  try {
-    const res = await app.get(`products`);
-    return res.data
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-  } catch (err) {
-    console.log(err.status);
-    console.log(err.message);
-    throw new Error("상품 리스트를 가져오지 못했습니다.");
-  } finally {
-    console.log("getProduct 실행 완료");
-  }
-}
-
-=======
->>>>>>> 0a83451 (Feat: API keyword를 활용한 검색기능 구현)
 /**
  * @param {Number} page
  * @param {Number} pageSize
  * @param {Number} keyword
  */
-export async function getProductList(
+export async function getItemsList(
   page = 1,
   pageSize = 10,
   keyword = "",
   orderBy = "recent"
 ) {
   try {
-    const res = await app.get(
+    const res = await instance.get(
       `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`
     );
     return res.data;
@@ -115,9 +75,9 @@ export async function getProductList(
 /**
  * @param {Number} productId
  */
-export async function patchProduct(productId) {
+export async function patchItems(productId) {
   try {
-    const res = await app.patch(`products/${productId}`, {
+    const res = await instance.patch(`products/${productId}`, {
       name: "change",
       description: "change",
     });
@@ -134,9 +94,9 @@ export async function patchProduct(productId) {
 /**
  * @param {Number} productId
  */
-export async function deleteProduct(productId) {
+export async function deleteItems(productId) {
   try {
-    const res = await app.delete(`products/${productId}`);
+    const res = await instance.delete(`products/${productId}`);
     return res.data;
   } catch (err) {
     console.log(err.status);
@@ -146,3 +106,4 @@ export async function deleteProduct(productId) {
     console.log("deleteProduct 실행 완료");
   }
 }
+
