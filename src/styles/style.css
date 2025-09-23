@@ -103,10 +103,13 @@ input {
   display: flex;
   gap: 0.25rem;
   align-items: center;
-  height: 2.625rem;
   padding: 0.5625rem 1rem;
   border-radius: 0.75rem;
   background: var(--secondary-100);
+}
+
+.input-wrap.large-form {
+  padding: 1rem 1.5rem;
 }
 
 .input-wrap > .input-value {
