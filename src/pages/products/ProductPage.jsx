@@ -1,18 +1,18 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { usePagination } from "@/hooks/usePagination"
-import { useOutletContext } from "react-router-dom"
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { usePagination } from "@/hooks/usePagination";
+import { useOutletContext } from "react-router-dom";
 
-import { DropDown } from "@/components/UI/Button/DropDown"
-import { CardList } from "@/components/UI/Card/CardList"
-import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList"
-import { Input } from "@/components/UI/Input/Input"
-import { Pagination } from "@/components/Pagination/Pagination"
+import { DropDown } from "@/components/UI/Button/DropDown";
+import { CardList } from "@/components/UI/Card/CardList";
+import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList";
+import { Input } from "@/components/UI/Input/Input";
+import { Pagination } from "@/components/Pagination/Pagination";
 
-import styles from './ProductPage.module.css'
+import styles from './ProductPage.module.css';
 
 export function ProductPage() {
-  const { isMobile, isTablet, itemsPerPage } = useOutletContext()
+  const { isMobile, isTablet, itemsPerPage } = useOutletContext();
   const [keyword, setKeyword] = useState('');
   const [sortType, setSortType] = useState('recent');
 
@@ -24,14 +24,14 @@ export function ProductPage() {
     setTotalItems,
     goToPage,
     totalPages
-  } = usePagination(1, itemsPerPage)
+  } = usePagination(1, itemsPerPage);
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
   // search
   const handleSearch = (value) => {
     setKeyword(value);
     goToPage(1); // 검색 시 첫페이지로
-  }
+  };
 
   return (
     <>
@@ -86,5 +86,5 @@ export function ProductPage() {
       </div>
 
     </>
-  )
+  );
 }

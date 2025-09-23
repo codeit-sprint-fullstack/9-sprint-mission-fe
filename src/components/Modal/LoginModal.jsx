@@ -1,4 +1,4 @@
-import styles from './LoginModal.module.css'
+import styles from './LoginModal.module.css';
 
 export function LoginModal({close,msg}) {
 
@@ -9,5 +9,5 @@ export function LoginModal({close,msg}) {
         <button className={styles.modalButton} onClick={close}>확인</button>
       </div>
     </div>
-  )
+  );
 }

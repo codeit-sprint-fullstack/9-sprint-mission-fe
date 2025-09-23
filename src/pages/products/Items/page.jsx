@@ -7,10 +7,10 @@ import { Input } from "@/components/UI/Input/Input";
 import { DropDown } from "@/components/UI/Button/DropDown";
 import { CardList } from "@/components/UI/Card/CardList";
 
-import styles from './ItemsPage.module.css'
+import styles from './ItemsPage.module.css';
 
 export function ItemsPage() {
-  const { isMobile, isTablet, itemsPerPage } = useOutletContext()
+  const { isMobile, isTablet, itemsPerPage } = useOutletContext();
   const [keyword, setKeyword] = useState('');
   const [sortType, setSortType] = useState('recent');
 
@@ -21,13 +21,13 @@ export function ItemsPage() {
     setTotalItems,
     goToPage,
     totalPages
-  } = usePagination(1, itemsPerPage)
+  } = usePagination(1, itemsPerPage);
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
   const handleSearch = (value) => {
     setKeyword(value);
     goToPage(1); // 검색 시 첫페이지로
-  }
+  };
 
   return (
     <>
@@ -70,5 +70,5 @@ export function ItemsPage() {
         />
       </main>
     </>
-  )
+  );
 }

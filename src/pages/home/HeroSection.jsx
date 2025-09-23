@@ -17,5 +17,5 @@ export function HeroSection() {
         <img src="/images/hero/Img_home_top.png" alt="asdas" />
       </picture>
     </section>
-  )
+  );
 }

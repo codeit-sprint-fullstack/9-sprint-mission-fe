@@ -20,5 +20,5 @@ export function App() {
         <Route path="/products/registration" element={<RegistraionPage />} />
       </Route>
     </Routes>
-  )
+  );
 }

@@ -58,5 +58,5 @@ export function RegistraionPage() {
         </div>
       </div>
     </form>
-  )
+  );
 }

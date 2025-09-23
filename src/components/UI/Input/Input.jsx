@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Search } from 'lucide-react';
 
-import styles from './Input.module.css'
+import styles from './Input.module.css';
 
 export function Input({ onSearch }) {
   const [keyword, setKeyword] = useState('');
@@ -22,5 +22,5 @@ export function Input({ onSearch }) {
         onKeyDown={handleKeyDown}
       />
     </div>
-  )
+  );
 }

@@ -46,5 +46,5 @@ export function FeatureSection() {
         </div>
       </section>
     </main>
-  )
+  );
 }

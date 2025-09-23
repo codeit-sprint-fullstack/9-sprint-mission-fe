@@ -1,4 +1,4 @@
-import { useBreakPoint } from "@/hooks/useBreakpoint"
+import { useBreakPoint } from "@/hooks/useBreakpoint";
 import { Link, NavLink } from "react-router-dom";
 import styles from './ItemHeader.module.css';
 
@@ -35,5 +35,5 @@ export function ItemHeader() {
         }
       </div >
     </nav >
-  )
+  );
 }

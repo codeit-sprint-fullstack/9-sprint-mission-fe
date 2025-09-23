@@ -27,5 +27,5 @@ export function Card({ name, price, images, type, loading }) {
         </div>
       )}
     </>
-  )
+  );
 }

@@ -2,38 +2,39 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
 import USER_DATA from '@/db';
-import { AuthTitle } from '@/pages/home/auth/components/AuthTitle'
+import { AuthTitle } from '@/pages/home/auth/components/AuthTitle';
 import { LoginModal } from '@/components/Modal/LoginModal';
-import './login.css'
+import './login.css';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleEmailValueChange = (e) => {
-    setEmail(e.target.value.trim())
-  }
+    setEmail(e.target.value.trim());
+  };
 
   const handleEmailFouseOut = () => {
-    setEmailError(EmailValidator(email))
-  }
+    setEmailError(EmailValidator(email));
+  };
 
   const handlePasswordValueChange = (e) => {
-    setPassword(e.target.value.trim())
-  }
+    setPassword(e.target.value.trim());
+  };
 
   const handlePasswordFouseOut = () => {
-    setPasswordError(PasswordValidator(password))
-  }
+    setPasswordError(PasswordValidator(password));
+  };
+
   const handlePasswordVisible = () => {
-    setPasswordVisible(!passwordVisible)
-  }
+    setPasswordVisible(!passwordVisible);
+  };
 
   const handleFormEvent = (e) => {
     e.preventDefault();
@@ -42,15 +43,15 @@ export function LoginPage() {
       (u) => u.email === email && u.password === password);
 
     if (!user) {
-      setShowModal(true)
+      setShowModal(true);
     } else {
-      navigate('/products')
+      navigate('/products');
     }
-  }
+  };
 
   const handleCloseModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   return (
     <main>
@@ -109,5 +110,5 @@ export function LoginPage() {
         <LoginModal close={handleCloseModal} msg={"비밀번호가 일치하지 않습니다."} />
       }
     </main>
-  )
+  );
 }

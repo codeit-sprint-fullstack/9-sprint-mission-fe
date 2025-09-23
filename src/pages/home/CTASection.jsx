@@ -16,5 +16,5 @@ export function CTASection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

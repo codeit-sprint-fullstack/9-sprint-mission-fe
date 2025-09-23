@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useBreakPoint } from "@/hooks/useBreakpoint"
+import { useBreakPoint } from "@/hooks/useBreakpoint";
 import { Footer } from "@/components/UI/Footer/Footer";
 import { ItemHeader } from "@/components/UI/Nav/ItemHeader";
 import { Outlet } from "react-router-dom";
@@ -15,7 +15,7 @@ export function ProductLayout() {
     } else {
       setItemsPerPage(10);
     }
-  }, [isMobile, isTablet])
+  }, [isMobile, isTablet]);
 
   return (
     <>
@@ -27,5 +27,5 @@ export function ProductLayout() {
         <Footer />
       )}
     </>
-  )
+  );
 }
