@@ -6,6 +6,7 @@ import { SignUpPage } from "@/pages/home/auth/SignUpPage";
 import { ProductPage } from "@/pages/products/ProductPage";
 import { ProductLayout } from "@/pages/products/ProductLayout";
 import { ItemsPage } from "@/pages/products/Items/page";
+import { ItemsDetailPage } from "@/pages/product/Items/ItemsDetailPage/page";
 import { RegistraionPage } from "@/pages/products/registration/page";
 
 export function App() {
@@ -17,6 +18,7 @@ export function App() {
       <Route path="/products" element={<ProductLayout />} >
         <Route index element={<ProductPage />} />
         <Route path="/products/items" element={<ItemsPage />} />
+        <Route path="/products/items/detail/:itemId" element={<ItemsDetailPage />}/>
         <Route path="/products/registration" element={<RegistraionPage />} />
       </Route>
     </Routes>

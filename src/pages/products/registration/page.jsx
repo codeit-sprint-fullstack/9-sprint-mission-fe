@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { productDiscribeValidate, productNameValidate, productPriceValidate, productTagValidate } from '@/utils/products/validators';
 import { X } from 'lucide-react';
 import styles from './RegistraionPage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export function RegistraionPage() {
   const [name, setName] = useState('');
@@ -14,6 +15,8 @@ export function RegistraionPage() {
   const [tagError, setTagError] = useState('');
   const [toggleBtn, setToggleBtn] = useState(true);
 
+  const navigate =  useNavigate();
+
   useEffect(() => {
     const isValid = name && discribe && price && tag &&
       !nameError && !discribeError && !priceError && !tagError;
@@ -22,6 +25,7 @@ export function RegistraionPage() {
       setToggleBtn(true);
     } else {
       setToggleBtn(false);
+      navigate('/detail/1');
     }
   }, [nameError, discribeError, priceError, tagError]);
 
