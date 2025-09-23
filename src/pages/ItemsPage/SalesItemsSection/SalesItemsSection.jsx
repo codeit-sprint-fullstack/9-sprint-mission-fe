@@ -41,46 +41,41 @@ export function SalesItemsSection() {
     setIsDropDownActive(false);
   };
 
+  const SearchInput = (
+    <div className={clsx('input-wrap', styles.searchInput)}>
+      <img src={searchIcon} alt="검색" />
+      <input
+        id="serch-input"
+        className="input-value"
+        type="text"
+        onKeyUp={handleSearchInput}
+        placeholder="검색할 상품을 입력해주세요"
+      />
+    </div>
+  );
+
+  const NewItemBtn = (
+    <Link
+      to="/registration"
+      className={clsx('s-btn', 'compact', styles.newItemBtn)}
+    >
+      상품 등록하기
+    </Link>
+  );
+
   let inputWrapChange;
   if (windowSize === 'MOBILE') {
     inputWrapChange = (
       <>
-        <Link
-          to="/registration"
-          className={clsx('s-btn', 'compact', styles.newItemBtn)}
-        >
-          상품 등록하기
-        </Link>
-        <div className={styles.inputWrap}>
-          <img src={searchIcon} alt="검색" />
-          <input
-            id="serch-input"
-            type="text"
-            onKeyUp={handleSearchInput}
-            placeholder="검색할 상품을 입력해주세요"
-          />
-        </div>
+        {NewItemBtn}
+        {SearchInput}
       </>
     );
   } else {
     inputWrapChange = (
       <>
-        <div className="input-wrap">
-          <img src={searchIcon} alt="검색" />
-          <input
-            id="serch-input"
-            className="input-value"
-            type="text"
-            onKeyUp={handleSearchInput}
-            placeholder="검색할 상품을 입력해주세요"
-          />
-        </div>
-        <Link
-          to="/registration"
-          className={clsx('s-btn', 'compact', styles.newItemBtn)}
-        >
-          상품 등록하기
-        </Link>
+        {SearchInput}
+        {NewItemBtn}
       </>
     );
   }
