@@ -65,10 +65,11 @@ export function SalesItemsSection() {
   } else {
     inputWrapChange = (
       <>
-        <div className={styles.inputWrap}>
+        <div className="input-wrap">
           <img src={searchIcon} alt="검색" />
           <input
             id="serch-input"
+            className="input-value"
             type="text"
             onKeyUp={handleSearchInput}
             placeholder="검색할 상품을 입력해주세요"
