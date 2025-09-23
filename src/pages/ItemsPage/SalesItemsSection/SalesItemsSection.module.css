@@ -87,11 +87,15 @@
   border-bottom: none;
 }
 
+.searchInput {
+  width: 20.3rem;
+}
+
 @media screen and (max-width: 74.9rem) {
   #salesItemSection {
     width: 43.5rem;
   }
-  .inputWrap {
+  .searchInput {
     width: 12.9rem;
   }
 }
@@ -109,7 +113,7 @@
   .sectionTitle {
     width: auto;
   }
-  .inputWrap {
+  .searchInput {
     width: 18rem;
   }
   .newItemBtn {
