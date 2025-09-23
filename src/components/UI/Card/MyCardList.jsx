@@ -19,7 +19,7 @@ export function MyCardList({ page, currentPage, sortType, setTotalItems, backKey
         let data = [];
         data = await getItemsList(currentPage, page, sortType); // 전체상품
         setItems(data.data);
-        setTotalItems(data.data.total);
+        setTotalItems(data.pagination.total);
       } catch (err) {
         console.error('Failed getItems:', err);
       } finally {
