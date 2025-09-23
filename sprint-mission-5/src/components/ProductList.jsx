@@ -57,7 +57,7 @@ export default function ProductList() {
       case "recent":
         return "최신순";
       case "favorite":
-        return "베스트순";
+        return "좋아요순";
       default:
         return "최신순";
     }
