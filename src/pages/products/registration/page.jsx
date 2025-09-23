@@ -1,12 +1,60 @@
+import { useEffect, useState } from 'react';
+import { productDiscribeValidate, productNameValidate, productPriceValidate, productTagValidate } from '@/utils/products/validators';
 import { X } from 'lucide-react';
 import styles from './RegistraionPage.module.css';
 
 export function RegistraionPage() {
+  const [name, setName] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [discribe, setDiscribe] = useState('');
+  const [discribeError, setDiscribeError] = useState('');
+  const [price, setPrice] = useState('');
+  const [priceError, setPriceError] = useState('');
+  const [tag, setTag] = useState('');
+  const [tagError, setTagError] = useState('');
+  const [toggleBtn, setToggleBtn] = useState(true);
+
+  useEffect(() => {
+    const isValid = name && discribe && price && tag &&
+      !nameError && !discribeError && !priceError && !tagError;
+
+    if (!isValid) {
+      setToggleBtn(true);
+    } else {
+      setToggleBtn(false);
+    }
+  }, [nameError, discribeError, priceError, tagError]);
+
+  const handleOnChageName = (e) => {
+    setName(e.target.value.trim());
+    setNameError(productNameValidate(name));
+  };
+
+  const handleOnChageDiscribe = (e) => {
+    setDiscribe(e.target.value.trim());
+    setDiscribeError(productDiscribeValidate(discribe));
+  };
+
+  const handleOnChagePrice = (e) => {
+    setPrice(e.target.value.trim());
+    setPriceError(productPriceValidate(price));
+  };
+
+  const handleOnChageTag = (e) => {
+    setTag(e.target.value.trim());
+    setTagError(productTagValidate(tag));
+  };
+
   return (
-    <form className={styles.RegContainer}>
+    <form
+      className={styles.RegContainer}
+      method="POST"
+      action="/registration"
+      autoComplete='off'
+    >
       <div className={styles.RegTitle}>
         <h2>상품 등록하기</h2>
-        <button type='submit'>등록</button>
+        <button className={toggleBtn ? styles.disActiveBtn : styles.activeBtn} type='submit' disabled={toggleBtn}>등록</button>
       </div>
       <div className={styles.RegProductName}>
         <label htmlFor='product_name'>상품명</label>
@@ -14,8 +62,14 @@ export function RegistraionPage() {
           type="text"
           name="product_name"
           id="product_name"
+          onChange={handleOnChageName}
           placeholder='상품명을 입력해주세요'
+          aria-label='상품명을 입력해주세요'
+          required
         />
+        {nameError &&
+          <span className={styles.error}>{nameError}</span>
+        }
       </div>
 
       <div className={styles.RegProductDescribe}>
@@ -23,9 +77,15 @@ export function RegistraionPage() {
         <textarea
           name="product_describe"
           id="product_describe"
+          onChange={handleOnChageDiscribe}
           placeholder='상품 소개를 입력해주세요'
+          aria-label='상품 소개를 입력해주세요'
+          required
         >
         </textarea>
+        {discribeError &&
+          <span className={styles.error}>{discribeError}</span>
+        }
       </div>
 
       <div className={styles.RegProductPrice}>
@@ -34,8 +94,14 @@ export function RegistraionPage() {
           type="text"
           name='product_price'
           id='product_price'
+          onChange={handleOnChagePrice}
           placeholder='판매 가격을 입력해주세요'
+          aria-label='판매 가격을 입력해주세요'
+          required
         />
+        {priceError &&
+          <span className={styles.error}>{priceError}</span>
+        }
       </div>
 
       <div className={styles.RegProductTag}>
@@ -44,8 +110,14 @@ export function RegistraionPage() {
           type="text"
           name='product_tag'
           id='product_tag'
+          onChange={handleOnChageTag}
           placeholder='태그를 입력해주세요'
+          aria-label='태그를 입력해주세요'
+          required
         />
+        {tagError &&
+          <span className={styles.error}>{tagError}</span>
+        }
         <div className={styles.RegSelectTagsContainer}>
           <div className={styles.RegSelectTags}>
             <p>#티셔츠</p>

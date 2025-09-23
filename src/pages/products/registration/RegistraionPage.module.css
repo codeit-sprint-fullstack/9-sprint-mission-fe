@@ -19,19 +19,32 @@
     font-weight: 700;
     line-height: 32px;
   }
+}
 
-  & button {
-    display: flex;
-    color: white;
-    height: 42px;
-    padding: 12px 23px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: 0;
-    border-radius: 8px;
-    background-color: var(--color-secondary-400);
-  }
+.disActiveBtn {
+  display: flex;
+  color: white;
+  height: 42px;
+  padding: 12px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--color-secondary-400);
+}
+
+.activeBtn {
+  display: flex;
+  color: white;
+  height: 42px;
+  padding: 12px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--color-primary-100);
 }
 
 .RegProductName {
@@ -76,6 +89,7 @@
   & textarea {
     height: 282px;
     padding: 16px 24px;
+    resize: none;
     border: 0;
     border-radius: 12px;
     background-color: var(--color-secondary-100);
