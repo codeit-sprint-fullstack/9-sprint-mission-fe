@@ -22,7 +22,7 @@ export function Header() {
               </picture>
             </Link>
           </h1>
-          {!isIndexPage && <NavMenuWrap />}
+          {!isIndexPage && <NavMenuWrap pathname={pathname} />}
         </div>
         <div id="nav-right">
           <a

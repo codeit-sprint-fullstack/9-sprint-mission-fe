@@ -45,6 +45,10 @@
   width: 8rem;
 }
 
+.nav-menu-active {
+  color: var(--primary-100);
+}
+
 @media screen and (max-width: 120rem) {
   #nav {
     width: 100%;

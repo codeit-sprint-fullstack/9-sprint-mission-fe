@@ -1,12 +1,23 @@
-export function NavMenuWrap() {
+import clsx from 'clsx';
+import { Link } from 'react-router';
+
+export function NavMenuWrap({ pathname }) {
   return (
     <div id="nav-menu-wrap">
-      <a className="nav-menu" href="/">
+      <Link
+        className={clsx('nav-menu', { 'nav-menu-active': pathname === '/' })}
+        to="/"
+      >
         자유게시판
-      </a>
-      <a className="nav-menu" href="/">
+      </Link>
+      <Link
+        className={clsx('nav-menu', {
+          'nav-menu-active': pathname === '/items',
+        })}
+        to="/items"
+      >
         중고마켓
-      </a>
+      </Link>
     </div>
   );
 }
