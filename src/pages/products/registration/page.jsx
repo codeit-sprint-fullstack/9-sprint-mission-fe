@@ -1,13 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { productDiscribeValidate, productNameValidate, productPriceValidate, productTagValidate } from '@/utils/products/validators';
 =======
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+import { useEffect, useState } from 'react';
+import { productDiscribeValidate, productNameValidate, productPriceValidate, productTagValidate } from '@/utils/products/validators';
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
 import { X } from 'lucide-react';
 import styles from './RegistraionPage.module.css';
 
 export function RegistraionPage() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState('');
   const [discribe, setDiscribe] = useState('');
@@ -49,6 +57,7 @@ export function RegistraionPage() {
     setTagError(productTagValidate(tag));
   };
 
+<<<<<<< HEAD
   return (
     <form
       className={styles.RegContainer}
@@ -60,12 +69,23 @@ export function RegistraionPage() {
         <h2>상품 등록하기</h2>
         <button className={toggleBtn ? styles.disActiveBtn : styles.activeBtn} type='submit' disabled={toggleBtn}>등록</button>
 =======
+=======
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
   return (
-    <form className={styles.RegContainer}>
+    <form
+      className={styles.RegContainer}
+      method="POST"
+      action="/registration"
+      autoComplete='off'
+    >
       <div className={styles.RegTitle}>
         <h2>상품 등록하기</h2>
+<<<<<<< HEAD
         <button type='submit'>등록</button>
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+        <button className={toggleBtn ? styles.disActiveBtn : styles.activeBtn} type='submit' disabled={toggleBtn}>등록</button>
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
       </div>
       <div className={styles.RegProductName}>
         <label htmlFor='product_name'>상품명</label>
@@ -73,6 +93,7 @@ export function RegistraionPage() {
           type="text"
           name="product_name"
           id="product_name"
+<<<<<<< HEAD
 <<<<<<< HEAD
           onChange={handleOnChageName}
           placeholder='상품명을 입력해주세요'
@@ -83,9 +104,20 @@ export function RegistraionPage() {
           <span className={styles.error}>{nameError}</span>
         }
 =======
+=======
+          onChange={handleOnChageName}
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
           placeholder='상품명을 입력해주세요'
+          aria-label='상품명을 입력해주세요'
+          required
         />
+<<<<<<< HEAD
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+        {nameError &&
+          <span className={styles.error}>{nameError}</span>
+        }
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
       </div>
 
       <div className={styles.RegProductDescribe}>
@@ -93,6 +125,7 @@ export function RegistraionPage() {
         <textarea
           name="product_describe"
           id="product_describe"
+<<<<<<< HEAD
 <<<<<<< HEAD
           onChange={handleOnChageDiscribe}
           placeholder='상품 소개를 입력해주세요'
@@ -104,10 +137,21 @@ export function RegistraionPage() {
           <span className={styles.error}>{discribeError}</span>
         }
 =======
+=======
+          onChange={handleOnChageDiscribe}
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
           placeholder='상품 소개를 입력해주세요'
+          aria-label='상품 소개를 입력해주세요'
+          required
         >
         </textarea>
+<<<<<<< HEAD
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+        {discribeError &&
+          <span className={styles.error}>{discribeError}</span>
+        }
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
       </div>
 
       <div className={styles.RegProductPrice}>
@@ -116,6 +160,7 @@ export function RegistraionPage() {
           type="text"
           name='product_price'
           id='product_price'
+<<<<<<< HEAD
 <<<<<<< HEAD
           onChange={handleOnChagePrice}
           placeholder='판매 가격을 입력해주세요'
@@ -126,9 +171,20 @@ export function RegistraionPage() {
           <span className={styles.error}>{priceError}</span>
         }
 =======
+=======
+          onChange={handleOnChagePrice}
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
           placeholder='판매 가격을 입력해주세요'
+          aria-label='판매 가격을 입력해주세요'
+          required
         />
+<<<<<<< HEAD
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+        {priceError &&
+          <span className={styles.error}>{priceError}</span>
+        }
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
       </div>
 
       <div className={styles.RegProductTag}>
@@ -137,6 +193,7 @@ export function RegistraionPage() {
           type="text"
           name='product_tag'
           id='product_tag'
+<<<<<<< HEAD
 <<<<<<< HEAD
           onChange={handleOnChageTag}
           placeholder='태그를 입력해주세요'
@@ -147,9 +204,20 @@ export function RegistraionPage() {
           <span className={styles.error}>{tagError}</span>
         }
 =======
+=======
+          onChange={handleOnChageTag}
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
           placeholder='태그를 입력해주세요'
+          aria-label='태그를 입력해주세요'
+          required
         />
+<<<<<<< HEAD
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+        {tagError &&
+          <span className={styles.error}>{tagError}</span>
+        }
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
         <div className={styles.RegSelectTagsContainer}>
           <div className={styles.RegSelectTags}>
             <p>#티셔츠</p>

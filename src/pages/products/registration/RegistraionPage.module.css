@@ -27,6 +27,7 @@
     line-height: 32px;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 .disActiveBtn {
@@ -68,6 +69,34 @@
     background-color: var(--color-secondary-400);
   }
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+}
+
+.disActiveBtn {
+  display: flex;
+  color: white;
+  height: 42px;
+  padding: 12px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--color-secondary-400);
+}
+
+.activeBtn {
+  display: flex;
+  color: white;
+  height: 42px;
+  padding: 12px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--color-primary-100);
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
 }
 
 .RegProductName {
@@ -113,9 +142,13 @@
     height: 282px;
     padding: 16px 24px;
 <<<<<<< HEAD
+<<<<<<< HEAD
     resize: none;
 =======
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+    resize: none;
+>>>>>>> bcc2526 (Fix: 로직변경(registration))
     border: 0;
     border-radius: 12px;
     background-color: var(--color-secondary-100);
