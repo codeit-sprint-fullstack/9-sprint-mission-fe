@@ -37,7 +37,7 @@ export function RegistraionPage() {
       setToggleBtn(true);
     } else {
       setToggleBtn(false);
-      navigate('/detail/1');
+      navigate('/products/items');
     }
   }, [nameError, discribeError, priceError, tagError]);
 
@@ -66,7 +66,7 @@ export function RegistraionPage() {
     <form
       className={styles.RegContainer}
       method="POST"
-      action="/registration"
+      action="/api/items"
       autoComplete='off'
     >
       <div className={styles.RegTitle}>
