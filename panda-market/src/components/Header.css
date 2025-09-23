@@ -1,0 +1,97 @@
+/* src/components/Header.css */
+
+/* 기본 헤더 */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* 컨테이너 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고 */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #2979ff;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* 메뉴 */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: left;
+}
+
+.nav-item:hover {
+  color: #2979ff;
+}
+
+ .brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.brand-text {
+ font-family:  'ROKAFSans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3692FF;
+  text-decoration: none;
+  white-space: nowrap;
+
+}
+/* 로그인 버튼 */
+.btn-login {
+margin-left: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  background: #3692FF;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-login:hover {
+  background-color: #185ad6;
+}
+
+/* ItemsPage 전용 헤더 */
+

@@ -3,25 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>판다마켓</title>
-  <link rel="stylesheet" href="./assets/css/reset.css" />
-  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <title>판다마켓 - 상품 리스트</title>
+  <link rel="icon" href="./images/favicon.ico" />
+
+  <!-- OG & Twitter Meta -->
+  <meta property="og:title" content="판다마켓" />
+  <meta property="og:description" content="일상에서 모든 물건을 거래해보세요" />
+  <meta property="og:image" content="https://learncode-deploy.s3.ap-northeast-2.amazonaws.com/panda-market/meta-image.png" />
+  <meta property="og:url" content="https://your-netlify-domain.netlify.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="판다마켓" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="판다마켓" />
+  <meta name="twitter:description" content="일상에서 모든 물건을 거래해보세요" />
+  <meta name="twitter:image" content="https://learncode-deploy.s3.ap-northeast-2.amazonaws.com/panda-market/meta-image.png" />
+
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" crossorigin="anonymous" />
 </head>
 <body>
+
+  <!-- 헤더-->
   <header class="header">
     <div class="container header-inner">
-      <a href="/index.html" class="logo" aria-label="판다마켓 로고">판다마켓</a>
-      <a href="/login.html" class="btn-login">로그인</a>
+      <div class="brand">
+        <img class="brand-logo" src="./images/panda-face.svg" alt="판다 로고" />
+        <a href="./index.html" class="logo" aria-label="판다마켓 로고">판다마켓</a>
+      </div>
+      <a href="./login.html" class="btn-login">로그인</a>
     </div>
   </header>
 
-  <main class="main">
-    <section class="container">
-      <h1>빈 페이지</h1>
-      <p>요구사항용 빈 페이지입니다.</p>
-    </section>
+
+  <main>
+    <ul id="product-list"></ul>
   </main>
 
+  <!--푸터 -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">codeit-2024</div>
@@ -30,12 +49,22 @@
         <a href="/faq.html">FAQ</a>
       </nav>
       <div class="footer-right" aria-label="SNS">
-        <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
-        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
-        <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="./images/ic_facebook.png" alt="페이스북" class="facebook" />
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+          <img src="./images/ic_twitter.png" alt="트위터" />
+        </a>
+        <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="./images/ic_youtube.png" alt="유튜브" />
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="./images/ic_instagram.png" alt="인스타그램" />
+        </a>
       </div>
     </div>
   </footer>
-</body>
-</html>
+
+ </body>
+ </html>
+ 
