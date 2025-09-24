@@ -18,7 +18,6 @@ function App() {
         <TopBar />
         <main className={styles.mainSection}>
           <BestProduct />
-
           <ProductList />
         </main>
         <Footer />

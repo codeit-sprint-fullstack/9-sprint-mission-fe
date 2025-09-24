@@ -3,53 +3,51 @@ import styles from './BestProduct.module.css';
 import { ProductCard } from './ProductCard';
 import { getProducts } from '@/api/items';
 
-/*
-function BestProduct() {
-  const [products, setProducts] = useState([]);
+const getPageSize = () => {
+  const width = window.innerWidth;
+  if (width < 744) {
+    return 1;
+  } else if (width < 1280) {
+    return 2;
+  } else {
+    return 4;
+  }
+};
 
-  useEffect(() => {
-    async function BestProduct() {
-      try {
-        const data = await getProducts({ sort: "favorite" });
-        setProducts(data.list || []);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    BestProduct();
-  }, []);
-  */
-
-const BEST_PRODUCT_COUNT = 4;
 
 function BestProduct() {
-  const [products, setProducts] = useState([]);
+  const [itemList, setItemList] = useState([]);
+  const [pageSize, setPageSize] = useState(getPageSize());
+
+  const fetchSortedData = async ({ orderBy, pageSize }) => {
+    const products = await getProducts({ orderBy, pageSize });
+    setItemList(products.list);
+  }
+
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getProducts({ orderBy: "favorite" });
-        setProducts(data.list || []);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchData();
-  }, []);
+    const handleResize = () => {
+      setPageSize(getPageSize());
+    };
 
+    window.addEventListener("resize", handleResize);
+    fetchSortedData({ orderBy: "favorite", pageSize });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
+  }, [pageSize]);
 
   return (
     <section id={styles.bestProduct}>
       <h2 className={styles.bestProductFont}>베스트 상품</h2>
       <div className={styles.productGrid}>
-        {products.slice(0, BEST_PRODUCT_COUNT).map((item) => (
-          <ProductCard key={item.id} product={item} imageSize="large" />
+        {itemList?.map((item) => (
+          <ProductCard product={item} key={`best-item-${item.id}`} imageSize="large" />
         ))}
       </div>
     </section>
   );
-
 
 }
 

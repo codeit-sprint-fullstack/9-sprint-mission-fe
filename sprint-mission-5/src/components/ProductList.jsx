@@ -18,15 +18,12 @@ const getPageSize = () => {
   }
 };
 
-const PRODUCT_LIST_COUNT = 10;
 
 
 export default function ProductList() {
   const [orderBy, setOrderBy] = useState("recent");
-  const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(getPageSize());
-  const [pageList, setPageList] = useState(getPageSize());
   const [itemList, setItemList] = useState([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [totalPageNum, setTotalPageNum] = useState();
@@ -67,20 +64,11 @@ export default function ProductList() {
 
 
   useEffect(() => {
-    /*
-        const fetchProducts = async () => {
-    
-          const data = await getProducts({ orderBy, page, pageSize, keyword });
-          setProducts(data.list || []);
-          setTotalPageNum(Math.ceil((data.totalCount || 0) / pageSize));
-        }
-        fetchProducts();
-      }, [orderBy, page, pageSize, keyword]);
-    
-    */
+
     const handleResize = () => {
       setPageSize(getPageSize());
     };
+
     window.addEventListener("resize", handleResize);
     fetchSortedData({ orderBy, page, pageSize, keyword });
 
@@ -130,8 +118,8 @@ export default function ProductList() {
         </div>
       </div>
       <div className={styles.productGrid}>
-        {itemList.slice(0, PRODUCT_LIST_COUNT).map((item) => (
-          <ProductCard key={item.id} product={item} imageSize="small" />
+        {itemList?.map((item) => (
+          <ProductCard product={item} key={`market-item-${item.id}`} imageSize="small" />
         ))}
       </div>
       <div className={styles.paginationBarWrapper}>
