@@ -51,6 +51,10 @@ input {
   cursor: pointer;
 }
 
+textarea {
+  font: initial;
+}
+
 .main {
   justify-content: center;
   margin-top: 4.4rem;
