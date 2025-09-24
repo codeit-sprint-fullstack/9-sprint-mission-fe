@@ -38,19 +38,32 @@ export function RegistItemPage() {
       event.key !== 'Enter' ||
       !itemTagInput.isValid
     ) {
+      itemTagInput.handleBlur();
       return;
     }
     event.preventDefault();
     const newTag = event.target.value;
-    setItemTagList((prev) => new Set(prev).add(newTag));
+    setItemTagList((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(newTag);
+      return newSet;
+    });
     itemTagInput.reset();
+  };
+
+  const handleDeletTag = (tag) => {
+    setItemTagList((prev) => {
+      const newSet = new Set(prev);
+      newSet.delete(tag);
+      return newSet;
+    });
   };
 
   const isFromVaild =
     itemTitleInput.isValid &&
     itemContextInput.isValid &&
     itemPriceInput.isValid &&
-    (itemTagList.size || itemTagInput.isValid);
+    itemTagList.size;
 
   return (
     <main className={clsx('main', styles.registMain)}>
@@ -145,7 +158,6 @@ export function RegistItemPage() {
                 className="input-value"
                 value={itemTagInput.value}
                 onChange={itemTagInput.handleChange}
-                onBlur={itemTagInput.handleBlur}
                 onKeyDown={handleEnterTagInput}
                 placeholder="태그를 입력해주세요"
               />
@@ -153,7 +165,11 @@ export function RegistItemPage() {
             {itemTagInput.shouldShowErr ? warningMessage(itemTagInput.err) : ''}
             <div className={styles.tagCapsuleWrap}>
               {[...itemTagList].map((tag) => (
-                <TagCapsule key={tag} tagValue={tag} />
+                <TagCapsule
+                  key={tag}
+                  tagValue={tag}
+                  onDeleteTag={handleDeletTag}
+                />
               ))}
             </div>
           </div>
