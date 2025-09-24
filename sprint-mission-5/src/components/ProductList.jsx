@@ -18,6 +18,8 @@ const getPageSize = () => {
   }
 };
 
+const PRODUCT_LIST_COUNT = 10;
+
 
 export default function ProductList() {
   const [orderBy, setOrderBy] = useState("recent");
@@ -128,7 +130,7 @@ export default function ProductList() {
         </div>
       </div>
       <div className={styles.productGrid}>
-        {itemList.slice(0, 10).map((item) => (
+        {itemList.slice(0, PRODUCT_LIST_COUNT).map((item) => (
           <ProductCard key={item.id} product={item} imageSize="small" />
         ))}
       </div>
