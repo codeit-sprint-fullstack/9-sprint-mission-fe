@@ -1,0 +1,1 @@
+export { TagCapsule } from './TagCapsule';
