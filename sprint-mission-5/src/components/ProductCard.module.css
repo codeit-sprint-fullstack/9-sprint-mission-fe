@@ -1,31 +1,34 @@
 .productCard {
-  border: none;
-  width: 13.8rem;
-  height: 19.8rem;
-  padding: 12px;
-  cursor: pointer;
+  border-radius: 1rem;
+
+  &.isSmall {
+    min-height: 14.2rem;
+  }
 }
 
 
 .productImgLarge {
-  display: block;
   object-fit: cover;
   border-radius: 1rem;
-  width: 18rem;
-  height: 18rem;
+  min-height: 17.625rem;
+  width: 100%;
+  gap: 1.5rem;
+
+
 }
 
 .productImgSmall {
   display: block;
-  object-fit: cover;
   border-radius: 1rem;
-  width: 220px;
-  height: 220px;
+  object-fit: cover;
+  width: 100%;
+  min-height: 14.2rem;
 }
 
 
 .productName {
   font-size: 0.875rem;
+  width: 14.2rem;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5rem;
@@ -34,6 +37,7 @@
 
 .productPrice {
   font-style: normal;
+  width: 14.2rem;
   font-weight: 700;
   line-height: 1.625rem;
   margin-top: 0.38rem;
@@ -60,4 +64,5 @@
   gap: 0.25rem;
   align-items: center;
   justify-items: center;
+  width: 14.2rem;
 }

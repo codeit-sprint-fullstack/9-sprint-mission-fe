@@ -1,11 +1,12 @@
 import React from 'react';
+import clsx from 'clsx';
 import styles from './ProductCard.module.css';
 import heartIcon from '/resources/img/ic_heart.png';
 
 
 export function ProductCard({ product, imageSize }) {
   return (
-    <div className={styles.productCard}>
+    <div className={clsx(styles.productCard, imageSize === 'small' && styles.isSmall)}>
       <img
         src={product.images[0]}
         alt={product.name}

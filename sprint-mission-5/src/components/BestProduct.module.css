@@ -3,12 +3,62 @@
   font-style: normal;
   font-weight: 700;
   line-height: 2rem;
-  margin-left: 22.5rem;
+  margin: 1rem auto 0 26rem;
 }
 
 .productGrid {
-  display: flex;
-  margin-left: 21.5rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-auto-columns: 25%;
+  grid-auto-flow: column;
+  max-width: 1200px;
+  margin: 1rem auto 0 auto;
+  margin-top: 1rem;
   margin-bottom: 8rem;
-  gap: 6rem;
+  padding: 1rem;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+  .bestProductFont {
+    margin: 1rem 2rem 0 4rem;
+  }
+
+  .productGrid {
+    grid-auto-columns: 33.33%;
+    max-width: 696.08px;
+  }
+
+  .productListInner {
+    padding: 0 1rem;
+    margin-left: 1rem;
+  }
+
+
+}
+
+@media screen and (max-width: 765px) {
+  .productGrid {
+    grid-auto-columns: 50%;
+    width: auto;
+    max-width: 696.08px;
+  }
+
+  .bestProductFont {
+    margin: 1rem auto 0 2rem;
+  }
+
+  .productListInner {
+    padding: 1rem;
+    margin-left: 1rem;
+
+  }
+}
+
+@media screen and (max-width:480px) {
+  .productGrid {
+    grid-auto-columns: 100%;
+    max-width: 343px;
+  }
 }

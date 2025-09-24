@@ -38,14 +38,13 @@ function BestProduct() {
     fetchData();
   }, []);
 
-  const sortedProducts = [...products].sort((a, b) => b.favoriteCount - a.favoriteCount);
 
   return (
     <section id={styles.bestProduct}>
       <h2 className={styles.bestProductFont}>베스트 상품</h2>
       <div className={styles.productGrid}>
-        {sortedProducts.slice(0, BEST_PRODUCT_COUNT).map((p) => (
-          <ProductCard key={p.id} product={p} imageSize="large" />
+        {products.slice(0, BEST_PRODUCT_COUNT).map((item) => (
+          <ProductCard key={item.id} product={item} imageSize="large" />
         ))}
       </div>
     </section>
