@@ -3,6 +3,7 @@ import styles from './RegistItemPage.module.css';
 import { useInputValidation } from '@/hooks/useInputValidation';
 import * as validation from './validation.js';
 import { TagCapsule } from './TagCapsule';
+import { useState } from 'react';
 
 export function RegistItemPage() {
   const warningMessage = (message = '') => {
@@ -29,7 +30,21 @@ export function RegistItemPage() {
     validate: validation.itemTagValidation,
   });
 
-  const itemTagList = new Set();
+  const [itemTagList, setItemTagList] = useState(new Set());
+
+  const handleEnterTagInput = (event) => {
+    if (
+      event.nativeEvent.isComposing ||
+      event.key !== 'Enter' ||
+      !itemTagInput.isValid
+    ) {
+      return;
+    }
+    event.preventDefault();
+    const newTag = event.target.value;
+    setItemTagList((prev) => new Set(prev).add(newTag));
+    itemTagInput.reset();
+  };
 
   const isFromVaild =
     itemTitleInput.isValid &&
@@ -131,12 +146,15 @@ export function RegistItemPage() {
                 value={itemTagInput.value}
                 onChange={itemTagInput.handleChange}
                 onBlur={itemTagInput.handleBlur}
+                onKeyDown={handleEnterTagInput}
                 placeholder="태그를 입력해주세요"
               />
             </div>
             {itemTagInput.shouldShowErr ? warningMessage(itemTagInput.err) : ''}
             <div className={styles.tagCapsuleWrap}>
-              <TagCapsule />
+              {[...itemTagList].map((tag) => (
+                <TagCapsule key={tag} tagValue={tag} />
+              ))}
             </div>
           </div>
         </section>
