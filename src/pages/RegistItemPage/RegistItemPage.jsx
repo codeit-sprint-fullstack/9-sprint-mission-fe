@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import styles from './RegistItemPage.module.css';
 import { useInputValidation } from '@/hooks/useInputValidation';
 import * as validation from './validation.js';
+import { TagCapsule } from './TagCapsule';
 
 export function RegistItemPage() {
   const warningMessage = (message = '') => {
@@ -28,11 +29,13 @@ export function RegistItemPage() {
     validate: validation.itemTagValidation,
   });
 
+  const itemTagList = new Set();
+
   const isFromVaild =
     itemTitleInput.isValid &&
     itemContextInput.isValid &&
     itemPriceInput.isValid &&
-    itemTagInput.isValid;
+    (itemTagList.size || itemTagInput.isValid);
 
   return (
     <main className={clsx('main', styles.registMain)}>
@@ -66,7 +69,9 @@ export function RegistItemPage() {
                 placeholder="상품명을 입력해주세요"
               />
             </div>
-            {!itemTitleInput.isValid ? warningMessage(itemTitleInput.err) : ''}
+            {itemTitleInput.shouldShowErr
+              ? warningMessage(itemTitleInput.err)
+              : ''}
           </div>
           <div className={styles.inputSection}>
             <label htmlFor="item-context">상품 소개</label>
@@ -87,7 +92,7 @@ export function RegistItemPage() {
                 placeholder="상품 소개를 입력해주세요"
               />
             </div>
-            {!itemContextInput.isValid
+            {itemContextInput.shouldShowErr
               ? warningMessage(itemContextInput.err)
               : ''}
           </div>
@@ -110,7 +115,9 @@ export function RegistItemPage() {
                 placeholder="판매 가격을 입력해주세요"
               />
             </div>
-            {!itemPriceInput.isValid ? warningMessage(itemPriceInput.err) : ''}
+            {itemPriceInput.shouldShowErr
+              ? warningMessage(itemPriceInput.err)
+              : ''}
           </div>
           <div className={styles.inputSection}>
             <label htmlFor="item-tag">태그</label>
@@ -127,7 +134,10 @@ export function RegistItemPage() {
                 placeholder="태그를 입력해주세요"
               />
             </div>
-            {!itemTagInput.isValid ? warningMessage(itemTagInput.err) : ''}
+            {itemTagInput.shouldShowErr ? warningMessage(itemTagInput.err) : ''}
+            <div className={styles.tagCapsuleWrap}>
+              <TagCapsule />
+            </div>
           </div>
         </section>
       </form>
