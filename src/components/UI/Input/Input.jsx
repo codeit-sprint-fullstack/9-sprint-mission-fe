@@ -17,6 +17,7 @@ export function Input({ onSearch }) {
     }
   };
 
+<<<<<<< HEAD
   return (
     <div className={styles.InputContainer}>
       <Search className={styles.InputIcon} width={24} height={24} />
@@ -47,6 +48,11 @@ export function Input({ onSearch }) {
     if (e.key === 'Enter') {
       onSearch(keyword);
     }
+=======
+  const handleOnChange = (e) => {
+    const value = e.target.value.trim();
+    setKeyword(value);
+>>>>>>> b31c81a (Feat: items-검색기능 추가)
   };
 
   const handleOnChange = (e) => {

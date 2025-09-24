@@ -72,7 +72,7 @@ export function ItemsPage() {
             keyword={keyword}
             sortType={sortType}
             setTotalItems={setTotalItems}
-            backKeyword={handleSearch}
+            onSearch={handleSearch}
           />
         </div>
         <Pagination
