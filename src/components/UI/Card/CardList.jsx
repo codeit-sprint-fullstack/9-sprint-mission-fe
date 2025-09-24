@@ -8,7 +8,7 @@ import { SearchX } from "lucide-react";
 
 import styles from './CardList.module.css';
 
-export function CardList({ page, currentPage, keyword, sortType, setTotalItems, backKeyword }) {
+export function CardList({ page, currentPage, keyword, sortType, setTotalItems, onSearch }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -33,11 +33,23 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
   }, [currentPage, page, keyword, sortType, setTotalItems]);
 
   const handleClick = () => {
-    backKeyword('');
+    onSearch('');
   };
 
-  if (!products.length) return <div className={styles.emptyQuery}><SearchX />검색 결과가 없습니다.<button onClick={handleClick}>검색초기화</button></div>;
+  if (!products.length) {
 
+    return (
+      <>
+        <div className={styles.emptyQuery}>
+          <SearchX />
+          검색 결과가 없습니다.
+          <button onClick={handleClick}>
+            검색초기화
+          </button>
+        </div>
+      </>
+    );
+  }
   return (
     <div className={styles.cardContainer}>
 =======

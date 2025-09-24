@@ -127,11 +127,12 @@ export function ProductPage() {
         </div>
 
         <div className={styles.sellItemContainerPostion}>
-          {!isMobile ? (
-            <div className={styles.sellItemContainer}>
+          <div className={styles.sellItemContainer}>
+            <div className={isMobile ? styles.sellItemTop : ""}>
               <p className={styles.sellItemPara}>판매 중인 상품</p>
               <div className={styles.sellItemFilter}>
                 <Input className={styles.sellItemInput} onSearch={handleSearch} />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
@@ -141,30 +142,27 @@ export function ProductPage() {
 =======
                 <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
 >>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
+=======
+>>>>>>> db59084 (Refactor: 중복되는 코드 정리)
                 <DropDown onChange={setSortType} page={goToPage} />
+                {!isMobile ? (
+                  <Link to="/products/registration" className={styles.sellItemButton} >상품 등록하기</Link>
+                ) : (
+                  <button className={styles.sellItemButton}>상품 등록하기</button>
+                )}
               </div>
             </div>
-          ) : (
-            <div className={styles.sellItemContainer}>
-              <div className={styles.sellItemTop}>
-                <p className={styles.sellItemPara}>판매 중인 상품</p>
-                <button className={styles.sellItemButton}>상품 등록하기</button>
-              </div>
-              <div className={styles.sellItemFilter}>
-                <Input className={styles.sellItemInput} onSearch={handleSearch} />
-                <DropDown deviceType={"mobile"} onChange={setSortType} page={goToPage} />
-              </div>
-            </div>
-          )}
+          </div>
           <CardList
             currentPage={currentPage}
             page={initialItemPerPage}
             keyword={keyword}
             sortType={sortType}
             setTotalItems={setTotalItems}
-            backKeyword={handleSearch}
+            onSearch={handleSearch}
           />
         </div>
+<<<<<<< HEAD
       </main>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -173,6 +171,9 @@ export function ProductPage() {
 >>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 =======
 >>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
+=======
+      </main >
+>>>>>>> db59084 (Refactor: 중복되는 코드 정리)
       <div>
         {/** pagination */}
         <Pagination
@@ -183,7 +184,10 @@ export function ProductPage() {
       </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> db59084 (Refactor: 중복되는 코드 정리)
     </>
   );
 <<<<<<< HEAD

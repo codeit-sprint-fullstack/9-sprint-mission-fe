@@ -5,7 +5,9 @@ import { useState } from "react";
 import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
 
 import styles from "./DropDown.module.css";
+import { useOutletContext } from "react-router-dom";
 
+<<<<<<< HEAD
 =======
 import { useState } from "react";
 import { ArrowDownWideNarrow, ChevronDown, ChevronUp } from "lucide-react";
@@ -14,6 +16,10 @@ import styles from "./DropDown.module.css";
 
 >>>>>>> b606bca (Rename: 컨벤션 지키기)
 export function DropDown({ deviceType, onChange, page }) {
+=======
+export function DropDown({ onChange, page }) {
+  const { isMobile } = useOutletContext();
+>>>>>>> db59084 (Refactor: 중복되는 코드 정리)
   const [showPanel, setShowPanel] = useState(false);
   const [filterTitle, setFilterTitle] = useState('최신순');
 
@@ -31,22 +37,15 @@ export function DropDown({ deviceType, onChange, page }) {
 
   return (
     <div className={styles.dropdownContainer}>
-      {deviceType !== 'mobile' ? (
-        <button
-          className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
-          onClick={handleOnClick}>
-          {filterTitle}
-          {showPanel
-            ?
-            <ChevronDown width={24} height={24} />
-            :
-            <ChevronUp width={24} height={24} />}
-        </button>
-      ) : (
-        <button
-          className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`}
-          onClick={handleOnClick}>
+      <button className={`${styles.dropdownBtn} ${showPanel && styles.dropdownActive}`} onClick={handleOnClick}>
+        {!isMobile ? (
+          <>
+            {filterTitle}
+            {showPanel ? <ChevronDown width={24} height={24} /> : <ChevronUp width={24} height={24} />}
+          </>
+        ) : (
           <ArrowDownWideNarrow width={24} height={24} />
+<<<<<<< HEAD
         </button>
       )}
 =======
@@ -119,6 +118,21 @@ function DropDown({ deviceType, onChange, page }) {
         </ul>
       )}
     </div>
+=======
+        )}
+      </button>
+
+      {
+        showPanel && (
+          <ul className={styles.dropdownFilter}>
+            <li onClick={() => handleOnChange('recent')} className={`${styles.dropdownElement} ${styles.topElement}`}>최신순</li>
+            <hr className={styles.dropdownHorizen} />
+            <li onClick={() => handleOnChange('favorite')} className={styles.dropdownElement}>좋아요순</li>
+          </ul>
+        )
+      }
+    </div >
+>>>>>>> db59084 (Refactor: 중복되는 코드 정리)
   );
 <<<<<<< HEAD
 }
