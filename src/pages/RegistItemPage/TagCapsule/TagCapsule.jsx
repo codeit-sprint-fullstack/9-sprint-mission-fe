@@ -1,5 +1,13 @@
-import './TagCapsule.css';
+import styles from './TagCapsule.module.css';
+import iconClose from '@/assets/img/ic_close.svg';
 
-export function TagCapsule() {
-  return;
+export function TagCapsule({ tagValue = '테스트' }) {
+  return (
+    <p className={styles.tagCapsule}>
+      #{tagValue}
+      <button className={styles.capsuleCloseBtn}>
+        <img src={iconClose} alt="닫기 버튼" />
+      </button>
+    </p>
+  );
 }
