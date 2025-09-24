@@ -1,0 +1,61 @@
+import clsx from 'clsx';
+import styles from './Pagination.module.css';
+import arrowL from '@/assets/img/arrow_left.svg';
+import arrowR from '@/assets/img/arrow_right.svg';
+
+export function Pagination({ currentPage, totalPages, onPageChange }) {
+  const PAGE_GROUP_SIZE = 5;
+  const currentPageGroup = Math.ceil(currentPage / PAGE_GROUP_SIZE);
+  const firstPageOfGroup = (currentPageGroup - 1) * PAGE_GROUP_SIZE + 1;
+  const lastPageOfGroup = Math.min(
+    firstPageOfGroup + PAGE_GROUP_SIZE - 1,
+    totalPages,
+  );
+
+  const handleClickArrow = (event) => {
+    if (event.target.classList.contains('prev')) {
+      onPageChange(firstPageOfGroup - 1);
+      console.log(currentPageGroup);
+    } else if (event.target.classList.contains('next')) {
+      onPageChange(lastPageOfGroup + 1);
+      console.log(currentPageGroup);
+    }
+  };
+
+  const pageNumbers = Array.from(
+    { length: lastPageOfGroup - firstPageOfGroup + 1 },
+    (_, i) => firstPageOfGroup + i,
+  );
+
+  return (
+    <div className={styles.pagination}>
+      <button
+        onClick={handleClickArrow}
+        disabled={currentPageGroup === 1}
+        className={clsx(styles.pageButton, 'prev')}
+      >
+        <img className="prev" src={arrowL} alt="이전 페이지 묶음" />
+      </button>
+      {pageNumbers.map((pageNumber) => (
+        <button
+          key={pageNumber}
+          onClick={() => onPageChange(pageNumber)}
+          className={clsx(
+            styles.pageButton,
+            currentPage === pageNumber && styles.active,
+          )}
+        >
+          {pageNumber}
+        </button>
+      ))}
+      <button
+        value="next"
+        onClick={handleClickArrow}
+        disabled={lastPageOfGroup >= totalPages}
+        className={clsx(styles.pageButton, 'next')}
+      >
+        <img className="next" src={arrowR} alt="다음 페이지 묶음" />
+      </button>
+    </div>
+  );
+}

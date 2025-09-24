@@ -1,0 +1,86 @@
+.itemCard{
+  width: 13.8rem;
+  height: 19.8rem;
+}
+
+.itemCard.best{
+  width: 17.6rem;
+  height: 23.6rem;
+}
+
+.itemImg {
+  display: block;
+  width: 13.8rem;
+  height: 13.8rem;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background: #000;
+}
+
+.itemCard.best > .itemImg{
+  width: 17.6rem;
+  height: 17.6rem;
+}
+
+.itemTextWrap{
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+}
+
+.itemTitle{
+  color: var(--secondary-800);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.itemPrice{
+  color: var(--secondary-800);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+}
+
+.itemLikes{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; 
+}
+
+.likesIcon{
+  width: 0.8rem;
+  height: 0.7rem;
+}
+
+.likesCount{
+  color: var(--secondary-600);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.125rem;
+}
+
+@media screen and (max-width: 74.9rem){
+  .itemCard.best{
+    width: 21.4rem;
+    height: 27.1rem;
+  }
+
+  .itemCard.best > .itemImg{
+    width: 21.4rem;
+    height: 21.4rem;
+  }
+}
+
+@media screen and (max-width: 46.4rem) {
+  .itemCard{
+    width: 10.5rem;
+    height: 16.5rem;
+  }
+
+  .itemCard > .itemImg{
+    width: 10.5rem;
+    height: 10.5rem;
+  }
+}

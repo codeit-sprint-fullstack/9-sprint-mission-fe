@@ -1,0 +1,4 @@
+.itemLsit{
+  display: flex;
+  justify-content: space-between;
+}

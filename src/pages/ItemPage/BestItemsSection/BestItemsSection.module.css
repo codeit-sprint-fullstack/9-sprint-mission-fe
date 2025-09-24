@@ -1,0 +1,22 @@
+#bestItemSection{
+  width: 75rem;
+  margin-top: 1.62rem;
+  margin-bottom: 2.5rem;
+  flex-direction: column;
+}
+
+.sectionTitle{
+  color: var(--secondary-900);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 74.9rem){
+  #bestItemSection{width: 43.5rem;}
+}
+
+@media screen and (max-width: 46.4rem) {
+  #bestItemSection{width: 21.4rem;}
+}
