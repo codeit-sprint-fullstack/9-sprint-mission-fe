@@ -1,0 +1,180 @@
+:root {
+  --brand-blue: #3692FF;
+  --secondary-800: #1F2937;
+  --secondary-400: #9CA3AF;
+  --cool-gray-100: #F3F4F6;
+  --light-blue: #E6F2FF;
+  --background: #FCFCFC;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--background);
+  color: #333;
+}
+
+.page-container {
+  display: flex;
+  width: 1920px;
+  padding: 231px 640px 284px 640px;
+  justify-content: center;
+  align-items: center; 
+}
+
+.form-container {
+  display: flex;
+  width: 640px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: var(--background);
+  padding: 60px;
+  border-radius: 12px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  width: 103px;
+  height: 104px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.form-title {
+  color: var(--brand-blue);
+  font-family: "ROKAF Sans", sans-serif; 
+  font-size: 66px;
+  font-weight: 700;
+}
+
+.form-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: var(--secondary-800);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.form-group input {
+  width: 100%;
+  height: 56px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: var(--cool-gray-100);
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border: 2px solid var(--brand-blue);
+  background: #fff;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 30%;
+  right: 16px;
+  transform: translateY(70%);
+  cursor: pointer;
+}
+
+.toggle-password img {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-primary {
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  background: var(--secondary-400);
+  color: #fff; 
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #2a73cc;
+}
+
+.btn-primary:disabled {
+  background-color: var(--secondary-400); /* 회색 */
+  cursor: not-allowed;
+}
+
+.btn-primary:enabled {
+  background-color: var(--brand-blue); /* 활성화 시 파란색 */
+}
+
+
+.simple-login {
+  display: flex;
+  width: 100%;
+  height: 74px;
+  padding: 16px 23px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  background: var(--light-blue);
+}
+
+.simple-login span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.simple-login .login-icons {
+  display: flex;
+  gap: 16px; 
+}
+
+.simple-login .login-icons img {
+  width: 42px;  
+  height: 42px;
+  cursor: pointer;
+}
+
+.form-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text-normal {
+  color: var(--secondary-800);
+}
+
+.text-link {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+.form-container .form-group input.input-error {
+    border: 1px solid red;
+}

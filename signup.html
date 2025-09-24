@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="icon" href="images/logo/panda.ico.webp" />
+    <link rel="stylesheet" href="styles/signup.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <form class="form-container">
+        <!-- 로고 -->
+        <div class="logo-container">
+          <a href="index.html" class="logo-link">
+            <img src="images/logo/logo.svg" alt="판다 로고" class="logo-img" />
+            <h1 class="form-title">판다마켓</h1>
+          </a>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="이메일을 입력해주세요"
+          />
+        </div>
+
+        <!-- 닉네임 -->
+        <div class="form-group">
+          <label for="nickname">닉네임</label>
+          <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            placeholder="닉네임을 입력해주세요"
+            required
+          />
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호를 입력해주세요"
+          />
+          <div class="toggle-password" onclick="togglePassword('password')">
+            <img src="images/icons/eye-icon.png" alt="비밀번호 보기" />
+          </div>
+        </div>
+
+        <!-- 비밀번호 확인 -->
+        <div class="form-group">
+          <label for="password-confirm">비밀번호 확인</label>
+          <input
+            type="password"
+            id="password-confirm"
+            name="password-confirm"
+            placeholder="비밀번호를 다시 한 번 입력해주세요"
+          />
+          <div
+            class="toggle-password"
+            onclick="togglePassword('password-confirm')"
+          >
+            <img src="images/icons/eye-icon.png" alt="비밀번호 보기" />
+          </div>
+        </div>
+
+        <!-- 버튼 -->
+        <button type="submit" class="btn-primary">회원가입</button>
+
+        <!-- SNS 로그인 -->
+        <div class="simple-login">
+          <span>간편 로그인하기</span>
+          <div class="login-icons">
+            <a href="https://www.google.com">
+              <img src="images/social/google.png" alt="Google 로그인" />
+            </a>
+            <a href="https://www.kakaocorp.com/page/">
+              <img src="images/social/kakao.png" alt="Kakao 로그인" />
+            </a>
+          </div>
+        </div>
+
+        <!-- 로그인 페이지 이동 -->
+        <p class="form-text">
+          <span class="text-normal">이미 회원이신가요?</span>
+          <a href="login.html" class="text-link">로그인</a>
+        </p>
+      </form>
+    </div>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/signup.js"></script>
+  </body>
+</html>
