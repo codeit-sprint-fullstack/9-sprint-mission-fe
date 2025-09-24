@@ -29,9 +29,8 @@ function BestProduct() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await getProducts({});
-        const sortedProducts = (data.list || []).sort((a, b) => b.favoriteCount - a.favoriteCount);
-        setProducts(sortedProducts);
+        const data = await getProducts({ orderBy: "favorite" });
+        setProducts(data.list || []);
       } catch (err) {
         console.error(err);
       }
@@ -39,12 +38,13 @@ function BestProduct() {
     fetchData();
   }, []);
 
+  const sortedProducts = [...products].sort((a, b) => b.favoriteCount - a.favoriteCount);
 
   return (
     <section id={styles.bestProduct}>
       <h2 className={styles.bestProductFont}>베스트 상품</h2>
       <div className={styles.productGrid}>
-        {products.slice(0, BEST_PRODUCT_COUNT).map((p) => (
+        {sortedProducts.slice(0, BEST_PRODUCT_COUNT).map((p) => (
           <ProductCard key={p.id} product={p} imageSize="large" />
         ))}
       </div>
