@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD:src/pages/home/auth/legacy/login.js
 import modalShow from "./components/Modal/LoginModal.js";
 import USER_DATA from "../db/index.js";
-=======
-import modalShow from "../components/Modal/LoginModal.js";
-import USER_DATA from "../db.js";
->>>>>>> 780d1c1 (Feat: 전역 스타일 진입점에 추가, 카드리스트 카드 컴포넌트 더미 추가):src/pages/login.js
-=======
-import modalShow from "./components/Modal/LoginModal.js";
-import USER_DATA from "../db/index.js";
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
 import { EmailValidator, PasswordValidator } from "../utils/validators.js";
 
 // DOM이 로드시(방어코드)

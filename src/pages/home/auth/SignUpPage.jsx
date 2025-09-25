@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginModal } from '@/components/Modal/LoginModal';
@@ -9,7 +5,6 @@ import { AuthTitle } from './components/AuthTitle';
 import { EmailValidator, NicknameValidator, PasswordValidator, PasswordCheckValidator } from '@/utils/validators-react';
 import USER_DATA from '@/db';
 import './login.css';
-<<<<<<< HEAD
 
 export function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -20,31 +15,6 @@ export function SignUpPage() {
   const [nicknameError, setNicknameError] = useState('');
   const [passwordChecker, setPasswordChecker] = useState('');
   const [passwordCheckerError, setPasswordCheckerError] = useState('');
-=======
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { LoginModal } from '@/components/Modal/LoginModal'
-import { AuthTitle } from './components/AuthTitle'
-import { EmailValidator, NicknameValidator, PasswordValidator, PasswordCheckValidator } from '@/utils/validators-react'
-import USER_DATA from '@/db'
-import './login.css'
-=======
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
-
-export function SignUpPage() {
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [nickName, setNickName] = useState('');
-  const [nicknameError, setNicknameError] = useState('');
-  const [passwordChecker, setPasswordChecker] = useState('');
-<<<<<<< HEAD
-  const [passwordCheckerError, setPasswordCheckerError] = useState('')
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-  const [passwordCheckerError, setPasswordCheckerError] = useState('');
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordCheckerVisible, setPasswordCheckerVisible] = useState(false);
@@ -54,8 +24,6 @@ export function SignUpPage() {
   const navigate = useNavigate();
 
   const handleEmailValueChange = (e) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
     setEmail(e.target.value.trim());
     setEmailError(EmailValidator(email));
   };
@@ -96,63 +64,10 @@ export function SignUpPage() {
     }
 
     const user = USER_DATA.find((u) => u.email === email);
-=======
-    setEmail(e.target.value.trim())
-    setEmailError(EmailValidator(email))
-  }
-=======
-    setEmail(e.target.value.trim());
-    setEmailError(EmailValidator(email));
-  };
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
-
-  const handleNicknameValueChange = (e) => {
-    setNickName(e.target.value.trim());
-    setNicknameError(NicknameValidator(nickName));
-  };
-
-  const handlePasswordValueChange = (e) => {
-    setPassword(e.target.value.trim());
-    setPasswordError(PasswordValidator(password));
-  };
-
-  const handlePasswordCheckvalueChange = (e) => {
-    setPasswordChecker(e.target.value.trim());
-    setPasswordCheckerError(PasswordCheckValidator(passwordChecker, password));
-  };
-
-  const handlepasswordCheckFouseOut = () => {
-    setPasswordCheckerError(PasswordCheckValidator(passwordChecker, password));
-  };
-
-  const handlePasswordVisible = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const handlePasswordCheckerVisible = () => {
-    setPasswordCheckerVisible(!passwordCheckerVisible);
-  };
-
-  const handleFormEvent = (e) => {
-    e.preventDefault();
-
-    if (emailError || nicknameError || passwordError || passwordCheckerError) {
-      alert("입력값을 확인해주세요.");
-      return;
-    }
-
-<<<<<<< HEAD
-    const user = USER_DATA.find((u) => u.email === email)
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-    const user = USER_DATA.find((u) => u.email === email);
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
     if (user) {
       setShowModal(true);
     } else {
-<<<<<<< HEAD
-<<<<<<< HEAD
       navigate("/login");
     }
   };
@@ -160,23 +75,6 @@ export function SignUpPage() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-=======
-      navigate("/login")
-=======
-      navigate("/login");
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
-    }
-  };
-
-  const handleCloseModal = () => {
-<<<<<<< HEAD
-    setShowModal(false)
-  }
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-    setShowModal(false);
-  };
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   return (
     <main>
@@ -268,26 +166,10 @@ export function SignUpPage() {
         </div>
       </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
       <p className="signup-para">이미 회원이신가요?<Link className='signup-para-a' to="/login">로그인</Link></p>
-=======
-      <p className="signup-para">이미 회원이신가요?<a href="login">로그인</a></p>
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-      <p className="signup-para">이미 회원이신가요?<Link className='signup-para-a' to="/login">로그인</Link></p>
->>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"사용 중인 이메일입니다."} />
       }
     </main>
-<<<<<<< HEAD
-<<<<<<< HEAD
   );
-=======
-  )
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-  );
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }

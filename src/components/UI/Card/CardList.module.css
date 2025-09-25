@@ -1,64 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-.cardContainer {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-=======
-.favoriteContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-  gap: 24px;
-  padding-top: var(--font-lg);
-}
-
-<<<<<<< HEAD
-.emptyQuery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 50px;
-  font-size: var(--font-xl);
-  font-weight: 700;
-
-  & button {
-    border: 0;
-    border-radius: 5px;
-    height: 30px;
-    width: 100px;
-    background-color: var(--color-primary-100);
-    color: white;
-    font-weight: 700;
-    font-family: var(--font-family-base);
-  }
-}
-
-
-
-@media screen and (max-width: 1200px) {
-  .cardContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .cardContainer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-=======
-=======
->>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 24px;
   padding-top: var(--font-lg);
-<<<<<<< HEAD
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-=======
 }
 
 .emptyQuery {
@@ -82,6 +26,9 @@
   }
 }
 
+.cardLink {
+  text-decoration: none;
+}
 
 
 @media screen and (max-width: 1200px) {
@@ -94,10 +41,5 @@
 @media screen and (max-width: 768px) {
   .cardContainer {
     grid-template-columns: repeat(2, 1fr);
-<<<<<<< HEAD
-  } 
->>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
-=======
   }
->>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
 }

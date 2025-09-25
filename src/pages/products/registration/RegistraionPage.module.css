@@ -3,14 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
   max-width: 1200px;
-=======
->>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
-=======
-  max-width: 1200px;
->>>>>>> 962069e (Design: 상품 등록페이지 반응형)
   gap: 24px;
   margin: 96px 360px 162px;
 }
@@ -26,8 +19,6 @@
     font-weight: 700;
     line-height: 32px;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 
 .disActiveBtn {
@@ -54,49 +45,6 @@
   border: 0;
   border-radius: 8px;
   background-color: var(--color-primary-100);
-=======
-
-  & button {
-    display: flex;
-    color: white;
-    height: 42px;
-    padding: 12px 23px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: 0;
-    border-radius: 8px;
-    background-color: var(--color-secondary-400);
-  }
->>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
-=======
-}
-
-.disActiveBtn {
-  display: flex;
-  color: white;
-  height: 42px;
-  padding: 12px 23px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border: 0;
-  border-radius: 8px;
-  background-color: var(--color-secondary-400);
-}
-
-.activeBtn {
-  display: flex;
-  color: white;
-  height: 42px;
-  padding: 12px 23px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border: 0;
-  border-radius: 8px;
-  background-color: var(--color-primary-100);
->>>>>>> bcc2526 (Fix: 로직변경(registration))
 }
 
 .RegProductName {
@@ -141,14 +89,7 @@
   & textarea {
     height: 282px;
     padding: 16px 24px;
-<<<<<<< HEAD
-<<<<<<< HEAD
     resize: none;
-=======
->>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
-=======
-    resize: none;
->>>>>>> bcc2526 (Fix: 로직변경(registration))
     border: 0;
     border-radius: 12px;
     background-color: var(--color-secondary-100);
@@ -179,21 +120,12 @@
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 962069e (Design: 상품 등록페이지 반응형)
 .RegSelectTagsContainer {
   display: flex;
   margin-top: 6px;
   gap: 10px
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
-=======
->>>>>>> 962069e (Design: 상품 등록페이지 반응형)
 .RegProductTag {
   display: flex;
   flex-direction: column;
@@ -217,19 +149,6 @@
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-.RegSelectTagsContainer {
-  display: flex;
-  margin-top: 6px;
-  gap: 10px
-  
-}
-
->>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
-=======
->>>>>>> 962069e (Design: 상품 등록페이지 반응형)
 .RegSelectTags {
   display: flex;
   justify-content: center;
@@ -250,8 +169,6 @@
 
 .TagIcons {
   color: white;
-<<<<<<< HEAD
-<<<<<<< HEAD
   background-color: var(--color-secondary-400);
   border-radius: 100%;
 }
@@ -315,73 +232,4 @@
   .RegProductTag {
     width: 100%;
   }
-=======
-  background-color: var(--color-secondary-400);  
-  border-radius: 100%;
->>>>>>> 127ba03 (Design: products/registration 페이지 디자인 완성)
-=======
-  background-color: var(--color-secondary-400);
-  border-radius: 100%;
-}
-
-@media screen and (max-width: 1200px) {
-  .RegContainer {
-    width: 100%;
-    margin: 18px 24px 194px;
-  }
-
-  .RegTitle {
-    width: 695px;
-  }
-
-  .RegProductName {
-    width: 695px;
-  }
-
-  .RegProductDescribe {
-    width: 695px;
-  }
-
-  .RegProductPrice {
-    width: 695px;
-  }
-
-  .RegProductTag {
-    width: 695px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .RegContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    width: 100%;
-    max-width: 768px;
-    margin: 94px auto 186px;
-    padding: 24px;
-    overflow: hidden;
-  }
-
-  .RegTitle {
-    width: 100%;
-  }
-
-  .RegProductName {
-    width: 100%;
-  }
-
-  .RegProductDescribe {
-    width: 100%;
-  }
-
-  .RegProductPrice {
-    width: 100%;
-  }
-
-  .RegProductTag {
-    width: 100%;
-  }
->>>>>>> 962069e (Design: 상품 등록페이지 반응형)
 }

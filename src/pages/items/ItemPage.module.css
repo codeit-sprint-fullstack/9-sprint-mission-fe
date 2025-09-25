@@ -67,7 +67,6 @@
   font-size: var(--font-lg);
   font-weight: 600;
   line-height: 26px;
-  text-decoration: none;
   cursor: pointer;
 
   &:hover {

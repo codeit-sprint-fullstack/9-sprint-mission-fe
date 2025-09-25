@@ -13,15 +13,7 @@
   gap: 24px;
   padding: 12px 20px;
   flex-shrink: 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
   cursor: pointer;
-=======
-  cursor: pointer; 
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-=======
-  cursor: pointer;
->>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }
 
 /* dropdown active시 지정색*/
@@ -53,17 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
   width: 125px;
   /* 부모 사이즈 맞추기 위해 가로 -5px*/
-=======
-  width: 125px; /* 부모 사이즈 맞추기 위해 가로 -5px*/
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-=======
-  width: 125px;
-  /* 부모 사이즈 맞추기 위해 가로 -5px*/
->>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
   height: 42px;
   flex-shrink: 0;
   font-family: var(--font-family-base);
@@ -77,10 +60,6 @@
 /* 최신순이 사이즈가 달라보여 여백추가*/
 .topElement {
   margin-top: 2px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }
 
 @media screen and (max-width: 768px) {
@@ -94,9 +73,4 @@
   .dropdownFilter {
     right: 0%;
   }
-<<<<<<< HEAD
-=======
->>>>>>> 397014c (Design: 이미지갯수,호버액션,최신순필터 디자인수정)
-=======
->>>>>>> 653129e (Feat: 커스텀훅(useBreakpoint)이용하여 반응형구현)
 }

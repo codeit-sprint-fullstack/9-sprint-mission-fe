@@ -1,36 +1,15 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
 import USER_DATA from '@/db';
 import { AuthTitle } from '@/pages/home/auth/components/AuthTitle';
-<<<<<<< HEAD
 import { LoginModal } from '@/components/Modal/LoginModal';
 import './login.css';
-=======
-import { useNavigate } from 'react-router-dom';
-=======
-import { Link, useNavigate } from 'react-router-dom';
->>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
-import { useState } from 'react';
-import { EmailValidator, PasswordValidator } from '@/utils/validators-react';
-import USER_DATA from '@/db';
-import { AuthTitle } from '@/pages/home/auth/components/AuthTitle'
-import { LoginModal } from '@/components/Modal/LoginModal';
-import './login.css'
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-import { LoginModal } from '@/components/Modal/LoginModal';
-import './login.css';
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
-<<<<<<< HEAD
-<<<<<<< HEAD
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -56,42 +35,6 @@ export function LoginPage() {
   const handlePasswordVisible = () => {
     setPasswordVisible(!passwordVisible);
   };
-=======
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-=======
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
-  const [showModal, setShowModal] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleEmailValueChange = (e) => {
-    setEmail(e.target.value.trim());
-  };
-
-  const handleEmailFouseOut = () => {
-    setEmailError(EmailValidator(email));
-  };
-
-  const handlePasswordValueChange = (e) => {
-    setPassword(e.target.value.trim());
-  };
-
-  const handlePasswordFouseOut = () => {
-    setPasswordError(PasswordValidator(password));
-  };
-
-  const handlePasswordVisible = () => {
-<<<<<<< HEAD
-    setPasswordVisible(!passwordVisible)
-  }
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-    setPasswordVisible(!passwordVisible);
-  };
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   const handleFormEvent = (e) => {
     e.preventDefault();
@@ -100,8 +43,6 @@ export function LoginPage() {
       (u) => u.email === email && u.password === password);
 
     if (!user) {
-<<<<<<< HEAD
-<<<<<<< HEAD
       setShowModal(true);
     } else {
       navigate('/products');
@@ -111,25 +52,6 @@ export function LoginPage() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-=======
-      setShowModal(true)
-=======
-      setShowModal(true);
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
-    } else {
-      navigate('/products');
-    }
-  };
-
-  const handleCloseModal = () => {
-<<<<<<< HEAD
-    setShowModal(false)
-  }
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-    setShowModal(false);
-  };
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 
   return (
     <main>
@@ -182,27 +104,11 @@ export function LoginPage() {
         </div>
       </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
       <p className="signup-para">판다마켓이 처음이신가요?<Link className="signup-para-a" to="/signup">회원가입</Link></p>
-=======
-      <p className="signup-para">판다마켓이 처음이신가요?<a className="signup-para-a" href="/signup">회원가입</a></p>
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-      <p className="signup-para">판다마켓이 처음이신가요?<Link className="signup-para-a" to="/signup">회원가입</Link></p>
->>>>>>> 0bbce66 (Design: 중복된 헤더 푸터제거, a태그를 라우터Link로 변경)
 
       {showModal &&
         <LoginModal close={handleCloseModal} msg={"비밀번호가 일치하지 않습니다."} />
       }
     </main>
-<<<<<<< HEAD
-<<<<<<< HEAD
   );
-=======
-  )
->>>>>>> c0ce3ff (Refactor: 리액트로 코드 리팩토링)
-=======
-  );
->>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
 }
