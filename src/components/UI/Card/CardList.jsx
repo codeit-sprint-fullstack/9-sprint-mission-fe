@@ -7,6 +7,7 @@ import { getProductList } from "@/api/ProductService";
 import { SearchX } from "lucide-react";
 
 import styles from './CardList.module.css';
+import { Link } from "react-router-dom";
 
 export function CardList({ page, currentPage, keyword, sortType, setTotalItems, onSearch }) {
   const [products, setProducts] = useState([]);
@@ -103,8 +104,8 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
     <div className={styles.cardContainer}>
 >>>>>>> 8ccae5a (Refactor: 코드 리펙토링, 검색결과없을때 상태추가)
       {products.map((item) => (
+        <Link to={`items/detail/${item.id}`} key={item.id}>
         <Card
-          key={item.id}
           name={item.name}
           price={item.price}
           images={item.images}
@@ -112,6 +113,7 @@ export function CardList({ page, currentPage, keyword, sortType, setTotalItems, 
 <<<<<<< HEAD
           loading={loading}
         />
+        </Link>
       ))}
     </div>
   );

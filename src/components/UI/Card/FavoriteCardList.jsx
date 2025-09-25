@@ -5,12 +5,16 @@ import { getProductList } from "@/api/ProductService";
 <<<<<<< HEAD
 <<<<<<< HEAD
 import styles from './FavoriteCardList.module.css';
+<<<<<<< HEAD
 =======
 import styles from './FavoriteCardList.module.css'
 >>>>>>> 464d10a (Style: 가독성을 위해 임포트 위치 정렬, 정적파일 주소 수정)
 =======
 import styles from './FavoriteCardList.module.css';
 >>>>>>> 38982bb (Style: eslint설정및 컨벤션유지)
+=======
+import { Link } from "react-router-dom";
+>>>>>>> 3685b1a (Fix: items/detail 페이지 수정)
 
 export function FavoriteCardList({ page }) {
   const [products, setProducts] = useState([]);
@@ -64,14 +68,15 @@ export function FavoriteCardList({ page }) {
   return (
     <div className={styles.favoriteContainer}>
       {products.map((item) => (
-        <Card
-          key={item.id}
-          name={item.name}
-          price={item.price}
-          images={item.images}
-          type={"favorite"}
-          loading={loading}
-        />
+        <Link to={`items/detail/${item.id}`} key={item.id}>
+          <Card
+            name={item.name}
+            price={item.price}
+            images={item.images}
+            type={"favorite"}
+            loading={loading}
+          />
+        </Link>
       ))}
     </div>
 <<<<<<< HEAD
