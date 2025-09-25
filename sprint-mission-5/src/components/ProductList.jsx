@@ -91,7 +91,7 @@ export default function ProductList() {
     <section id={styles.productList}>
       <div className={styles.productListInner}>
         <h2 className={styles.productListFont}>판매 중인 상품</h2>
-        <div className={styles.productListWrapper}>
+        <div className={styles.searchSectionWrapper}>
           <div className={styles.searchSection}>
             <input
               placeholder='검색할 상품을 입력해주세요'
@@ -99,9 +99,8 @@ export default function ProductList() {
               className={styles.searchInput}
               onChange={handleInputChange}>
             </input>
-
-            <button className={styles.searchBtn}>상품 등록하기</button>
           </div>
+          <div to="additem" className={styles.createItemButton}>상품 등록하기</div>
           <div className={styles.sortButtonWrapper}>
             <button
               className={styles.sortDropdownTriggerButton}

@@ -1,25 +1,15 @@
 /* 전체 박스 반응형 너비 및 마진 조정 */
 
 #productList {
-  width: 75rem;
   display: flex;
   flex-direction: column;
-  margin-left: 25rem;
-  margin-top: 2rem;
 
-  @media screen and (max-width:744px) {
-    & {
-      width: 43.5rem;
-      margin-left: 1rem;
-    }
+  @media screen and (max-width: 480px) {
+    width: 45rem;
+  }
 
-    @media screen and (max-width:480px) {
-      & {
-        width: 100%;
-        margin-left: 0;
-        padding: 0 1rem;
-      }
-    }
+  @media screen and (max-width: 744px) {
+    width: 21.4rem;
   }
 }
 
@@ -46,166 +36,70 @@
   }
 }
 
-/* 상품 리스트 내 아이템 그리드 */
+
 
 .productGrid {
   display: grid;
-  gap: 2rem 1rem;
-  margin: 1rem auto 0 auto;
-  grid-template-columns: repeat(5, 1fr);
   max-width: 1200px;
-
-  @media screen and (max-width: 744px) {
-    grid-template-columns: repeat(3, 1fr);
-    width: auto;
-    margin-left: 1rem;
-  }
-
-  @media screen and (max-width:480px) {
-    grid-template-columns: 1fr;
-    margin-left: 1rem;
-  }
+  gap: 32px 8px;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-
-
-
-@media screen and (max-width: 765px) {
-
-  .productListFont {
-    margin: 1rem 34rem 0 26rem;
-  }
-
-  .productGrid {
-    grid-template-columns: repeat(3, 1fr);
-    margin-left: 1rem;
-    width: auto;
-  }
-
-  .productListInner {
-
-    margin-left: 1rem;
-
-  }
-
-  .productListFont {
-    margin: 1rem auto 0 2rem;
-  }
-}
-
-@media screen and (min-width: 744px) {
-  .productList {
-    display: grid;
-    grid-template-columns: 1fr auto auto auto;
-  }
-
-}
-
-
-@media screen and (max-width: 480px) {
-
-  .productListFont {
-    margin: 1rem 34rem 0 26rem;
-  }
-
-  .productGrid {
-    grid-template-columns: (1, 1fr);
-    margin-left: 1rem;
-    width: auto;
-  }
-
-}
-
-
-.searchInput {
+#productList {
   display: flex;
-  width: 22rem;
-  padding: 0.5625rem 1.25rem 0.5625rem 1rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.625rem;
-  border: none;
-  border-radius: 0.75rem;
-  background-color: #F3F4F6;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.625rem;
-  background-image: url('../../resources/img/ic_search.png');
-  background-repeat: no-repeat;
-  background-position: 8px center;
-  background-size: 9%;
-  padding-left: 40px;
-  height: 2.625rem;
-}
-
-@media (max-width: 1199px) {
-  .searchInput {
-    width: 206px;
-  }
-}
-
-
-.searchBtn {
-  display: flex;
-  height: 2.625rem;
-  padding: 0.75rem 1.4375rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.625rem;
-  border: none;
-  background-color: #3692FF;
-  color: white;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.625rem;
-  cursor: pointer;
-  white-space: nowrap;
+}
+
+.sortButtonWrapper {
+  position: relative;
+}
+
+.sortDropdownTriggerButton {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
 }
 
 .searchSection {
   display: flex;
-  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 16px;
+  flex: 1;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 10px;
-  margin-left: -6rem;
+  width: 289px;
 }
 
-.productListInner {
-  width: 100%;
-  height: 2.625rem;
-  margin-bottom: 1.5rem;
+.searchSectionWrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+
 }
 
-.sortBtn {
-  width: 130px;
-  padding: 12px 20px;
-  display: flex;
-  gap: 10px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-
+.searchInput::placeholder {
+  color: #9ca3af;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-
-
-  @media screen and (max-width: 480px) {
-    & {
-      background-image: url(../../resources/img/ic_sort.png);
-    }
-  }
 }
 
+.searchInput {
+  border: none;
+  flex: 1;
+  background-color: inherit;
+  margin-left: 4px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.createItemButton {
+  margin: 0px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11.5px 23px;
+  background-color: #3692FF;
+  color: white;
+}
 
 
 .paginationBarWrapper {
@@ -213,41 +107,57 @@
   padding-bottom: 80px;
 }
 
-.sortDropdownTriggerButton {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  width: 8rem;
-  height: 2.5rem;
-  background-color: #fff;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.6rem;
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
+/*이건 순서를 바꾸면 그리드가 잘못 적용된다 */
 
-.sortButtonWrapper {
-  position: relative;
-  margin-left: 15px;
-}
+@media (min-width: 744px) {
 
-.productListWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media screen and (max-width: 740px) {
-  .productListFont {
-    display: flex;
-    position: relative;
-    bottom: 60px;
-    margin-left: 0px;
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
   }
+}
 
-  .searchSection {
-    position: relative;
-    right: 30px;
+@media screen and (min-width:1280px) {
+  .productGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.productListInner {
+  display: flex;
+  justify-content: space-between;
+  gap: 32rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.sortDropdownTriggerButton {
+  width: 100%;
+  padding: 5px 20px;
+  height: 2.6rem;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: #fff;
+  border: 1px solid #9ca3af;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media screen and (max-width: 744px) {
+
+  .productListInner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }
