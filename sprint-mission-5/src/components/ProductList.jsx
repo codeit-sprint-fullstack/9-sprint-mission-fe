@@ -3,6 +3,7 @@ import { ProductCard } from './ProductCard';
 import { getProducts } from '@/api/items';
 import SortIconArrowDown from '/resources/img/ic_arrow_down.svg?react';
 import searchIcon from '../../resources/img/ic_search.png';
+import sortIconMobile from '../../resources/img/ic_sort.png';
 import DropdownList from './DropdownList.jsx';
 import PaginationBar from '../Pagination/Pagination';
 import styles from './ProductList.module.css';
@@ -109,6 +110,7 @@ export default function ProductList() {
                 <span>{convertToKorean(orderBy)}</span>
                 <SortIconArrowDown />
               </div>
+              <img src={sortIconMobile} className={styles.mobileSortBtn} alt="sort"></img>
             </button>
             {isDropdownVisible && (
               <DropdownList onSortSelection={handleSortSelection} />
