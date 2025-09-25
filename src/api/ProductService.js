@@ -51,14 +51,18 @@ export async function createProduct(name, description, price, tags, images) {
   }
 }
 
-export async function getProduct() {
+export async function getProduct(itemId) {
   try {
+<<<<<<< HEAD
     const res = await app.get(`products`);
 <<<<<<< HEAD
     return res.data
 <<<<<<< HEAD
 =======
 =======
+=======
+    const res = await app.get(`products/${itemId}`);
+>>>>>>> d8b10f5 (Design: itemsDetailPage 디자인)
     return res.data;
 >>>>>>> a9a6fea (Feat: 백엔드 서버 API 추가)
   } catch (err) {
