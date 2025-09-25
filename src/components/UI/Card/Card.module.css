@@ -12,6 +12,9 @@
   & Link {
     text-decoration: none;
   }
+  
+.link {
+  text-decoration: none;
 }
 
 .favoriteImage {
