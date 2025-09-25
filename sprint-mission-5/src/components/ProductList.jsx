@@ -94,6 +94,7 @@ export default function ProductList() {
         <h2 className={styles.productListFont}>판매 중인 상품</h2>
         <div className={styles.searchSectionWrapper}>
           <div className={styles.searchSection}>
+            <img src={searchIcon} className={styles.searchIconImg} alt="search"></img>
             <input
               placeholder='검색할 상품을 입력해주세요'
               value={keyword}
