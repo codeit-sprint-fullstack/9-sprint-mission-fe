@@ -4,8 +4,12 @@ import { useInputValidation } from '@/hooks/useInputValidation';
 import * as validation from './validation.js';
 import { TagCapsule } from './TagCapsule';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { createProduct } from '@/api/ProductService';
 
 export function RegistItemPage() {
+  const navigate = useNavigate();
+
   const warningMessage = (message = '') => {
     return <p className="warning-message">{message}</p>;
   };
@@ -51,6 +55,12 @@ export function RegistItemPage() {
     itemTagInput.reset();
   };
 
+  const isFromVaild =
+    itemTitleInput.isValid &&
+    itemContextInput.isValid &&
+    itemPriceInput.isValid &&
+    itemTagList.size;
+
   const handleDeletTag = (tag) => {
     setItemTagList((prev) => {
       const newSet = new Set(prev);
@@ -59,11 +69,34 @@ export function RegistItemPage() {
     });
   };
 
-  const isFromVaild =
-    itemTitleInput.isValid &&
-    itemContextInput.isValid &&
-    itemPriceInput.isValid &&
-    itemTagList.size;
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      if (isFromVaild) {
+        console.log(
+          itemTitleInput.value,
+          itemContextInput.value,
+          itemPriceInput.value,
+          itemTagList,
+        );
+        const newProduct = {
+          name: itemTitleInput.value,
+          description: itemContextInput.value,
+          price: itemPriceInput.value,
+          tags: [...itemTagList],
+        };
+        await createProduct(newProduct);
+        itemTitleInput.reset();
+        itemContextInput.reset();
+        itemPriceInput.reset();
+        itemTagInput.reset();
+        setItemTagList(new Set());
+        navigate('/items');
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   return (
     <main className={clsx('main', styles.registMain)}>
@@ -72,6 +105,7 @@ export function RegistItemPage() {
           <h2 className={styles.formTitle}>상품 등록하기</h2>
           <input
             type="submit"
+            onClick={handleSubmit}
             className="s-btn compact"
             value="등록"
             disabled={!isFromVaild}
