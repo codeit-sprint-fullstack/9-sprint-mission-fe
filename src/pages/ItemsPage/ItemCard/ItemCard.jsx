@@ -8,7 +8,7 @@ export function ItemCard({ itemValue, isParentBest = false }) {
     <div className={clsx(styles.itemCard, { [styles.best]: isParentBest })}>
       <img
         className={styles.itemImg}
-        src={itemValue.images[0] || itemDefaultImg}
+        src={itemValue.images ? itemValue.images[0] : itemDefaultImg}
         alt="상품 이미지"
       />
       <div className={styles.itemTextWrap}>
