@@ -54,3 +54,17 @@
   display: flex;
   gap: 0.75rem;
 }
+
+@media screen and (max-width: 74.9rem) {
+  .registMain,
+  .formTop {
+    width: 43.5rem;
+  }
+}
+
+@media screen and (max-width: 46.4rem) {
+  .registMain,
+  .formTop {
+    width: 21.5rem;
+  }
+}
