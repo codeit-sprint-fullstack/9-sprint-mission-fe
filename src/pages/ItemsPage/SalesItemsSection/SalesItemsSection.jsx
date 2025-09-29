@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
 import { SalesItemList } from '@/pages/ItemsPage/SalesItemList';
@@ -9,6 +9,7 @@ import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 import DropDownIcon from '@/assets/img/ic_sort.svg';
 import { Link } from 'react-router';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export function SalesItemsSection() {
   const {
@@ -25,11 +26,15 @@ export function SalesItemsSection() {
   } = useContext(ItemContext);
   const [isDropDownActive, setIsDropDownActive] = useState(false);
   const [dropDownState, setDropDownState] = useState('recent');
+  const [searchTerm, setSearchTerm] = useState('');
   const windowSize = useWindowSize();
+  const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
-  const handleSearchInput = (event) => {
-    handleSearchTermChange(event.target.value);
-  };
+  useEffect(() => {
+    handleSearchTermChange(debouncedSearchTerm);
+  }, [debouncedSearchTerm, handleSearchTermChange]);
+
+  const handleSearchInput = (event) => setSearchTerm(event.target.value);
 
   const handleDropDownBtnClick = () => {
     setIsDropDownActive(!isDropDownActive);
@@ -48,7 +53,8 @@ export function SalesItemsSection() {
         id="serch-input"
         className="input-value"
         type="text"
-        onKeyUp={handleSearchInput}
+        value={searchTerm}
+        onChange={handleSearchInput}
         placeholder="검색할 상품을 입력해주세요"
       />
     </div>
