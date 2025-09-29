@@ -22,6 +22,53 @@
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/pages/market.css" />
+    
+    <style>
+      /* 상품 등록 버튼 스타일 */
+      .register-button {
+        padding: 10px 20px;
+        background-color: #3692FF;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: background-color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+      }
+
+      .register-button:hover {
+        background-color: #2563eb;
+      }
+
+      /* products-controls 레이아웃 조정 */
+      .products-controls {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      /* 모바일 반응형 */
+      @media (max-width: 768px) {
+        .products-controls {
+          width: 100%;
+        }
+        
+        .search-container {
+          flex: 1;
+          min-width: 200px;
+        }
+        
+        .register-button {
+          font-size: 13px;
+          padding: 8px 16px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -61,7 +108,7 @@
           <div class="products-header">
             <h2 class="section-title">판매 중인 상품</h2>
 
-            <!-- 검색창과 정렬 드롭다운 -->
+            <!-- 검색창, 등록 버튼, 정렬 드롭다운 -->
             <div class="products-controls">
               <div class="search-container">
                 <input
@@ -72,6 +119,11 @@
                 />
                 <button id="search-button" class="search-button">🔍</button>
               </div>
+
+              <!-- 상품 등록 버튼 -->
+              <a href="registration.html" class="register-button">
+                + 상품 등록
+              </a>
 
               <select id="sort-select" class="sort-select" aria-label="정렬 방식 선택" title="상품 정렬 방식을 선택하세요">
                 <option value="recent">최신 순</option>
