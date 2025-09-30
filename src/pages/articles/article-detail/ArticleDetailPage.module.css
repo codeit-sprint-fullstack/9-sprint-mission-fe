@@ -1,44 +1,102 @@
 .container {
+  display: flex;
+  flex-direction: column;
   max-width: 800px;
   margin: 0 auto;
   padding: 24px;
-  font-family: "Arial", sans-serif;
 }
 
 /* 제목 + 좋아요 버튼 */
 .header {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   align-items: center;
-  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-secondary-200);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
+  font-family: var(--font-family-base);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  color: var(--color-secondary-900);
+  margin-bottom: 16px;
+}
+
+.authorBox {
+  display: flex;
+}
+
+.authorMeta {
+  display: flex;
+  align-content: baseline;
+  flex-wrap: wrap;
+
+  & p {
+    align-content: center;
+    font-family: var(--font-family-base);
+    font-size: 14px;
+    font-family: 500;
+    line-height: 24px;
+    margin-left: 16px;
+  }
+
+  & span {
+    align-content: center;
+    font-family: var(--font-family-base);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 8px;
+  }
+}
+
+.authorAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.authorBoxHr {
+  height: 34px;
+  border: 1px dotted var(--color-secondary-200);
+  margin: 0 32px;
 }
 
 .likeBtn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  border: none;
-  background: none;
+  gap: 4px;
+  border: 1px solid var(--color-secondary-200);
+  border-radius: 35px;
+  background-color: #fff;
   cursor: pointer;
   font-size: 16px;
   color: #444;
+
+  & span {
+    font-family: var(--font-family-base);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    color: var(--color-secondary-500);
+  }
 }
 
 .heartIcon {
-  color: #e63946;
+  width: 28px;
+  height: 28px;
 }
 
 /* 본문 */
 .content {
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: var(--font-family-base);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-secondary-800);
   margin-bottom: 32px;
+  line-height: 26px;
 }
 
 /* 댓글 입력 */
@@ -58,7 +116,7 @@
 .textarea {
   min-height: 80px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 0;
   border-radius: 6px;
   resize: none;
   margin-bottom: 8px;
@@ -72,7 +130,6 @@
 
 .submitBtn {
   display: flex;
-  white-space: nowrap;
   justify-content: center;
   align-items: center;
   padding: 12px 23px;
@@ -81,6 +138,7 @@
   border: none;
   border-radius: 6px;
   color: white;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {
@@ -94,40 +152,104 @@
 
 /* 댓글 리스트 */
 .commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-decoration: none;
   list-style: none;
-  width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 .commentItem {
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid #eee;
+  background-color: var(--color-secondary-100);
   padding: 12px 0;
+  gap: 24px;
 }
 
-.commentContent {
-  font-size: 15px;
-  margin-bottom: 4px;
+.commentHeader {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-.commentMeta {
-  font-size: 13px;
-  color: #666;
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  object-fit: cover;
 }
 
 .commentAuthor {
-  font-weight: bold;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-secondary-600);
+}
+
+.commentContentBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentContent {
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  color: var(--color-secondary-900);
+  line-height: 24px;
+}
+
+.commentContentIcon {
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 .backToArticles {
   display: flex;
-  justify-content: center;
-  align-content: center;
+  align-items: center;
+  height: 48px;
   padding: 12px 64px;
   margin-top: 64px;
-  margin-bottom: 193px;
+  margin-bottom: 194px;
   border-radius: 40px;
   background-color: var(--color-primary-100);
   color: var(--color-secondary-100);
+  gap: 8px;
   text-decoration: none;
+
+  &:active {
+    background-color: var(--color-primary-300);
+  }
+}
+
+.commentUpdateTime {
+  color: var(--color-secondary-400);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.backToArticlesBtn {
+  color: var(--color-secondary-100);
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.noCommentImg {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 16px;
+}
+
+.noComment {
+  color: var(--color-secondary-400);
+  text-align: center;
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
 }
