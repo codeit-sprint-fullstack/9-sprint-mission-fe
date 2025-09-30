@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css">  
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>회원가입</title>
+</head>
+<body>
+    <div id="container">
+            <a href="index.html">
+                <img src="../img/login_logo.svg" alt="Logo" class = "main_logo">
+            </a>
+        <form>
+            <label for="email">이메일</label>
+            <div class="field">
+            <input type="email" class="form_input" name="이메일" placeholder="이메일을 입력해주세요" required>
+            <p class="error_msg"></p>
+            </div>
+            <label for="nickname">닉네임</label>
+            <div class="field">
+            <input type="text" class="form_input" name="닉네임" placeholder="닉네임을 입력해주세요" required>
+            <p class="error_msg"></p>
+            </div>
+            <label for="password">비밀번호</label>
+            <div class="field">
+                <input type="password" class="form_input" name="비밀번호" placeholder="비밀번호를 입력해주세요" required>
+                <p class="error_msg"></p>
+                <div class="toggle_password">
+                <img src="../img/btn_visibility_off.svg" alt="Toggle Password Visibility">
+            </div>
+        </div>
+            <label for="password_confirm">비밀번호 확인</label>
+            <div class="field">
+            <input type="password" class="form_input" name="비밀번호 확인" placeholder="비밀번호를 다시 한 번 입력해주세요" required>
+            <div class="toggle_password" id="signup_password_confirm">
+                <img src="../img/btn_visibility_off.svg" alt="Toggle Password Visibility">
+            </div>
+            <p class="error_msg"></p>
+            </div>
+            <button type="button" id="form_button">회원가입</button>
+        </form>
+            <div class="login_options">
+                <p>간편 로그인 하기</p>
+                <div class="login_shortcuts">
+                    <a href="https://www.google.com/accounts/Login" target="_blank">
+                        <img src="../img/login_google.svg" alt="Google Login" class="login_icon">
+                    </a>
+                    <a href="https://accounts.kakao.com" target="_blank">
+                        <img src="../img/login_kakao.svg" alt="Kakao Login" class="login_icon">
+                    </a>
+                </div>
+            </div>
+            <div class="status_prompt">
+                <p>
+                    이미 회원이신가요?
+                </p>
+                    <a href="login.html">로그인</a> 
+                </div>
+            <div class = "modal_overlay"></div>
+            <div class = "modal_container">
+                <p class = "modal_text">testing 입니다</p>
+                <div class = "btn_container">
+                    <button class = "modal_btn" type="button">확인</button>
+                </div>
+
+            </div>
+    </div>
+    <script type = "module" src= "../js/interact.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+nav {
+    position: fixed;
+    width: 100%;
+    border-bottom: 1px solid #DFDFDF;
+    background: #FFF;
+    z-index: 10;
+    top: 0; left: 0; 
+}
+
+.wrap {
+    display: flex;
+    align-content: center;
+    max-width: 1200px;
+    margin: 0.5rem auto;
+
+}
+
+.logo {
+    display: flex;
+    width: 9.5rem;
+    height: 3.2rem;
+    padding: 0.32rem 0 0.36rem 0;
+    gap: 0.537rem;
+    cursor: pointer;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    text-align: center;
+
+}
+
+.links a{
+    padding: 1.3125rem 0.9375rem;
+    color: var(--Secondary-600, #4B5563);
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    text-decoration: none;
+}

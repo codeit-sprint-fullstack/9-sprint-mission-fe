@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+::-ms-reveal {
+    display: none;
+}
+
+:root{
+/* Colors */
+--Primary-100: #3692FF;
+--Primary-200: #1968D6;
+--Primary-300: #1251AA;
+--Article: #CFE5FF;
+--Secondary-700: #374151;
+--brand-blue: #3692FF;
+--Secondary-50: #F9FAFB;
+--Secondary-100: #F3F4F6;
+--Secondary-200: #E5E7EB;
+--Secondary-400: #9CA3AF;
+--Secondary-500: #6B7280;
+--Secondary-600: #4B5563;
+--Secondary-700: #374151;
+--Secondary-800: #1F2937;
+--Secondary-900: #111827;
+--Easy-login: #E6F2FF;
+--Error-red: #f74747;
+}
+
+
+body {
+    background: #fff;
+    font-family: 'Pretendard';
+}
