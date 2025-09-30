@@ -1,0 +1,184 @@
+#productList {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 480px) {
+    width: 45rem;
+  }
+
+  @media screen and (max-width: 744px) {
+    width: 21.4rem;
+  }
+}
+
+.productListFont {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 2rem;
+  white-space: nowrap;
+  margin-left: 1rem;
+
+  @media screen and (max-width: 744px) {
+    & {
+      margin-left: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    & {
+      margin-left: 0.5rem;
+      white-space: nowrap;
+    }
+  }
+}
+
+
+
+.productGrid {
+  display: grid;
+  max-width: 1200px;
+  gap: 32px 8px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#productList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sortButtonWrapper {
+  position: relative;
+}
+
+.sortDropdownTriggerButton {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.searchSection {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 9px 16px;
+  flex: 1;
+  align-items: center;
+  width: 289px;
+}
+
+.searchIconImg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.searchSectionWrapper {
+  display: flex;
+
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.searchInput {
+  border: none;
+  flex: 1;
+  background-color: inherit;
+  margin-left: 4px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.createItemButton {
+  margin: 0px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11.5px 23px;
+  background-color: #3692FF;
+  color: white;
+  white-space: nowrap;
+}
+
+
+.paginationBarWrapper {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/*이건 순서를 바꾸면 그리드가 잘못 적용된다 */
+
+@media (min-width: 744px) {
+
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+}
+
+@media screen and (min-width:1280px) {
+  .productGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.productListInner {
+  display: flex;
+  justify-content: space-between;
+  gap: 32rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.sortDropdownTriggerButton {
+  width: 100%;
+  padding: 5px 20px;
+  height: 2.6rem;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: #fff;
+  border: 1px solid #9ca3af;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mobileSortBtn {
+  display: none;
+}
+
+@media screen and (max-width: 744px) {
+
+  .productListInner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .mobileSortBtn {
+    display: inline;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .sortDropdownTriggerButton {
+    padding: 5px 10px;
+  }
+
+  .sortBtn {
+    display: none;
+  }
+}

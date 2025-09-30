@@ -1,0 +1,21 @@
+.dropdownList {
+  position: absolute;
+  right: 0;
+  border: 1px solid#E5E7EB;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.dropdownItem {
+  padding: 12px 44px;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+  font-size: 16px;
+  color: #1f2937;
+  cursor: pointer;
+  width: 6.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
