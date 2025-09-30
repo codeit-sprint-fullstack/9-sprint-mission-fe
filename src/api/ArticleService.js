@@ -34,10 +34,10 @@ export async function createArticle(title, content, image) {
  * @param {Number} page
  * @param {Number} pageSize
  */
-export async function getArticleList(page, pageSize, keyword) {
+export async function getArticleList(page, pageSize, keyword, orderBy) {
   try {
     const res = await app.get(
-      `/articles?page=${page}&pageSize=${pageSize}&keyword=${keyword}`
+      `articles?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`
     );
     return res.data;
   } catch (err) {
@@ -45,7 +45,7 @@ export async function getArticleList(page, pageSize, keyword) {
     console.log(err.message);
     throw new Error("아티클 리스트를 가져오지 못했습니다.");
   } finally {
-    console.log("getArticelList 패치");
+    console.log("getArticleList 패치");
   }
 }
 

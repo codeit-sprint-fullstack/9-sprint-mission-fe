@@ -1,10 +1,10 @@
 import axios from "axios";
 export const BASE_URL = "https://panda-market-api.vercel.app/";
 export const app = axios.create({
-  baseURL: "https://panda-market-api.vercel.app",
+  // baseURL: "https://panda-market-api.vercel.app",
+  baseURL: "http://localhost:3000/api/v1/"
 });
 
 export const instance = axios.create({
-  // baseURL: "https://nine-sprint-mission-be.onrender.com/",
-  baseURL: "http://localhost:3000"
+  baseURL: "https://nine-sprint-mission-be.onrender.com/",
 });

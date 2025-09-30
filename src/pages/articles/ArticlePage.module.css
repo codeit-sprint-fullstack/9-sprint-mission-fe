@@ -1,0 +1,159 @@
+/* 전체 레이아웃 */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* 베스트 게시글 */
+.bestArticles {
+  margin-bottom: 40px;
+
+  & h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+}
+
+.bestList {
+  display: flex;
+  gap: 16px;
+}
+
+.bestCard {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-secondary-100);
+  color: var(--color-secondary-900); 
+  padding: 0 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.bestInfo {
+  padding: 10px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--color-secondary-500);
+}
+
+.bestImg {
+  display: flex;
+  align-self: center;
+  width: 48px;
+  height: 44.571px;
+  object-fit: cover;
+}
+
+/* 게시글 영역 */
+.articlesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  & p {
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.articleBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  border: 0px;
+  background-color: var(--color-primary-100);
+  color: var(--cool-gray-100);
+  font-family: var(--font-family-base);
+  font-size: var(--font-lg);
+  font-weight: 600;
+  line-height: 26px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-primary-200);
+  }
+
+  &:active {
+    background-color: var(--color-primary-300);
+  }
+}
+
+.articlesTools {
+  display: flex;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  gap: 30px;
+}
+
+.searchBox {
+  border-radius: 6px;
+  flex-grow: 1;
+}
+
+.search {
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* 게시글 리스트 */
+.articleList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.articleCard {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  color: var(--color-secondary-900);
+  padding: 10px 0;
+  cursor: pointer;
+  text-decoration: none;
+
+  & img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 12px;
+  }
+
+  & title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  & meta {
+    font-size: 12px;
+    color: #666;
+  }
+}
