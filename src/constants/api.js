@@ -5,5 +5,6 @@ export const app = axios.create({
 });
 
 export const instance = axios.create({
-  baseURL: "https://nine-sprint-mission-be.onrender.com/",
+  // baseURL: "https://nine-sprint-mission-be.onrender.com/",
+  baseURL: "http://localhost:3000"
 });

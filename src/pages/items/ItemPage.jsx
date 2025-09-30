@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"
-import { usePagination } from "@/hooks/usePagination"
-import { useBreakPoint } from "@/hooks/useBreakpoint"
+import { useEffect, useState } from "react";
+import { usePagination } from "@/hooks/usePagination";
+import { useBreakPoint } from "@/hooks/useBreakpoint";
 
-import { ItemHeader } from "@/components/UI/Nav/ItemHeader"
-import { DropDown } from "@/components/UI/Button/DropDown"
-import { Footer } from "@/components/UI/Footer/Footer"
-import { CardList } from "@/components/UI/Card/CardList"
-import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList"
-import { Input } from "@/components/UI/Input/Input"
-import { Pagination } from "@/components/Pagination/Pagination"
+import { ItemHeader } from "@/components/UI/Nav/ItemHeader";
+import { DropDown } from "@/components/UI/Button/DropDown";
+import { Footer } from "@/components/UI/Footer/Footer";
+import { CardList } from "@/components/UI/Card/CardList";
+import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList";
+import { Input } from "@/components/UI/Input/Input";
+import { Pagination } from "@/components/Pagination/Pagination";
 
-import styles from './ItemPage.module.css'
+import styles from './ItemPage.module.css';
 
 export default function ItemPage() {
   const [keyword, setKeyword] = useState('');
@@ -24,7 +24,7 @@ export default function ItemPage() {
     setTotalItems,
     goToPage,
     totalPages
-  } = usePagination(1, itemsPerPage)
+  } = usePagination(1, itemsPerPage);
   // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
 
   useEffect(() => {
@@ -35,16 +35,16 @@ export default function ItemPage() {
     } else {
       setItemsPerPage(10);
     }
-  }, [isMobile, isTablet])
+  }, [isMobile, isTablet]);
 
-  const initialItemPerPage = isMobile ? 4 : isTablet ? 6 : 10
+  const initialItemPerPage = isMobile ? 4 : isTablet ? 6 : 10;
   const initialFavoritePerPage = isMobile ? 1 : isTablet ? 2 : 4;
 
   // search
   const handleSearch = (value) => {
     setKeyword(value);
     goToPage(1); // 검색 시 첫페이지로
-  }
+  };
 
   return (
     <>
@@ -105,5 +105,5 @@ export default function ItemPage() {
         <Footer />
       )}
     </>
-  )
+  );
 }
