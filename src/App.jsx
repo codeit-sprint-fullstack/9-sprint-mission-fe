@@ -7,7 +7,7 @@ import { ProductPage } from "@/pages/products/ProductPage";
 import { ProductLayout } from "@/pages/products/ProductLayout";
 import { ItemsPage } from "@/pages/products/Items/page";
 import { ItemsDetailPage } from "@/pages/products/Items/Items-detail/page";
-import { RegistraionPage } from "@/pages/products/registration/page";
+import { RegistrationPage } from "@/pages/products/registration/page";
 
 export function App() {
   return (
@@ -19,7 +19,7 @@ export function App() {
         <Route index element={<ProductPage />} />
         <Route path="/products/items" element={<ItemsPage />} />
         <Route path="/products/items/detail/:itemId" element={<ItemsDetailPage />}/>
-        <Route path="/products/registration" element={<RegistraionPage />} />
+        <Route path="/products/registration" element={<RegistrationPage />} />
       </Route>
     </Routes>
   );
