@@ -1,13 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './SalesItemsSection.module.css';
-import { SalesItemList } from '@/pages/ItemPage/SalesItemList';
+import { SalesItemList } from '@/pages/ItemsPage/SalesItemList';
 import { ItemContext } from '@/contexts/ItemContext.js';
 import { Pagination } from '@/components/Pagenation';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import searchIcon from '@/assets/img/ic_search.svg';
 import arrowDownIcon from '@/assets/img/ic_arrow_down.svg';
 import DropDownIcon from '@/assets/img/ic_sort.svg';
+import { Link } from 'react-router';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export function SalesItemsSection() {
   const {
@@ -24,11 +26,15 @@ export function SalesItemsSection() {
   } = useContext(ItemContext);
   const [isDropDownActive, setIsDropDownActive] = useState(false);
   const [dropDownState, setDropDownState] = useState('recent');
+  const [searchTerm, setSearchTerm] = useState('');
   const windowSize = useWindowSize();
+  const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
-  const handleSearchInput = (event) => {
-    handleSearchTermChange(event.target.value);
-  };
+  useEffect(() => {
+    handleSearchTermChange(debouncedSearchTerm);
+  }, [debouncedSearchTerm, handleSearchTermChange]);
+
+  const handleSearchInput = (event) => setSearchTerm(event.target.value);
 
   const handleDropDownBtnClick = () => {
     setIsDropDownActive(!isDropDownActive);
@@ -40,39 +46,42 @@ export function SalesItemsSection() {
     setIsDropDownActive(false);
   };
 
+  const SearchInput = (
+    <div className={clsx('input-wrap', styles.searchInput)}>
+      <img src={searchIcon} alt="검색" />
+      <input
+        id="serch-input"
+        className="input-value"
+        type="text"
+        value={searchTerm}
+        onChange={handleSearchInput}
+        placeholder="검색할 상품을 입력해주세요"
+      />
+    </div>
+  );
+
+  const NewItemBtn = (
+    <Link
+      to="/registration"
+      className={clsx('s-btn', 'compact', styles.newItemBtn)}
+    >
+      상품 등록하기
+    </Link>
+  );
+
   let inputWrapChange;
   if (windowSize === 'MOBILE') {
     inputWrapChange = (
       <>
-        <a href="" className={clsx('s-btn', 'compact', styles.newItemBtn)}>
-          상품 등록하기
-        </a>
-        <div className={styles.inputWrap}>
-          <img src={searchIcon} alt="검색" />
-          <input
-            id="serch-input"
-            type="text"
-            onKeyUp={handleSearchInput}
-            placeholder="검색할 상품을 입력해주세요"
-          />
-        </div>
+        {NewItemBtn}
+        {SearchInput}
       </>
     );
   } else {
     inputWrapChange = (
       <>
-        <div className={styles.inputWrap}>
-          <img src={searchIcon} alt="검색" />
-          <input
-            id="serch-input"
-            type="text"
-            onKeyUp={handleSearchInput}
-            placeholder="검색할 상품을 입력해주세요"
-          />
-        </div>
-        <a href="" className={clsx('s-btn', 'compact', styles.newItemBtn)}>
-          상품 등록하기
-        </a>
+        {SearchInput}
+        {NewItemBtn}
       </>
     );
   }
@@ -110,11 +119,12 @@ export function SalesItemsSection() {
                 최신순
               </button>
             </li>
-            <li>
+            {/* 요구사항에 따른 임시적 주석 */}
+            {/* <li>
               <button value="favorite" onClick={handleOrderDropDwonSelect}>
                 좋아요순
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

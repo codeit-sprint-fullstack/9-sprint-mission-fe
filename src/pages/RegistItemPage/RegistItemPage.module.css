@@ -1,0 +1,70 @@
+.registMain {
+  width: 75rem;
+}
+
+.itemRegistForm {
+  margin-top: 1.625rem;
+  margin-bottom: 10rem;
+}
+
+.formTop {
+  width: 75rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.formBody {
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formTitle {
+  color: var(--Secondary-800);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+.inputSection > label {
+  display: block;
+  color: var(--Secondary-800);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+  margin-bottom: 1rem;
+}
+
+.inputTextareaWrap {
+  width: 100%;
+  height: 17.625rem;
+}
+
+.inputTextareaWrap > .inputTextarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  resize: none;
+}
+
+.tagCapsuleWrap {
+  width: 100%;
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 74.9rem) {
+  .registMain,
+  .formTop {
+    width: 43.5rem;
+  }
+}
+
+@media screen and (max-width: 46.4rem) {
+  .registMain,
+  .formTop {
+    width: 21.5rem;
+  }
+}

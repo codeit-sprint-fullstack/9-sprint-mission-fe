@@ -1,19 +1,21 @@
-import { BestItemsSection } from './pages/ItemPage/BestItemsSection';
-import { SalesItemsSection } from './pages/ItemPage/SalesItemsSection';
-import { ItemProvider } from './providers/ItemProvider';
+import { Routes, Route } from 'react-router';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { LandingPage } from './pages/LandingPage';
+import { ItemsPage } from './pages/ItemsPage';
+import { RegistItemPage } from './pages/RegistItemPage';
 
 function App() {
   return (
-    <ItemProvider>
+    <>
       <Header />
-      <main className="main item-main">
-        <BestItemsSection />
-        <SalesItemsSection />
-      </main>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/items" element={<ItemsPage />} />
+        <Route path="/registration" element={<RegistItemPage />} />
+      </Routes>
       <Footer />
-    </ItemProvider>
+    </>
   );
 }
 
