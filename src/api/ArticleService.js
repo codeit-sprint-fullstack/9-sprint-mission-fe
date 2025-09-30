@@ -49,6 +49,20 @@ export async function getArticleList(page, pageSize, keyword, orderBy) {
   }
 }
 
+export async function getArticleById(articleId) {
+  try {
+    const res = await app.get(`/articles/${articleId}`);
+
+    return res.data;
+  } catch (error) {
+    console.log(error.status);
+    console.log(error.message);
+    throw new Error("게시물을 가져오지 못했습니다.");
+  } finally {
+    console.log("getArticle success");
+  }
+}
+
 export async function getArticle() {
   try {
     const res = await app.get(`/articles`);

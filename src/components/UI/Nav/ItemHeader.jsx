@@ -11,7 +11,7 @@ export function ItemHeader() {
         <div className={styles.logo}>
           <div>
             <Link className={styles.logoTitleLink} to="/">
-              <img className={styles.logoImg} src="/images/logo.png" alt="pandamarket" />
+              <img className={styles.logoImg} src="/images/logo.png" alt="panda-market" />
               판다마켓
             </Link>
           </div>

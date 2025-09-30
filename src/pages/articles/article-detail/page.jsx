@@ -1,86 +1,73 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styles from './ArticleDetailPage.module.css';
-import { getProduct } from "@/api/ProductService";
+import { Link, useParams } from "react-router-dom";
+import { getArticleById } from "@/api/ArticleService";
+import { Heart } from "lucide-react";
+import styles from "./ArticleDetailPage.module.css";
 
 export function ArticleDetailPage() {
-  const { itemId } = useParams();
-  const [items, setItems] = useState([]);
+  const { articleId } = useParams();
+  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-
-    if (!itemId) return;
+    if (!articleId) return;
 
     setLoading(true);
     const fetchData = async () => {
       try {
-        const data = await getProduct(itemId);
-        setItems(data);
+        const data = await getArticleById(articleId);
+        setArticles(data.data);
       } catch (error) {
-        console.error('Failed fetchItems', error);
+        console.error("Failed fetchItems", error);
       } finally {
         setLoading(false);
       }
     };
     fetchData();
-  }, [itemId]);
+  }, [articleId]);
 
   if (loading) return <div>loading ...</div>;
 
   return (
-    <>
-      {/* flow bite */}
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <div className={styles.grid}>
-            <div className={styles.imageWrapper}>
-              <img
-                className={styles.imageLight}
-                src={items.images}
-                alt="iMac"
-              />
-              <img
-                className={styles.imageDark}
-                src={items.images}
-                alt="iMac Dark"
-              />
-            </div>
-
-            <div className={styles.content}>
-              <h1 className={styles.title}>
-                {items.name}
-              </h1>
-
-              <div className={styles.priceRow}>
-                <p className={styles.price}>{items.price}원</p>
-                <div className={styles.reviewBox}>
-                  <span className={styles.stars}>★★★★★</span>
-                  <p className={styles.rating}>(5.0)</p>
-                  <a href="#" className={styles.reviewLink}>345 Reviews</a>
-                </div>
-              </div>
-
-              <div className={styles.actions}>
-                <a href="#" className={styles.favoriteBtn}>Add to favorites</a>
-                <a href="#" className={styles.cartBtn}>Add to cart</a>
-              </div>
-
-              <hr className={styles.divider} />
-
-              <p className={styles.desc}>
-                {items.description}
-              </p>
-
-              <hr className={styles.divider} />
-              <ul>
-                <li>{items.tags ? "Test" : "Not Found"}</li>
-                <li>{items.ownerNickname}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <main className={styles.container}>
+      {/* 게시글 제목 + 좋아요 */}
+      <section className={styles.header}>
+        <h2 className={styles.title}>{articles.title}</h2>
+        <button className={styles.likeBtn}>
+          <Heart className={styles.heartIcon} />
+          <span>123</span>
+        </button>
       </section>
-    </>
+
+      {/* 본문 */}
+      <section className={styles.content}>
+        {articles.content}
+      </section>
+
+      {/* 댓글 입력 */}
+      <section className={styles.commentForm}>
+        <h3>댓글달기</h3>
+        <form className={styles.commentSection}>
+          <textarea className={styles.textarea} placeholder="댓글을 입력하세요..." />
+          <div className={styles.submitBtnPos}>
+            <button className={styles.submitBtn}>등록</button>
+          </div>
+        </form>
+      </section>
+
+      {/* 댓글 리스트 */}
+      <section className={styles.commentList}>
+        {articles.Comment?.map((comment) => (
+          <li key={comment.id} className={styles.commentItem}>
+            <p className={styles.commentContent}>{comment.context}</p>
+            <div className={styles.commentMeta}>
+              <span className={styles.commentAuthor}>{comment.author}</span>
+            </div>
+          </li>
+        ))}
+      </section>
+
+      <Link className={styles.backToArticles} to="articles">목록으로 돌아가기</Link>
+    </main>
   );
-} 
+}

@@ -1,115 +1,133 @@
-/* Flow bite */
-.section {
-  padding: 2rem 0;
-  background: #fff;
-}
-
 .container {
-  max-width: 1280px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 24px;
+  font-family: "Arial", sans-serif;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.imageWrapper {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.imageLight {
+/* 제목 + 좋아요 버튼 */
+.header {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  display: block;
-}
-
-.imageDark {
-  width: 100%;
-  display: none;
-}
-
-.content {
-  margin-top: 1.5rem;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #111;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.priceRow {
+.likeBtn {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 6px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #444;
 }
 
-.price {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #111;
+.heartIcon {
+  color: #e63946;
 }
 
-.reviewBox {
+/* 본문 */
+.content {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* 댓글 입력 */
+.commentForm {
+  width: 100%;
+  margin-bottom: 32px;
+
+  & h3 {
+    font-family: var(--font-family-base);
+    font-weight: 600;
+    line-height: 26px;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+}
+
+.textarea {
+  min-height: 80px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  resize: none;
+  margin-bottom: 8px;
+  background-color: var(--color-secondary-100);
+}
+
+.submitBtnPos {
   display: flex;
+  justify-content: flex-end;
+}
+
+.submitBtn {
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  padding: 12px 23px;
+  flex-grow: 0;
+  background-color: var(--color-secondary-400);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-primary-100);
+  }
 }
 
-.stars {
-  color: #facc15; /* yellow-300 */
+.submitBtn:hover {
+  background-color: #0056b3;
 }
 
-.rating {
-  font-size: 0.875rem;
-  color: #6b7280;
+/* 댓글 리스트 */
+.commentList {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.reviewLink {
-  font-size: 0.875rem;
-  text-decoration: underline;
-  color: #111;
+.commentItem {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
 }
 
-.actions {
+.commentContent {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.commentMeta {
+  font-size: 13px;
+  color: #666;
+}
+
+.commentAuthor {
+  font-weight: bold;
+}
+
+.backToArticles {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.favoriteBtn {
-  padding: 0.5rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  background: #fff;
-  color: #111;
-  font-size: 0.875rem;
-}
-
-.cartBtn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background: #2563eb;
-  color: #fff;
-  font-size: 0.875rem;
-}
-
-.divider {
-  margin: 1.5rem 0;
-  border: 1px solid #e5e7eb;
-}
-
-.desc {
-  color: #6b7280;
-  margin-bottom: 1rem;
+  justify-content: center;
+  align-content: center;
+  padding: 12px 64px;
+  margin-top: 64px;
+  margin-bottom: 193px;
+  border-radius: 40px;
+  background-color: var(--color-primary-100);
+  color: var(--color-secondary-100);
+  text-decoration: none;
 }
