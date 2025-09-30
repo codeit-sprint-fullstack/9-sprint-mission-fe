@@ -173,6 +173,10 @@
   border-radius: 100%;
 }
 
+.error {
+  color: red;
+}
+
 @media screen and (max-width: 1200px) {
   .RegContainer {
     width: 100%;
