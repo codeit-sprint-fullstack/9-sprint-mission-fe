@@ -18,7 +18,7 @@ export async function createArticle(title, content, image) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
     return res.data;
   } catch (err) {
@@ -37,7 +37,7 @@ export async function createArticle(title, content, image) {
 export async function getArticleList(page, pageSize, keyword, orderBy) {
   try {
     const res = await app.get(
-      `articles?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`
+      `articles?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`,
     );
     return res.data;
   } catch (err) {
@@ -91,7 +91,7 @@ export async function patchArticle(articleId) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
     return res.data;
   } catch (err) {
@@ -102,7 +102,25 @@ export async function patchArticle(articleId) {
     console.log("patchArticle 실행 완료");
   }
 }
-
+/**
+ * views increment
+ */
+export async function patchArticleViews(articleId) {
+  try {
+    const res = await app.patch(`/articles/${articleId}/views`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (err) {
+    console.log(err.status);
+    console.log(err.message);
+    throw new Error("Patch 요청을 실패 하였습니다.");
+  } finally {
+    console.log("patchArticle 실행 완료");
+  }
+}
 /**
  * @param {Number} articleId
  */

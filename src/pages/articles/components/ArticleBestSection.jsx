@@ -11,6 +11,16 @@ const truncateText = (text, maxLength) => {
   return text;
 };
 
+const formatDate = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return date.toLocaleDateString("Ko-KR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+};
+
 export function ArticleBestSection({ bestArticles }) {
   return (
     <section className={styles.bestArticles}>
@@ -22,17 +32,25 @@ export function ArticleBestSection({ bestArticles }) {
             key={article.id}
             className={styles.bestCard}
           >
-            <img
-              className={styles.bestImg}
-              src={article.images ? article.images[0] : "/images/logo.png"}
-              alt="썸네일"
-            />
-            <div className={styles.bestInfo}>
+            <div className={styles.BadgeBox}>
+              <img src="images/article/ic_medal.svg" alt="Best-Badge" />
+              <p>Best</p>
+            </div>
+            <div className={styles.bestImgCard}>
+              <div className={styles.imgBox}>
+                <img
+                  className={styles.bestImg}
+                  src={article.images ? article.images[0] : "/images/logo.png"}
+                  alt="썸네일"
+                />
+              </div>
               <p className={styles.title}>{truncateText(article.title, 30)}</p>
+            </div>
+            <div className={styles.bestInfo}>
               <div className={styles.meta}>
                 {article.author.name} · 조회수 {article.view}
-                <div className={styles.time}>{article.createdAt}</div>
               </div>
+              <div className={styles.time}>{formatDate(article.createdAt)}</div>
             </div>
           </Link>
         ))}
