@@ -16,7 +16,7 @@ export async function createArticle(title, content, image) {
       },
       {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       },
     );

@@ -33,7 +33,7 @@ export function ArticleBestSection({ bestArticles }) {
             className={styles.bestCard}
           >
             <div className={styles.BadgeBox}>
-              <img src="images/article/ic_medal.svg" alt="Best-Badge" />
+              <img src="/images/article/ic_medal.svg" alt="Best-Badge" />
               <p>Best</p>
             </div>
             <div className={styles.bestImgCard}>
