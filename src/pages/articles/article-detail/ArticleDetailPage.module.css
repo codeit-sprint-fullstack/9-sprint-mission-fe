@@ -162,8 +162,8 @@
 .commentItem {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #eee;
-  background-color: var(--color-secondary-100);
+  border-bottom: 3px solid #e5e7eb;
+  background-color: #fcfcfc;
   padding: 12px 0;
   gap: 24px;
 }
@@ -204,6 +204,8 @@
 .commentContentIcon {
   flex-shrink: 0;
   cursor: pointer;
+  color: var(--color-secondary-400);
+  padding: 5px 0 6px 0;
 }
 
 .backToArticles {

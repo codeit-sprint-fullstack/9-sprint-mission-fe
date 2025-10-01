@@ -8,6 +8,7 @@ export function ArticleDetailPage() {
   const { articleId } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     if (!articleId) return;
@@ -26,6 +27,10 @@ export function ArticleDetailPage() {
     };
     fetchData();
   }, [articleId]);
+
+  const handleOnChange = (e) => {
+    setComment(e.target.value);
+  };
 
   if (loading) return <div>loading ...</div>;
 
@@ -61,6 +66,7 @@ export function ArticleDetailPage() {
         <form className={styles.commentSection}>
           <textarea
             className={styles.textarea}
+            onChange={handleOnChange}
             placeholder="댓글을 입력해주세요..."
           />
           <div className={styles.submitBtnPos}>
