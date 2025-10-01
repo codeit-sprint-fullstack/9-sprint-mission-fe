@@ -1,0 +1,19 @@
+{
+  "name": "market-backend",
+  "version": "1.0.0",
+  "description": "중고마켓 백엔드 API",
+  "main": "js/server.js",
+  "scripts": {
+    "start": "node js/server.js",
+    "dev": "nodemon js/server.js"
+  },
+  "keywords": ["express", "mongodb", "api"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.2"
+  }
+}

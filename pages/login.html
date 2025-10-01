@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>로그인 - 판다마켓</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <!-- CSS 파일들 -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body class="page-container">
+  <!-- 상단 메뉴 -->
+  <nav class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="../images/pandalogo.png" alt="판다마켓 로고">
+      </a>
+      <a href="login.html" class="login-button">로그인</a>
+    </div>
+  </nav>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="main-content center-container">
+    <div class="form-container">
+      <!-- 로고 -->
+      <div class="form-logo">
+        <img src="../images/pandalogo.png" alt="판다 로고">
+      </div>
+
+      <!-- 폼 -->
+      <form id="login-form">
+        <div class="input-group">
+          <label for="email" class="input-label">이메일</label>
+          <input id="email" type="email" class="text-input" placeholder="이메일을 입력해주세요" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password" class="input-label">비밀번호</label>
+          <div class="password-container">
+            <input id="password" type="password" class="text-input" placeholder="비밀번호를 입력해주세요" required />
+            <button type="button" id="password-toggle" class="password-toggle-button">👁</button>
+          </div>
+        </div>
+
+        <button type="submit" id="login-submit-button" class="submit-button">로그인</button>
+      </form>
+
+      <!-- 간편 로그인 -->
+      <div class="social-login-bar">
+        <span class="social-login-text">간편 로그인하기</span>
+        <div class="social-icons-container">
+          <a class="social-icon-link google" href="https://www.google.com/" target="_blank">G</a>
+          <a class="social-icon-link kakao" href="https://www.kakaocorp.com/page/" target="_blank">K</a>
+        </div>
+      </div>
+
+      <!-- 하단 링크 -->
+      <div class="bottom-navigation-link">
+        판다마켓이 처음이신가요? <a href="signup.html">회원가입</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- 유효성 검증 모듈과 모달 모듈 -->
+  <script src="../js/validation.js"></script>
+  <script src="../js/modal.js"></script>
+  <script>
+    const email = document.getElementById('email');
+    const pwd = document.getElementById('password');
+    const btn = document.getElementById('login-submit-button');
+    const tog = document.getElementById('password-toggle');
+    const form = document.getElementById('login-form');
+
+    // 이메일 유효성 검증
+    function validateEmailField() {
+        const emailValue = email.value.trim();
+        
+        if (!emailValue) {
+            showError(email, '이메일을 입력해주세요.');
+            return false;
+        }
+        
+        if (!validateEmail(emailValue)) {
+            showError(email, '잘못된 이메일 형식입니다');
+            return false;
+        }
+        
+        clearError(email);
+        return true;
+    }
+
+    // 비밀번호 유효성 검증
+    function validatePasswordField() {
+        const passwordValue = pwd.value.trim();
+        
+        if (!passwordValue) {
+            showError(pwd, '비밀번호를 입력해주세요.');
+            return false;
+        }
+        
+        if (!validatePassword(passwordValue)) {
+            showError(pwd, '비밀번호를 8자 이상 입력해주세요.');
+            return false;
+        }
+        
+        clearError(pwd);
+        return true;
+    }
+
+    // 버튼 상태 업데이트
+    function updateBtnState() {
+        const formContainer = document.querySelector('.form-container');
+        const fieldsValid = areFieldsFilled([email, pwd]) && !hasErrors(formContainer);
+        updateButtonState(btn, fieldsValid);
+    }
+
+    // 이벤트 리스너 등록
+    email.addEventListener('blur', () => {
+        validateEmailField();
+        updateBtnState();
+    });
+
+    email.addEventListener('input', () => {
+        if (email.classList.contains('error')) {
+            validateEmailField();
+        }
+        updateBtnState();
+    });
+
+    pwd.addEventListener('blur', () => {
+        validatePasswordField();
+        updateBtnState();
+    });
+
+    pwd.addEventListener('input', () => {
+        if (pwd.classList.contains('error')) {
+            validatePasswordField();
+        }
+        updateBtnState();
+    });
+
+    // 비밀번호 보기/숨기기
+    tog.addEventListener('click', () => {
+        const p = pwd.type === 'password';
+        pwd.type = p ? 'text' : 'password';
+        tog.textContent = p ? '🙈' : '👁';
+    });
+
+    // 폼 제출
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // 모든 필드 유효성 검증
+        const emailValid = validateEmailField();
+        const passwordValid = validatePasswordField();
+        
+        if (!emailValid || !passwordValid) {
+            return;
+        }
+        
+        // 로그인 검증
+        const loginResult = validateLogin(email.value.trim(), pwd.value.trim());
+        
+        if (loginResult.success) {
+            // 로그인 성공 시 items 페이지로 이동
+            window.location.href = 'items.html';
+        } else {
+            // 로그인 실패 시 모달 표시
+            showModal(loginResult.message);
+        }
+    });
+
+    // 초기 버튼 상태 설정
+    updateBtnState();
+  </script>
+</body>
+</html>
