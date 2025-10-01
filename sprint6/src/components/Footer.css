@@ -1,0 +1,85 @@
+/* Footer 기본 스타일 */
+.site-footer {
+  background: #0f1724;
+  color: #e5e7eb;
+  padding: 10px 0 36px 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 200px; /* PC 화면용 패딩 */
+  gap: 30px;
+}
+
+/* 영역별 정렬 */
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+
+/* footer-nav 스타일 */
+.footer-center a {
+  color: #e5e7eb;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.footer-center a:last-child {
+  margin-right: 0;
+}
+
+/* social 아이콘 */
+.social a img {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+}
+
+.social a:first-child img {
+  margin-left: 0;
+}
+
+/* 반응형: 화면이 작아지면 패딩과 정렬 조정 */
+@media (max-width: 1024px) {
+  .footer-inner {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .footer-center a {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .footer-right {
+    text-align: center;
+  }
+
+  .social a img {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
