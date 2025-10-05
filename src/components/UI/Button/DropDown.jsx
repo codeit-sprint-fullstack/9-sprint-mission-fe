@@ -37,9 +37,13 @@ export function DropDown({ onChange, page }) {
       {
         showPanel && (
           <ul className={styles.dropdownFilter}>
-            <li onClick={() => handleOnChange('recent')} className={`${styles.dropdownElement} ${styles.topElement}`}>최신순</li>
-            <hr className={styles.dropdownHorizen} />
-            <li onClick={() => handleOnChange('favorite')} className={styles.dropdownElement}>좋아요순</li>
+            <li className={`${styles.dropdownElement} ${styles.topElement}`}>
+              <button onClick={() => handleOnChange('recent')}>최신순</button>
+            </li>
+            <hr className={styles.dropdownHorizon} />
+            <li className={styles.dropdownElement}>
+              <button onClick={() => handleOnChange('favorite')}>좋아요순</button>
+            </li>
           </ul>
         )
       }
