@@ -2,6 +2,23 @@
   "name": "9-sprint-mission-fe",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Kim youn gi",
+    "email": "meta-os-zohomail.com",
+    "url": "https://github.com/rklpoi5678"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rklpoi5678/9-sprint-mission-fe"
+  },
+  "homepage": "https://github.com/rklpoi5678/9-sprint-mission-fe",
+  "bugs": {
+    "url": "https://github.com/rklpoi5678/9-sprint-mission-fe/issues"
+  },
+  "engines": {
+    "node": ">=24.x",
+    "npm": ">=11.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -23,6 +40,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4"
