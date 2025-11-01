@@ -1,8 +1,9 @@
 "use client"
-import Image from "next/image"
+import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 import PandaLogo from '@/assets/logo.svg'
-import { usePathname } from "next/navigation"
 import { cn } from '@/lib/cn';
 
 const navLink = [
