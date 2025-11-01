@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import YoutubeIcon from '@/assets/icons/ic_youtube.svg'
 import FacebookIcon from '@/assets/icons/ic_facebook.svg'
 import InstagramIcon from '@/assets/icons/ic_instagram.svg'
 import TwitterIcon from '@/assets/icons/ic_twitter.svg'
+import YoutubeIcon from '@/assets/icons/ic_youtube.svg'
 
 export function Footer() {
   return (

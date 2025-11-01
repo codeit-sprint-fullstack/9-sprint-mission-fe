@@ -1,10 +1,12 @@
 /* + #은 jsconfig설정에 의해 최상위 루트를 가리키게된다. */
-import { rootMetadata } from '#/config/root-metadata'
-import { Navigation } from '@/components/ui/navigation'
-import { Footer } from '@/components/layouts/Footer'
+import './globals.css'
+
 import Pretendard from 'next/font/local'
 import Rokaf from 'next/font/local'
-import './globals.css'
+
+import { Footer } from '@/components/layouts/footer'
+import { Navigation } from '@/components/ui/navigation'
+import { rootMetadata } from '#/config/root-metadata'
 
 const pretendard = Pretendard({
   src: '../assets/font/PretendardVariable.woff2',

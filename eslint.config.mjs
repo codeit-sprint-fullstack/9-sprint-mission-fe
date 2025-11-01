@@ -1,12 +1,12 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import prettierConfig from 'eslint-config-prettier';
+// 파일/폴더명 정렬 플러그인 - 캐밥케이스
+import checkFilePlugin from 'eslint-plugin-check-file';
 import reactPlugin from 'eslint-plugin-react';
 import reactHookPlugin from 'eslint-plugin-react-hooks';
 // 파일/폴더명 정렬 플러그인
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
-// 파일/폴더명 정렬 플러그인 - 캐밥케이스
-import checkFilePlugin from 'eslint-plugin-check-file';
 import globals from 'globals';
 
 // 기본 설정 (모든 파일에 적용)

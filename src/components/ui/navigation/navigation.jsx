@@ -39,7 +39,7 @@ export function Navigation() {
             ))}
           </nav>
         </div>
-        <Link className="bg-primary-100 px-3 py-1.75 rounded-lg" href="/login">로그인</Link>
+        <Link className="bg-primary-100 text-white px-3 py-1.75 rounded-lg" href="/login">로그인</Link>
       </div >
     </nav >
   );
