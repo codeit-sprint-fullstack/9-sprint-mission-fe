@@ -33,6 +33,7 @@
   --color-error-red: oklch(0.6533 0.2127 25.3);
 
   --font-pretendard: var(--font-pretendard);
+  --font-rokaf: var(--font-rofak)
 }
 
 @media (prefers-color-scheme: dark) {
