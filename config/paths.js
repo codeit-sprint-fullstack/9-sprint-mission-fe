@@ -7,5 +7,8 @@ export const paths = {
     articles: {
       getHref: () => '/articles',
     },
+    registration: {
+      getHref: () => '/articles/registration',
+    },
   },
 };
