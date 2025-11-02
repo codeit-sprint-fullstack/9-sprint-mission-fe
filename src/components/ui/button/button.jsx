@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/libs/cn";
 
 const buttonVariants = cva(
   "flex text-white justify-center items-center gap-2.5 border-0 rounded-lg",
