@@ -5,7 +5,9 @@ import Badge from '@/assets/icons/ic_medal.svg'
 import DefaultImg from '@/assets/logo.svg'
 import { formatDate, truncateText } from "@/utils/format";
 
+
 export function ArticleBestSection({ articles }) {
+  const imageSource = articles.images?.[0] || DefaultImg;
   return (
     <section className="mb-12">
       <h2 className="font-pretendard text-xl font-bold mb-6 text-gray-900">베스트 게시글</h2>
@@ -28,7 +30,7 @@ export function ArticleBestSection({ articles }) {
             <div className="flex flex-row-reverse gap-2">
               <div className="flex items-center justify-center shrink-0 w-18 h-18  px-3.5 py-3 bg-white border border-solid border-gray-200">
                 <Image
-                  src={article.images ? article.images[0] : { DefaultImg }}
+                  src={imageSource}
                   alt="썸네일"
                   width={48}
                   height={44.571}

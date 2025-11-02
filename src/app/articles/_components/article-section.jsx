@@ -5,6 +5,8 @@ import DefaultImg from '@/assets/logo.svg'
 import { formatDate } from "@/utils/format";
 
 export function ArticleSection({ articles }) {
+
+  const imageSource = articles.images?.[0] || DefaultImg;
   return (
     <div className="flex flex-col gap-3">
       {articles.map((article) => (
@@ -18,7 +20,7 @@ export function ArticleSection({ articles }) {
               className="flex shrink-0 my-3.5 mr-5 mb-5 ml-3"
               width={48}
               height={44}
-              src={article.images ? article.images[0] : { DefaultImg }}
+              src={imageSource}
               alt="썸네일"
             />
             <p className="font-pretendard text-xl font-semibold leading-8 mb-1">{article.title}</p>
