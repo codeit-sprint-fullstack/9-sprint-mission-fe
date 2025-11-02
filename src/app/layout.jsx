@@ -25,7 +25,7 @@ const rokaf = Rokaf({
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} ${rokaf.variable}antialiased`}>
+      <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
         <Navigation />
         {children}
         <Footer />
