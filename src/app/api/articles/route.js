@@ -64,3 +64,41 @@ export const GET = async (request) => {
     );
   }
 };
+
+export const POST = async (request) => {
+  try {
+    const body = await request.json();
+    const { title, content } = body;
+
+    const FAKE_ID = 72;
+
+    // TODO: userId
+    const newArticle = await prisma.article.create({
+      data: {
+        title,
+        content,
+        authorId: FAKE_ID,
+        view: 0,
+      },
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'success create article',
+        data: newArticle,
+      },
+      { status: 201 },
+    );
+  } catch (error) {
+    console.log('API Post Error', error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Internal Server Error',
+      },
+      { status: 500 },
+    );
+  }
+};
