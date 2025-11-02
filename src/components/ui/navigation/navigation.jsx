@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import PandaLogo from '@/assets/logo.svg'
-import { cn } from '@/lib/cn';
+import { cn } from '@/libs/cn';
 
 const navLink = [
   { name: '자유게시판', href: '/articles' },
