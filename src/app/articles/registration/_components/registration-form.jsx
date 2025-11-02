@@ -6,9 +6,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button';
-
-// import { createArticle } from "@/api/ArticleService";
-// import { LoginModal } from "@/components/Modal/LoginModal";
+import { Modal } from "@/components/ui/modal";
 
 const articleFormSchema = z.object({
   title: z
@@ -19,6 +17,24 @@ const articleFormSchema = z.object({
     .min(10, '내용은 10자 이상 입력해주세요.')
     .max(100, '내용은 100자 이내로 입력해주세요.'),
 })
+
+async function createArticle(formData) {
+  const res = await fetch('http://localhost:3000/api/articles', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+  });
+
+  if (!res.ok) {
+    const errorObj = await res.json().catch(() => ({ message: '게시글 생성 실패' }));
+    throw new Error(`게시글 데이터를 가져오는 데 실패했습니다: ${errorObj.message}|${res.statusText}`)
+  }
+
+  const result = await res.json();
+  return result.data;
+}
 
 export function ArticleRegistration() {
   const [showModal, setShowModal] = useState(false);
@@ -34,19 +50,18 @@ export function ArticleRegistration() {
     mode: 'onChange', // 실시간 유효성 검사
   })
 
-  // const onSubmit = async (data) => {
+  const onSubmit = async (data) => {
 
-  //   try {
-  //     const response = await createArticle(data.title, data.content);
+    try {
+      await createArticle(data);
 
-  //     if (response.status === 201) {
-  //       router.push('/articles')
-  //     }
-  //   } catch (error) {
-  //     console.error("등록중 오류 발생:", error);
-  //     setShowModal(true);
-  //   }
-  // };
+      router.push('/articles')
+
+    } catch (error) {
+      console.error("등록중 오류 발생:", error);
+      setShowModal(true);
+    }
+  };
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -54,7 +69,7 @@ export function ArticleRegistration() {
     <>
       <form
         method="POST"
-        // onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
         <div className="flex justify-between w-300 mb-9">
@@ -106,14 +121,14 @@ export function ArticleRegistration() {
         </div>
       </form>
 
-      {/* {showModal && (
-        <LoginModal
+      {showModal && (
+        <Modal
           close={handleCloseModal}
           msg={
             "등록중 예기치 못한 오류가 발생했습니다.\n 잠시후 다시시도해 주십시오 \n 문의(meta-os@zohomail.com)"
           }
         />
-      )} */}
+      )}
     </>
   );
 }
