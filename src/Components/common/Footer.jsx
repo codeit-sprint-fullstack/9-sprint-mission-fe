@@ -16,11 +16,11 @@ export default function Footer() {
           <li className="text-white">FAQ</li>
         </ul>
       </div>
-      <div className="flex gap-3 justify-center items-center">
+      <nav className="flex gap-3 justify-center items-center">
         <a href="https://facebook.com" target="_blank" aria-label="Facebook">
           <Image src={Facebook} alt="Facebook" />
         </a>
-        <a href="https://x.com/?lang=ko" target="_blank " aria-label="X">
+        <a href="https://x.com/?lang=ko" target="_blank" aria-label="X">
           <Image src={x} alt="x" />
         </a>
         <a href="https://www.youtube.com/" target="_blank" aria-label="youtube">
@@ -33,7 +33,7 @@ export default function Footer() {
         >
           <Image src={instagram} alt="instagram" />
         </a>
-      </div>
+      </nav>
     </footer>
   );
 }

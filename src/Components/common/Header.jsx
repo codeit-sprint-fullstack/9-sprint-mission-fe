@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center w-full h-[70px]  px-25  border-b border-[#DFDFDF] bg-whit ">
+    <header className="flex justify-between items-center w-full h-[70px]  px-25  border-b border-[#DFDFDF] bg-[#fff] ">
       <div className="flex justify-center items-center ">
         <Image
           loading="eager"

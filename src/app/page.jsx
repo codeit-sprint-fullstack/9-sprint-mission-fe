@@ -1,22 +1,19 @@
-import PostBest from "@/Components/ui/PostBest";
-import PostList from "@/Components/ui/PostList";
+import { posts } from "@/data/posts";
+import PostList from "@/features/postList/PostList";
+import PostBestList from "@/features/postBest/PostBestList";
 
 export default function Home() {
+  const bests = posts
+    .slice()
+    .sort((a, b) => b.likes - a.likes)
+    .slice(0, 3);
   return (
     <div>
       <section>
-        <PostBest />
+        <PostBestList posts={bests} />
       </section>
       <section>
-        <div className="flex justify-between">
-          <h1>게시글</h1>
-          <button>글쓰기</button>
-        </div>
-        <div className="flex justify-between items-center">
-          <input className="border rounded-xl" type="text" />
-          <button>최신순</button>
-        </div>
-        <PostList />
+        <PostList posts={posts} />
       </section>
     </div>
   );
