@@ -11,7 +11,7 @@ export function ArticleSection({ articles }) {
     <div className="flex flex-col gap-3">
       {articles.map((article) => (
         <Link
-          href={`detail/${article.id}`}
+          href={`articles/${article.id}`}
           key={article.id}
           className="border border-solid border-[#eee]  text-gray-900 py-2.5 px-0 cursor-pointer no-underline"
         >

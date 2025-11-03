@@ -14,7 +14,7 @@ export function ArticleBestSection({ articles }) {
       <div className="flex max-w-full w-300 my-0 mx-auto gap-6">
         {articles.map((article) => (
           <Link
-            href={`detail/${article.id}`}
+            href={`articles/${article.id}`}
             key={article.id}
             className="relative flex flex-col justify-center items-center flex-1 w-96 h-48.5 py-0 px-6 border border-solid border-[#ddd] rounded-lg overflow-hidden bg-gray-100 text-gray-900 cursor-pointer duration-200 no-underline hover: translate-y-[-4px]"
           >
