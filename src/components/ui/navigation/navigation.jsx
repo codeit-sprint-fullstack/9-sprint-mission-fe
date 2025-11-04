@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import PandaLogo from '@/assets/logo.svg'
 import { cn } from '@/libs/cn';
+import { paths } from '#/config/paths'
 
 const navLink = [
   { name: '자유게시판', href: '/articles' },
@@ -18,11 +19,17 @@ export function Navigation() {
     <nav className="w-full h-17.5 bg-white z-1">
       <div className="flex justify-between items-center h-full py-0 px-50 max-w-full my-0 mx-auto border-b border-solid border-gray-300 ">
         <div className="inline-flex items-center">
-          <div>
-            <Link className="inline-flex no-underline items-center ml-2 font-rokaf text-[1.6021rem] font-bold text-primary-100" href="/">
-              <Image className="mr-1.5 w-10 h-10" width={40} height={40} src={PandaLogo} alt="panda-market" />
-              판다마켓
+          <div className='flex items-center gap-2'>
+            <Link
+              className="relative w-10 h-10"
+              href={paths.home.getHref()}>
+              <Image
+                className="mr-1.5 object-fit"
+                fill
+                src={PandaLogo}
+                alt="panda-market" />
             </Link>
+            <p className='font-rokaf text-[1.6021rem] font-bold text-primary-100 text-nowrap'>판다마켓</p>
           </div>
           <nav className="flex gap-3.75 pl-6">
             {navLink.map((link) => (
