@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Dropdown } from "@/components/ui/dropdown/dropdown";
+import Search from "@/components/ui/search/search";
 import { paths } from "#/config/paths";
 
 import { ArticleBestSection } from "./_components/article-best-section";
@@ -18,8 +20,8 @@ async function getBestArticles() {
   return result.data; // 최대 3개의 게시글 배열
 }
 
-async function getArticles() {
-  const res = await fetch('http://localhost:3000/api/articles?limit=5page=1&orderBy=recent', {
+async function getArticles(searchParams) {
+  const res = await fetch(`http://localhost:3000/api/articles?limit=5&page=1&keyword=${searchParams}&orderBy=recent`, {
     cache: "no-store"
   })
 
@@ -32,12 +34,13 @@ async function getArticles() {
 }
 
 
-export default async function ArticlePage() {
+export default async function ArticlePage(props) {
+  const searchParams = await props.searchParams;
   let articles = []
   let bestArticles = []
   try {
     const [articlesData, bestArticlesData] = await Promise.all([
-      getArticles(),
+      getArticles(searchParams),
       getBestArticles(),
     ]);
 
@@ -48,14 +51,16 @@ export default async function ArticlePage() {
   }
 
   return (
-    <main className="max-w-full w-7xl my-0 mx-auto p-5">
+    <main className="max-w-full min-h-screen flex-1 w-7xl my-0 mx-auto p-5">
       {/* 베스트 게시글 영역 */}
       <ArticleBestSection articles={bestArticles} />
 
       {/* 게시글 영역 */}
       <section className="max-w-full m-0">
         <div className="flex justify-between items-center mb-3">
-          <p className="font-pretendard text-xl font-bold mb-6 text-gray-900">게시글</p>
+          <p className="font-pretendard text-xl font-bold mb-6 text-gray-900">
+            게시글
+          </p>
           <Link
             className="flex justify-center items-center gap-2.5 h-10.5 px-3 py-5.5 rounded-lg bg-primary-100 text-gray-100 font-pretendard text-base font-semibold leading-6.5 no-underline cursor-pointer hover:bg-primary-200 active:bg-primary-300"
             href={paths.app.registration.getHref()}
@@ -64,7 +69,10 @@ export default async function ArticlePage() {
           </Link>
         </div>
       </section>
-
+      <div className="flex max-w-300 justify-between mb-6 gap-4">
+        <Search placeholder="검색할 상품을 입력해주세요" />
+        <Dropdown />
+      </div>
       {/* 게시글 목록 렌더링 */}
       {articles.length > 0 ? (
         <ArticleSection articles={articles} />
