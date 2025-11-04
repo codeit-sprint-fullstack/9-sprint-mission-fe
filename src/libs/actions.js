@@ -31,8 +31,11 @@ export const createComment = async (formData) => {
         context: validateSchema.context,
       },
     });
-
-    revalidateTag('comment');
+    /**
+     * @see https://nextjs.org/docs/messages/revalidate-tag-single-arg
+     * 두 번쨰 인수 없을시 헬퍼 호출됨(더이상 사용되지 않음) -> max추가
+     */
+    revalidateTag('comment', 'max');
 
     return { message: 'Added Todo Successfully' };
   } catch (error) {
