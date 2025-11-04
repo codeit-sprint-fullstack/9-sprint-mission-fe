@@ -8,19 +8,21 @@ const buttonVariants = cva(
   {
     variants: {
       intent: {
-        active: "bg-primary-100",
-        disabled: "bg-gray-400"
+        active: "bg-primary-100 hover:bg-primary-200 active:bg-primary-300",
       },
       size: {
-        default: "h-10.5 py-3 px-5.74",
+        default: "h-10.5 py-3 px-5.75",
         small: "h-8 px-3 text-sm",
         large: "h-12 px-6 text-lg",
       },
-      defaultVariants: {
-        intent: "active",
-        size: "default"
+      isDisabled: {
+        true: "bg-gray-400 hover:bg-gray-500"
       },
-    }
+    },
+    defaultVariants: {
+      intent: "active",
+      size: "default"
+    },
   }
 );
 
@@ -35,13 +37,15 @@ const Button = forwardRef(
     },
     ref,
   ) => {
-    // 받은 disabled prop에 따라 CVA의 intent여부를 결정
-    const resolvedIntent = disabled ? 'disabled' : intent;
-
     return (
       <button
         className={cn(
-          buttonVariants({ intent: resolvedIntent, size, className })
+          buttonVariants({
+            intent,
+            size,
+            isDisabled: disabled,
+            className
+          })
         )}
         disabled={disabled}
         ref={ref}
