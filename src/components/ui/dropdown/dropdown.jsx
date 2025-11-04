@@ -3,8 +3,13 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import DropdownArrow from '@/assets/icons/ic_dropdown_arrow.svg'
-import MoblieDropdownArrow from '@/assets/icons/ic_sort.svg'
+import MobileDropdownArrow from '@/assets/icons/ic_sort.svg'
 import { cn } from '@/libs/cn';
+
+const contents = [
+  { title: '최신순', name: 'recent' },
+  { title: '좋아요순', name: 'favorite' },
+]
 
 export function Dropdown({ onChange, page }) {
   const [showPanel, setShowPanel] = useState(false);
@@ -15,11 +20,9 @@ export function Dropdown({ onChange, page }) {
   };
 
   const handleOnChange = (value) => {
-    onChange?.(value);
     if (value === 'recent') setFilterTitle('최신순');
     else if (value === 'favorite') setFilterTitle('좋아요순');
     setShowPanel(false);
-    page(1);
   };
 
   return (
@@ -42,7 +45,7 @@ export function Dropdown({ onChange, page }) {
         />
         <Image
           className='block md:hidden'
-          src={MoblieDropdownArrow}
+          src={MobileDropdownArrow}
           alt='dropdown-arrow'
           width={24} height={24}
         />
@@ -50,23 +53,16 @@ export function Dropdown({ onChange, page }) {
 
       {showPanel && (
         <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white">
-          <li className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
-            <button
-              className="border-0 bg-white"
-              onClick={() => handleOnChange('recent')}
-            >
-              최신순
-            </button>
-          </li>
-          <hr className="border border-solid border-gray-200" />
-          <li className="font-pretendard flex h-10.5 w-31.25 shrink-0 cursor-pointer items-center justify-center text-lg leading-6.5 text-gray-800">
-            <button
-              className="border-0 bg-white"
-              onClick={() => handleOnChange('favorite')}
-            >
-              좋아요순
-            </button>
-          </li>
+          {contents.map((c) => (
+            <li key={c.title} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
+              <button
+                className="border-0 bg-white"
+                onClick={() => handleOnChange(c.name)}
+              >
+                {c.title}
+              </button>
+            </li>
+          ))}
         </ul>
       )}
     </div>
