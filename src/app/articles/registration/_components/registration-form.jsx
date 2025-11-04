@@ -71,8 +71,9 @@ export function ArticleRegistration() {
         method="POST"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
+        className='px-6 w-full'
       >
-        <div className="flex justify-between w-300 mb-9">
+        <div className="flex w-full justify-between mb-9">
           <h2 className='font-pretendard text-2xl font-bold leading-9'>게시물 쓰기</h2>
           <Button
             type="submit"
@@ -81,7 +82,7 @@ export function ArticleRegistration() {
             등록
           </Button>
         </div>
-        <div className="flex flex-col gap-4 w-300 mb-8">
+        <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
             htmlFor="article_name"
@@ -89,7 +90,7 @@ export function ArticleRegistration() {
             제목
           </label>
           <input
-            className='h-14 py-4 px-6 rounded-xl bg-gray-100'
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             type="text"
             id="article_name"
             placeholder="제목을 입력해주세요"
@@ -101,7 +102,7 @@ export function ArticleRegistration() {
           )}
         </div>
 
-        <div className="flex flex-col gap-4 w-300 mb-8">
+        <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
             htmlFor="article_describe"
@@ -109,7 +110,7 @@ export function ArticleRegistration() {
             내용
           </label>
           <textarea
-            className='h-70.5 py-4 px-6 resize-none border-0 rounded-xl bg-gray-100'
+            className='max-w-full w-full h-70.5 py-4 px-6 resize-none border-0 rounded-xl bg-gray-100'
             id="article_describe"
             placeholder="내용을 입력해주세요"
             aria-label="내용을 입력해주세요"
