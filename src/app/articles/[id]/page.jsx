@@ -1,10 +1,13 @@
 // ! server action (Never trust data from the client)
+import { Suspense } from "react";
+
 import { createComment } from "@/libs/actions";
 
 import { ArticleCommentForm } from "./_components/article-comment-form";
 import { ArticleCommentSection } from "./_components/article-comment-section";
 import { ArticleDetailSection } from "./_components/article-detail-section";
 import { BackToArticles } from "./_components/back-to-articles";
+import Loading from "./loading";
 
 async function getArticlesById(id) {
   const res = await fetch(`http://localhost:3000/api/articles/${id}`, {
@@ -26,7 +29,7 @@ export default async function ArticleDetailPage({ params }) {
   return (
     <main className="flex flex-1 flex-col min-h-screen w-full max-w-7xl my-8 mx-auto p-6">
       {/* 게시글 제목 + 좋아요 */}
-      <ArticleDetailSection article={article} />
+      <ArticleDetailSection article={article} action={createComment} />
 
       {/* 본문 */}
       <section className="font-pretendard text-lg text-gray-800 mb-8 leading-6.5 ">
@@ -37,10 +40,11 @@ export default async function ArticleDetailPage({ params }) {
       <ArticleCommentForm article={article} action={createComment} />
 
       {/* 댓글 리스트 */}
-      <ArticleCommentSection article={article} />
+      <Suspense fallback={<Loading />} >
+        <ArticleCommentSection article={article} />
+      </Suspense>
 
       <BackToArticles />
-
     </main >
   );
 }
