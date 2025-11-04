@@ -4,7 +4,7 @@ import './globals.css'
 import Pretendard from 'next/font/local'
 import Rokaf from 'next/font/local'
 
-import { Footer } from '@/components/layouts/footer'
+import { Footer } from '@/components/layouts/Footer'
 import { Navigation } from '@/components/ui/navigation'
 import { rootMetadata } from '#/config/root-metadata'
 
