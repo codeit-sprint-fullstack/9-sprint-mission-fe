@@ -51,7 +51,7 @@ export default async function ArticlePage(props) {
   }
 
   return (
-    <main className="max-w-full min-h-screen flex-1 w-7xl my-0 mx-auto p-5">
+    <main className="max-w-full min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
       {/* 베스트 게시글 영역 */}
       <ArticleBestSection articles={bestArticles} />
 

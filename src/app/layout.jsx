@@ -26,9 +26,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
-        <Navigation />
-        {children}
-        <Footer />
+        <div className='flex flex-col justify-center'>
+          <Navigation />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )

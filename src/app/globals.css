@@ -29,6 +29,13 @@
   --color-gray-100: oklch(0.967 0.0029 264.54);
   --color-gray-50: oklch(0.9846 0.0017 247.84);
 
+  /* 브레이크 포인트 */
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
   /* 커스텀 */
   --color-error-red: oklch(0.6533 0.2127 25.3);
 
