@@ -16,17 +16,3 @@
   --err-red: #f74747;
   --bg-gray: #fcfcfc;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-style: normal;
-  background: var(--bg-gray);
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-}

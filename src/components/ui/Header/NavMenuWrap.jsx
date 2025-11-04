@@ -15,19 +15,19 @@ export function NavMenuWrap() {
         className={clsx(
           baseMenuClasses,
           pathname.startsWith("/posts")
-            ? "text-(--primary-100)" // .nav-menu-active
-            : "text-(--secondary-600)" // .nav-menu
+            ? "text-(--primary-100)"
+            : "text-(--secondary-600)"
         )}
-        href="/"
+        href="/posts"
       >
         자유게시판
       </Link>
       <Link
         className={clsx(
           baseMenuClasses,
-          pathname.startsWith("/items") // /items/1 등 상세 페이지에서도 활성화
-            ? "text-(--primary-100)" // .nav-menu-active
-            : "text-(--secondary-600)" // .nav-menu
+          pathname.startsWith("/items")
+            ? "text-(--primary-100)"
+            : "text-(--secondary-600)"
         )}
         href="/items"
       >
