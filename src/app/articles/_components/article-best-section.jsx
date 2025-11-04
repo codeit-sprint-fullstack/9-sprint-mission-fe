@@ -11,14 +11,14 @@ export function ArticleBestSection({ articles }) {
   return (
     <section className="mb-12">
       <h2 className="font-pretendard text-xl font-bold mb-6 text-gray-900">베스트 게시글</h2>
-      <div className="flex max-w-full w-300 my-0 mx-auto gap-6">
+      <div className="flex max-w-full my-0 mx-auto gap-6">
         {articles.map((article) => (
           <Link
             href={`articles/${article.id}`}
             key={article.id}
-            className="relative flex flex-col justify-center items-center flex-1 w-96 h-48.5 py-0 px-6 border border-solid border-[#ddd] rounded-lg overflow-hidden bg-gray-100 text-gray-900 cursor-pointer duration-200 no-underline hover: translate-y-[-4px]"
+            className="relative flex flex-col justify-center items-center flex-1 w-96 h-48.5 py-0 px-6 rounded-lg overflow-hidden bg-gray-50 text-gray-900 cursor-pointer duration-200 no-underline hover: translate-y-[-4px]"
           >
-            <div className="absolute top-0 left-[7%] flex items-center justify-center gap-1 w-25.5 py-0.5 px-6 bg-primary-100 rounded-t-none rounded-r-none rounded-b-2xl rounded-l-2xl">
+            <div className="absolute top-0 left-[6%] flex items-center justify-center gap-1 w-25.5 py-0.5 px-6 bg-primary-100 rounded-tr-none rounded-tl-none rounded-b-2xl rounded-l-2xl">
               <Image
                 src={Badge}
                 alt="Best-Badge"
@@ -27,8 +27,8 @@ export function ArticleBestSection({ articles }) {
               />
               <p className="font-pretendard font-semibold  leading-6.5 text-white">Best</p>
             </div>
-            <div className="flex flex-row-reverse gap-2">
-              <div className="flex items-center justify-center shrink-0 w-18 h-18  px-3.5 py-3 bg-white border border-solid border-gray-200">
+            <div className="flex flex-row-reverse w-full justify-between gap-2 mt-4">
+              <div className="flex w-18 h-18 px-3.5 py-3 bg-white border border-solid border-gray-200">
                 <Image
                   src={imageSource}
                   alt="썸네일"
