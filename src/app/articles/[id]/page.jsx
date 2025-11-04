@@ -24,7 +24,7 @@ export default async function ArticleDetailPage({ params }) {
   const article = await getArticlesById(id)
 
   return (
-    <main className="flex flex-col max-w-7xl my-8 mx-auto p-6">
+    <main className="flex flex-1 flex-col min-h-screen w-full max-w-7xl my-8 mx-auto p-6">
       {/* 게시글 제목 + 좋아요 */}
       <ArticleDetailSection article={article} />
 

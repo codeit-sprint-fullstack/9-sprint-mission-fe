@@ -12,7 +12,7 @@ export function ArticleCommentForm({ article, action }) {
         <input type="hidden" name="articleId" value={article.id} />
         <textarea
           name="context"
-          className="min-h-20 w-300 p-2.5 border-0 rounded-md resize-none mb-2 bg-gray-100"
+          className="min-h-20 w-full p-2.5 border-0 rounded-md resize-none mb-2 bg-gray-100"
           placeholder="댓글을 입력해주세요..."
         />
         <div className="flex justify-end">
