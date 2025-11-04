@@ -2,8 +2,8 @@ import Image from 'next/image'
 import React from 'react'
 
 import CommentEmptyImg from '@/assets/article/Img_reply_empty.svg'
-import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import DefaultImg from '@/assets/logo.svg'
+import { DropdownContent } from '@/components/ui/dropdown';
 import { formatDate } from "@/utils/format";
 
 export function ArticleCommentSection({ article }) {
@@ -13,14 +13,7 @@ export function ArticleCommentSection({ article }) {
         article.Comment.map((comment) => (
           <li key={comment.id} className="flex flex-col border-2.5 border-t-0 border-r-0 border-l-0 border border-solid border-gray-300 py-3 px-0 gap-6 bg-gray-50">
             <div className="flex justify-between">
-              <p className="font-pretendard text-sm text-gray-900 leading-6">{comment.context}</p>
-              <Image
-                className="flex shrink-0 cursor-pointer pt-1.25 pr-0 pb-1.5 pl-0 mr-3.25"
-                src={EllipsisVertical}
-                alt="vertical-dropdown-button"
-                width={3}
-                height={13}
-              />
+              <DropdownContent comment={comment} />
             </div>
             <div className="flex items-center gap-2 mb-1.5">
               <Image
