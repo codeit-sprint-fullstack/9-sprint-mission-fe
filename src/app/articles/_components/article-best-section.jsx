@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Badge from '@/assets/icons/ic_medal.svg'
 import DefaultImg from '@/assets/logo.svg'
+import { cn } from "@/libs/cn";
 import { formatDate, truncateText } from "@/utils/format";
 
 
@@ -12,11 +13,16 @@ export function ArticleBestSection({ articles }) {
     <section className="mb-12">
       <h2 className="font-pretendard text-xl font-bold mb-6 text-gray-900">베스트 게시글</h2>
       <div className="flex max-w-full my-0 mx-auto gap-6">
-        {articles.map((article) => (
+        {articles.map((article, index) => (
           <Link
             href={`articles/${article.id}`}
             key={article.id}
-            className="relative flex flex-col justify-center items-center flex-1 w-96 h-48.5 py-0 px-6 rounded-lg overflow-hidden bg-gray-50 text-gray-900 cursor-pointer duration-200 no-underline hover: translate-y-[-4px]"
+            // 1개 일때 모두숨기고 하나씩 보여주기 
+            className={cn("relative flex flex-col justify-center items-center flex-1 w-96 h-48.5 py-0 px-6 rounded-lg overflow-hidden bg-gray-50 text-gray-900 cursor-pointer duration-200 no-underline hover: translate-y-[-4px]",
+              index >= 1 && "hidden",
+              index === 1 && "md:flex",
+              index === 2 && "xl:flex"
+            )}
           >
             <div className="absolute top-0 left-[6%] flex items-center justify-center gap-1 w-25.5 py-0.5 px-6 bg-primary-100 rounded-tr-none rounded-tl-none rounded-b-2xl rounded-l-2xl">
               <Image
