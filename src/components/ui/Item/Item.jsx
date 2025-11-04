@@ -1,9 +1,16 @@
+"use client";
+import { useState } from "react";
+
 import ItemCard from "./ItemCard";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Item({ items }) {
-  console.log("items 데이터:", items);
+  const [keyword, setKeyword] = useState("");
+  const filterPosts = items.data.filter(
+    (items) => items.title.includes(keyword) || items.content.includes(keyword)
+  );
+
   return (
     <div>
       <div className="max-w-6xl mx-auto px-4 flex justify-between">
@@ -21,6 +28,8 @@ export default function Item({ items }) {
         </div>
         <input
           type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
           placeholder="검색할 상품을 입력해주세요"
           className="px-15 py-2 bg-[#F3F4F6] rounded-lg w-full placeholder:text-left"
         ></input>
@@ -31,8 +40,13 @@ export default function Item({ items }) {
         </select>
       </div>
       <div>
-        {Array.isArray(items?.data) &&
-          items.data.map((item) => <ItemCard key={item.id} item={item} />)}
+        {filterPosts.length > 0 ? (
+          filterPosts.map((item) => <ItemCard key={item.id} item={item} />)
+        ) : (
+          <p className="text-center font-bold text-gray-500 mt-30 mb-30">
+            검색 결과가 없습니다
+          </p>
+        )}
       </div>
     </div>
   );
