@@ -1,8 +1,16 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import clsx from "clsx";
+
 export default function CreatPostForm() {
+  const [title, setTitle] = useState("");
+  const [context, setContext] = useState("");
+
+  const valid = title.trim() && context.trim();
+
   return (
-    <from className="w-full ">
+    <form className="w-full">
       <div className="flex justify-between items-center">
         <h2 className="text-(--secondary-900) text-xl font-bold">
           게시글 쓰기
@@ -10,7 +18,8 @@ export default function CreatPostForm() {
         <input
           type="submit"
           value="등록"
-          className="inline-block px-5.75 h-10.5 leading-10.5 border-none rounded-lg bg-(--primary-100) text-center text-(--secondary-100) text-base font-semibold"
+          className={clsx("btns", valid ? "active" : "disactive")}
+          disabled={!valid}
         />
       </div>
       <div className="flex flex-col mt-8 gap-6">
@@ -22,6 +31,8 @@ export default function CreatPostForm() {
               className="h-6 w-full border-none bg-transparent text-base font-normal leading-6.5 placeholder:text-(--secondary-400) focus:outline-none"
               type="text"
               placeholder="제목을 입력해주세요"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
         </div>
@@ -33,10 +44,12 @@ export default function CreatPostForm() {
               className="h-52 w-full border-none bg-transparent text-base font-normal leading-6.5 placeholder:text-(--secondary-400) focus:outline-none"
               type="text"
               placeholder="내용을 입력해주세요"
+              value={context}
+              onChange={(e) => setContext(e.target.value)}
             />
           </div>
         </div>
       </div>
-    </from>
+    </form>
   );
 }

@@ -31,8 +31,8 @@ export default function DropDown() {
 
       <ul
         className={clsx(
-          "absolute z-0 hidden w-32 mt-2 bg-white border border-(--secondary-200) rounded-xl",
-          isDropDownActive && "block"
+          "absolute z-0 w-32 mt-2 bg-white border border-(--secondary-200) rounded-xl",
+          isDropDownActive ? "block" : "hidden"
         )}
       >
         <li className="w-full h-10.5 border-b border-(--secondary-200) last:border-b-0">

@@ -8,10 +8,7 @@ export default function MainPostsSection() {
     <section className="mt-10 ">
       <div className="flex justify-between items-center">
         <h2 className="text-(--secondary-900) text-xl font-bold">게시글</h2>
-        <Link
-          href="/posts/create"
-          className="inline-block px-5.75 h-10.5 leading-10.5 border-none rounded-lg bg-(--primary-100) text-center text-(--secondary-100) text-base font-semibold"
-        >
+        <Link href="/posts/create" className="btns">
           글쓰기
         </Link>
       </div>

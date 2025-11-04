@@ -39,11 +39,7 @@ export function Header() {
           <NavMenuWrap />
         </div>
         <div id="nav-right">
-          <Link
-            id="btn-login"
-            className="inline-block px-5.75 h-10.5 leading-10.5 border-none rounded-lg bg-(--primary-100) text-center text-(--secondary-100) text-base font-semibold"
-            href="/login"
-          >
+          <Link id="btn-login" className="btns" href="/login">
             로그인
           </Link>
         </div>
