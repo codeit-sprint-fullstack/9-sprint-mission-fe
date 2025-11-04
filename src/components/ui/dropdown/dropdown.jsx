@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import DropdownArrow from '@/assets/icons/ic_dropdown_arrow.svg'
+import MoblieDropdownArrow from '@/assets/icons/ic_sort.svg'
 import { cn } from '@/libs/cn';
 
 export function Dropdown({ onChange, page }) {
@@ -25,15 +26,24 @@ export function Dropdown({ onChange, page }) {
     <div className="relative">
       <button
         className={cn(
-          'flex cursor-pointer items-center justify-center gap-6 rounded-xl border border-solid border-gray-200 bg-white px-3 py-3 text-nowrap',
+          'flex cursor-pointer items-center justify-center gap-6 rounded-xl border border-solid border-gray-200 bg-white px-2.25 py-2.25 text-nowrap',
           showPanel && 'bg-gray-200 transition-colors duration-500 ease-in',
         )}
         onClick={handleOnClick}
       >
-        {filterTitle}
+        <p className='hidden md:block'>
+          {filterTitle}
+        </p>
         <Image
+          className='hidden md:block'
           src={DropdownArrow}
           alt="dropdown-arrow"
+          width={24} height={24}
+        />
+        <Image
+          className='block md:hidden'
+          src={MoblieDropdownArrow}
+          alt='dropdown-arrow'
           width={24} height={24}
         />
       </button>
