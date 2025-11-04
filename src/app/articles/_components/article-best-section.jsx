@@ -4,7 +4,7 @@ import Link from "next/link";
 import Badge from '@/assets/icons/ic_medal.svg'
 import DefaultImg from '@/assets/logo.svg'
 import { cn } from "@/libs/cn";
-import { formatDate, truncateText } from "@/utils/format";
+import { formatDate, truncateText } from "@/libs/utils/format";
 
 
 export function ArticleBestSection({ articles }) {

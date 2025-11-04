@@ -1,6 +1,6 @@
 'use server';
 
-import { revalidateTag, updateTag } from 'next/cache';
+import { updateTag } from 'next/cache';
 import { z } from 'zod';
 
 import prisma from './prisma';

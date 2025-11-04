@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 import HeartIcon from '@/assets/icons/ic_heart.svg'
-import { truncateDate } from "@/utils/format"
+import { truncateDate } from "@/libs/utils/format"
 
 export function ArticleDetailSection({ article }) {
   return (

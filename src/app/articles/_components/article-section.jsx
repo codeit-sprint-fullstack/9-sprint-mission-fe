@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import DefaultImg from '@/assets/logo.svg'
-import { formatDate } from "@/utils/format";
+import { formatDate } from "@/libs/utils/format";
 
 export function ArticleSection({ articles }) {
 

@@ -2,53 +2,18 @@ import Link from "next/link";
 
 import { Dropdown } from "@/components/ui/dropdown";
 import { Search } from "@/components/ui/search";
+import { getArticles, getBestArticles } from "@/services/article-service";
 import { paths } from "#/config/paths";
 
 import { ArticleBestSection } from "./_components/article-best-section";
 import { ArticleSection } from "./_components/article-section";
 
-async function getBestArticles() {
-  // 내부 API 호출: /api/articles/best
-  const res = await fetch('http://localhost:3000/api/articles/best', {
-    cache: 'no-store',
-  });
-
-  if (!res.ok) {
-    throw new Error('베스트 게시글 데이터를 가져오는 데 실패했습니다.');
-  }
-  const result = await res.json();
-  return result.data; // 최대 3개의 게시글 배열
-}
-
-async function getArticles(searchParams) {
-  const res = await fetch(`http://localhost:3000/api/articles?limit=5&page=1&keyword=${searchParams}&orderBy=recent`, {
-    cache: "no-store"
-  })
-
-  if (!res.ok) {
-    throw new Error('게시글 데이터를 가져오는 데 실패했습니다.')
-  }
-
-  const result = await res.json();
-  return result.data;
-}
-
-
 export default async function ArticlePage(props) {
   const searchParams = await props.searchParams;
-  let articles = []
-  let bestArticles = []
-  try {
-    const [articlesData, bestArticlesData] = await Promise.all([
-      getArticles(searchParams),
-      getBestArticles(),
-    ]);
-
-    articles = articlesData;
-    bestArticles = bestArticlesData;
-  } catch (error) {
-    console.error("패칭 중 오류 발생", error);
-  }
+  const [articles, bestArticles] = await Promise.all([
+    getArticles(searchParams).catch(error => { console.error(error); return []; }),
+    getBestArticles().catch(error => { console.error(error); return [] }),
+  ]);
 
   return (
     <main className="max-w-full min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">

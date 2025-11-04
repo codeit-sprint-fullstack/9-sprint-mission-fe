@@ -4,7 +4,7 @@ import React from 'react'
 import CommentEmptyImg from '@/assets/article/Img_reply_empty.svg'
 import DefaultImg from '@/assets/logo.svg'
 import { DropdownContent } from '@/components/ui/dropdown';
-import { formatDate } from "@/utils/format";
+import { formatDate } from "@/libs/utils/format";
 
 export function ArticleCommentSection({ article }) {
   return (
