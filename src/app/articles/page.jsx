@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Dropdown } from "@/components/ui/dropdown/dropdown";
-import Search from "@/components/ui/search/search";
+import { Dropdown } from "@/components/ui/dropdown";
+import { Search } from "@/components/ui/search";
 import { paths } from "#/config/paths";
 
 import { ArticleBestSection } from "./_components/article-best-section";

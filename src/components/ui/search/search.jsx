@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import SearchIcon from '@/assets/icons/ic_searchs.svg'
 
-export default function Search({ placeholder }) {
+export function Search({ placeholder }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
