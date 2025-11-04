@@ -32,7 +32,7 @@ export const createComment = async (formData) => {
       },
     });
 
-    revalidateTag('comment', 'max');
+    revalidateTag('comment');
 
     return { message: 'Added Todo Successfully' };
   } catch (error) {
