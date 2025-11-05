@@ -3,17 +3,18 @@ import React from 'react'
 
 import CommentEmptyImg from '@/assets/article/Img_reply_empty.svg'
 import DefaultImg from '@/assets/logo.svg'
-import { DropdownContent } from '@/components/ui/dropdown';
 import { formatDate } from "@/libs/utils/format";
 
-export function ArticleCommentSection({ article }) {
+import { DropdownContent } from './dropdown-content'
+
+export function ArticleCommentSection({ article, action }) {
   return (
     <section className="flex flex-col gap-6 no-underline list-none">
       {article.Comment && article.Comment.length > 0 ? (
         article.Comment.map((comment) => (
           <li key={comment.id} className="flex flex-col border-2.5 border-t-0 border-r-0 border-l-0 border border-solid border-gray-300 py-3 px-0 gap-6 bg-gray-50">
             <div className="flex justify-between">
-              <DropdownContent comment={comment} />
+              <DropdownContent comment={comment} action={action} />
             </div>
             <div className="flex items-center gap-2 mb-1.5">
               <Image

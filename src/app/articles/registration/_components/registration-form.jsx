@@ -7,6 +7,7 @@ import { z } from 'zod'
 
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/modal";
+import { createArticle } from '@/services/article-service';
 
 const articleFormSchema = z.object({
   title: z
@@ -17,24 +18,6 @@ const articleFormSchema = z.object({
     .min(10, '내용은 10자 이상 입력해주세요.')
     .max(100, '내용은 100자 이내로 입력해주세요.'),
 })
-
-async function createArticle(formData) {
-  const res = await fetch('http://localhost:3000/api/articles', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData)
-  });
-
-  if (!res.ok) {
-    const errorObj = await res.json().catch(() => ({ message: '게시글 생성 실패' }));
-    throw new Error(`게시글 데이터를 가져오는 데 실패했습니다: ${errorObj.message}|${res.statusText}`)
-  }
-
-  const result = await res.json();
-  return result.data;
-}
 
 export function ArticleRegistration() {
   const [showModal, setShowModal] = useState(false);

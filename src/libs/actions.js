@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 import prisma from './prisma';
 
-const schema = z.object({
+const createCommentSchema = z.object({
   authorId: z.int(),
   articleId: z.int(),
   context: z.string().min(1, '댓글 내용을 입력해주세요.'),
@@ -16,7 +16,7 @@ export const createComment = async (formData) => {
   const rawArticleId = formData.get('articleId');
 
   try {
-    const validateSchema = schema.parse({
+    const validateSchema = createCommentSchema.parse({
       authorId: parseInt(rawAuthorId),
       articleId: parseInt(rawArticleId),
       context: formData.get('context'),
@@ -40,8 +40,32 @@ export const createComment = async (formData) => {
   } catch (error) {
     console.error(error);
     if (error instanceof z.ZodError) {
-      return { message: 'Invalid input data', errors: error.errors };
+      return { message: 'Invalid input data', issues: error.issues };
     }
     return { message: 'Failed to create comment' };
+  }
+};
+
+export const updateComment = async (formData) => {
+  const commentId = formData.get('commentId');
+  const newContext = formData.get('context');
+  console.log(commentId);
+  try {
+    if (!commentId) return { success: false, message: 'Invalid input' };
+
+    await prisma.comment.update({
+      where: { id: parseInt(commentId) },
+      data: { context: newContext },
+    });
+
+    updateTag('comment');
+
+    return { success: true, message: 'success update comment' };
+  } catch (error) {
+    console.error(error);
+    if (error instanceof z.ZodError) {
+      return { message: 'Invalid input data', issues: error.issues };
+    }
+    return { success: false, message: 'falied update comment' };
   }
 };

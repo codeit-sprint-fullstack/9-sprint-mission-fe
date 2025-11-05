@@ -1,7 +1,7 @@
 // ! server action (Never trust data from the client)
 import { Suspense } from "react";
 
-import { createComment } from "@/libs/actions";
+import { createComment, updateComment } from "@/libs/actions";
 
 import { ArticleCommentForm } from "./_components/article-comment-form";
 import { ArticleCommentSection } from "./_components/article-comment-section";
@@ -41,7 +41,7 @@ export default async function ArticleDetailPage({ params }) {
 
       {/* 댓글 리스트 */}
       <Suspense fallback={<Loading />} >
-        <ArticleCommentSection article={article} />
+        <ArticleCommentSection article={article} action={updateComment} />
       </Suspense>
 
       <BackToArticles />
