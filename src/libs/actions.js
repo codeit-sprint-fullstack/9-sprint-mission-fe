@@ -32,7 +32,7 @@ export const createComment = async (formData) => {
     /**
      * @see https://nextjs.org/docs/messages/revalidate-tag-single-arg
      * @see https://nextjs.org/docs/app/api-reference/functions/updateTag
-     * 두 번쨰 인수 없을시 헬퍼 호출됨(더이상 사용되지 않음) -> max추가
+     * 두 번쨰 인수 없을시 헬퍼 호출됨(더이상 권장 되지않음) -> max추가
      */
     updateTag('comment');
 
