@@ -27,7 +27,9 @@ export function Search({ placeholder }) {
         htmlFor="search">
         <Image
           src={SearchIcon}
-          alt="search-icon" />
+          alt="search-icon"
+          unoptimized
+        />
       </label>
       <input
         className='py-2.25 pr-5 pb-2.25 pl-10 w-full bg-gray-100 text-gray-500 font-pretendard leading-6.5 text-lg rounded-xl border-none focus:text-gray-950'

@@ -13,7 +13,12 @@ export function BackToArticles() {
       <p className="font-pretendard text-base font-semibold leading-6.5 text-white text-nowrap">
         목록으로 돌아가기
       </p>
-      <Image src={Undo} alt="undo-img" width={24} height={24} />
+      <Image
+        src={Undo}
+        alt="undo-img"
+        width={24} height={24}
+        unoptimized
+      />
     </Link>
   )
 }

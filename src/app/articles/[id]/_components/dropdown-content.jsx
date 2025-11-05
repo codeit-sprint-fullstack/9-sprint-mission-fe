@@ -85,6 +85,7 @@ export function DropdownContent({ comment, action }) {
                 alt="vertical-dropdown-button"
                 width={3}
                 height={13}
+                unoptimized
               />
               {showPanel && (
                 <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white -left-20">

@@ -59,12 +59,14 @@ export function Dropdown() {
           src={DropdownArrow}
           alt="dropdown-arrow"
           width={24} height={24}
+          unoptimized
         />
         <Image
           className='block md:hidden'
           src={MobileDropdownArrow}
           alt='dropdown-arrow'
           width={24} height={24}
+          unoptimized
         />
       </button>
 

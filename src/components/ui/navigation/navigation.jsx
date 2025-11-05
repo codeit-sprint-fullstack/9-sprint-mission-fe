@@ -27,7 +27,10 @@ export function Navigation() {
                 className="hidden mr-1.5 object-fit md:block"
                 fill
                 src={PandaLogo}
-                alt="panda-market" />
+                alt="panda-market"
+                unoptimized
+                priority
+              />
             </Link>
             <p className='font-rokaf text-[1.2626rem] md:text-[1.6021rem] font-bold text-primary-100 text-nowrap'>판다마켓</p>
           </div>
