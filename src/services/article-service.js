@@ -2,7 +2,7 @@ const base_url = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 export async function getBestArticles() {
   const res = await fetch(`${base_url}/api/articles/best`, {
-    cache: 'no-store',
+    next: { revalidate: 3600 }, // 1시간 마다 갱신
   });
 
   if (!res.ok) {
@@ -16,7 +16,7 @@ export async function getArticles(searchParams) {
   const res = await fetch(
     `${base_url}/api/articles?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
     {
-      cache: 'no-store',
+      next: { revalidate: 500 },
     },
   );
 

@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 import prisma from '@/libs/prisma';
 
 export const GET = async (request) => {
-  'use cache';
   try {
     const { searchParams } = new URL(request.url);
 
