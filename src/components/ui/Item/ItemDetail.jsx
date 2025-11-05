@@ -40,7 +40,20 @@ export default function ItemDetail({ item, comments }) {
           </button>
         </div>
       </div>
-      <ItemComments item={item} />
+      {ItemComments.length > 0 ? (
+        <ItemComments item={item} />
+      ) : (
+        <div className="flex justify-center items-center flex-col mb-15 text-gray-400">
+          <Image
+            src="/Img_reply_empty.png"
+            alt="empty"
+            width={150}
+            height={150}
+          />
+          <p className="mt-5">아직 댓글이 없어요,</p>
+          <p>지금 댓글을 달아보세요</p>
+        </div>
+      )}
       <div className=" flex justify-center items-center mt-10">
         <div className="bg-[#3692FF] rounded-4xl text-white p-2 px-8 font-bold flex gap-1">
           목록으로 돌아가기
