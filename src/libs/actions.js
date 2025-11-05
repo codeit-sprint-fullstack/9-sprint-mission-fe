@@ -69,3 +69,23 @@ export const updateComment = async (formData) => {
     return { success: false, message: 'falied update comment' };
   }
 };
+
+export const deleteComment = async (id) => {
+  try {
+    if (!id) return { success: false, message: 'Invalid id' };
+
+    await prisma.comment.delete({
+      where: { id: parseInt(id) },
+    });
+
+    updateTag('comment');
+
+    return { success: true, message: 'success delete comment' };
+  } catch (error) {
+    console.error(error);
+    if (error instanceof z.ZodError) {
+      return { message: 'Invalid data', issues: error.issues };
+    }
+    return { success: false, message: 'falied delete comment' };
+  }
+};
