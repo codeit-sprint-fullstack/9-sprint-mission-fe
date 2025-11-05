@@ -1,3 +1,6 @@
+"use client";
+import { useState, useRef, useEffect } from "react";
+
 import Image from "next/image";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -7,12 +10,27 @@ dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
 export default function ItemComments({ item, createdAt }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div>
       <div className="bg-gray-100 rounded-lg flex flex-col p-3 mt-5">
         <div className="flex justify-between">
           <p className="text-xl mb-5">{item.content}</p>
-          <div className="flex">⋮</div>
+          <div>
+            <button
+              onClick={() => setOpen((prev) => !prev)}
+              className="cursor-pointer"
+            >
+              ⋮
+            </button>
+            {open && (
+              <div className="absolute border rounded-lg border-gray-300 text-gray-400 bg-white p-4 w-35 right-45 items-center justify-center flex flex-col gap-2">
+                <button className="block">수정하기</button>
+                <button className="block">삭제하기</button>
+              </div>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-1">
           <Image src="/ic_profile.png" alt="profile" width={20} height={20} />

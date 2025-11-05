@@ -15,7 +15,7 @@ export default function Item({ items }) {
     <div>
       <div className="max-w-6xl mx-auto px-4 flex justify-between">
         <h2 className="font-bold text-xl">게시글</h2>
-        <Link href="/Post">
+        <Link href="/post">
           <div className="bg-[#3692FF] w-23 h-10 p-2 rounded-lg text-white font-bold flex justify-center items-center">
             글쓰기
           </div>
@@ -41,7 +41,11 @@ export default function Item({ items }) {
       </div>
       <div>
         {filterPosts.length > 0 ? (
-          filterPosts.map((item) => <ItemCard key={item.id} item={item} />)
+          filterPosts.map((item) => (
+            <Link href={`/item/${item.id}`} key={item.id}>
+              <ItemCard item={item} />
+            </Link>
+          ))
         ) : (
           <p className="text-center font-bold text-gray-500 mt-30 mb-30">
             검색 결과가 없습니다
