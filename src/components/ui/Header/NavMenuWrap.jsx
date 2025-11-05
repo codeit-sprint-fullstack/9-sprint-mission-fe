@@ -14,22 +14,22 @@ export function NavMenuWrap() {
       <Link
         className={clsx(
           baseMenuClasses,
-          pathname.startsWith("/posts")
+          pathname.startsWith("/articles")
             ? "text-(--primary-100)"
             : "text-(--secondary-600)"
         )}
-        href="/posts"
+        href="/articles"
       >
         자유게시판
       </Link>
       <Link
         className={clsx(
           baseMenuClasses,
-          pathname.startsWith("/items")
+          pathname.startsWith("/products")
             ? "text-(--primary-100)"
             : "text-(--secondary-600)"
         )}
-        href="/items"
+        href="/products"
       >
         중고마켓
       </Link>
