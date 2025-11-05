@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 
-export default function CreatArticleForm() {
+export default function ArticleCreatForm() {
   const [title, setTitle] = useState("");
   const [context, setContext] = useState("");
 

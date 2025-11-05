@@ -19,14 +19,16 @@ export default function MainAlticleItem({ article }) {
         <div className="flex justify-between items-center mt-4.5 text-[0.875rem]">
           <div className="flex text-(--secondary-600) gap-2">
             <div className="flex gap-1">
-              <figure className="relative w-6 h-6">
-                <Image
-                  src={profileImg}
-                  alt="프로필 이미지"
-                  fill
-                  sizes="100vw"
-                />
-              </figure>
+              <div className="block">
+                <figure className="relative w-6 h-6">
+                  <Image
+                    src={profileImg}
+                    alt="프로필 이미지"
+                    fill
+                    sizes="1.5rem"
+                  />
+                </figure>
+              </div>
               <span>닉네임 이건 정의되지 않은 더미</span>
             </div>
             <p className="text-(--secondary-400)">

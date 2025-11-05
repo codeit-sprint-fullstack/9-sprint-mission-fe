@@ -8,7 +8,7 @@ export function Header() {
   return (
     <header
       id="header"
-      className="fixed top-0 left-0 w-full h-[4.4rem] flex justify-center items-center bg-white border-b border-[#dfdfdf]"
+      className="fixed top-0 left-0 w-full h-[4.4rem] flex justify-center items-center bg-white border-b border-[#dfdfdf] z-999"
     >
       <nav
         id="nav"

@@ -12,7 +12,7 @@ export default function BestArticleItem({ article }) {
         className="w-[24rem] h-42 px-6 bg-(--secondary-50) rounded-lg"
       >
         <div className="flex justify-center items-center w-25.5 h-7.5 px-6 bg-(--primary-100) rounded-[0_0_1rem_1rem] gap-1">
-          <Image src={medalIcon} alt="메달로고" sizes="0.77rem" />
+          <Image src={medalIcon} alt="메달로고" className="w-3" />
           <span className="text-white text-[1rem] font-semibold">Best</span>
         </div>
         <div className="flex w-full mt-4 gap-2">
@@ -20,7 +20,7 @@ export default function BestArticleItem({ article }) {
             {article.title}
           </h3>
           <div className="flex justify-center w-18 h-18 bg-white p-3 rounded-md border border-(--secondary-200) ">
-            <Image src={sampleImg} alt="샘플이미지" width="3rem" />
+            <Image src={sampleImg} alt="샘플이미지" className="w-12" />
           </div>
         </div>
         <div className="flex justify-between items-center mt-4.5 text-[0.875rem]">
