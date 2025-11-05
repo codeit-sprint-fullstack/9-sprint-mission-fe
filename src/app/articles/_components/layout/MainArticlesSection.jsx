@@ -4,8 +4,6 @@ import DropDown from "../ui/DropDown";
 import SearchInput from "../ui/SearchInput";
 import MainArticleItem from "../ui/MainArticleItem";
 
-export const dynamic = "force-dynamic";
-
 export default async function MainArticlesSection({ keyword }) {
   console.log(keyword);
   const articles = await getArticlesList({ keyword });
