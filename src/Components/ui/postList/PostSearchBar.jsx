@@ -11,10 +11,10 @@ export default function PostSearchBar() {
           alt="searchIcon"
           width={20}
           height={20}
-          className="absolute mt-3 ml-3"
+          className="absolute top-1/2 -translate-y-1/2 left-4"
         />
         <input
-          className="w-[800px] h-7 p-[20px_20px_20px_16px]  bg-gray-100 rounded-xl "
+          className="w-[800px] h-7 px-[50px] py-5  bg-gray-100 rounded-xl "
           type="text"
           placeholder="검색할 상품을 입력해주세요"
         />

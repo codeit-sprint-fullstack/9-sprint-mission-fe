@@ -1,4 +1,3 @@
-import React from "react";
 import PostListHeader from "./PostListHeader";
 import PostSearchBar from "./PostSearchBar";
 import PostCard from "./PostCard";

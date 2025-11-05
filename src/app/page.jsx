@@ -1,6 +1,7 @@
 import { posts } from "@/data/posts";
-import PostList from "@/features/postList/PostList";
-import PostBestList from "@/features/postBest/PostBestList";
+import PostList from "@/components/ui/postList/PostList";
+import PostBestList from "@/components/ui/postBest/PostBestList";
+import ClientRedirectPush from "./posts/page";
 
 export default function Home() {
   const bests = posts
@@ -8,13 +9,13 @@ export default function Home() {
     .sort((a, b) => b.likes - a.likes)
     .slice(0, 3);
   return (
-    <div>
+    <main>
       <section>
         <PostBestList posts={bests} />
       </section>
       <section>
         <PostList posts={posts} />
       </section>
-    </div>
+    </main>
   );
 }

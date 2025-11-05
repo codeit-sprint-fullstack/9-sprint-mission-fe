@@ -6,7 +6,7 @@ export default function PostBest({ post }) {
   const { title, author, date, likes, background, heart } = post;
 
   return (
-    <div className="px-6 py-6 pb-10 gap-6 bg-gray-50 rounded-b-lg">
+    <div className="px-6 my-6 mb-10 gap-6 bg-gray-50 rounded-b-lg">
       <article>
         <div className="flex flex-col gap-4 pb-[18px] ">
           <BestButton />
