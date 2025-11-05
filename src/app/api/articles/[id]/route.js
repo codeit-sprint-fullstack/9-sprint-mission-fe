@@ -113,3 +113,31 @@ export const PATCH = async (request, { params }) => {
     );
   }
 };
+
+export const DELETE = async (request, { params }) => {
+  const { id } = await params;
+  if (!id) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Not Found Article id',
+      },
+      { status: 404 },
+    );
+  }
+
+  try {
+    await prisma.article.delete({
+      where: { id: parseInt(id) },
+    });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Internal Server Error',
+      },
+      { status: 500 },
+    );
+  }
+};

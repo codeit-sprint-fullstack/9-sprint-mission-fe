@@ -15,7 +15,7 @@ async function getArticlesById(id) {
   });
 
   if (!res.ok) {
-    throw new error('베스트 게시글 데이터를 가져오는 데 실패했습니다.');
+    throw new Error('베스트 게시글 데이터를 가져오는 데 실패했습니다.');
   }
 
   const result = await res.json();

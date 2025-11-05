@@ -1,3 +1,6 @@
+'use server';
+import { revalidatePath } from 'next/cache';
+
 const base_url = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 export async function getBestArticles() {
@@ -70,4 +73,22 @@ export async function updateArticle(id, formDate) {
 
   const result = await res.json();
   return result.data;
+}
+
+export async function deleteArticle(id) {
+  if (!id) throw new Error('Article ID not found');
+  const res = await fetch(`${base_url}/api/articles/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) {
+    const errorObj = await res
+      .json()
+      .catch(() => ({ message: '게시글 삭제 실패' }));
+    throw new Error(`Failed update article: ${errorObj.message}}`);
+  }
+
+  revalidatePath('/articles');
+
+  return { success: true };
 }
