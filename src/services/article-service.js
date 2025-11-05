@@ -1,6 +1,7 @@
+const base_url = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
 export async function getBestArticles() {
-  // 내부 API 호출: /api/articles/best
-  const res = await fetch('http://localhost:3000/api/articles/best', {
+  const res = await fetch(`${base_url}/api/articles/best`, {
     cache: 'no-store',
   });
 
@@ -13,7 +14,7 @@ export async function getBestArticles() {
 
 export async function getArticles(searchParams) {
   const res = await fetch(
-    `http://localhost:3000/api/articles?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
+    `${base_url}/api/articles?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
     {
       cache: 'no-store',
     },
@@ -28,7 +29,7 @@ export async function getArticles(searchParams) {
 }
 
 export async function createArticle(formData) {
-  const res = await fetch('http://localhost:3000/api/articles', {
+  const res = await fetch(`${base_url}/api/articles`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
