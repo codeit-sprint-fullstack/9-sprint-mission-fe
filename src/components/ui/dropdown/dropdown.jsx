@@ -1,17 +1,21 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useCallback, useState } from 'react';
 
 import DropdownArrow from '@/assets/icons/ic_dropdown_arrow.svg'
 import MobileDropdownArrow from '@/assets/icons/ic_sort.svg'
 import { cn } from '@/libs/cn';
 
 const contents = [
-  { title: '최신순', name: 'recent' },
-  { title: '좋아요순', name: 'favorite' },
+  { title: '최신순', value: 'recent' },
+  { title: '좋아요순', value: 'favorite' },
 ]
 
-export function Dropdown({ onChange, page }) {
+export function Dropdown() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
   const [showPanel, setShowPanel] = useState(false);
   const [filterTitle, setFilterTitle] = useState('최신순');
 
@@ -19,11 +23,24 @@ export function Dropdown({ onChange, page }) {
     setShowPanel(!showPanel);
   };
 
-  const handleOnChange = (value) => {
-    if (value === 'recent') setFilterTitle('최신순');
-    else if (value === 'favorite') setFilterTitle('좋아요순');
+  const handleOnChange = useCallback((value) => {
+    const params = new URLSearchParams(searchParams.toString())
+
+    if (value) {
+      params.set('orderBy', value)
+    } else {
+      params.delete('orderBy')
+    }
+    params.set('page', '1')
+
+    const newTitle = contents.find(c => c.value === value)?.title || '최신순';
+    setFilterTitle(newTitle);
+
+    replace(`${pathname}?${params.toString()}`);
     setShowPanel(false);
-  };
+  },
+    [searchParams, pathname, replace]
+  );
 
   return (
     <div className="relative">
@@ -57,7 +74,7 @@ export function Dropdown({ onChange, page }) {
             <li key={c.title} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
               <button
                 className="border-0 bg-white"
-                onClick={() => handleOnChange(c.name)}
+                onClick={() => handleOnChange(c.value)}
               >
                 {c.title}
               </button>

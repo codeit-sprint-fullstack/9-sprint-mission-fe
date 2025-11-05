@@ -12,8 +12,6 @@ const schema = z.object({
 });
 
 export const createComment = async (formData) => {
-  console.log(formData);
-
   const rawAuthorId = formData.get('authorId');
   const rawArticleId = formData.get('articleId');
 

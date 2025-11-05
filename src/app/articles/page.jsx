@@ -10,8 +10,10 @@ import { ArticleSection } from "./_components/article-section";
 
 export default async function ArticlePage(props) {
   const searchParams = await props.searchParams;
+  const keyword = searchParams.keyword || '';
+  const orderBy = searchParams.orderBy || 'recent';
   const [articles, bestArticles] = await Promise.all([
-    getArticles(searchParams).catch(error => { console.error(error); return []; }),
+    getArticles(keyword, orderBy).catch(error => { console.error(error); return []; }),
     getBestArticles().catch(error => { console.error(error); return [] }),
   ]);
 

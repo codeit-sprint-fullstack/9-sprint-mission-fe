@@ -9,6 +9,7 @@ export function Search({ placeholder }) {
   const pathname = usePathname();
   const { replace } = useRouter();
 
+  // TODOS: 디바운싱
   function handleSearch(term) {
     const params = new URLSearchParams(searchParams)
     if (term) {

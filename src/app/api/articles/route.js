@@ -20,16 +20,13 @@ export const GET = async (request) => {
 
     const SORT_MAP = {
       recent: { createdAt: 'desc' },
-      oldest: { createdAt: 'asc' },
+      favorite: { createdAt: 'asc' },
     };
     const sortOptions = SORT_MAP[orderBy] ?? { createdAt: 'desc' };
 
     const articles = await prisma.article.findMany({
       where: {
-        OR: [
-          { title: { contains: keyword, mode: 'insensitive' } },
-          { content: { contains: keyword, mode: 'insensitive' } },
-        ],
+        OR: [{ title: { contains: keyword, mode: 'insensitive' } }],
       },
       include: {
         author: {
@@ -93,7 +90,7 @@ export const POST = async (request) => {
       { status: 201 },
     );
   } catch (error) {
-    console.log('API Post Error', error);
+    console.error('API Post Error', error);
 
     return NextResponse.json(
       {
