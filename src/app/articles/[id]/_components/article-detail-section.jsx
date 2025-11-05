@@ -3,10 +3,12 @@ import Image from "next/image"
 import HeartIcon from '@/assets/icons/ic_heart.svg'
 import { truncateDate } from "@/libs/utils/format"
 
+import { ArticleTitleSection } from "./article-title-section"
+
 export function ArticleDetailSection({ article }) {
   return (
     <section className="w-full items-center border-b border-solid border-gray-200 pb-4 mb-6">
-      <h2 className="font-pretendard text-xl font-bold leading-8 text-gray-900 mb-4">{article.title}</h2>
+      <ArticleTitleSection article={article} />
       <div className="flex items-center">
         <div className="flex content-baseline flex-wrap">
           <Image

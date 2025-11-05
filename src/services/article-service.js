@@ -49,3 +49,25 @@ export async function createArticle(formData) {
   const result = await res.json();
   return result.data;
 }
+
+export async function updateArticle(id, formDate) {
+  if (!id) throw new Error('Article ID not found');
+  const res = await fetch(`${base_url}/api/articles/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formDate),
+  });
+
+  if (!res.ok) {
+    const errorObj = await res
+      .json()
+      .catch(() => ({ message: '게시글 수정 실패' }));
+
+    throw new Error(`Failed update article: ${errorObj.message}}`);
+  }
+
+  const result = await res.json();
+  return result.data;
+}

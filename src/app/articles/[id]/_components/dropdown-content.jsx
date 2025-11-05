@@ -24,7 +24,6 @@ function SubmitButton() {
 export function DropdownContent({ comment, action }) {
   const [showPanel, setShowPanel] = useState(false);
   const [update, setUpdate] = useState(false);
-  const [context, setContext] = useState('');
 
   const handlePanel = () => {
     setShowPanel(!showPanel);
@@ -33,7 +32,6 @@ export function DropdownContent({ comment, action }) {
   const handleOnChange = () => {
     setUpdate(!update)
     setShowPanel(false)
-    setContext('')
   }
 
   // 서버 액션을 호출하는 래퍼 함수

@@ -2,6 +2,11 @@ import { NextResponse } from 'next/server';
 
 import prisma from '@/libs/prisma';
 
+/**
+ * @see https://nextjs.org/docs/app/api-reference/functions/next-response
+ * @see https://velog.io/@sue77/Next.js%EC%97%90%EC%84%9C-NextResponse%EC%99%80-Response%EC%9D%98-%EC%B0%A8%EC%9D%B4
+ */
+
 export const GET = async (request) => {
   try {
     const { searchParams } = new URL(request.url);

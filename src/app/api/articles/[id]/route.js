@@ -13,10 +13,10 @@ export const GET = async (request, { params }) => {
   }
   /** @see https://nextjs.org/docs/app/api-reference/functions/unstable_cache */
   const articleCached = unstable_cache(
-    async (articleId) => {
+    async (id) => {
       const article = await prisma.article.findUnique({
         where: {
-          id: parseInt(articleId),
+          id: parseInt(id),
         },
         include: {
           Comment: {
@@ -68,6 +68,46 @@ export const GET = async (request, { params }) => {
         success: false,
         message: 'Internal Server Error',
         error: error.message,
+      },
+      { status: 500 },
+    );
+  }
+};
+
+export const PATCH = async (request, { params }) => {
+  try {
+    const { id } = await params;
+    if (!id) {
+      return NextResponse.json(
+        { success: false, message: 'not found article' },
+        { status: 400 },
+      );
+    }
+    const { title, content } = await request.json();
+
+    const updateArticle = await prisma.article.update({
+      where: { id: parseInt(id) },
+      data: {
+        title,
+        content,
+      },
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'success update article',
+        data: updateArticle,
+      },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error('게시글 업데이트 중 오류 발생:', error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: '서버 오류로 게시글 업데이트에 실패했습니다.',
       },
       { status: 500 },
     );
