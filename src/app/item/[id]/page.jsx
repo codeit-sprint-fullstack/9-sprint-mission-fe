@@ -16,7 +16,6 @@ export default function ItemDetailPage() {
         const items = await fetch(`/api/item/${id}`).then((res) =>
           res.json()
         );
-        console.log(items);
         const item = items;
         setItem(item);
       } catch (err) {
@@ -26,10 +25,7 @@ export default function ItemDetailPage() {
 
     loadItem();
   }, [id]);
-  if (error) {
-    console.log(error);
-  }
-  console.log(item);
+
   return (
     <PageContainer>
       <ItemDetail item={item} />
