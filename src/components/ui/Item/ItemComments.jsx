@@ -12,12 +12,14 @@ dayjs.locale("ko");
 export default function ItemComments({ item, createdAt }) {
   const [open, setOpen] = useState(false);
 
+  if (!item) return null;
+
   return (
     <div>
-      <div className="bg-gray-100 rounded-lg flex flex-col p-3 mt-5">
-        <div className="flex justify-between">
+      <div className="bg-gray-100 rounded-lg flex flex-col p-3 mt-5 relative">
+        <div className="flex justify-between items-start">
           <p className="text-xl mb-5">{item.content}</p>
-          <div>
+          <div className="relative">
             <button
               onClick={() => setOpen((prev) => !prev)}
               className="cursor-pointer"
@@ -25,9 +27,9 @@ export default function ItemComments({ item, createdAt }) {
               ⋮
             </button>
             {open && (
-              <div className="absolute border rounded-lg border-gray-300 text-gray-400 bg-white p-4 w-35 right-45 items-center justify-center flex flex-col gap-2">
-                <button className="block">수정하기</button>
-                <button className="block">삭제하기</button>
+              <div className="absolute top-6 right-0 border rounded-lg border-gray-300 text-gray-400 bg-white w-28 items-center justify-center flex flex-col gap-2">
+                <button className="px-3 py-2 block">수정하기</button>
+                <button className="px-3 py-2 block">삭제하기</button>
               </div>
             )}
           </div>

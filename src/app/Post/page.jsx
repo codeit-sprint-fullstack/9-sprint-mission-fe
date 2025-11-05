@@ -33,7 +33,7 @@ export default function Post() {
           disabled={!isFormValid}
           onClick={handleSubmit}
           className={`bg-[#9CA3AF] w-16 h-10 p-2 rounded-lg text-white font-bold flex justify-center items-center
-          ${isFormValid ? "bg-[#3692FF]" : "bg-gray-300"}`}
+          ${isFormValid ? "bg-[#3692FF] cursor-pointer" : "bg-gray-300"}`}
         >
           등록
         </button>

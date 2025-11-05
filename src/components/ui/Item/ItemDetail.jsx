@@ -11,10 +11,10 @@ export default function ItemDetail({ item, comments }) {
     return <div>상품의 정보를 찾을 수 없습니다</div>;
   }
   return (
-    <div className="max-w-6xl mx-auto px-8 mb-40 mt-5">
-      <div className="flex justify-between">
+    <div className="max-w-6xl mx-auto px-8 mb-40 mt-5 relative">
+      <div className="flex justify-between items-start">
         <div className="text-2xl font-bold">{item.title}</div>
-        <div>
+        <div className="relative">
           <button
             onClick={() => setOpen((prev) => !prev)}
             className="cursor-pointer"
@@ -22,9 +22,9 @@ export default function ItemDetail({ item, comments }) {
             ⋮
           </button>
           {open && (
-            <div className="absolute border rounded-lg border-gray-300 text-gray-400 bg-white p-4 w-35 right-45 items-center justify-center flex flex-col gap-2">
-              <button className="block">수정하기</button>
-              <button className="block">삭제하기</button>
+            <div className="absolute top-6 right-0 border rounded-lg border-gray-300 text-gray-400 bg-white w-28 items-center justify-center flex flex-col gap-2">
+              <button className="px-3 py-2 block">수정하기</button>
+              <button className="px-3 py-2 block">삭제하기</button>
             </div>
           )}
         </div>
