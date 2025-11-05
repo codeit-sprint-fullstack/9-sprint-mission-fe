@@ -5,10 +5,10 @@ import Image from "next/image";
 import ItemComments from "./ItemComments";
 import Link from "next/link";
 
-export default function ItemDetail({ item, comments }) {
+export default function ItemDetail({ item }) {
   const [open, setOpen] = useState(false);
   if (!item) {
-    return <div>상품의 정보를 찾을 수 없습니다</div>;
+    return <div>게시글의 정보를 찾을 수 없습니다</div>;
   }
   return (
     <div className="max-w-6xl mx-auto px-8 mb-40 mt-5 relative">

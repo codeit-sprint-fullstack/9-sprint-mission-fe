@@ -13,7 +13,7 @@ export default function ItemDetailPage() {
   useEffect(() => {
     async function loadItem() {
       try {
-        const items = await fetch(`/api/item-list/${id}`).then((res) =>
+        const items = await fetch(`/api/item/${id}`).then((res) =>
           res.json()
         );
         console.log(items);
