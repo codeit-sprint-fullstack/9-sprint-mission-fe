@@ -49,7 +49,7 @@ export const GET = async (request, { params }) => {
 
     if (!article) {
       return NextResponse.json(
-        { success: false, message: `ID ${articleId} not found` },
+        { success: false, message: `ID ${id} not found` },
         { status: 404 },
       );
     }
