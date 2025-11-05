@@ -1,6 +1,7 @@
 import { cache } from "react";
 
 const API = process.env.API_URL + "/articles";
+const PUBLIC_API = process.env.NEXT_PUBLIC_API_URL + "/articles";
 
 export const getArticlesList = async ({ pageSize = 0, keyword = "" }) => {
   const res = await fetch(
@@ -12,7 +13,7 @@ export const getArticlesList = async ({ pageSize = 0, keyword = "" }) => {
   return res.json();
 };
 
-export const getArticleById = cache(async (id) => {
+export const getArticleById = cache(async ({ id }) => {
   const res = await fetch(API + `/${id}`);
   if (!res.ok) {
     throw new Error("데이터를 가져오는데 실패했습니다");
@@ -33,7 +34,7 @@ export const createArticle = async ({ title, content }) => {
       },
     });
     if (!res.ok) {
-      throw new Error("데이터를 가져오는데 실패했습니다");
+      throw new Error("데이터를 생성하는데 실패했습니다");
     }
     return { success: true, data: res };
   } catch (err) {
@@ -41,14 +42,55 @@ export const createArticle = async ({ title, content }) => {
   }
 };
 
-export const deleteArticleById = cache(async (id) => {
+export const updateArticle = async ({ title, content }) => {
+  try {
+    const res = await fetch(API, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        title,
+        content,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("데이터를 생성하는데 실패했습니다");
+    }
+    return { success: true, data: res };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+};
+
+export const deleteArticleById = async ({ id }) => {
   const res = await fetch(API + `/${id}`, { method: "DELETE" });
+  if (!res.ok) {
+    throw new Error("데이터를 삭제하는데 실패했습니다");
+  }
+  return { success: true };
+};
+
+export const getArticleCommentsList = async ({ articleId }) => {
+  const res = await fetch(PUBLIC_API + `/${articleId}/comments`);
   if (!res.ok) {
     throw new Error("데이터를 가져오는데 실패했습니다");
   }
+  return res.json();
+};
+
+export const createArticleComment = async ({ articleId, content }) => {
+  const res = await fetch(PUBLIC_API + `/${articleId}/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: {
+      content,
+    },
+  });
   if (!res.ok) {
-    throw new Error("댓글 삭제에 실패했습니다");
+    throw new Error("데이터를 생성하는데 실패했습니다");
   }
-  revalidatePath("/breeds/[id]", "page");
-  return { success: true };
-});
+  return res.json();
+};
