@@ -1,6 +1,5 @@
-import { NextResponse } from 'next/server';
-
 import prisma from '@/libs/prisma';
+import { apiResponse } from '@/libs/utils/api-helper';
 
 export async function GET() {
   try {
@@ -19,23 +18,10 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Success getting best articles',
-        data: articles,
-      },
-      { status: 200 },
-    );
+    return apiResponse(true, 'Success Getting Best Articles', articles, 200);
   } catch (error) {
     console.error('Best Articles API Error:', error);
 
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Internal Server Error while fetching best articles',
-      },
-      { status: 500 },
-    );
+    return apiResponse(false, 'Internal Server Error', null, 500);
   }
 }

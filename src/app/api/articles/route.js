@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import prisma from '@/libs/prisma';
+import { articleFormSchema } from '@/libs/schemas/article.schema';
+import { apiResponse } from '@/libs/utils/api-helper';
 
 /**
  * @see https://nextjs.org/docs/app/api-reference/functions/next-response
@@ -57,20 +59,15 @@ export const GET = async (request) => {
   } catch (error) {
     console.error('API Error:', error);
 
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Internal Server Error',
-      },
-      { status: 500 },
-    );
+    return apiResponse(false, 'Internal Server Error', null, 500);
   }
 };
 
 export const POST = async (request) => {
   try {
     const body = await request.json();
-    const { title, content } = body;
+    const validateData = articleFormSchema.parse(body);
+    const { title, content } = validateData;
 
     const FAKE_ID = 72;
 
@@ -84,23 +81,17 @@ export const POST = async (request) => {
       },
     });
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'success create article',
-        data: newArticle,
-      },
-      { status: 201 },
-    );
+    if (!newArticle) {
+      return apiResponse(false, '아티클 생성에 실패(Failed POST)', null, 500);
+    }
+
+    return apiResponse(true, 'Success Create Article', newArticle, 201);
   } catch (error) {
     console.error('API Post Error', error);
+    if (error instanceof z.ZodError) {
+      return apiResponse(false, '유효성 검사 실패', null, 400);
+    }
 
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Internal Server Error',
-      },
-      { status: 500 },
-    );
+    return apiResponse(false, 'Internal Server Error', null, 500);
   }
 };

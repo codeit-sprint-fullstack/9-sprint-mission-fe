@@ -1,15 +1,13 @@
 import { unstable_cache } from 'next/cache';
-import { NextResponse } from 'next/server';
 
 import prisma from '@/libs/prisma';
+import { articleFormSchema } from '@/libs/schemas/article.schema';
+import { apiResponse } from '@/libs/utils/api-helper';
 
 export const GET = async (request, { params }) => {
   const { id } = await params;
   if (!id) {
-    return NextResponse.json(
-      { success: false, message: 'not found article' },
-      { status: 400 },
-    );
+    return apiResponse(false, 'Not Found Article', null, 400);
   }
   /** @see https://nextjs.org/docs/app/api-reference/functions/unstable_cache */
   const articleCached = unstable_cache(
@@ -48,28 +46,17 @@ export const GET = async (request, { params }) => {
     const article = await articleCached(id);
 
     if (!article) {
-      return NextResponse.json(
-        { success: false, message: `ID ${id} not found` },
-        { status: 404 },
-      );
+      return apiResponse(false, `ID ${id} not found`, null, 404);
     }
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'success get article',
-        data: article,
-      },
-      { status: 200 },
-    );
+    return apiResponse(true, 'Success Get Article', article, 200);
   } catch (error) {
     console.error('API Error', error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Internal Server Error',
-        error: error.message,
-      },
-      { status: 500 },
+    return apiResponse(
+      false,
+      'Internal Server Error',
+      null,
+      500,
+      error.message,
     );
   }
 };
@@ -78,12 +65,11 @@ export const PATCH = async (request, { params }) => {
   try {
     const { id } = await params;
     if (!id) {
-      return NextResponse.json(
-        { success: false, message: 'not found article' },
-        { status: 400 },
-      );
+      return apiResponse(false, 'Not Found Article', null, 400);
     }
-    const { title, content } = await request.json();
+    const body = await request.json();
+    const validateData = articleFormSchema.parse(body);
+    const { title, content } = validateData;
 
     const updateArticle = await prisma.article.update({
       where: { id: parseInt(id) },
@@ -93,23 +79,15 @@ export const PATCH = async (request, { params }) => {
       },
     });
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'success update article',
-        data: updateArticle,
-      },
-      { status: 200 },
-    );
+    return apiResponse(true, 'Success Update Article', updateArticle, 200);
   } catch (error) {
     console.error('게시글 업데이트 중 오류 발생:', error);
 
-    return NextResponse.json(
-      {
-        success: false,
-        message: '서버 오류로 게시글 업데이트에 실패했습니다.',
-      },
-      { status: 500 },
+    return apiResponse(
+      false,
+      '서버 오류로 게시글 업데이트에 실패했습니다.',
+      null,
+      500,
     );
   }
 };
@@ -117,13 +95,7 @@ export const PATCH = async (request, { params }) => {
 export const DELETE = async (request, { params }) => {
   const { id } = await params;
   if (!id) {
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Not Found Article id',
-      },
-      { status: 404 },
-    );
+    return apiResponse(false, 'Not Found Article Id', null, 404);
   }
 
   try {
@@ -132,12 +104,6 @@ export const DELETE = async (request, { params }) => {
     });
   } catch (error) {
     console.error(error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: 'Internal Server Error',
-      },
-      { status: 500 },
-    );
+    return apiResponse(false, 'Internal Server Error', null, 500);
   }
 };
