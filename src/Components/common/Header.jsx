@@ -6,12 +6,14 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center w-full h-[70px]  px-25  border-b border-[#DFDFDF] bg-white ">
       <div className="flex justify-center items-center ">
-        <Image
-          loading="eager"
-          src={PandaLogo}
-          alt="pandaLogo"
-          className=" w-[153px] pt-[5.017px] pb-[5.848px] px-0 m-[10px_43px_9px_0] justify-center shrink-0"
-        />
+        <Link href="/">
+          <Image
+            loading="eager"
+            src={PandaLogo}
+            alt="pandaLogo"
+            className=" w-[153px] pt-[5.017px] pb-[5.848px] px-0 m-[10px_43px_9px_0] justify-center shrink-0"
+          />
+        </Link>
         <nav className="fex justify-center items-center">
           <Link
             href="/page2"
