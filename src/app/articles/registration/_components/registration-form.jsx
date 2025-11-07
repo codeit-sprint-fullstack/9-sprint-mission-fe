@@ -7,17 +7,8 @@ import { z } from 'zod'
 
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/modal";
+import { articleFormSchema } from '@/libs/schemas/article.schema';
 import { createArticle } from '@/services/article-service';
-
-const articleFormSchema = z.object({
-  title: z
-    .string()
-    .min(1, '제목을 입력해주세요.')
-    .max(30, '제목은 30자 이내로 입력해주세요.'),
-  content: z.string()
-    .min(10, '내용은 10자 이상 입력해주세요.')
-    .max(100, '내용은 100자 이내로 입력해주세요.'),
-})
 
 export function ArticleRegistration() {
   const [showModal, setShowModal] = useState(false);
