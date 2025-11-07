@@ -1,35 +1,29 @@
 "use client";
-import { deleteComment } from "@/lib/services/commentsServices";
-import { useState, useEffect } from "react";
-import KebabDropDown from "./KebabDropDown";
+
+import Image from "next/image";
+import profileImg from "@/assets/img/ic_profile.png";
+import CommentDropDown from "./CommentDropDown";
 
 export default function CommentItem({ comment }) {
-  const handleDelete = async (id) => {
-    if (!window.confirm("정말 삭제하시겠습니까?")) {
-      return;
-    }
-    const result = await deleteComment({ id });
-    if (!result.success) {
-      alert(result.error || "댓글 삭제에 실패했습니다");
-    }
-  };
-
   return (
-    <li key={comment.id} className="bg-(--bg-gray)">
-      <div className="flex justify-between items-start">
-        <div>
-          <p className="text-gray-700">{comment.content}</p>
-          <KebabDropDown></KebabDropDown>
+    <li
+      key={comment.id}
+      className="flex flex-col justify-between bg-(--bg-gray) h-25 mb-6 border-(--secondary-200) border-b pb-3"
+    >
+      <div className="flex justify-between">
+        <p className="text-(--secondary-800) text-sm">{comment.content}</p>
+        <CommentDropDown id={comment.id}></CommentDropDown>
+      </div>
+      <div className="flex gap-2">
+        <figure className="relative w-8 h-8">
+          <Image src={profileImg} alt="프로필 이미지" fill sizes="100vw" />
+        </figure>
+        <div className="text-xs">
+          <p className="text-(--secondary-600)">닉네임은 어디에?</p>
+          <p className="text-(--secondary-400) mt-1">
+            {comment.createdAt.split("T")[0]}
+          </p>
         </div>
-        <div>
-          <div className="text-xs text-gray-400">닉네임은 어디에?</div>
-        </div>
-        {/* <button
-          className="text-red-500 hover:text-red-700 text-sm"
-          onClick={() => handleDelete(comment.id)}
-        >
-          삭제
-        </button> */}
       </div>
     </li>
   );

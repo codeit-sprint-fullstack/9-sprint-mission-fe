@@ -2,7 +2,7 @@ const API = process.env.API_URL + "/comments";
 const PUBLIC_API = process.env.NEXT_PUBLIC_API_URL + "/comments";
 
 export const updateComment = async ({ id, content }) => {
-  const res = await fetch(API + `/${id}`, {
+  const res = await fetch(PUBLIC_API + `/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export const updateComment = async ({ id, content }) => {
 };
 
 export const deleteComment = async ({ id }) => {
-  const res = await fetch(API + `/${id}`, {
+  const res = await fetch(PUBLIC_API + `/${id}`, {
     method: "DELETE",
   });
   if (!res.ok) {

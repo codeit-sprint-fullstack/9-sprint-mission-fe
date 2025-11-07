@@ -28,10 +28,10 @@ export const createArticle = async ({ title, content }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: {
+      body: JSON.stringify({
         title,
         content,
-      },
+      }),
     });
     if (!res.ok) {
       throw new Error("데이터를 생성하는데 실패했습니다");
@@ -49,10 +49,10 @@ export const updateArticle = async ({ title, content }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: {
+      body: JSON.stringify({
         title,
         content,
-      },
+      }),
     });
     if (!res.ok) {
       throw new Error("데이터를 생성하는데 실패했습니다");
@@ -85,9 +85,9 @@ export const createArticleComment = async ({ articleId, content }) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: {
+    body: JSON.stringify({
       content,
-    },
+    }),
   });
   if (!res.ok) {
     throw new Error("데이터를 생성하는데 실패했습니다");

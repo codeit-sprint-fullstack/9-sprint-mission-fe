@@ -3,11 +3,11 @@ import DynamicCommentItem from "./DynamicCommentItem";
 import { getArticleCommentsList } from "@/lib/services/articlesServices";
 
 export default async function CommentList({ articleId }) {
-  const comments = (await getArticleCommentsList(articleId)).list;
+  const comments = (await getArticleCommentsList({ articleId: articleId }))
+    .list;
 
   return (
     <div className="mt-4">
-      <h3 className="text-lg font-semibold mb-2">댓글</h3>
       {comments.length === 0 ? (
         <p className="text-gray-500">아직 댓글이 없습니다.</p>
       ) : (
