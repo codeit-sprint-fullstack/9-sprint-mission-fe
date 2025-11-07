@@ -97,11 +97,13 @@ export const DELETE = async (request, { params }) => {
   if (!id) {
     return apiResponse(false, 'Not Found Article Id', null, 404);
   }
-
+  const articleId = parseInt(id);
   try {
     await prisma.article.delete({
-      where: { id: parseInt(id) },
+      where: { id: articleId },
     });
+
+    return apiResponse(true, 'Article Deleted Successfully', null, 200);
   } catch (error) {
     console.error(error);
     return apiResponse(false, 'Internal Server Error', null, 500);
