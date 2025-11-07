@@ -6,7 +6,7 @@ import kebabIcon from "@/assets/img/ic_kebab.svg";
 import { deleteComment } from "@/lib/services/commentsServices";
 import { useRouter } from "next/navigation";
 
-export default function CommentDropDown({ id }) {
+export default function CommentDropDown({ id, onEdit }) {
   const router = useRouter();
   const [isDropDownActive, setIsDropDownActive] = useState(false);
 
@@ -42,7 +42,10 @@ export default function CommentDropDown({ id }) {
         )}
       >
         <li className="w-full h-10.5 border-b border-(--secondary-200) last:border-b-0">
-          <button className="w-full h-full bg-transparent border-none">
+          <button
+            onClick={onEdit}
+            className="w-full h-full bg-transparent border-none"
+          >
             수정하기
           </button>
         </li>

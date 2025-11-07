@@ -7,9 +7,7 @@ export const updateComment = async ({ id, content }) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: {
-      content,
-    },
+    body: JSON.stringify({ content }),
   });
   if (!res.ok) {
     throw new Error("데이터를 생성하는데 실패했습니다");

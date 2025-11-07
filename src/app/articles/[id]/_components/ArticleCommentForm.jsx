@@ -37,7 +37,7 @@ export default function CommentForm({ articleId }) {
           rows={3}
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 flex justify-end">
         <button type="submit" className="btns">
           등록
         </button>

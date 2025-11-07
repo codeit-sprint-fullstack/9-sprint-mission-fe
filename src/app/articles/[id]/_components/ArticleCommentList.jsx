@@ -1,6 +1,8 @@
-import CommentItem from "./CommentItem";
+import Image from "next/image";
+import emptyCommentsImg from "@/assets/img/Img_reply_empty.png";
 import DynamicCommentItem from "./DynamicCommentItem";
 import { getArticleCommentsList } from "@/lib/services/articlesServices";
+import CommentItem from "./CommentItem";
 
 export default async function CommentList({ articleId }) {
   const comments = (await getArticleCommentsList({ articleId: articleId }))
@@ -9,11 +11,19 @@ export default async function CommentList({ articleId }) {
   return (
     <div className="mt-4">
       {comments.length === 0 ? (
-        <p className="text-gray-500">아직 댓글이 없습니다.</p>
+        <div>
+          <div className="text-(--secondary-400) text-center ">
+            <figure className="w-35 h-35 m-[0_auto]">
+              <Image src={emptyCommentsImg} alt="댓글이 없습니다."></Image>
+            </figure>
+            <p>아직 댓글이 없어요,</p>
+            <p>지금 댓글을 달아보세요!</p>
+          </div>
+        </div>
       ) : (
         <ul className="space-y-4">
           {comments.map((comment) => (
-            <DynamicCommentItem key={comment.id} comment={comment} />
+            <CommentItem key={comment.id} comment={comment} />
           ))}
         </ul>
       )}
