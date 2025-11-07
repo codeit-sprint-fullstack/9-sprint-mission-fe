@@ -4,12 +4,10 @@ import { updateTag } from 'next/cache';
 import { z } from 'zod';
 
 import prisma from './prisma';
-
-const createCommentSchema = z.object({
-  authorId: z.int(),
-  articleId: z.int(),
-  context: z.string().min(1, '댓글 내용을 입력해주세요.'),
-});
+import {
+  createCommentSchema,
+  updateCommentSchema,
+} from './schemas/comment.schema';
 
 export const createComment = async (formData) => {
   const rawAuthorId = formData.get('authorId');
@@ -36,7 +34,7 @@ export const createComment = async (formData) => {
      */
     updateTag('comment');
 
-    return { message: 'Added Todo Successfully' };
+    return { message: 'Added Successfully' };
   } catch (error) {
     console.error(error);
     if (error instanceof z.ZodError) {
@@ -48,44 +46,55 @@ export const createComment = async (formData) => {
 
 export const updateComment = async (formData) => {
   const commentId = formData.get('commentId');
-  const newContext = formData.get('context');
-  console.log(commentId);
+  const context = formData.get('context');
+
+  // id 값 사전 처리
+  const data = {
+    commentId: parseInt(commentId),
+    context: context,
+  };
+
+  if (!commentId) return { success: false, message: 'Invalid input' };
+
   try {
-    if (!commentId) return { success: false, message: 'Invalid input' };
+    const validateSchema = updateCommentSchema.parse(data);
 
     await prisma.comment.update({
-      where: { id: parseInt(commentId) },
-      data: { context: newContext },
+      where: { id: validateSchema.commentId },
+      data: { context: validateSchema.context },
     });
 
     updateTag('comment');
 
-    return { success: true, message: 'success update comment' };
+    return { success: true, message: 'Success Update Comment' };
   } catch (error) {
     console.error(error);
     if (error instanceof z.ZodError) {
-      return { message: 'Invalid input data', issues: error.issues };
+      return {
+        success: false,
+        message: 'Invalid Input Data',
+        issues: error.issues,
+      };
     }
-    return { success: false, message: 'falied update comment' };
+    return { success: false, message: 'Failed Update Comment' };
   }
 };
 
 export const deleteComment = async (id) => {
+  if (!id) return { success: false, message: 'Invalid id' };
   try {
-    if (!id) return { success: false, message: 'Invalid id' };
-
     await prisma.comment.delete({
       where: { id: parseInt(id) },
     });
 
     updateTag('comment');
 
-    return { success: true, message: 'success delete comment' };
+    return { success: true, message: 'Success Delete Comment' };
   } catch (error) {
     console.error(error);
     if (error instanceof z.ZodError) {
-      return { message: 'Invalid data', issues: error.issues };
+      return { message: 'Invalid Data', issues: error.issues };
     }
-    return { success: false, message: 'falied delete comment' };
+    return { success: false, message: 'Failed Delete Comment' };
   }
 };

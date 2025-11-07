@@ -80,12 +80,11 @@ export async function deleteArticle(id) {
   const res = await fetch(`${base_url}/api/articles/${id}`, {
     method: 'DELETE',
   });
-
   if (!res.ok) {
     const errorObj = await res
       .json()
       .catch(() => ({ message: '게시글 삭제 실패' }));
-    throw new Error(`Failed update article: ${errorObj.message}}`);
+    throw new Error(`Failed Delete Article: ${errorObj.message}}`);
   }
 
   revalidatePath('/articles');
