@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="flex w-full justify-center items-start bg-(--secondary-900) text-center"
+      className="flex w-full justify-center items-start bg-(--secondary-900) text-center mt-10"
     >
       <div
         id="footer-box"
