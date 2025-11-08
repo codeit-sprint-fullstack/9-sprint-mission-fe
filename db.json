@@ -1,3 +1,73 @@
 {
-  "comments": []
+  "comments": [
+    {
+      "id": "5442",
+      "postId": 1,
+      "content": "123",
+      "createdAt": "2025-11-08T07:45:58.863Z"
+    },
+    {
+      "id": "e80e",
+      "postId": 2,
+      "content": "123",
+      "createdAt": "2025-11-08T07:46:01.860Z"
+    },
+    {
+      "id": "96de",
+      "postId": 3,
+      "content": "123",
+      "createdAt": "2025-11-08T07:49:31.278Z"
+    },
+    {
+      "id": "8321",
+      "postId": 4,
+      "content": "123",
+      "createdAt": "2025-11-08T08:28:25.887Z"
+    },
+    {
+      "id": "073d",
+      "postId": 5,
+      "content": "123",
+      "createdAt": "2025-11-08T08:52:53.570Z"
+    },
+    {
+      "id": "f334",
+      "content": "123",
+      "createdAt": "2025-11-08T09:27:46.768Z"
+    },
+    {
+      "id": "a384",
+      "content": "123",
+      "createdAt": "2025-11-08T09:29:16.489Z"
+    },
+    {
+      "id": "5be8",
+      "content": "123",
+      "createdAt": "2025-11-08T09:36:21.651Z"
+    },
+    {
+      "id": "587e",
+      "postId": "4",
+      "content": "1234",
+      "createdAt": "2025-11-08T09:40:54.665Z"
+    },
+    {
+      "id": "1268",
+      "postId": "4",
+      "content": "안녕하세요",
+      "createdAt": "2025-11-08T09:44:17.282Z"
+    },
+    {
+      "id": "b955",
+      "postId": "1",
+      "content": "안녕하세요~ ",
+      "createdAt": "2025-11-08T09:52:44.178Z"
+    },
+    {
+      "id": "4127",
+      "postId": "5",
+      "content": "5번 댓글",
+      "createdAt": "2025-11-08T09:59:53.658Z"
+    }
+  ]
 }
