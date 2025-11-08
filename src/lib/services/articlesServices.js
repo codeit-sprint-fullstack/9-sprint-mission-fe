@@ -21,9 +21,17 @@ export const getArticleById = cache(async ({ id }) => {
   return res.json();
 });
 
+export const getArticleByIdClient = cache(async ({ id }) => {
+  const res = await fetch(PUBLIC_API + `/${id}`);
+  if (!res.ok) {
+    throw new Error("데이터를 가져오는데 실패했습니다");
+  }
+  return res.json();
+});
+
 export const createArticle = async ({ title, content }) => {
   try {
-    const res = await fetch(API, {
+    const res = await fetch(PUBLIC_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,9 +50,9 @@ export const createArticle = async ({ title, content }) => {
   }
 };
 
-export const updateArticle = async ({ title, content }) => {
+export const updateArticle = async ({ id, title, content }) => {
   try {
-    const res = await fetch(API, {
+    const res = await fetch(PUBLIC_API + `/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +72,7 @@ export const updateArticle = async ({ title, content }) => {
 };
 
 export const deleteArticleById = async ({ id }) => {
-  const res = await fetch(API + `/${id}`, { method: "DELETE" });
+  const res = await fetch(PUBLIC_API + `/${id}`, { method: "DELETE" });
   if (!res.ok) {
     throw new Error("데이터를 삭제하는데 실패했습니다");
   }

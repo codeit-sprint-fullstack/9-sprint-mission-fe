@@ -12,7 +12,7 @@ export default function ArticleDetail({ article }) {
           <h2 className="text-(--secondary-800) text-xl font-bold">
             {article.title}
           </h2>
-          <KebabDropDown></KebabDropDown>
+          <KebabDropDown id={article.id}></KebabDropDown>
         </div>
         <div className="flex mt-4 items-center text-base gap-8">
           <div className="flex text-(--secondary-600) items-center gap-2 pr-8 border-r border-(--secondary-200)">

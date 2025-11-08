@@ -1,16 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
 import clsx from "clsx";
-import { createArticle } from "@/lib/services/articlesServices";
-import { useRouter } from "next/navigation";
+import {
+  getArticleByIdClient,
+  updateArticle,
+} from "@/lib/services/articlesServices";
 
-export default function ArticleCreatForm() {
+export default function ArticleModifyForm() {
+  const router = useRouter();
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const router = useRouter();
 
-  const valid = title.trim() && content.trim().length >= 10;
+  useEffect(() => {
+    if (id) {
+      const fetchArticle = async () => {
+        const result = await getArticleByIdClient({ id });
+        if (result.success) {
+          setTitle(result.data.title);
+          setContent(result.data.content);
+        } else {
+          alert(result.error || "게시글을 불러오는데 실패했습니다.");
+          router.back();
+        }
+      };
+      fetchArticle();
+    }
+  }, [id, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,25 +37,27 @@ export default function ArticleCreatForm() {
       return;
     }
 
-    const result = await createArticle({ title, content });
-
+    const result = await updateArticle({ id, title, content });
     if (result.success) {
-      router.push(`/articles`);
+      alert("글 수정에 성공했습니다.");
+      router.push(`/articles/${id}`);
     } else {
-      alert(result.error || "글 작성에 실패했습니다");
+      alert(result.error || "글 수정에 실패했습니다.");
     }
   };
+
+  const valid = title.trim() && content.trim().length >= 10;
 
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <div className="flex justify-between items-center">
         <h2 className="text-(--secondary-800) text-xl font-bold">
-          게시글 쓰기
+          게시글 수정
         </h2>
         <input
           type="submit"
           value="등록"
-          className={clsx("btns", !valid && "disactive")}
+          className={clsx("btns", valid ? "active" : "disactive")}
           disabled={!valid}
         />
       </div>
