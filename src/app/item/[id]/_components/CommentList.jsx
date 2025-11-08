@@ -1,0 +1,106 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { getComments } from "@/lib/services/actions/comments";
+import Image from "next/image";
+import Link from "next/link";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/ko";
+
+dayjs.extend(relativeTime);
+dayjs.locale("ko");
+
+export default function CommentList({ id, comments: initialComments }) {
+  const [commentList, setCommentList] = useState(initialComments || []);
+  const [openCommentId, setOpenCommentId] = useState(null);
+
+  useEffect(() => {
+    console.log("id 확인:", id);
+    async function fetchComments() {
+      try {
+        const data = await getComments(id);
+        console.log("불러온 댓글:", data);
+        setCommentList(data);
+      } catch (error) {
+        console.error("댓글 불러오기 실패:", error);
+      }
+    }
+    if (id) fetchComments();
+  }, [id]);
+
+  const handleDelete = (commentId) => {
+    console.log("삭제", commentId);
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto px-8 mb-40 mt-5 relative">
+      {commentList.length === 0 ? (
+        <div className="flex justify-center items-center flex-col mb-15 text-gray-400">
+          <Image
+            src="/Img_reply_empty.png"
+            alt="empty"
+            width={150}
+            height={150}
+          />
+          <p className="mt-5">아직 댓글이 없어요,</p>
+          <p>지금 댓글을 달아보세요</p>
+        </div>
+      ) : (
+        commentList.map((c) => (
+          <div
+            key={c.id}
+            className="bg-gray-100 rounded-lg flex flex-col p-3 mt-5 relative gap-9"
+          >
+            <div className="flex justify-between">
+              <p className="text-lg">{c.content}</p>
+
+              <button
+                onClick={() =>
+                  setOpenCommentId(openCommentId === c.id ? null : c.id)
+                }
+                className="cursor-pointer"
+              >
+                ⋮
+              </button>
+            </div>
+            {openCommentId === c.id && (
+              <div className="absolute top-6 right-0 border rounded-lg border-gray-300 text-gray-400 bg-white w-28 items-center justify-center flex flex-col gap-2">
+                <button className="px-3 py-2 block cursor-pointer">
+                  수정하기
+                </button>
+                <button
+                  onClick={() => handleDelete(c.id)}
+                  className="px-3 py-2 block cursor-pointer"
+                >
+                  삭제하기
+                </button>
+              </div>
+            )}
+            <div className="flex items-center gap-1">
+              <Image
+                src="/ic_profile.png"
+                alt="profile"
+                width={20}
+                height={20}
+              />
+              <p className="text-[#4B5563]">{c.id}</p>
+              <p className="text-[#9CA3AF] text-sm px-4">
+                {dayjs(c.createdAt).fromNow()}
+              </p>
+            </div>
+          </div>
+        ))
+      )}
+
+      <div className="flex justify-center items-center mt-10">
+        <Link href="/">
+          <div className="bg-[#3692FF] rounded-4xl text-white p-2 px-8 font-bold flex gap-1 mb-30">
+            목록으로 돌아가기
+            <Image src="/ic_back.png" alt="back" width={20} height={20} />
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
+}

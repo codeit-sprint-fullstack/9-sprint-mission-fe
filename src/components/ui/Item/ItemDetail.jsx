@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 
 import Image from "next/image";
-import ItemComments from "./ItemComments";
 import Link from "next/link";
 
 export default function ItemDetail({ item }) {
@@ -43,30 +42,6 @@ export default function ItemDetail({ item }) {
       </div>
       <div className="border-b border-gray-200 my-4"></div>
       <p className="text-xl mt-5">{item.content}</p>
-
-      <div>
-        <h2 className="font-bold mt-10 mb-5">댓글달기</h2>
-        <textarea
-          type="text"
-          placeholder="댓글을 입력해주세요"
-          className="p-4 h-30 bg-[#F3F4F6] rounded-lg text-start align-top w-full "
-        />
-        <div className="mt-5 flex justify-end">
-          <button className="bg-[#9CA3AF] w-16 h-10 p-2 rounded-lg text-white font-bold flex justify-center items-center">
-            등록
-          </button>
-        </div>
-      </div>
-      <ItemComments item={item} articleId={item.id} />
-
-      <div className=" flex justify-center items-center mt-10">
-        <Link href="/">
-          <div className="bg-[#3692FF] rounded-4xl text-white p-2 px-8 font-bold flex gap-1">
-            목록으로 돌아가기
-            <Image src="/ic_back.png" alt="back" width={20} height={20} />
-          </div>
-        </Link>
-      </div>
     </div>
   );
 }
