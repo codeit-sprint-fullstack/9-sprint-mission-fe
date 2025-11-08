@@ -25,13 +25,17 @@ export async function getComments(postId) {
     `http://localhost:4000/comments?postId=${postId}&_sort=createdAt&_order=desc`,
     { cache: "no-store" }
   );
-  return response.json();
+  const data = await response.json();
+  return data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 }
 
 export async function deleteComment(commentId) {
-  const response = await fetch(`http://localhost:4000/comments/${commentId}`, {
-    method: "DELETE",
-  });
+  const response = await fetch(
+    `http://localhost:4000/comments/${String(commentId)}`,
+    {
+      method: "DELETE",
+    }
+  );
   if (!response.ok) {
     throw new Error("댓글 삭제 실패");
   }

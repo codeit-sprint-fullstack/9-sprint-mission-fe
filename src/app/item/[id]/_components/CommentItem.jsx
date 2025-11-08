@@ -16,6 +16,9 @@ export default function CommentItem({ c, openCommentId, setOpenCommentId }) {
     const result = await deleteComment(commentId);
     if (!result.success) {
       alert(result.error || "댓글 삭제 실패");
+    } else {
+      alert("댓글이 삭제되었습니다");
+      location.reload();
     }
   };
   return (
