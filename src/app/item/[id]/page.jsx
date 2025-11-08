@@ -5,8 +5,9 @@ import CommentList from "./_components/CommentList";
 import { getComments } from "@/lib/services/actions/comments";
 import { getArticleById } from "@/lib/services/ItemApi";
 
-export default async function ItemDetailPage({ params }) {
-  const { id } = await params;
+export default async function ItemDetailPage(props) {
+  const params = await props.params;
+  const id = params.id;
   const item = await getArticleById(id);
   const comments = await getComments(id);
 
@@ -14,7 +15,7 @@ export default async function ItemDetailPage({ params }) {
     <PageContainer>
       <ItemDetail item={item} />
       <CommentForm item={item} postId={id} />
-      <CommentList comments={comments} postId={id} />
+      <CommentList id={id} comments={comments} />
     </PageContainer>
   );
 }
