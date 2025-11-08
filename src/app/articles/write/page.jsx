@@ -2,7 +2,7 @@ import React from "react";
 
 export default function WritePage() {
   return (
-    <article>
+    <article className="flex flex-col  w-[1200px] gap-8">
       <div className="flex justify-between items-center pb-8">
         <h1 className="text-xl font-bold leading-8 text-#1F2937">
           게시글 쓰기
@@ -20,7 +20,11 @@ export default function WritePage() {
       <div>
         <h2 className="text-#1F2937 text-[18px] pb-3">*내용</h2>
         <div className=" h-[282px] py-4 px-6 bg-gray-100 rounded-lg">
-          <input type="text" placeholder="내용을 입력해주세요." />
+          <input
+            type="text"
+            placeholder="내용을 입력해주세요."
+            className=" w-[1200px] flex items-start gap-2.5 "
+          />
         </div>
       </div>
     </article>
