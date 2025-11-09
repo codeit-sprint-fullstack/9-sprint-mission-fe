@@ -5,14 +5,14 @@ export default function HomePage() {
   return (
     <main className="bg-gray-50">
    
-      <section className=" bg-blue-50 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-20 px-6">
+      <section className=" bg-[#3692FF]-50 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-20 px-6">
         <div>
           <h1 className="text-4xl font-extrabold text-gray-800 leading-snug ">
             일상의 모든 물건을<br />거래해 보세요
           </h1>
           <Link
             href="/items"
-            className="inline-block mt-8 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
+            className="inline-block mt-8 bg-[#3692FF]-400 text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#3692FF]-600 transition"
           >
             구경하러 가기
           </Link>
@@ -69,7 +69,7 @@ export default function HomePage() {
       </section>
 
       {/* 신뢰 섹션 */}
-      <section className="bg-blue-50 py-16">
+      <section className="bg-[#3692FF]-50 py-16">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
           <h2 className="text-3xl font-extrabold text-gray-800 mb-6 md:mb-0">
             믿을 수 있는<br />판다마켓 중고 거래

@@ -17,8 +17,8 @@ export default function Header() {
         <div className="flex items-center gap-8">
           {/* 로고 */}
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/panda-face.svg" alt="판다 로고" width={32} height={32} />
-            <span className="font-bold text-xl text-bule-800">판다마켓</span>
+            <Image src="/panda-face.svg" alt="판다 로고" width={45} height={45} />
+            <span className="font-bold text-3xl text-[#3692FF]">판다마켓</span>
           </Link>
 
           {/* 탭 메뉴 */}
@@ -28,7 +28,7 @@ export default function Header() {
                 href="/freeboard"
                 className={`${
                   pathname.startsWith("/freeboard")
-                    ? "font-semibold text-blue-600"
+                    ? "font-semibold text-[#3692FF]"
                     : "text-gray-700"
                 } hover:text-blue-600 transition`}
               >
@@ -51,7 +51,7 @@ export default function Header() {
       
         <Link
           href="/login"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+          className="bg-[#3692FF] text-white px-4 py-2 rounded-md"
         >
           로그인
         </Link>

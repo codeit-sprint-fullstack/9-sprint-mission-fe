@@ -67,7 +67,7 @@ export default function LoginPage() {
             type="submit"
             disabled={!email || !password}
             className={`mt-2 w-full py-3 rounded-lg font-semibold text-white transition ${
-              !email || !password ? "bg-gray-300" : "bg-[#3692FF] hover:bg-[#2F7DEB]"
+              !email || !password ? "bg-gray-300" : "bg-[#3692FF] "
             }`}
           >
             로그인
