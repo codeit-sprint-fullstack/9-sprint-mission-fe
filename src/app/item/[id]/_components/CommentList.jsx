@@ -6,7 +6,6 @@ import Image from "next/image";
 import CommentItem from "./CommentItem";
 import Link from "next/link";
 
-
 export default function CommentList({ id, comments: initialComments }) {
   console.log("commentList props:", { id, initialComments });
   const [commentList, setCommentList] = useState(initialComments || []);
@@ -27,10 +26,6 @@ export default function CommentList({ id, comments: initialComments }) {
       console.log("ID가 없습니다", params);
     }
   }, [id]);
-
-  const handleDelete = (commentId) => {
-    console.log("삭제", commentId);
-  };
 
   return (
     <div className="max-w-6xl mx-auto px-8 mb-40 mt-5 relative">
