@@ -12,7 +12,7 @@ export default function HomePage() {
           </h1>
           <Link
             href="/items"
-            className="inline-block mt-8 bg-[#3692FF]-400 text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#3692FF]-600 transition"
+            className="inline-block mt-8 bg-[#3692FF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#3692FF]-600 transition"
           >
             구경하러 가기
           </Link>
