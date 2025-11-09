@@ -27,7 +27,7 @@ export default function Item({ items }) {
 
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center mt-3 mb-3 gap-10">
         <div className="relative flex-1">
-          <div className="absolute px-4">
+          <div className="absolute py-1 px-4">
             <Image src="/ic_search.png" alt="search" width={30} height={30} />
           </div>
           <input
