@@ -1,10 +1,10 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 
-
+// 상대 시간 표시 함수
 function timeAgo(dateString) {
   const date = new Date(dateString);
   const now = new Date();
@@ -27,7 +27,6 @@ export default function ArticleDetailPage() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [loading, setLoading] = useState(true);
-
   const [showMenu, setShowMenu] = useState(false);
   const [activeCommentId, setActiveCommentId] = useState(null);
   const [editingCommentId, setEditingCommentId] = useState(null);
@@ -36,26 +35,23 @@ export default function ArticleDetailPage() {
   const STORAGE_KEY = `comments-article-${id}`;
   const DELETED_KEY = `deleted-comments-article-${id}`;
 
-  //  게시글 불러오기
-  useEffect(() => {
-    async function fetchArticle() {
-      try {
-        const res = await fetch(`https://sprint-server.onrender.com/articles/${id}`, {
-          cache: 'no-store',
-        });
-        const json = await res.json();
-        setArticle(json.data || json);
-      } catch (err) {
-        console.error('게시글 불러오기 오류:', err);
-      } finally {
-        setLoading(false);
-      }
+  // 게시글 불러오기
+  const fetchArticle = useCallback(async () => {
+    try {
+      const res = await fetch(`https://sprint-server.onrender.com/articles/${id}`, {
+        cache: 'no-store',
+      });
+      const json = await res.json();
+      setArticle(json.data || json);
+    } catch (err) {
+      console.error('게시글 불러오기 오류:', err);
+    } finally {
+      setLoading(false);
     }
-    fetchArticle();
   }, [id]);
 
-  //  댓글 불러오기 
-  async function fetchComments() {
+  // 댓글 불러오기
+  const fetchComments = useCallback(async () => {
     try {
       const res = await fetch(`https://sprint-server.onrender.com/articles/${id}/comments`, {
         cache: 'no-store',
@@ -77,18 +73,19 @@ export default function ArticleDetailPage() {
     } catch (err) {
       console.error('댓글 불러오기 오류:', err);
     }
-  }
+  }, [id, STORAGE_KEY, DELETED_KEY]);
 
   useEffect(() => {
+    fetchArticle();
     fetchComments();
-  }, [id]);
+  }, [fetchArticle, fetchComments]);
 
   const saveToLocal = (data) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   };
 
-  //  게시글 삭제
-  async function handleDelete() {
+  // 게시글 삭제
+  const handleDelete = async () => {
     if (!confirm('게시글을 삭제하시겠습니까?')) return;
     try {
       const res = await fetch(`https://sprint-server.onrender.com/articles/${id}`, {
@@ -102,10 +99,10 @@ export default function ArticleDetailPage() {
     } catch (err) {
       console.error('게시글 삭제 오류:', err);
     }
-  }
+  };
 
-  //  댓글 등록
-  async function handleCommentSubmit(e) {
+  // 댓글 등록
+  const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!newComment.trim()) return;
     try {
@@ -120,10 +117,10 @@ export default function ArticleDetailPage() {
     } catch (err) {
       console.error('댓글 등록 오류:', err);
     }
-  }
+  };
 
-  //  댓글 삭제 
-  function handleDeleteComment(commentId) {
+  // 댓글 삭제
+  const handleDeleteComment = (commentId) => {
     if (!confirm('댓글을 삭제하시겠습니까?')) return;
     const updated = comments.filter((c) => c.id !== commentId);
     setComments(updated);
@@ -135,9 +132,10 @@ export default function ArticleDetailPage() {
     }
     setActiveCommentId(null);
     alert('댓글이 삭제되었습니다.');
-  }
+  };
 
-  function handleUpdateComment(commentId) {
+  // 댓글 수정
+  const handleUpdateComment = (commentId) => {
     if (!editingContent.trim()) return;
     const updated = comments.map((c) =>
       c.id === commentId ? { ...c, content: editingContent } : c
@@ -147,16 +145,15 @@ export default function ArticleDetailPage() {
     setEditingCommentId(null);
     setEditingContent('');
     alert('댓글이 수정되었습니다.');
-  }
+  };
 
   if (loading) return <p className="p-6 text-gray-500">로딩 중...</p>;
   if (!article) return <p className="p-6 text-gray-500">게시글을 찾을 수 없습니다.</p>;
 
   return (
     <main className="max-w-3xl mx-auto px-6 py-10 bg-white min-h-screen">
-      {/* 제목 & 작성자 */}
+      {/* 제목 및 작성자 */}
       <h1 className="text-2xl font-bold mb-4">{article.title}</h1>
-
       <div className="flex items-center justify-between border-b pb-3 mb-6 text-gray-500 text-sm relative">
         <div className="flex items-center gap-3">
           <div className="relative w-10 h-10">
@@ -223,7 +220,7 @@ export default function ArticleDetailPage() {
         {/* 댓글 목록 */}
         <ul className="space-y-3">
           {comments.map((c) => (
-            <li key={c.id} className="bg-[#F9FAFB]  rounded-m px-5 py-4 text-gray-700">
+            <li key={c.id} className="bg-[#F9FAFB] rounded-2xl px-5 py-4 text-gray-700">
               {editingCommentId === c.id ? (
                 <div className="flex items-center gap-2 mb-2">
                   <input
@@ -240,77 +237,54 @@ export default function ArticleDetailPage() {
                   </button>
                 </div>
               ) : (
-                <p className="text-[14px] text-gray-800 mb-3 gap h-10">{c.content}</p>
+                <p className="text-[14px] text-gray-800 mb-3">{c.content}</p>
               )}
 
-             {/* 프로필, 작성자, 시간, 수정삭제 */}
-<div className="flex items-center justify-between">
- 
-  <div className="flex items-center gap-3">
-    <div className="relative w-10 h-10">
-      <Image
-        src="/panda_bg.svg"
-        alt="프로필 배경"
-        fill
-        className="object-cover rounded-full"
-      />
-      <Image
-        src="/panda.svg"
-        alt="프로필"
-        fill
-        className="object-contain p-1"
-      />
-    </div>
+              {/* 프로필, 작성자, 시간, 수정삭제 */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="relative w-10 h-10">
+                    <Image src="/panda_bg.svg" alt="프로필 배경" fill className="object-cover rounded-full" />
+                    <Image src="/panda.svg" alt="프로필" fill className="object-contain p-1" />
+                  </div>
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-[13px] text-gray-700 font-semibold">{c.author || '똑똑한판다'}</span>
+                    <span className="text-xs text-gray-400">{timeAgo(c.createdAt)}</span>
+                  </div>
+                </div>
 
-    <div className="flex flex-col leading-tight">
-      <span className="text-[12px] text-gray-700 gap h-8">
-        {c.author || '똑똑한판다'}
-      </span>
-      <span className="text-xs text-gray-400">
-        {timeAgo(c.createdAt)}
-      </span>
-    </div>
-  </div>
-
-  {/* 수정/삭제 토글 버튼 */}
-  <div className="relative">
-    <button
-      onClick={() =>
-        setActiveCommentId(activeCommentId === c.id ? null : c.id)
-      }
-    >
-      <Image src="/toggle.svg" alt="토글" width={3} height={3} />
-    </button>
-
-    {activeCommentId === c.id && (
-      <div className="absolute right-0 mt-1 bg-white border rounded-md w-24 shadow-sm z-10">
-        <button
-          onClick={() => {
-            setEditingCommentId(c.id);
-            setEditingContent(c.content);
-            setActiveCommentId(null);
-          }}
-          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-        >
-          수정하기
-        </button>
-        <button
-          onClick={() => handleDeleteComment(c.id)}
-          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
-        >
-          삭제하기
-        </button>
-      </div>
-    )}
-  </div>
-</div>
-
+                <div className="relative">
+                  <button onClick={() => setActiveCommentId(activeCommentId === c.id ? null : c.id)}>
+                    <Image src="/toggle.svg" alt="토글" width={3} height={3} />
+                  </button>
+                  {activeCommentId === c.id && (
+                    <div className="absolute right-0 mt-1 bg-white border rounded-md w-24 shadow-sm z-10">
+                      <button
+                        onClick={() => {
+                          setEditingCommentId(c.id);
+                          setEditingContent(c.content);
+                          setActiveCommentId(null);
+                        }}
+                        className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                      >
+                        수정하기
+                      </button>
+                      <button
+                        onClick={() => handleDeleteComment(c.id)}
+                        className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                      >
+                        삭제하기
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
             </li>
           ))}
         </ul>
       </section>
 
-      {/* 목록으로 돌아가기 버튼 */}
+      {/* 목록으로 돌아가기 */}
       <div className="flex justify-center mt-10">
         <button
           onClick={() => router.push('/freeboard')}

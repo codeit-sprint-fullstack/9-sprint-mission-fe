@@ -58,7 +58,7 @@ export default function FreeboardPage() {
               href={`/freeboard/${freeboard.id}`}
               className="relative bg-[#F9FAFB] rounded-2xl p-5"
             >
-              <div className="absolute top-0 left-[20px] bg-[#3692FF] text-white text-xs font-semibold px-3.5 py-1.5 inline-flex items-center gap-1 rounded-b-2xl">
+              <div className="absolute top-0  bg-[#3692FF] text-white text-xs font-semibold px-3.5 py-1.5 inline-flex items-center gap-1 rounded-b-2xl">
                 <Image
                   src="/ic_medal.svg"
                   alt="Best Medal"
