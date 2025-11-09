@@ -1,9 +1,7 @@
 "use client";
 
 import { deleteComment } from "@/lib/services/actions/comments";
-import { useState } from "react";
 import Image from "next/image";
-import CommentList from "./CommentList";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
@@ -37,7 +35,7 @@ export default function CommentItem({ c, openCommentId, setOpenCommentId }) {
         </button>
       </div>
       {openCommentId === c.id && (
-        <div className="absolute top-6 right-0 border rounded-lg border-gray-300 text-gray-400 bg-white w-28 items-center justify-center flex flex-col gap-2">
+        <div className="absolute top-9 right-0 border rounded-lg border-gray-300 text-gray-400 bg-white w-28 items-center justify-center flex flex-col gap-2">
           <button className="px-3 py-2 block cursor-pointer">수정하기</button>
           <button
             onClick={() => handleDelete(c.id)}
