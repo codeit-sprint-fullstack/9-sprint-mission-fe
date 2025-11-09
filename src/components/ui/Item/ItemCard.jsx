@@ -5,7 +5,7 @@ export default function ItemCard({ item }) {
     <div className="max-w-6xl mx-auto px-4 flex flex-col mb-4">
       <div className="flex flex-col w-full bg-[#FCFCFC] gap-3 p-4">
         <div className="flex justify-between">
-          <p className="font-bold text-xl">{item.content}</p>
+          <p className="font-bold text-xl">{item.title}</p>
           <div className="border border-[#E5E7EB] rounded-lg p-2 bg-white">
             <Image src="/img_71.png" alt="img" width={70} height={50} />
           </div>

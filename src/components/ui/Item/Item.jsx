@@ -8,8 +8,10 @@ import Link from "next/link";
 export default function Item({ items }) {
   const [keyword, setKeyword] = useState("");
   const [open, setOpen] = useState(false);
-  const filterPosts = items.data.filter(
-    (items) => items.title.includes(keyword) || items.content.includes(keyword)
+  const filterPosts = (items?.data ?? []).filter(
+    (it) =>
+      it.title.toLowerCase().includes(keyword.toLowerCase()) ||
+      it.content.toLowerCase().includes(keyword.toLowerCase())
   );
 
   return (
@@ -52,7 +54,9 @@ export default function Item({ items }) {
           </button>
           {open && (
             <div className="absolute right-0 border rounded-lg border-gray-300 text-gray-400 bg-white p-4 w-30 right- mt-1 items-center justify-center flex flex-col gap-2">
-              <button className="block w-full px-3 py-2 text-left z-10">좋아요순</button>
+              <button className="block w-full px-3 py-2 text-left z-10">
+                좋아요순
+              </button>
             </div>
           )}
         </div>
