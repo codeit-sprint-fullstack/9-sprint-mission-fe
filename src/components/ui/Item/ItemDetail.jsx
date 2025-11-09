@@ -2,10 +2,24 @@
 import { useState, useEffect } from "react";
 
 import Image from "next/image";
-import Link from "next/link";
+import { deleteArticle } from "@/lib/services/ItemApi";
+import { useRouter } from "next/navigation";
 
 export default function ItemDetail({ item }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  const handleDelete = async (itemId) => {
+    const result = await deleteArticle(itemId);
+    if (!result.success) {
+      alert(result.error || "게시글 삭제 실패");
+    } else {
+      alert("게시글이 삭제되었습니다");
+      router.push("/");
+      router.refresh();
+    }
+  };
+
   if (!item) {
     return <div>게시글의 정보를 찾을 수 없습니다</div>;
   }
@@ -23,7 +37,12 @@ export default function ItemDetail({ item }) {
           {open && (
             <div className="absolute top-6 right-0 border rounded-lg border-gray-300 text-gray-400 bg-white w-28 items-center justify-center flex flex-col gap-2">
               <button className="px-3 py-2 block">수정하기</button>
-              <button className="px-3 py-2 block">삭제하기</button>
+              <button
+                onClick={() => handleDelete(item.id)}
+                className="px-3 py-2 block"
+              >
+                삭제하기
+              </button>
             </div>
           )}
         </div>

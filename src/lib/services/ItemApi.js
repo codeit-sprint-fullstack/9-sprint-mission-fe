@@ -17,7 +17,8 @@ export async function getArticles() {
 /** 특정 게시글 가져오기 */
 export async function getArticleById(id) {
   const res = await fetch(
-    `https://sprint-7-server.onrender.com/articles/${id}`
+    `https://sprint-7-server.onrender.com/articles/${id}`,
+    { cache: "no-store" }
   );
 
   if (!res.ok) {
@@ -51,4 +52,17 @@ export async function addArticle({ title, content }) {
   } catch (error) {
     return { success: false, error: error.message };
   }
+}
+
+export async function deleteArticle(articleId) {
+  const response = await fetch(
+    `https://sprint-7-server.onrender.com/articles/${articleId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  if (!response.ok) {
+    throw new Error("게시글 삭제 실패");
+  }
+  return { success: true };
 }
