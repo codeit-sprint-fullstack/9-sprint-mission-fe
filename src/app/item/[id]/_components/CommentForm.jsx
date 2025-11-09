@@ -24,6 +24,7 @@ export default function CommentForm({ postId }) {
       formRef.current?.reset();
       setComment("");
       router.refresh();
+      router.push(`/item/${postId}`);
     } else {
       alert(result.error || "댓글 작성 실패");
     }
