@@ -6,6 +6,7 @@ import { getArticleById } from "@/lib/services/articles";
 import Image from "next/image";
 import { Flamenco } from "next/font/google";
 import Link from "next/link";
+import ReserveButton from "@/components/ui/button/ReserveButton";
 
 export default function ArticleDetail() {
   const { id } = useParams();
@@ -132,15 +133,7 @@ export default function ArticleDetail() {
           </div>
         </div>
       </section>
-
-      <div className="flex  justify-center mt-10 mb-10">
-        <Link
-          href="/"
-          className="  text-[18px] text-gray-200 bg-[#3692FF]  rounded-[40px] py-3 px-16"
-        >
-          목록으로 돌아가기
-        </Link>
-      </div>
+      <ReserveButton />
     </>
   );
 }

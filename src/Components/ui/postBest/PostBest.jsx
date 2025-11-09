@@ -19,11 +19,17 @@ export default function PostBest({ post }) {
         </div>
         <div className="flex">
           <figure className="flex items-center flex-1 gap-2">
-            <div>{author}</div>
-            <Image src={heart} alt="like" height={24} width={24} />
-            <span>{likes}</span>
+            <div className="text-[14px] font-normal leading-6 text-[#4B5563]">
+              {author}
+            </div>
+            <Image src={heart} alt="like" height={16} width={16} />
+            <span className="text-gray-500 text-[14px] font-normal leading-6">
+              {likes}
+            </span>
           </figure>
-          <p>{date}</p>
+          <p className="text-[14px] font-normal text-gray-400 leading-6">
+            {date}
+          </p>
         </div>
       </article>
     </div>
