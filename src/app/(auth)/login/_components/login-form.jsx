@@ -9,9 +9,10 @@ import { z } from 'zod'
 import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'
 import { Modal } from "@/components/ui/modal";
+import { cn } from "@/libs/cn";
 
 const loginFormSchema = z.object({
-  email: z.email(),
+  email: z.email('이메일이 올바르지 않습니다.'),
   password: z
     .string()
     .min(10, '내용은 10자 이상 입력해주세요.')
@@ -56,26 +57,35 @@ export function LoginForm() {
   return (
     <>
       <form
+        className="flex flex-col justify-center"
         method="POST"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <label htmlFor="email">이메일</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="이메일을 입력해주세요"
-          aria-label="이메일을 입력해주세요"
-          required
-          {...register("email")}
-        />
+        <div className="flex flex-col">
+          <label className="font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4 focus:outline-none " htmlFor="email">이메일</label>
+          <input
+            className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 bg-gray-100 focus:outline-none",
+              errors.email && "border border-error-red"
+            )}
+            id="email"
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            aria-label="이메일을 입력해주세요"
+            required
+            {...register("email")}
+          />
+        </div>
         {errors.email &&
-          <span className="error">{errors.email.message}</span>
+          <span className="text-error-red font-pretendard text-sm font-semibold mb-6 ml-4 mt-2">{errors.email.message}</span>
         }
 
-        <label htmlFor="password">비밀번호</label>
-        <div className="password-wrapper">
+        <div className="relative flex flex-col">
+          <label className="font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4" htmlFor="password">비밀번호</label>
           <input
+            className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 bg-gray-100 focus:outline-none",
+              errors.email && "border border-error-red"
+            )}
             id="password"
             type={passwordVisible ? "text" : "password"}
             alt={passwordVisible ? "텍스트가 보입니다." : "텍스트가 보이지않습니다."}
@@ -84,18 +94,21 @@ export function LoginForm() {
             {...register("password")}
           />
           <Image
-            className="btn_visibility_icon"
+            className="absolute cursor-pointer left-[93%] bottom-5 right-0"
             src={passwordVisible ? VisibilityOn : VisibilityOff}
             alt={passwordVisible ? "비밀번호 표시 아이콘" : "비밀번호 감춰진 표시 아이콘"}
             onClick={handlePasswordVisible}
+            width={24}
+            height={24}
+            unoptimized
           />
-
-          {errors.password &&
-            <span className="error">{errors.password.message}</span>
-          }
         </div>
+        {errors.password &&
+          <span className="text-error-red font-pretendard text-sm font-semibold mb-6 ml-4 mt-2">{errors.password.message}</span>
+        }
 
         <button
+          className="text-center w-full py-4 px-6 my-6 mb-6 mx-0 font-pretendard text-xl font-semibold leading-8 bg-gray-400 text-gray-100 border-0 rounded-[9999px] hover:bg-primary-100"
           type="submit"
           disabled={!isValid}
         >
