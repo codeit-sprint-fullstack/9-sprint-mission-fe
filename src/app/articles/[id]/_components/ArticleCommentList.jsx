@@ -5,8 +5,7 @@ import { getArticleCommentsList } from "@/lib/services/articlesServices";
 import CommentItem from "./CommentItem";
 
 export default async function CommentList({ articleId }) {
-  const comments = (await getArticleCommentsList({ articleId: articleId }))
-    .list;
+  const comments = (await getArticleCommentsList({ articleId })).list;
 
   return (
     <div className="mt-4">

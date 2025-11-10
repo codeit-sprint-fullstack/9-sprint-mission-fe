@@ -3,9 +3,9 @@ import { cache } from "react";
 const API = process.env.API_URL + "/articles";
 const PUBLIC_API = process.env.NEXT_PUBLIC_API_URL + "/articles";
 
-export const getArticlesList = async ({ pageSize = 0, keyword = "" }) => {
+export const getArticlesList = async ({ pageSize = 30, keyword = "" }) => {
   const res = await fetch(
-    API + `?orderBy=recent&page=&pageSize=${pageSize}&keyword=${keyword}`
+    API + `?orderBy=recent&page=1&pageSize=${pageSize}&keyword=${keyword}`
   );
   if (!res.ok) {
     throw new Error("데이터를 가져오는데 실패했습니다");
@@ -80,7 +80,7 @@ export const deleteArticleById = async ({ id }) => {
 };
 
 export const getArticleCommentsList = async ({ articleId }) => {
-  const res = await fetch(PUBLIC_API + `/${articleId}/comments`);
+  const res = await fetch(PUBLIC_API + `/${articleId}/comments?limit=30`);
   if (!res.ok) {
     throw new Error("데이터를 가져오는데 실패했습니다");
   }
