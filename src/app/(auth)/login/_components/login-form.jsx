@@ -65,8 +65,8 @@ export function LoginForm() {
         <div className="flex flex-col">
           <label className="font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4 focus:outline-none " htmlFor="email">이메일</label>
           <input
-            className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 bg-gray-100 focus:outline-none",
-              errors.email && "border border-error-red"
+            className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 mb-6 bg-gray-100 focus:outline-none",
+              errors.email && "border border-error-red mb-0"
             )}
             id="email"
             type="email"
@@ -94,7 +94,7 @@ export function LoginForm() {
             {...register("password")}
           />
           <Image
-            className="absolute cursor-pointer left-[93%] bottom-5 right-0"
+            className="absolute cursor-pointer top-1/2 translate-y-3.25 left-[93%]"
             src={passwordVisible ? VisibilityOn : VisibilityOff}
             alt={passwordVisible ? "비밀번호 표시 아이콘" : "비밀번호 감춰진 표시 아이콘"}
             onClick={handlePasswordVisible}
