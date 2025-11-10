@@ -8,7 +8,8 @@ import backIcon from "@/assets/img/ic_back.svg";
 
 export default async function ArticleDetailPage({ params }) {
   const { id } = await params;
-  const article = await getArticleById({ id });
+  const res = await getArticleById({ id });
+  const article = res.data;
 
   return (
     <div className="w-300 mt-6 mb-6">
