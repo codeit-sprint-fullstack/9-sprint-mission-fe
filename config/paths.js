@@ -11,4 +11,13 @@ export const paths = {
       getHref: () => '/articles/registration',
     },
   },
+
+  auth: {
+    login: {
+      getHref: () => '/login',
+    },
+    signup: {
+      getHref: () => '/signup',
+    },
+  },
 };
