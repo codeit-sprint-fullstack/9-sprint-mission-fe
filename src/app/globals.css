@@ -24,3 +24,7 @@
 .btns.disactive {
   @apply bg-(--secondary-400);
 }
+
+.input-children {
+  @apply w-full h-6 border-none bg-(--secondary-100) text-base font-normal leading-relaxed focus:outline-none;
+}
