@@ -12,11 +12,14 @@ import { Modal } from "@/components/ui/modal";
 import { cn } from "@/libs/cn";
 
 const loginFormSchema = z.object({
-  email: z.email('이메일이 올바르지 않습니다.'),
-  password: z
+  email: z
     .string()
-    .min(10, '내용은 10자 이상 입력해주세요.')
-    .max(100, '내용은 100자 이내로 입력해주세요.'),
+    .email('이메일이 올바르지 않습니다.'),
+
+  password: z
+    .string({ required_error: '비밀번호를 입력해주세요' })
+    .min(8, '비밀번호는 8자 이상 입력해주세요.')
+    .max(50, '비밀번호는 50자 이내로 입력해주세요.'),
 });
 
 export function LoginForm() {
@@ -63,7 +66,7 @@ export function LoginForm() {
         autoComplete="off"
       >
         <div className="flex flex-col">
-          <label className="font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4 focus:outline-none " htmlFor="email">이메일</label>
+          <label className="font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4 focus:outline-none" htmlFor="email">이메일</label>
           <input
             className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 mb-6 bg-gray-100 focus:outline-none",
               errors.email && "border border-error-red mb-0"
@@ -72,7 +75,6 @@ export function LoginForm() {
             type="email"
             placeholder="이메일을 입력해주세요"
             aria-label="이메일을 입력해주세요"
-            required
             {...register("email")}
           />
         </div>
