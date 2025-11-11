@@ -14,14 +14,24 @@ export default function EasyLogin() {
             className="flex items-center justify-center transition bg-white rounded-[42px] w-[42px] h-[42px]  shrink-0 border border-gray-50 hover:bg-black 
 "
           >
-            <Image alt="googleImg" src={google} width={22} height={22} />
+            <Image
+              alt="googleImg"
+              src={google}
+              className="w-[22px] h-auto"
+              priority
+            />
           </a>
           <a
             href="https://www.google.com/"
             className="flex items-center justify-center transition bg-[#F5E14B] rounded-[42px] w-[42px] h-[42px]  shrink-0 border border-gray-50 hover:bg-gray-50 
 "
           >
-            <Image alt="kakaoImg" src={kakao} width={22} height={22} />
+            <Image
+              alt="kakaoImg"
+              src={kakao}
+              className="w-[22px] h-auto"
+              priority
+            />
           </a>
         </div>
       </div>

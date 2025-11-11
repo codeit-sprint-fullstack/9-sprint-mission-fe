@@ -1,22 +1,45 @@
 "use client";
+import clsx from "clsx";
 import Image from "next/image";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export default function LoginInput() {
   const [showEye, setShowEye] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (e.target.value && !emailRegex.test(e.target.value)) {
+      setEmailError("잘못된 이메일입니다.");
+    } else {
+      setEmailError("");
+    }
+  };
 
   return (
-    <section className="flex flex-col gap-6 items-start ">
+    <form className="flex flex-col gap-6 items-start ">
       <div>
         <p className="text-[18px] text-[#1F2937] font-semibold leading-[26px] pb-4">
           이메일
         </p>
         <input
           type="text"
+          value={email}
+          onChange={handleEmail}
           placeholder="이메일을 입력해주세요."
-          className="border-0 bg-gray-100 items-center rounded-xl w-[640px] h-14 px-6 py-4 "
+          className={clsx(
+            "border-0 bg-gray-100 rounded-xl w-[640px] h-14 px-6 py-4",
+            { "outline-1 outline-red-400": emailError }
+          )}
         />
+        {emailError && (
+          <p className="text-red-500 text-sm mt-2">{emailError}</p>
+        )}
       </div>
       <div>
         <p className="text-[18px] text-[#1F2937] font-semibold leading-[26px] pb-4">
@@ -41,6 +64,6 @@ export default function LoginInput() {
           </button>
         </div>
       </div>
-    </section>
+    </form>
   );
 }
