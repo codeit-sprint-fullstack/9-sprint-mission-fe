@@ -4,6 +4,7 @@ import './globals.css'
 import Pretendard from 'next/font/local'
 import Rokaf from 'next/font/local'
 
+import AuthProvider from '@/providers/auth-provider'
 import { rootMetadata } from '#/config/metadata'
 
 const pretendard = Pretendard({
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   )

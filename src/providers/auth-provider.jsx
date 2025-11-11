@@ -1,14 +1,15 @@
+"use client"
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { authService } from "@/services/auth-service";
 import { userService } from "@/services/user-service";
 
 const AuthContext = createContext({
-  login: () => { },
-  logout: () => { },
   user: null,
+  login: () => { },
   updateUser: () => { },
-  register: () => { },
+  signUp: () => { },
+  isInitialized: false,
 });
 
 export const useAuth = () => {
@@ -35,30 +36,41 @@ export default function AuthProvider({ children }) {
     }
   };
 
-  const register = async (name, email, password) => {
-    await authService.register(name, email, password)
+  useEffect(() => {
+    getUser();
+  }, [])
+
+  const signUp = async (email, nickname, password, passwordConfirmation) => {
+    try {
+      await authService.register(email, nickname, password, passwordConfirmation)
+      // 회원가입 시 바로 로그인 시도
+      await login(email, password);
+    } catch (error) {
+      console.error('회원가입 실패:', error)
+      throw error
+    }
   }
 
   const login = async (email, password) => {
-    await authService.login(email, password);
-    await getUser();
-  }
+    try {
+      await authService.login(email, password);
+      await getUser();
+    } catch (error) {
+      console.error('로그인 실패:', error)
+      throw error
+    }
+  };
 
   const updateUser = async (user) => {
     const updatedUser = await userService.updateMe(user);
     setUser(updatedUser);
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      getUser();
-    }, 0)
-  }, [])
 
   return (
-    <AuthProvider.Provider value={{ user, login, updateUser, register, isInitialized }}>
+    <AuthContext.Provider value={{ user, login, updateUser, signUp, isInitialized }}>
       {children}
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
   )
 }
 
