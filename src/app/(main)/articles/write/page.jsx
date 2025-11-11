@@ -11,12 +11,14 @@ export default function WritePage() {
           등록
         </button>
       </div>
+
       <div className="pb-8">
         <h2 className="text-#1F2937 text-[18px] pb-3">*제목</h2>
         <div className="flex h-14 px-6 py-4 bg-gray-100 rounded-xl ">
           <input type="text" placeholder="제목을 입력해주세요." />
         </div>
       </div>
+
       <div>
         <h2 className="text-#1F2937 text-[18px] pb-3">*내용</h2>
         <div className=" h-[282px] py-4 px-6 bg-gray-100 rounded-lg">

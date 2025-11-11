@@ -53,7 +53,6 @@ export default function ArticleDetail() {
               height={40}
               className="rounded-full"
             />
-
             <div className="flex gap-2 items-center justify-center">
               <div className="text-gray-600 text-[14px]">{author}</div>
               <div className="text-gray-400 text-[14px] pr-8">{date}</div>
