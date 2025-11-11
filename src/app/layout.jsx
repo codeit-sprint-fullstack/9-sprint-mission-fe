@@ -6,7 +6,7 @@ import Rokaf from 'next/font/local'
 
 import { Footer } from '@/components/layouts/Footer'
 import { Navigation } from '@/components/ui/navigation'
-import { rootMetadata } from '#/config/root-metadata'
+import { rootMetadata } from '#/config/metadata'
 
 const pretendard = Pretendard({
   src: '../assets/font/PretendardVariable.woff2',

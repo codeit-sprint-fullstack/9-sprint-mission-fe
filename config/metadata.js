@@ -7,3 +7,13 @@ export const rootMetadata = {
   keywords: ['Next.js', ' React', 'Tailwind CSS'],
   creator: 'Kim youn gi',
 };
+
+export const loginMetadata = {
+  title: '판다마켓 로그인',
+  description: '판다마켓 로그인 페이지',
+};
+
+export const signupMetadata = {
+  title: '판다마켓 회원가입',
+  description: '판다마켓 회원가입 페이지',
+};
