@@ -1,3 +1,5 @@
+import { cookieFetch } from './fetch-client';
+
 // FormData 용 헤더 미포함
 const formDataFetch = async (url, options = {}) => {
   const apiURL = process.env.NEXT_PUBLIC_API_URL;
@@ -22,4 +24,14 @@ const formDataFetch = async (url, options = {}) => {
   } catch (error) {
     return { status: response.status, ok: response.ok };
   }
+};
+
+export const userService = {
+  getMe: () => cookieFetch('/user/me'),
+
+  updateMe: (formData) =>
+    formDataFetch('/user/me', {
+      method: 'PATCH',
+      body: formData,
+    }),
 };
