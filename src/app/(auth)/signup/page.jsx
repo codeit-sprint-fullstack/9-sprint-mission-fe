@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { AuthTitle } from "@/components/layouts/Auth/auth-title"
 import { SocialLogin } from "@/components/layouts/Auth/social-login"
+import { signupMetadata } from "#/config/metadata"
 import { paths } from "#/config/paths"
 
 import SignUpForm from "./_components/signup-form"
@@ -26,3 +27,6 @@ export default function SignUpPage() {
     </main>
   )
 }
+
+
+export const metadata = { ...signupMetadata }

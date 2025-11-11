@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { AuthTitle } from '@/components/layouts/Auth/auth-title';
 import { SocialLogin } from '@/components/layouts/Auth/social-login';
+import { loginMetadata } from '#/config/metadata';
 import { paths } from '#/config/paths';
 
 import { LoginForm } from './_components/login-form';
@@ -27,3 +28,6 @@ export default function LoginPage() {
     </main>
   );
 }
+
+
+export const metadata = { ...loginMetadata }
