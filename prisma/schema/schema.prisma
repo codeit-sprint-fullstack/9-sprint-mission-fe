@@ -5,11 +5,11 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRESQL_URI")
+  url      = env("DATABASE_URI")
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(cuid())
   name      String
   email     String    @unique
   password  String
@@ -17,16 +17,26 @@ model User {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
-  userProfile UserProfile?
-  articles    Article[]
-  comments    Comment[]
-  items       Item[]
+  userProfile   UserProfile?
+  articles      Article[]
+  comments      Comment[]
+  items         Item[]
+  refreshTokens RefreshToken[]
 }
 
 model UserProfile {
-  id       Int     @id @default(autoincrement())
-  userId   Int     @unique
+  id       String  @id @default(cuid())
+  userId   String  @unique
   photoUrl String?
   bio      String?
   user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

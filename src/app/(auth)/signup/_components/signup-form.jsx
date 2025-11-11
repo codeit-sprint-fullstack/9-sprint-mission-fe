@@ -10,6 +10,7 @@ import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'
 import { Modal } from '@/components/ui/modal';
 import { cn } from '@/libs/cn';
+import { useAuth } from '@/providers/auth-provider';
 
 const signupFormSchema = z.object({
   email: z
@@ -19,21 +20,25 @@ const signupFormSchema = z.object({
   nickname: z
     .string({ required_error: '닉네임을 입력해주세요' })
     .min(2, '닉네임은 2자 이상 입력해주세요')
-    .max(10, '닉네임은 10자 이내로 입력해주세요'),
+    .max(20, '닉네임은 20자 이내로 입력해주세요'),
 
   password: z
     .string({ required_error: '비밀번호를 입력해주세요' })
     .min(8, '비밀번호는 8자 이상 입력해주세요.')
     .max(50, '비밀번호는 50자 이내로 입력해주세요.'),
 
-  checker: z
+  passwordConfirmation: z
     .string({ required_error: '패스워드 확인을 위해 입력해주세요' })
 
-}).refine((data) => data.password === data.checker, {
-  path: ['checker'],
+}).refine((data) => data.password === data.passwordConfirmation, {
+  path: ['passwordConfirmation'],
   message: '패스워드가 일치하지 않습니다.'
 })
+
+const defaultErrorMessage = '회원가입 중 알 수 없는 오류가 발생했습니다.'
+
 export default function SignUpForm() {
+  const { signUp } = useAuth()
   const {
     register,
     handleSubmit,
@@ -45,6 +50,7 @@ export default function SignUpForm() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordCheckerVisible, setPasswordCheckerVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState(defaultErrorMessage)
 
   const router = useRouter();
 
@@ -56,23 +62,20 @@ export default function SignUpForm() {
     setPasswordCheckerVisible(!passwordCheckerVisible);
   };
 
-  const onSubmit = (e) => {
-    if (emailError || nicknameError || passwordError || passwordCheckerError) {
-      alert("입력값을 확인해주세요.");
-      return;
-    }
-
-    const user = USER_DATA.find((u) => u.email === email);
-
-    if (user) {
+  const onSubmit = async (data) => {
+    try {
+      await signUp(data.email, data.nickname, data.password, data.passwordConfirmation)
+      router.replace("/items");
+    } catch (error) {
+      const errorMessage = error?.message || defaultErrorMessage
+      setModalMessage(errorMessage)
       setShowModal(true);
-    } else {
-      router.replace("/login");
     }
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setModalMessage(defaultErrorMessage);
   };
 
   return (
@@ -103,7 +106,7 @@ export default function SignUpForm() {
           <label className='font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4' htmlFor="nickname">닉네임</label>
           <input
             className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 mb-6 bg-gray-100 focus:outline-none",
-              errors.email && "border border-error-red mb-0"
+              errors.nickname && "border border-error-red mb-0"
             )}
             id="nickname"
             type="text"
@@ -120,7 +123,7 @@ export default function SignUpForm() {
           <label className="font-pretendard text-[1.125rem] font-bold leading-6.5 mb-4" htmlFor="password">비밀번호</label>
           <input
             className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 bg-gray-100 focus:outline-none",
-              errors.email && "border border-error-red"
+              errors.password && "border border-error-red"
             )}
             id="password"
             type={passwordVisible ? "text" : "password"}
@@ -143,17 +146,17 @@ export default function SignUpForm() {
         </div>
 
         <div className='relative flex flex-col'>
-          <label className='font-pretendard text-[1.125rem] font-bold leading-6.5 mt-4 mb-4' htmlFor="check">비밀번호 확인</label>
+          <label className='font-pretendard text-[1.125rem] font-bold leading-6.5 mt-4 mb-4' htmlFor="passwordConfirmation">비밀번호 확인</label>
           <input
             className={cn("inline-block w-full border-0 rounded-xl py-4 px-6 bg-gray-100 focus:outline-none",
-              errors.email && "border border-error-red"
+              errors.passwordConfirmation && "border border-error-red"
             )}
-            id="checker"
+            id="passwordConfirmation"
             type={passwordCheckerVisible ? "text" : "password"}
             alt={passwordVisible ? "텍스트가 보입니다." : "텍스트가 보이지않습니다."}
             placeholder="비밀번호를 입력해주세요"
             aria-label="비밀번호를 입력해주세요"
-            {...register("checker")}
+            {...register("passwordConfirmation")}
           />
           <Image
             className="absolute cursor-pointer top-1/2 translate-y-3.25 left-[93%]"
@@ -164,8 +167,8 @@ export default function SignUpForm() {
             height={24}
             unoptimized
           />
-          {errors.checker &&
-            <span className="text-error-red font-pretendard text-sm font-semibold mb-6 ml-4 mt-2">{errors.checker.message}</span>
+          {errors.passwordConfirmation &&
+            <span className="text-error-red font-pretendard text-sm font-semibold mb-6 ml-4 mt-2">{errors.passwordConfirmation.message}</span>
           }
         </div>
 
@@ -179,7 +182,7 @@ export default function SignUpForm() {
         </button>
       </form >
       {showModal &&
-        <Modal close={handleCloseModal} msg={"사용 중인 이메일입니다."} />
+        <Modal close={handleCloseModal} msg={modalMessage} />
       }
     </>
   )

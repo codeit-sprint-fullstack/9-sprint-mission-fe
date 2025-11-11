@@ -1,5 +1,6 @@
+const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export const defaultFetch = async (url, options = {}) => {
-  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const defaultOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -16,17 +17,18 @@ export const defaultFetch = async (url, options = {}) => {
     },
   };
 
-  const response = await fetch(`${apiURL}${url}`, mergedOptions);
+  const response = await fetch(`${API_URL}${url}`, mergedOptions);
 
   if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
+    const errorData = await response.json().catch(() => {});
+    const errorMessage = errorData?.message || `API Error: ${response.status}`;
+    throw new Error(errorMessage);
   }
 
   return response.json();
 };
 
 export const cookieFetch = async (url, options = {}) => {
-  const apiURL = process.env.NEXT_PUBLIC_API_URL;
   const defaultOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -44,26 +46,27 @@ export const cookieFetch = async (url, options = {}) => {
     },
   };
 
-  let response = await fetch(`${apiURL}${url}`, mergedOptions);
+  let response = await fetch(`${API_URL}${url}`, mergedOptions);
 
-  if (response.status === 401 && url !== '/auth/refresh-token') {
+  if (response.status === 401 && url !== '/api/refresh-token') {
     try {
-      const refreshResponse = await fetch(`${apiURL}/auth/refresh-token`, {
+      const refreshResponse = await fetch(`${API_URL}/api/refresh-token`, {
         method: 'POST',
         credentials: 'include',
         cache: 'no-store',
       });
 
       if (refreshResponse.ok) {
-        response = await fetch(`${apiURL}${url}`, mergedOptions);
+        response = await fetch(`${API_URL}${url}`, mergedOptions);
       }
     } catch (error) {
       console.error('토큰 갱신 실패:', error);
     }
   }
-
   if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
+    const errorData = await response.json().catch(() => {});
+    const errorMessage = errorData.message || `API Error: ${response.status}`;
+    throw new Error(errorMessage);
   }
 
   const contentType = response.headers.get('content-type');

@@ -1,6 +1,6 @@
 model Item {
-  id          Int       @id @default(autoincrement())
-  userId      Int?
+  id          String    @id @default(cuid())
+  userId      String?
   name        String
   description String
   price       String
@@ -9,5 +9,5 @@ model Item {
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
-  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
 }

@@ -7,7 +7,6 @@ import { userService } from "@/services/user-service";
 const AuthContext = createContext({
   user: null,
   login: () => { },
-  updateUser: () => { },
   signUp: () => { },
   isInitialized: false,
 });
@@ -29,27 +28,16 @@ export default function AuthProvider({ children }) {
       const user = await userService.getMe();
       setUser(user)
     } catch (error) {
-      console.error("사용자 정보를 가져오는데 실패했습니다:.", error)
+      console.error('사용자 정보 가져오기 실패', error)
       setUser(null)
     } finally {
       setIsInitialized(true)
     }
-  };
+  }
 
   useEffect(() => {
     getUser();
   }, [])
-
-  const signUp = async (email, nickname, password, passwordConfirmation) => {
-    try {
-      await authService.register(email, nickname, password, passwordConfirmation)
-      // 회원가입 시 바로 로그인 시도
-      await login(email, password);
-    } catch (error) {
-      console.error('회원가입 실패:', error)
-      throw error
-    }
-  }
 
   const login = async (email, password) => {
     try {
@@ -61,14 +49,21 @@ export default function AuthProvider({ children }) {
     }
   };
 
-  const updateUser = async (user) => {
-    const updatedUser = await userService.updateMe(user);
-    setUser(updatedUser);
+  //TODO: logout 기능 추후 
+
+  const signUp = async (email, nickname, password, passwordConfirmation) => {
+    try {
+      await authService.register(email, nickname, password, passwordConfirmation)
+      await login(email, password);
+    } catch (error) {
+      console.error('회원가입 실패:', error)
+      throw error
+    }
   }
 
 
   return (
-    <AuthContext.Provider value={{ user, login, updateUser, signUp, isInitialized }}>
+    <AuthContext.Provider value={{ user, login, signUp, isInitialized }}>
       {children}
     </AuthContext.Provider>
   )

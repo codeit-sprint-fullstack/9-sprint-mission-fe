@@ -13,6 +13,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'i.pravatar.cc',
       },
+      {
+        protocol: 'https',
+        hostname: 'panda-market-api.vercel.app',
+      },
     ],
   },
 };
