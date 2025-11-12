@@ -1,5 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
+import Provider from "./provider";
 
 export const metadata = {
   title: "판다마켓",
@@ -17,7 +18,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${pretendard.className} antialiased flex flex-col justify-center items-center min-h-screen`}
       >
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

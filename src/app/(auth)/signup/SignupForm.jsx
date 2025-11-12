@@ -3,17 +3,27 @@
 import InputSection from "../_components/InputSection.jsx";
 import SubmitBtn from "../_components/SubmitBtn.jsx";
 import { useForm } from "react-hook-form";
+import { useAuth } from "@/providers/AuthProvider.jsx";
 
 export default function SignupForm() {
   const {
     register,
     handleSubmit,
     formState: { isValid, errors, values },
-  } = useForm({ mode: "onBlur" });
-  const onSubmit = (data) => console.log(data);
+  } = useForm({ mode: "onChange" });
 
-  const emailRegEx =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const { signup } = useAuth();
+
+  const onSubmit = async (data) => {
+    await signup(
+      data.email,
+      data.nickname,
+      data.password,
+      data.passwordConfirmation
+    );
+  };
+
+  const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   return (
     <form id="login" className="auth-form" onSubmit={handleSubmit(onSubmit)}>
@@ -55,9 +65,9 @@ export default function SignupForm() {
       />
       <InputSection
         valueType={"password"}
-        valueName={"password-chk"}
+        valueName={"passwordConfirmation"}
         labelTitle={"비밀번호 확인"}
-        err={errors["password-chk"]}
+        err={errors.passwordConfirmation}
         placeholder={"비밀번호를 한 번 더 입력하세요."}
         register={register}
         validation={{

@@ -2,15 +2,19 @@
 
 import InputSection from "../_components/InputSection.jsx";
 import SubmitBtn from "../_components/SubmitBtn.jsx";
+import { useAuth } from "@/providers/AuthProvider.jsx";
 import { useForm } from "react-hook-form";
 
 export default function LoginForm() {
+  const { login } = useAuth();
+
   const {
     register,
     handleSubmit,
     formState: { isValid, errors },
-  } = useForm({ mode: "onBlur" });
-  const onSubmit = (data) => console.log(data);
+  } = useForm({ mode: "onChange" });
+
+  const onSubmit = async (data) => await login(data.email, data.password);
 
   const emailRegEx =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
