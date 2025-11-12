@@ -6,6 +6,7 @@ import { useAuth } from "./auth-provider";
 
 const protectedPaths = [
   '/articles',
+  '/items',
 ]
 
 const publicPaths = [
