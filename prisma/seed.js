@@ -4,10 +4,8 @@ import {
   randAvatar,
   randCatchPhrase,
   randEmail,
-  randFirstName,
   randFullName,
   randImg,
-  randLastName,
   randNumber,
   randParagraph,
   randPassword,
@@ -15,9 +13,8 @@ import {
   randSentence,
   randText,
 } from '@ngneat/falso';
-import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+import prisma from '../src/libs/prisma.js';
 
 async function main() {
   console.log('기존 데이터 삭제 시작...');

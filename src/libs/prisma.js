@@ -1,7 +1,7 @@
 /** @see https://accelerate-speed-test.prisma.io/?utm_source=github&utm_medium=accelerate-readme#testArea */
 import { withAccelerate } from '@prisma/extension-accelerate';
 
-import { PrismaClient } from './generated/prisma-client';
+import { PrismaClient } from './generated/prisma-client/index.js';
 
 // Accelerate 확장 기능을 적용 .withAccelerate()를 사용하면 Prisma Data Proxy를 통해 데이터베이스에 연결
 const prisma = new PrismaClient().$extends(withAccelerate());
