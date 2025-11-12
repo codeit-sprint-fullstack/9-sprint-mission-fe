@@ -10,6 +10,7 @@ import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'
 import { Modal } from "@/components/ui/modal";
 import { cn } from "@/libs/cn";
+import { useAuth } from "@/providers/auth-provider";
 
 const loginFormSchema = z.object({
   email: z
@@ -22,7 +23,10 @@ const loginFormSchema = z.object({
     .max(50, '비밀번호는 50자 이내로 입력해주세요.'),
 });
 
+const defaultErrorMessage = '알 수 없는 오류가 발생했습니다.'
+
 export function LoginForm() {
+  const { login } = useAuth()
   const {
     register,
     handleSubmit,
@@ -34,6 +38,7 @@ export function LoginForm() {
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState(defaultErrorMessage)
 
   const router = useRouter();
 
@@ -41,15 +46,14 @@ export function LoginForm() {
     setPasswordVisible(!passwordVisible);
   };
 
-  const onSubmit = (e) => {
-
-    const user = USER_DATA.find(
-      (u) => u.email === email && u.password === password);
-
-    if (!user) {
+  const onSubmit = async (data) => {
+    try {
+      await login(data.email, data.password)
+      router.replace('/items');
+    } catch (error) {
+      const errorMessage = error?.message || defaultErrorMessage
+      setModalMessage(errorMessage)
       setShowModal(true);
-    } else {
-      router.replace('/products');
     }
   };
 
@@ -121,7 +125,7 @@ export function LoginForm() {
       {showModal &&
         <Modal
           close={handleCloseModal}
-          msg={"비밀번호가 일치하지 않습니다."}
+          msg={modalMessage}
         />
       }
     </>

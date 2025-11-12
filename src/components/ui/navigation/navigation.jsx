@@ -9,7 +9,7 @@ import { paths } from '#/config/paths'
 
 const navLink = [
   { name: '자유게시판', href: '/articles' },
-  { name: '중고마켓', href: '/products' }
+  { name: '중고마켓', href: '/items' }
 ]
 
 export function Navigation() {

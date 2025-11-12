@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { AuthTitle } from '@/components/layouts/Auth/auth-title';
 import { SocialLogin } from '@/components/layouts/Auth/social-login';
+import { loginMetadata } from '#/config/metadata';
 import { paths } from '#/config/paths';
 
 import { LoginForm } from './_components/login-form';
@@ -19,7 +20,7 @@ export default function LoginPage() {
         <p className="flex font-pretendard text-sm/normal font-medium gap-4 mt-6 text-gray-800">
           판다마켓이 처음이신가요?
         </p>
-        <Link className="flex font-pretendard text-sm/normal font-medium gap-4  mt-6 text-primary-100" href={paths.auth.signup.getHref()}>
+        <Link className="flex font-pretendard text-sm/normal font-medium gap-4 mt-6 text-primary-100" href={paths.auth.signup.getHref()}>
           회원가입
         </Link>
       </div>
@@ -27,3 +28,6 @@ export default function LoginPage() {
     </main>
   );
 }
+
+
+export const metadata = { ...loginMetadata }

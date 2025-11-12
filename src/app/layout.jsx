@@ -4,9 +4,9 @@ import './globals.css'
 import Pretendard from 'next/font/local'
 import Rokaf from 'next/font/local'
 
-import { Footer } from '@/components/layouts/Footer'
-import { Navigation } from '@/components/ui/navigation'
-import { rootMetadata } from '#/config/root-metadata'
+import { rootMetadata } from '#/config/metadata'
+
+import { Providers } from './providers'
 
 const pretendard = Pretendard({
   src: '../assets/font/PretendardVariable.woff2',
@@ -26,11 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
-        <div className='flex flex-col justify-center'>
-          <Navigation />
-          {children}
-          <Footer />
-        </div>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
