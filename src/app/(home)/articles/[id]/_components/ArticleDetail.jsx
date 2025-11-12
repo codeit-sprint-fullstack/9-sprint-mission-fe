@@ -2,7 +2,7 @@ import React from "react";
 import KebabDropDown from "./KebabDropDown";
 import Image from "next/image";
 import heartIcon from "@/assets/img/ic_heart.svg";
-import profileImg from "@/assets/img/ic_profile.png";
+import profileImg from "@/assets/img/ic_profile.svg";
 
 export default function ArticleDetail({ article }) {
   return (

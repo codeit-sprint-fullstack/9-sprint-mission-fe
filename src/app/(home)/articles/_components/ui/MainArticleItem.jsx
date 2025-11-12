@@ -1,7 +1,7 @@
 import Image from "next/image";
 import heartIcon from "@/assets/img/ic_heart.svg";
 import sampleImg from "@/assets/img/sample_image.png";
-import profileImg from "@/assets/img/ic_profile.png";
+import profileImg from "@/assets/img/ic_profile.svg";
 import Link from "next/link";
 
 export default function MainAlticleItem({ article }) {

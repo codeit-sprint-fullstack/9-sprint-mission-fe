@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import profileImg from "@/assets/img/ic_profile.png";
+import profileImg from "@/assets/img/ic_profile.svg";
 import CommentDropDown from "./CommentDropDown";
 import { updateComment } from "@/lib/services/commentsServices";
 
