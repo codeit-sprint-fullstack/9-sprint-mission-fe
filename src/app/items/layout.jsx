@@ -3,7 +3,7 @@ import '../globals.css'
 
 import { Footer } from '@/components/layouts/Footer'
 import { Navigation } from '@/components/ui/navigation'
-import { articleMetadata } from '#/config/metadata'
+import { itemMetadata } from '#/config/metadata'
 
 export default function ArticleLayout({ children }) {
   return (
@@ -15,4 +15,5 @@ export default function ArticleLayout({ children }) {
   )
 }
 
-export const metadata = { ...articleMetadata }
+export const metadata = { ...itemMetadata }
+
