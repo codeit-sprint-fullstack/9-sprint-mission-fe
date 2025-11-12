@@ -46,18 +46,18 @@ export const cookieFetch = async (url, options = {}) => {
     },
   };
 
-  let response = await fetch(`${API_URL}${url}`, mergedOptions);
+  let response = await fetch(`${url}`, mergedOptions);
 
   if (response.status === 401 && url !== '/api/refresh-token') {
     try {
-      const refreshResponse = await fetch(`${API_URL}/api/refresh-token`, {
+      const refreshResponse = await fetch(`/api/refresh-token`, {
         method: 'POST',
         credentials: 'include',
         cache: 'no-store',
       });
 
       if (refreshResponse.ok) {
-        response = await fetch(`${API_URL}${url}`, mergedOptions);
+        response = await fetch(`${url}`, mergedOptions);
       }
     } catch (error) {
       console.error('토큰 갱신 실패:', error);

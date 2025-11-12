@@ -1,6 +1,3 @@
-/* + #은 jsconfig설정에 의해 최상위 루트를 가리키게된다. */
-import '../globals.css'
-
 import { Footer } from '@/components/layouts/Footer'
 import { Navigation } from '@/components/ui/navigation'
 import { itemMetadata } from '#/config/metadata'
