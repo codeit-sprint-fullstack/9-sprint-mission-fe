@@ -16,8 +16,8 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="max-w-[768px] w-full md:max-w-full h-17.5 bg-white z-1">
-      <div className="flex justify-between items-center h-full py-0 px-0 my-0 mx-auto border-b border-solid border-gray-300 gap-0 xl:gap-3 md:px-50">
+    <nav className="container h-17.5 bg-white z-1">
+      <div className="flex justify-between items-center h-full py-0 my-0 mx-auto border-b border-solid border-gray-300 gap-0 ml-4 xl:gap-3">
         <div className="inline-flex items-center">
           <div className='flex items-center gap-2 ml-6 md:ml-0'>
             <Link

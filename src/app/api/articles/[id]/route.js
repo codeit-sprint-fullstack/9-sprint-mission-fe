@@ -14,7 +14,7 @@ export const GET = async (request, { params }) => {
     async (id) => {
       const article = await prisma.article.findUnique({
         where: {
-          id: parseInt(id),
+          id: id,
         },
         include: {
           Comment: {

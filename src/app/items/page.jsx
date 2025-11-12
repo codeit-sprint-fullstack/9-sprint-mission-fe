@@ -13,7 +13,6 @@ export default async function ProductPage(props) {
   const keyword = searchParams.keyword || ''
   const orderBy = searchParams.orderBy || 'recent'
   const { items } = await getItems(keyword, orderBy)
-  console.log(items)
   // custom hooks
   // const {
   //   currentPage,
@@ -31,7 +30,7 @@ export default async function ProductPage(props) {
 
   return (
     <>
-      <main className="container w-full flex flex-col items-center mx-auto py-0 max-w-480">
+      <main className="container w-full min-h-screen flex flex-col items-center mx-auto py-0 max-w-480">
 
         <div className="pt-6.5 flex flex-col max-w-480">
           <p className="font-pretendard text-gray-900 font-bold m-0">베스트 상품</p>
