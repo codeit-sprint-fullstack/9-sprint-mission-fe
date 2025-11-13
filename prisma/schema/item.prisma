@@ -1,13 +1,21 @@
 model Item {
   id          String    @id @default(cuid())
-  userId      String?
+  authorId    String
   name        String
   description String
   price       String
-  tags        String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  comment Comment[]
+
+  user User  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags Tag[]
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique
+  items Item[]
 }

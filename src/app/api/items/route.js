@@ -1,4 +1,5 @@
 import prisma from '@/libs/prisma';
+import { backendItemFormSchema } from '@/libs/schemas/item.schema';
 import { apiResponse } from '@/libs/utils/api-helper';
 
 export const GET = async (request) => {
@@ -47,6 +48,46 @@ export const GET = async (request) => {
     });
   } catch (error) {
     console.error('API Error:', error);
+    return apiResponse(false, 'Internal Server Error', null, 500);
+  }
+};
+
+export const POST = async (request) => {
+  const body = await request.json();
+  const validateData = backendItemFormSchema.parse(body);
+  const { name, description, price, authorId, tags } = validateData;
+
+  try {
+    const newItem = await prisma.item.create({
+      data: {
+        name,
+        description,
+        price,
+        authorId,
+        tags: {
+          connectOrCreate: tags.map((tag) => ({
+            where: { name: tag },
+            create: { name: tag },
+          })),
+        },
+      },
+      include: {
+        tags: true,
+      },
+    });
+
+    if (!newItem) {
+      return apiResponse(
+        false,
+        '상품 생상품 실패하였습니다.(Failed POST)',
+        null,
+        500,
+      );
+    }
+
+    return apiResponse(true, '상품 생성에 성공하였습니다.', newItem, 201);
+  } catch (error) {
+    console.error(error);
     return apiResponse(false, 'Internal Server Error', null, 500);
   }
 };

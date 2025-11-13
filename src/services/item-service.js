@@ -33,6 +33,26 @@ export async function getItemById(id) {
   }
 }
 
+export async function createItem(id, formData) {
+  const res = await fetch('/api/items', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(id, formData),
+  });
+
+  if (!res.ok) {
+    const errorObj = await res
+      .json()
+      .catch(() => ({ message: '상품 생성 실패' }));
+    throw new Error(`상품 생성을 실패하였습니다.  ${errorObj.message}`);
+  }
+
+  const result = await res.json();
+  return result.data;
+}
+
 export async function updateItem(id, formData) {
   if (!id) throw new Error(`Item ID Not Found`);
   const res = await fetch(`/api/items/detail/${id}`, {

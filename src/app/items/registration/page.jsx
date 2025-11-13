@@ -1,21 +1,20 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation';
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/modal";
 import { itemFormSchema } from '@/libs/schemas/item.schema';
 import { useAuth } from '@/providers/auth-provider';
-import { updateItem } from '@/services/item-service';
+import { createItem } from '@/services/item-service';
 
-export default function ItemRegistration({ params }) {
+export default function ItemRegistration() {
   const [showModal, setShowModal] = useState(false);
 
-  const { id } = React.use(params)
-  const { user } = useAuth();
   const router = useRouter();
+  const { user } = useAuth()
 
   const {
     register,
@@ -27,25 +26,24 @@ export default function ItemRegistration({ params }) {
   })
 
   const onSubmit = async (data) => {
-    const updateData = {
+    const newData = {
       ...data,
       authorId: user.data.id
     }
-    try {
-      await updateItem(id, updateData)
 
-      router.push(`/items/detail/${id}`)
+    try {
+      await createItem(newData);
+
+      router.push('/items')
 
     } catch (error) {
       console.error("등록중 오류 발생:", error);
       setShowModal(true);
     }
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
   return (
     <>
       <form
@@ -56,7 +54,7 @@ export default function ItemRegistration({ params }) {
       >
         <div className="flex w-full justify-between mb-9">
           <h2 className='font-pretendard text-2xl font-bold leading-9'>
-            상품 수정하기
+            상품 등록
           </h2>
           <Button
             type="submit"
@@ -70,14 +68,14 @@ export default function ItemRegistration({ params }) {
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
             htmlFor="item_name"
           >
-            상품명
+            제목
           </label>
           <input
             className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             type="text"
             id="item_name"
-            placeholder="상품명을 입력해주세요"
-            aria-label="상품명을 입력해주세요"
+            placeholder="제목을 입력해주세요"
+            aria-label="제목을 입력해주세요"
             {...register('name')}
           />
           {errors.name && (
@@ -103,10 +101,11 @@ export default function ItemRegistration({ params }) {
             <span className='text-error-red'>{errors.description.message}</span>
           )}
         </div>
+
         <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
-            htmlFor="item_name"
+            htmlFor="item_price"
           >
             가격
           </label>
@@ -114,8 +113,8 @@ export default function ItemRegistration({ params }) {
             className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             type="text"
             id="item_price"
-            placeholder="가격 입력해주세요"
-            aria-label="가격 입력해주세요"
+            placeholder="제목을 입력해주세요"
+            aria-label="제목을 입력해주세요"
             {...register('price')}
           />
           {errors.price && (

@@ -22,6 +22,7 @@ export function ItemTitleSection({ item, params }) {
   const [modalMessage, setModalMessage] = useState('');
   const router = useRouter();
 
+  console.log(item)
   const handlePanel = () => {
     setShowPanel(!showPanel)
   }
@@ -54,7 +55,7 @@ export function ItemTitleSection({ item, params }) {
 
   return (
     <>
-      <div className="container max-w-7xl flex flex-col md:flex-row md:gap-2.5">
+      <div className="container max-w-480 flex flex-col md:flex-row md:gap-2.5">
         <div className="flex items-center relative w-85 h-85 shrink-0 md:mr-6 xl:w-121.5 xl:h-121.5 ">
           <Image
             className="absolute rounded-2xl"
@@ -64,7 +65,7 @@ export function ItemTitleSection({ item, params }) {
           />
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col w-full justify-between">
           <div className="flex justify-between items-center">
             <h1
               className="w-full font-pretendard text-base font-semibold leading-6.5 mt-4 text-gray-800 md:text-xl"
@@ -102,9 +103,22 @@ export function ItemTitleSection({ item, params }) {
           <h2 className="text-[2rem] font-semibold font-pretendard leading-8 text-gray-800 border-b border-gray-200 pb-4">
             {item.price}
           </h2>
-          <h3 className="font-pretendard text-sm font-semibold leading-6 mt-4 mb-2">상품 소개</h3>
+          <h3 className="font-pretendard text-base text-gray-600 font-semibold leading-6.5 mt-4 mb-2">상품 소개</h3>
           <section className="font-pretendard text-lg text-gray-800 mb-8 leading-6.5">
             {item.description}
+          </section>
+          <section>
+            <h3 className="mb-4 font-pretendard text-base font-semibold text-gray-600 leading-6.5">상품 태그</h3>
+            <ul className="flex gap-4">
+              {item.tags.map((tag) => (
+                <li
+                  key={tag.id}
+                  className="bg-gray-100 h-9 py-1.5 px-4 rounded-3xl"
+                >
+                  <p className="text-gray-800 font-pretendard leading-6.5">{tag.name}</p>
+                </li>
+              ))}
+            </ul>
           </section>
           <ItemAuthor item={item} />
         </div>

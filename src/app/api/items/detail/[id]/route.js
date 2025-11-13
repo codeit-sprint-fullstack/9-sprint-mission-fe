@@ -1,7 +1,7 @@
 import { unstable_cache } from 'next/cache';
 
 import prisma from '@/libs/prisma';
-import { itemFormSchema } from '@/libs/schemas/item.schema';
+import { backendItemFormSchema } from '@/libs/schemas/item.schema';
 import { apiResponse } from '@/libs/utils/api-helper';
 
 export const GET = async (request, { params }) => {
@@ -25,6 +25,7 @@ export const GET = async (request, { params }) => {
               comments: true,
             },
           },
+          tags: true,
         },
       });
       return item;
@@ -62,8 +63,8 @@ export const PATCH = async (request, { params }) => {
       return apiResponse(false, '상품 아이디를 찾을수없습니다.', null, 404);
     }
     const body = await request.json();
-    const validateData = itemFormSchema.parse(body);
-    const { name, description, price } = validateData;
+    const validateData = backendItemFormSchema.parse(body);
+    const { name, description, price, authorId, tags } = validateData;
 
     const updateItem = await prisma.item.update({
       where: { id: id },
@@ -71,6 +72,16 @@ export const PATCH = async (request, { params }) => {
         name,
         description,
         price,
+        authorId,
+        tags: {
+          connectOrCreate: tags.map((tag) => ({
+            where: { name: tag },
+            create: { name: tag },
+          })),
+        },
+      },
+      include: {
+        tags: true,
       },
     });
     return apiResponse(

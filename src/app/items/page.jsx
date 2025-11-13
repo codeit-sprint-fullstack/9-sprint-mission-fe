@@ -45,7 +45,9 @@ export default async function ProductPage(props) {
             <div className="flex items-center gap-3">
               <Search />
               <Dropdown />
-              <Link href="/items/registration" className="flex justify-center items-center gap-2.5 h-10.5 px-3 py-5.75 border-0 rounded-lg bg-primary-100 text-gray-100 font-pretendard text-lg font-semibold leading-6.5 no-underline cursor-pointer" >상품 등록하기</Link>
+              <Link href="/items/registration" className="flex justify-center items-center gap-2.5 h-10.5 px-3 py-5.75 border-0 rounded-lg bg-primary-100 text-gray-100 font-pretendard text-lg font-semibold leading-6.5 no-underline cursor-pointer" >
+                상품 등록하기
+              </Link>
             </div>
           </div>
           {items.length > 0 ? (
