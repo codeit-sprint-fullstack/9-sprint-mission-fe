@@ -13,7 +13,6 @@ import Loading from "./loading";
 export default async function ItemsDetailPage({ params }) {
   const { id } = await params
   const item = await getItemById(id)
-  console.log(item)
 
   return (
     <main className="container mx-auto flex flex-col min-h-screen w-full max-w-7xl my-8 p-6">

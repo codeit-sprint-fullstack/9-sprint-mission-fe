@@ -65,37 +65,39 @@ export function ItemTitleSection({ item }) {
         </div>
 
         <div className="flex flex-col justify-between">
-          <div
-            className="cursor-pointer flex justify-between items-center"
-            onClick={handlePanel}
-          >
+          <div className="flex justify-between items-center">
             <h1
               className="w-full font-pretendard text-base font-semibold leading-6.5 mt-4 text-gray-800 md:text-xl"
             >
               {item.name}
             </h1>
-            <Image
-              className="flex shrink md:mr-3.5"
-              src={EllipsisVertical}
-              alt="vertical-dropdown-button"
-              width={3}
-              height={13}
-              unoptimized
-            />
-            {showPanel && (
-              <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white -left-20">
-                {contents.map((c) => (
-                  <li key={c.name} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
-                    <button
-                      className="border-0 bg-white"
-                      onClick={() => handleOnChange(c.name)}
-                    >
-                      {c.option}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div
+              className="relative w-2 h-2 cursor-pointer"
+              onClick={handlePanel}
+            >
+              <Image
+                className="flex shrink md:mr-3.5"
+                src={EllipsisVertical}
+                alt="vertical-dropdown-button"
+                width={3}
+                height={13}
+                unoptimized
+              />
+              {showPanel && (
+                <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white -left-20">
+                  {contents.map((c) => (
+                    <li key={c.name} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
+                      <button
+                        className="border-0 bg-white"
+                        onClick={() => handleOnChange(c.name)}
+                      >
+                        {c.option}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
           <h2 className="text-[2rem] font-semibold font-pretendard leading-8 text-gray-800 border-b border-gray-200 pb-4">
             {item.price}

@@ -18,7 +18,7 @@ export async function getItems(searchParams) {
 
 export async function getItemById(id) {
   try {
-    const res = await fetch(`http://localhost:3000/api/items/detail/${id}`, {
+    const res = await fetch(`${BASE_URL}/api/items/detail/${id}`, {
       cache: 'no-store',
     });
 
@@ -31,4 +31,25 @@ export async function getItemById(id) {
   } catch (error) {
     console.error(error);
   }
+}
+
+export async function updateItem(id, formData) {
+  if (!id) throw new Error(`Item ID Not Found`);
+  const res = await fetch(`/api/items/detail/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (!res.ok) {
+    const errorObj = await res
+      .json()
+      .catch(() => ({ message: '상품 수정 실패' }));
+    throw new Error(`Failed Update Item: ${errorObj.message}`);
+  }
+
+  const result = await res.json();
+  return result.data;
 }
