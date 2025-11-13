@@ -23,7 +23,40 @@ export const defaultFetch = async (url, options = {}) => {
   const response = await fetch(`${baseURL}${url}`, mergedOptions);
 
   if (!response.ok) {
-    throw new Error(`API error: ${response.status}`);
+    const data = await response.json();
+    throw new Error(`${data.message || response.status}`);
+  }
+
+  return response.json();
+};
+
+/**
+ * 기본 fetch 클라이언트 - 인증이 필요 없는 일반 요청용
+ */
+export const serverFetch = async (url, options = {}) => {
+  const baseURL = process.env.EX_API_URL;
+  const defaultOptions = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    // Next.js 기본 캐싱 활성화
+    cache: "force-cache",
+  };
+
+  const mergedOptions = {
+    ...defaultOptions,
+    ...options,
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    },
+  };
+
+  const response = await fetch(`${baseURL}${url}`, mergedOptions);
+
+  if (!response.ok) {
+    const data = await response.json();
+    throw new Error(`${data.message || response.status}`);
   }
 
   return response.json();
