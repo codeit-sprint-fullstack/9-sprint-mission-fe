@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import EasyLogin from "./EasyLogin";
 
 export default function LoginInput() {
   const [showEye, setShowEye] = useState(false);

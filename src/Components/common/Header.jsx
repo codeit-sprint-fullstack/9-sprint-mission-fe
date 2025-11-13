@@ -1,8 +1,16 @@
+"use client";
 import Image from "next/image";
 import PandaLogo from "@/public/images/Group19.png";
 import Link from "next/link";
+import { useAuth } from "@/providers/AuthProvider";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const { user, logout, isInitialized } = useAuth();
+  const router = useRouter();
+
+  if (!isInitialized) return null;
+
   return (
     <header className="flex justify-between items-center w-full  h-[70px] px-25   border-b border-[#DFDFDF] bg-white ">
       <div className="flex justify-center items-center ">
@@ -29,12 +37,35 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-      <Link
-        href="/login"
-        className=" bg-[#3692FF] text-white px-[23px] py-3 my-3.5 rounded-lg gap-2.5"
-      >
-        로그인
-      </Link>
+
+      <div className="flex items-center gap-4 pr-6">
+        {user ? (
+          <div className="flex items-center justify-center gap-2">
+            <Image
+              src={user.image}
+              width={40}
+              height={40}
+              alt="프로필 이미지"
+            />
+            <span className="text-gray-600 text-[18px]  font-normal">
+              {user.nickname} 님
+            </span>
+            <button
+              onClick={logout}
+              className="flex items-center justify-center bg-gray-200 text-gray-800 text-[16px] w-20 h-9 rounded-lg "
+            >
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => router.push("/login")}
+            className=" flex justify-center items-center bg-[#3692FF] w-20 h-9 text-[16px] text-white px-[23px] py-3 rounded-lg gap-2.5 leading-[26px]"
+          >
+            로그인
+          </button>
+        )}
+      </div>
     </header>
   );
 }
