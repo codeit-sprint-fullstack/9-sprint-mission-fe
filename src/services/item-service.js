@@ -53,3 +53,20 @@ export async function updateItem(id, formData) {
   const result = await res.json();
   return result.data;
 }
+
+export async function deleteItem(id) {
+  if (!id) throw new Error('상품아이디를 찾을수없습니다.');
+
+  const res = await fetch(`/api/items/detail/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) {
+    const errorObj = await res
+      .json()
+      .catch(() => ({ message: '아이템 삭제 실패' }));
+    throw new Error(`상품을 삭제하지 못하였습니다: ${errorObj.message}`);
+  }
+
+  return { success: true };
+}

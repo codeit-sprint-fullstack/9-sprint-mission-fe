@@ -1,13 +1,13 @@
 "use client"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import React, { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import DefaultImg from "@/assets/items/Img_default.png"
 import { Button } from "@/components/ui/button"
 import { Modal } from "@/components/ui/modal"
-import { deleteArticle } from "@/services/article-service"
+import { deleteItem } from "@/services/item-service"
 
 import { ItemAuthor } from "./item-author"
 
@@ -16,7 +16,7 @@ const contents = [
   { option: '삭제하기', name: 'delete' }
 ]
 
-export function ItemTitleSection({ item }) {
+export function ItemTitleSection({ item, params }) {
   const [showPanel, setShowPanel] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
@@ -30,9 +30,9 @@ export function ItemTitleSection({ item }) {
     setShowModal(false)
 
     try {
-      await deleteArticle(item.id);
+      await deleteItem(item.id);
 
-      router.push('/articles')
+      router.push('/items')
     } catch (error) {
       console.error("Failed Delete:", error);
       setModalMessage("삭제 중 오류 발생")

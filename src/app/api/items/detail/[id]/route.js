@@ -90,3 +90,21 @@ export const PATCH = async (request, { params }) => {
     );
   }
 };
+
+export const DELETE = async (request, { params }) => {
+  console.log(params);
+  const { id } = await params;
+  if (!id)
+    return apiResponse(false, '상품 아이디를 찾을수없습니다.', null, 404);
+
+  try {
+    await prisma.item.delete({
+      where: { id: id },
+    });
+
+    return apiResponse(true, '성공적으로 상품을 삭제하였습니다.', null, 200);
+  } catch (error) {
+    console.error(error);
+    return apiResponse(false, 'Internal Server Error', null, 500);
+  }
+};
