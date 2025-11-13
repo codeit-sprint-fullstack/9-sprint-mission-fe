@@ -17,3 +17,13 @@ export const signupMetadata = {
   title: '판다마켓 회원가입',
   description: '판다마켓 회원가입 페이지',
 };
+
+export const articleMetadata = {
+  title: '판다마켓 게시글',
+  description: '판다마켓 게시글 페이지',
+};
+
+export const itemMetadata = {
+  title: '판다마켓 상품',
+  description: '판다마켓 상품 페이지',
+};
