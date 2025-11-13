@@ -15,7 +15,7 @@ export function ItemCard({ itemValue, isParentBest = false }) {
           "max-[74.9rem]:w-[21.4rem] max-[74.9rem]:h-[27.1rem]": isParentBest,
         }
       )}
-      href={`/${itemValue.id}`}
+      href={`/items/${itemValue.id}`}
     >
       <figure
         className={clsx(

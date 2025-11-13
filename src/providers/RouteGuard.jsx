@@ -6,52 +6,54 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "./AuthProvider";
 
 // 로그인된 사용자만 접근 가능한 경로
-const protectedPaths = ["/items"];
-
+const protectedPaths = [
+  "/articles/create",
+  "/articles/[id]/modify",
+  "/items",
+  "/items/create",
+  "/items/[id]",
+  "/items/[id]/modify",
+];
 // 미인증 사용자만 접근 가능한 경로
 const publicPaths = ["/login", "/signup"];
 
 export default function RouteGuard({ children }) {
-  const { user } = useAuth();
+  const { user, isInitialized } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      // pathname을 경로와 쿼리 부분으로 분리
-      const path = pathname.split("?")[0];
+    // AuthProvider의 초기화가 끝날 때까지 대기
+    if (!isInitialized) return;
 
-      // 정확한 경로 매칭 또는 하위 경로 매칭
-      const isProtectedRoute = protectedPaths.some(
-        (route) =>
-          path === route || (path.startsWith(route + "/") && route !== "/")
-      );
+    const path = pathname.split("?")[0];
+    const isProtectedRoute = protectedPaths.some((p) => {
+      const regex = new RegExp(`^${p.replace(/\[.*?\]/g, "[^/]+")}$`);
+      return regex.test(path);
+    });
+    const isPublicRoute = publicPaths.includes(path);
 
-      // 정확한 경로 매칭 또는 하위 경로 매칭 (단, '/'는 정확히 일치할 때만)
-      const isPublicRoute = publicPaths.some(
-        (route) =>
-          path === route || (path.startsWith(route + "/") && route !== "/")
-      );
+    // 사용자의 인증 상태에 따른 리디렉션 처리
+    if (isProtectedRoute && !user) {
+      // 보호된 경로에 비로그인 사용자가 접근 시, 권한 없음 처리 후 로그인 페이지로 이동
+      router.push("/login");
+    } else if (isPublicRoute && user) {
+      // 공개 경로(로그인/회원가입)에 로그인 사용자가 접근 시, 권한 없음 처리 후 메인 페이지로 이동
+      router.push("/");
+    }
+  }, [isInitialized, user, pathname, router]);
 
-      // 사용자의 인증 상태에 따른 리다이렉트 처리
-      if (isProtectedRoute && !user) {
-        // 인증된 사용자만 접근 가능한 경로에 미인증 사용자가 접근
-        router.push("/login");
-      } else if (isPublicRoute && user) {
-        // 미인증 사용자만 접근 가능한 경로에 인증된 사용자가 접근
-        router.push("/items");
-      } else {
-        // 접근 가능한 경로
-        setIsLoading(false);
-      }
-    }, 0);
-  }, [user, pathname, router]);
-
-  // 리다이렉트 중이거나 인증 확인 중일 때는 컨텐츠를 표시하지 않음
-  if (isLoading) {
-    return null;
+  // 인증이 초기화되었고, 리디렉션 조건에 해당하지 않는 경우에만 children을 렌더링합니다.
+  const path = pathname.split("?")[0];
+  const isPublicRoute = publicPaths.includes(path);
+  if (isInitialized && (!isPublicRoute || !user)) {
+    return children;
   }
 
-  return children;
+  // 인증 확인 중이거나 리디렉션이 발생하는 동안에는 로딩 화면(또는 빈 화면)을 표시
+  return (
+    <div className="flex justify-center items-center h-screen">
+      {/* 로딩 스피너나 메시지를 여기에 추가할 수 있습니다. */}
+    </div>
+  );
 }
