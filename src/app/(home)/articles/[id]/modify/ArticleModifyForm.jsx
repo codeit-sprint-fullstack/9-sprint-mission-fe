@@ -19,8 +19,8 @@ export default function ArticleModifyForm() {
       const fetchArticle = async () => {
         const result = await getArticleByIdClient({ id });
         if (result.success) {
-          setTitle(result.data.title);
-          setContent(result.data.content);
+          setTitle(result.title);
+          setContent(result.content);
         } else {
           alert(result.error || "게시글을 불러오는데 실패했습니다.");
           router.back();

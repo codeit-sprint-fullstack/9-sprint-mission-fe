@@ -19,11 +19,11 @@ export default function CommentForm({ articleId }) {
           content: content,
         });
 
-        if (result.success) {
+        if (result) {
           formRef.current?.reset();
           router.refresh();
         } else {
-          alert(result.error || "댓글 작성에 실패했습니다");
+          alert("댓글 작성에 실패했습니다");
         }
       }}
       className="mt-4"

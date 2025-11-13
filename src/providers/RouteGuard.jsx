@@ -6,16 +6,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "./AuthProvider";
 
 // 로그인된 사용자만 접근 가능한 경로
-const protectedPaths = [
-  // TODO: 로그인된 사용자만 접근 가능한 경로 추가
-];
+const protectedPaths = ["/items"];
 
 // 미인증 사용자만 접근 가능한 경로
-const publicPaths = [
-  // TODO: 미인증 사용자만 접근 가능한 경로 추가
-  "/login",
-  "/signup",
-];
+const publicPaths = ["/login", "/signup"];
 
 export default function RouteGuard({ children }) {
   const { user } = useAuth();
@@ -43,12 +37,10 @@ export default function RouteGuard({ children }) {
       // 사용자의 인증 상태에 따른 리다이렉트 처리
       if (isProtectedRoute && !user) {
         // 인증된 사용자만 접근 가능한 경로에 미인증 사용자가 접근
-        // TODO: 로그인 페이지로 리다이렉트
         router.push("/login");
       } else if (isPublicRoute && user) {
         // 미인증 사용자만 접근 가능한 경로에 인증된 사용자가 접근
-        // TODO: 마이 페이지로 리다이렉트
-        router.push("/");
+        router.push("/items");
       } else {
         // 접근 가능한 경로
         setIsLoading(false);

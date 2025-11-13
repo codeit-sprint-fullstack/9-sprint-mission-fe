@@ -20,12 +20,11 @@ export default function ArticleCreatForm() {
     }
 
     const result = await createArticle({ title, content });
-    const resultDate = await result.data.json();
 
-    if (result.success) {
-      router.push(`/articles/${resultDate.data.id}`);
+    if (result) {
+      router.push(`/articles/${result.id}`);
     } else {
-      alert(result.error || "글 작성에 실패했습니다");
+      alert("글 작성에 실패했습니다");
     }
   };
 

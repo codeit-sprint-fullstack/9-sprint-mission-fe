@@ -1,3 +1,10 @@
+import { BestItemsSection } from "./_components/BestItemsSection";
+import { SalesItemsSection } from "./_components/SalesItemsSection";
+
 export default function page() {
-  return <div>여기에 중고마켓을 입력</div>;
+  return (
+    <div className="w-300">
+      <SalesItemsSection />
+    </div>
+  );
 }

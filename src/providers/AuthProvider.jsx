@@ -68,7 +68,7 @@ export default function AuthProvider({ children }) {
       await getUser();
       setModalState({
         isOpen: true,
-        message: "로그인에 성공했습니다. 메인 페이지로 이동합니다.",
+        message: "로그인에 성공했습니다",
         isSuccess: true,
       });
     } catch (error) {
@@ -89,12 +89,7 @@ export default function AuthProvider({ children }) {
   };
 
   const handleCloseModal = () => {
-    const { isSuccess } = modalState;
     setModalState({ isOpen: false, message: "", isSuccess: false });
-
-    if (isSuccess) {
-      router.push("/");
-    }
   };
 
   useEffect(() => {

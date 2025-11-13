@@ -1,15 +1,15 @@
 import Image from "next/image";
 import emptyCommentsImg from "@/assets/img/Img_reply_empty.png";
-import DynamicCommentItem from "./DynamicCommentItem";
 import { getArticleCommentsList } from "@/lib/services/articlesServices";
-import CommentItem from "./CommentItem";
+import CommentItem from "@/components/common/comment/CommentItem";
 
 export default async function CommentList({ articleId }) {
-  const comments = (await getArticleCommentsList({ articleId })).list;
+  const comments = await getArticleCommentsList({ articleId });
+  console.log(articleId);
 
   return (
     <div className="mt-4">
-      {comments.length === 0 ? (
+      {comments.list.length === 0 ? (
         <div>
           <div className="text-(--secondary-400) text-center ">
             <figure className="w-35 h-35 m-[0_auto]">

@@ -1,8 +1,4 @@
-import {
-  defaultFetch,
-  cookieFetch,
-  tokenFetch,
-} from "@/lib/services/fetchClient";
+import { tokenFetch } from "@/lib/services/fetchClient";
 
 export const authService = {
   // 쿠키 인증을 사용하는 로그인
