@@ -9,7 +9,6 @@ import { useAuth } from "./AuthProvider";
 const protectedPaths = [
   "/articles/create",
   "/articles/[id]/modify",
-  "/items",
   "/items/create",
   "/items/[id]",
   "/items/[id]/modify",
