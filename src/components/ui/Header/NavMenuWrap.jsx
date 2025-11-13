@@ -25,11 +25,11 @@ export function NavMenuWrap() {
       <Link
         className={clsx(
           baseMenuClasses,
-          pathname.startsWith("/products")
+          pathname.startsWith("/items")
             ? "text-(--primary-100)"
             : "text-(--secondary-600)"
         )}
-        href="/products"
+        href="/items"
       >
         중고마켓
       </Link>
