@@ -1,5 +1,6 @@
 import Image from "next/image";
 import itemDefaultImg from "@/assets/img/img_default.svg";
+import { TagCapsule } from "@/components/common/TagCapsule";
 
 export default async function page({ params }) {
   const { id } = await params;
@@ -33,7 +34,9 @@ export default async function page({ params }) {
             <div className="mt-6 text-(--secondary-600)">
               <h4 className="font-semibold">상품 태그</h4>
               <ul className="mt-4">
-                <li>태그는 컴포넌트화 합시당.</li>
+                <li>
+                  <TagCapsule tagValue="임시" btnActive={false} />
+                </li>
               </ul>
             </div>
           </div>
