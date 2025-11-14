@@ -1,5 +1,9 @@
 import { cache } from "react";
-import { defaultFetch, tokenFetch } from "@/lib/services/fetchClient";
+import {
+  defaultFetch,
+  serverFetch,
+  tokenFetch,
+} from "@/lib/services/fetchClient";
 
 const DEFULT_PAGE = 1;
 const DEFULT_PAGE_SIZE = 30;
@@ -11,7 +15,7 @@ export const getProductList = (
   orderBy = DEFULR_ORDERBY,
   keyword = ""
 ) => {
-  return defaultFetch(
+  return serverFetch(
     `/products?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`
   );
 };
