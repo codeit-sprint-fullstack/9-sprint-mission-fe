@@ -10,18 +10,8 @@ import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'
 import { Modal } from "@/components/ui/dialog";
 import { cn } from "@/libs/cn";
+import { loginFormSchema } from "@/libs/schemas/auth.schema";
 import { useAuth } from "@/providers/auth-provider";
-
-const loginFormSchema = z.object({
-  email: z
-    .string()
-    .email('이메일이 올바르지 않습니다.'),
-
-  password: z
-    .string({ required_error: '비밀번호를 입력해주세요' })
-    .min(8, '비밀번호는 8자 이상 입력해주세요.')
-    .max(50, '비밀번호는 50자 이내로 입력해주세요.'),
-});
 
 const defaultErrorMessage = '알 수 없는 오류가 발생했습니다.'
 

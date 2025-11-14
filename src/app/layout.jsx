@@ -26,7 +26,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )
