@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import EasyLogin from "./EasyLogin";
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function LoginInput() {
   const [showEye, setShowEye] = useState(false);
@@ -15,6 +16,7 @@ export default function LoginInput() {
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
   const router = useRouter();
 
   const handleEmail = (e) => {
@@ -57,12 +59,10 @@ export default function LoginInput() {
     try {
       setLoading(true);
 
-      const result = await authService.login(email, password);
+      const result = await login(email, password);
       console.log("로그인 성공:", result);
       alert("로그인 성공!");
-      localStorage.setItem("token", result.accessToken);
-      localStorage.setItem("refreshToken", result.refreshToken);
-      router.push("/");
+      // router.push("/items");
     } catch (error) {
       setError("로그인에 실패했습니다!" || error.message);
     } finally {

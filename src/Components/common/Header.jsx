@@ -30,7 +30,7 @@ export default function Header() {
             자유게시판
           </Link>
           <Link
-            href="products"
+            href="/items"
             className="w-[109px] h-[69px] p-[24px_23px_24px_23px] text-center font-pretended text-[18px] font-bold  cursor-pointer"
           >
             중고게시판

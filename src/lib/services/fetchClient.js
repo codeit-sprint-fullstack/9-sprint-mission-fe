@@ -65,6 +65,7 @@ export const cookieFetch = async (url, options = {}) => {
   }
 
   return response.json();
+  
 };
 
 /**
@@ -123,7 +124,6 @@ export const tokenFetch = async (url, options = {}) => {
         // 리프레시 실패 시 로그아웃
         localStorage.removeItem("token");
         localStorage.removeItem("refreshToken");
-        // window.location.href = "/login"; 
         throw new Error("Authentication failed");
       }
     } catch (error) {
