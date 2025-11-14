@@ -6,7 +6,7 @@ import backIcon from "@/assets/img/ic_back.svg";
 import ArticleCommentForm from "./_components/ArticleCommentForm";
 import ArticleCommentList from "./_components/ArticleCommentList";
 
-export default async function ArticleDetailPage({ params }) {
+export default async function page({ params }) {
   const { id } = await params;
   const article = await getArticleById({ id });
 

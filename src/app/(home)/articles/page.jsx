@@ -1,7 +1,7 @@
 import BestArticlesSection from "./_components/layout/BestArticlesSection";
 import MainArticlesSection from "./_components/layout/MainArticlesSection";
 
-export default async function Articles({ searchParams }) {
+export default async function page({ searchParams }) {
   const keyword = (await searchParams).keyword;
   console.log(keyword);
   return (

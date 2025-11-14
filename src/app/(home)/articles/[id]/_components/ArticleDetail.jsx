@@ -33,7 +33,9 @@ export default function ArticleDetail({ article }) {
           ></KebabDropDown>
         </div>
         <div className="flex mt-4 items-center text-base gap-8">
-          <ProfileOnPosts createdTime={article.createdAt} />
+          <div className="pr-8 border-r border-(--secondary-200)">
+            <ProfileOnPosts createdTime={article.createdAt} />
+          </div>
           <LikesOnPosts />
         </div>
       </div>
