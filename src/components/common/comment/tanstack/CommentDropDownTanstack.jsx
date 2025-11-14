@@ -5,16 +5,32 @@ import Image from "next/image";
 import kebabIcon from "@/assets/img/ic_kebab.svg";
 import { deleteComment } from "@/lib/services/commentsServices";
 import { useRouter } from "next/navigation";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export default function CommentDropDown({ id, onEdit }) {
+export default function CommentDropDown({ id, onEdit, parentsId }) {
   const router = useRouter();
   const [isDropDownActive, setIsDropDownActive] = useState(false);
+  const queryClient = useQueryClient();
+  const { mutate: mutateDeleteComment } = useMutation({
+    mutationFn: deleteComment,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments", parentsId] });
+    },
+    onError: (error) => {
+      console.error("댓글 삭제 중 오류 발생:", error);
+      alert("댓글 삭제 중 오류가 발생했습니다.");
+    },
+  });
 
   const handleDropDownBtnClick = () => {
     setIsDropDownActive(!isDropDownActive);
   };
 
-  const handleDelete = async (id) => {};
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    mutateDeleteComment({ id });
+    setIsEditing(false);
+  };
 
   return (
     <div className="relative w-32 text-base font-normal leading-10.5 text-center text-(--secondary-800)">
@@ -41,7 +57,7 @@ export default function CommentDropDown({ id, onEdit }) {
         </li>
         <li className="w-full h-10.5 border-b border-(--secondary-200) last:border-b-0">
           <button
-            onClick={() => handleDelete({ id: id })}
+            onClick={(e) => handleDelete(e)}
             className="w-full h-full bg-transparent border-none"
           >
             삭제하기

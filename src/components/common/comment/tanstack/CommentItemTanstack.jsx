@@ -66,6 +66,7 @@ export default function CommentItem({ comment, parentsId }) {
             <CommentDropDownTanstack
               id={comment.id}
               onEdit={() => setIsEditing(true)}
+              parentsId={parentsId}
             ></CommentDropDownTanstack>
           </div>
           <div className="flex gap-2 mt-6">
