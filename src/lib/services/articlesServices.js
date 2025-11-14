@@ -40,7 +40,8 @@ export const deleteArticleById = async ({ id }) => {
 };
 
 export const getArticleCommentsList = async ({ articleId }) => {
-  return defaultFetch(`/articles/${articleId}/comments?limit=30`);
+  console.log(articleId);
+  return tokenFetch(`/articles/${articleId}/comments?limit=30`);
 };
 
 export const createArticleComment = async ({ articleId, content }) => {

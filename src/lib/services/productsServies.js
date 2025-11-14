@@ -15,9 +15,49 @@ export const getProductList = (
   );
 };
 
+export const getProductById = cache(async ({ id }) => {
+  return serverFetch(`/products/${id}`);
+});
+
+export const getProductByIdClient = cache(async ({ id }) => {
+  return defaultFetch(`/products/${id}`);
+});
+
 export const createProduct = (contents) => {
   return tokenFetch(`/products`, {
     method: "POST",
     body: JSON.stringify(contents),
+  });
+};
+
+export const deleteProductById = async ({ id }) => {
+  return tokenFetch(`/products/${id}`, { method: "DELETE" });
+};
+
+export const updateArticle = async ({ id, title, content }) => {
+  return tokenFetch(`/products/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      title,
+      content,
+    }),
+  });
+};
+
+export const deleteArticleById = async ({ id }) => {
+  return tokenFetch(`/products/${id}`, { method: "DELETE" });
+};
+
+export const getArticleCommentsList = async ({ articleId }) => {
+  console.log(articleId);
+  return tokenFetch(`/products/${articleId}/comments?limit=30`);
+};
+
+export const createArticleComment = async ({ articleId, content }) => {
+  return tokenFetch(`/products/${articleId}/comments`, {
+    method: "POST",
+    body: JSON.stringify({
+      content,
+    }),
   });
 };

@@ -31,7 +31,7 @@ export const defaultFetch = async (url, options = {}) => {
 };
 
 /**
- * 기본 fetch 클라이언트 - 인증이 필요 없는 일반 요청용
+ * 서버 클라이언트용 fetch 클라이언트 - 인증이 필요 없는 일반 요청용
  */
 export const serverFetch = async (url, options = {}) => {
   const baseURL = process.env.EX_API_URL;
