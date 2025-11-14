@@ -7,7 +7,7 @@ import { apiResponse } from '@/libs/utils/api-helper';
 export const GET = async (request, { params }) => {
   const { id } = await params;
   if (!id) {
-    return apiResponse(false, 'Not Found Article', null, 400);
+    return apiResponse(false, 'Not Found Article', null, 404);
   }
   /** @see https://nextjs.org/docs/app/api-reference/functions/unstable_cache */
   const itemCached = unstable_cache(
@@ -18,14 +18,28 @@ export const GET = async (request, { params }) => {
         },
         include: {
           user: {
-            include: {
+            select: {
+              id: true,
+              name: true,
               userProfile: true,
-            },
-            include: {
-              comments: true,
             },
           },
           tags: true,
+          comment: {
+            include: {
+              author: {
+                select: {
+                  id: true,
+                  name: true,
+                  userProfile: {
+                    select: {
+                      photoUrl: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       });
       return item;
@@ -103,7 +117,6 @@ export const PATCH = async (request, { params }) => {
 };
 
 export const DELETE = async (request, { params }) => {
-  console.log(params);
   const { id } = await params;
   if (!id)
     return apiResponse(false, '상품 아이디를 찾을수없습니다.', null, 404);

@@ -4,7 +4,7 @@ import { articleMetadata } from '#/config/metadata'
 
 export default function ArticleLayout({ children }) {
   return (
-    <div className='flex flex-col justify-center'>
+    <div className='flex flex-col justify-center mx-auto'>
       <Navigation />
       {children}
       <Footer />

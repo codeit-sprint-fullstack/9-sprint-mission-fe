@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { Suspense } from "react";
 
-import { truncateDate } from "@/libs/utils/format"
 import { getItemById } from "@/services/item-service";
 
 import { BackToItems } from "./_components/back-to-articles";

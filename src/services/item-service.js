@@ -18,7 +18,7 @@ export async function getItems(searchParams) {
 
 export async function getItemById(id) {
   try {
-    const res = await fetch(`${BASE_URL}/api/items/detail/${id}`, {
+    const res = await fetch(`${BASE_URL}/api/items/${id}`, {
       cache: 'no-store',
     });
 
@@ -27,19 +27,19 @@ export async function getItemById(id) {
     }
 
     const result = await res.json();
-    return result.data; // 최대 3개의 게시글 배열
+    return result.data;
   } catch (error) {
     console.error(error);
   }
 }
 
-export async function createItem(id, formData) {
+export async function createItem(formData) {
   const res = await fetch('/api/items', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(id, formData),
+    body: JSON.stringify(formData),
   });
 
   if (!res.ok) {
@@ -55,7 +55,7 @@ export async function createItem(id, formData) {
 
 export async function updateItem(id, formData) {
   if (!id) throw new Error(`Item ID Not Found`);
-  const res = await fetch(`/api/items/detail/${id}`, {
+  const res = await fetch(`/api/items/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export async function updateItem(id, formData) {
 export async function deleteItem(id) {
   if (!id) throw new Error('상품아이디를 찾을수없습니다.');
 
-  const res = await fetch(`/api/items/detail/${id}`, {
+  const res = await fetch(`/api/items/${id}`, {
     method: 'DELETE',
   });
 

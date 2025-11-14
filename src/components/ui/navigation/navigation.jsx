@@ -20,9 +20,9 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="container mx-auto max-w-480 w-full h-17.5 bg-white z-1">
-      <div className="flex justify-between items-center h-full py-0 my-0 mx-auto border-b border-solid border-gray-300 gap-0 ml-4 xl:gap-3">
-        <div className="inline-flex items-center">
+    <nav className="container mx-auto w-full max-w-600 h-17.5">
+      <div className="flex justify-between items-center h-full py-0 my-0 mx-auto border-b border-solid border-gray-300 gap-0 xl:gap-3">
+        <div className="inline-flex items-center px-4 md:px-6 xl:px-50">
           <div className='flex items-center gap-2 ml-6 md:ml-0'>
             <Link
               className="relative w-10 h-10"
@@ -54,7 +54,7 @@ export function Navigation() {
           </nav>
         </div>
         {user ? (
-          <div className='flex items-center gap-1.5'>
+          <div className='flex items-center gap-1.5 px-4 md:px-6 xl:px-50'>
             <Avatar size='medium' alt="유저 이미지" />
             <p className='text-gray-600 text-lg'>{user.data.name}</p>
           </div>

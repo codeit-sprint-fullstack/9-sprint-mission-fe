@@ -16,13 +16,12 @@ const contents = [
   { option: '삭제하기', name: 'delete' }
 ]
 
-export function ItemTitleSection({ item, params }) {
+export function ItemTitleSection({ item }) {
   const [showPanel, setShowPanel] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const router = useRouter();
 
-  console.log(item)
   const handlePanel = () => {
     setShowPanel(!showPanel)
   }

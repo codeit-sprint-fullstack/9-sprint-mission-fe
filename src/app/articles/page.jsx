@@ -18,7 +18,7 @@ export default async function ArticlePage(props) {
   ]);
 
   return (
-    <main className="container max-w-480 min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
+    <main className="container max-w-7xl min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
       {/* 베스트 게시글 영역 */}
       <ArticleBestSection articles={bestArticles} />
 
@@ -36,7 +36,7 @@ export default async function ArticlePage(props) {
           </Link>
         </div>
       </section>
-      <div className="flex max-w-300 justify-between mb-6 gap-4">
+      <div className="flex max-w-480 justify-between mb-6 gap-4">
         <Search placeholder="검색할 상품을 입력해주세요" />
         <Dropdown />
       </div>
