@@ -1,8 +1,9 @@
+import { cache } from "react";
+import { defaultFetch, tokenFetch } from "@/lib/services/fetchClient";
+
 const DEFULT_PAGE = 1;
 const DEFULT_PAGE_SIZE = 30;
 const DEFULR_ORDERBY = "recent";
-
-import { defaultFetch, tokenFetch } from "@/lib/services/fetchClient";
 
 export const getProductList = (
   page = DEFULT_PAGE,
@@ -30,11 +31,7 @@ export const createProduct = (contents) => {
   });
 };
 
-export const deleteProductById = async ({ id }) => {
-  return tokenFetch(`/products/${id}`, { method: "DELETE" });
-};
-
-export const updateArticle = async ({ id, title, content }) => {
+export const updateProduct = async ({ id, title, content }) => {
   return tokenFetch(`/products/${id}`, {
     method: "PATCH",
     body: JSON.stringify({
@@ -44,17 +41,17 @@ export const updateArticle = async ({ id, title, content }) => {
   });
 };
 
-export const deleteArticleById = async ({ id }) => {
+export const deleteProductById = async ({ id }) => {
   return tokenFetch(`/products/${id}`, { method: "DELETE" });
 };
 
-export const getArticleCommentsList = async ({ articleId }) => {
-  console.log(articleId);
-  return tokenFetch(`/products/${articleId}/comments?limit=30`);
+export const getProductCommentsList = async ({ productId }) => {
+  console.log(productId);
+  return tokenFetch(`/products/${productId}/comments?limit=30`);
 };
 
-export const createArticleComment = async ({ articleId, content }) => {
-  return tokenFetch(`/products/${articleId}/comments`, {
+export const createProductComment = async ({ productId, content }) => {
+  return tokenFetch(`/products/${productId}/comments`, {
     method: "POST",
     body: JSON.stringify({
       content,
