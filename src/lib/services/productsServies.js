@@ -25,7 +25,7 @@ export const getProductById = cache(async ({ id }) => {
 });
 
 export const getProductByIdClient = cache(async ({ id }) => {
-  return defaultFetch(`/products/${id}`);
+  return tokenFetch(`/products/${id}`);
 });
 
 export const createProduct = (contents) => {

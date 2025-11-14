@@ -5,13 +5,17 @@ import { TagCapsule } from "@/components/common/TagCapsule";
 import ProfileOnPosts from "@/components/common/profile/ProfileOnPosts";
 import LikesOnPosts from "@/components/common/profile/LikesOnPosts";
 import KebabDropDown from "@/components/common/KebabDropDown";
-import { getProductByIdClient } from "@/lib/services/productsServies";
+import {
+  addProductFavorite,
+  deleteProductFavorite,
+  getProductByIdClient,
+} from "@/lib/services/productsServies";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter, useParams } from "next/navigation";
+import { useState } from "react";
 
 export default function ItemDetail({ itemId }) {
   const id = itemId;
-  const router = useRouter();
   const getItem = (id) => getProductByIdClient({ id });
   const {
     data: itemData,
@@ -25,9 +29,27 @@ export default function ItemDetail({ itemId }) {
     },
   });
 
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-  // const likeMutation = useMutation({});
+  const { mutate: mutateAddFavorite } = useMutation({
+    mutationFn: addProductFavorite,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["item", id] });
+    },
+    onError: (error) => {
+      console.error("좋아요 추가 중 오류 발생:", error);
+    },
+  });
+
+  const { mutate: mutateDeleteFavorite } = useMutation({
+    mutationFn: deleteProductFavorite,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["item", id] });
+    },
+    onError: (error) => {
+      console.error("좋아요 삭제 중 오류 발생:", error);
+    },
+  });
 
   if (isPending)
     return (
@@ -42,6 +64,16 @@ export default function ItemDetail({ itemId }) {
     );
 
   console.log(itemData);
+  const isFavorite = itemData.isFavorite;
+
+  const handleLike = (e) => {
+    e.preventDefault();
+    if (!isFavorite) {
+      mutateAddFavorite({ id });
+    } else {
+      mutateDeleteFavorite({ id });
+    }
+  };
 
   return (
     <div className="mt-6 w-300">
@@ -88,7 +120,11 @@ export default function ItemDetail({ itemId }) {
                 createdTime={itemData.createdAt}
               />
             </div>
-            <LikesOnPosts likes={itemData.favoriteCount} />
+            <LikesOnPosts
+              likes={itemData.favoriteCount}
+              onclick={handleLike}
+              isLike={isFavorite}
+            />
           </div>
         </div>
       </div>

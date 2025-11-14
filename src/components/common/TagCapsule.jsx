@@ -14,7 +14,7 @@ export function TagCapsule({ tagValue = "", btnActive, onDeleteTag }) {
       {btnActive && (
         <button
           className="ml-2 w-5.5 h-6 p-0 border-none bg-transparent"
-          onClick={handleDeletButton}
+          onClick={(e) => handleDeletButton(e)}
         >
           <Image src={iconClose} alt="닫기 버튼" />
         </button>
