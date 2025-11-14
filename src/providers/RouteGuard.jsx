@@ -5,17 +5,15 @@ import { useAuth } from "./AuthProvider";
 import { useEffect, useState } from "react";
 
 //로그인된 사용자만 접근 가능한 경로
-const protectedPaths = ["/articles/write", "/items/[id]"];
+const protectedPaths = [
+  "/articles/write",
+  "/items/[id]",
+  "/articles/[id]",
+  "/items/write",
+];
 
 //미인증 사용자만 접근 가능한 경로
-const publicPaths = [
-  "/",
-  "/items",
-  "/login",
-  "/signup",
-  "/articles",
-  "/articles/*",
-];
+const publicPaths = ["/", "/items", "/login", "/signup", "/articles"];
 
 export default function RouteGuard({ children }) {
   const { user, isInitialized } = useAuth();

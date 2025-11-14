@@ -28,7 +28,7 @@ export default function ProductsBest() {
   }, []);
 
   return (
-    <section className="flex flex-col gap-6 ">
+    <section className="flex flex-col gap-6 mt-6 ">
       <h2 className="text-[20px] font-bold text-[#111827] leading-8">
         베스트 상품
       </h2>

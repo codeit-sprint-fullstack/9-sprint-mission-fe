@@ -72,10 +72,16 @@ export default function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    if (pathname === "/login" || pathname === "/signup") {
+    const token = localStorage.getItem("token");
+
+    // 토큰이 없으면 user 초기화
+    if (!token) {
+      setUser(null);
       setIsInitialized(true);
       return;
     }
+
+    // 토큰이 있으면 서버에서 유저정보 다시 확인
     getUser();
   }, [pathname]);
 
