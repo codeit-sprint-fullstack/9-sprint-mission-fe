@@ -37,8 +37,8 @@ export default function RouteGuard({ children }) {
       // 보호된 경로에 비로그인 사용자가 접근 시, 권한 없음 처리 후 로그인 페이지로 이동
       router.push("/login");
     } else if (isPublicRoute && user) {
-      // 공개 경로(로그인/회원가입)에 로그인 사용자가 접근 시, 권한 없음 처리 후 메인 페이지로 이동
-      router.push("/");
+      // 공개 경로(로그인/회원가입)에 로그인 사용자가 접근 시, 권한 없음 처리 후 중고마켓 페이지로 이동
+      router.push("/items");
     }
   }, [isInitialized, user, pathname, router]);
 
