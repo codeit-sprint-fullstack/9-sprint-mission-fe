@@ -9,19 +9,17 @@ model Article {
   updatedAt DateTime @updatedAt
   author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
-  Comment Comment[]
+  comment ArticleComment[]
 }
 
-model Comment {
+model ArticleComment {
   id        String   @id @default(cuid())
   authorId  String
   articleId String
-  itemId    String
   context   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   author  User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
   article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  item    Item    @relation(fields: [itemId], references: [id], onDelete: Cascade)
 }

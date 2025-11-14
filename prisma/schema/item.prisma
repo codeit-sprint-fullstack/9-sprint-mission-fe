@@ -8,10 +8,22 @@ model Item {
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
-  comment Comment[]
+  comment ItemComment[]
 
   user User  @relation(fields: [authorId], references: [id], onDelete: Cascade)
   tags Tag[]
+}
+
+model ItemComment {
+  id        String   @id @default(cuid())
+  authorId  String
+  itemId    String
+  context   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  item   Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
 }
 
 model Tag {
