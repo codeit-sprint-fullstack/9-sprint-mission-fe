@@ -2,7 +2,7 @@
 import profile from "@/public/images/profile.png";
 import { authService } from "@/lib/services/auth";
 import { userService } from "@/lib/services/user";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 // context 전역 상태 저장소
@@ -21,11 +21,12 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   const getUser = async () => {
     try {
       const userData = await userService.getMe();
-
+      console.log("userData", userData);
       const userWithProfile = {
         ...userData,
         image: userData.image || profile.src,
@@ -63,16 +64,20 @@ export default function AuthProvider({ children }) {
   const updateUser = async (data) => {
     const updated = await userService.updateMe(data);
     const updatedWithProfile = {
-      ...updatedUser,
-      image: updatedUser.image || profile.src,
+      ...updated,
+      image: updated.image || profile.src,
     };
 
     setUser(updatedWithProfile);
   };
 
   useEffect(() => {
+    if (pathname === "/login" || pathname === "/signup") {
+      setIsInitialized(true);
+      return;
+    }
     getUser();
-  }, []);
+  }, [pathname]);
 
   return (
     <AuthContext.Provider

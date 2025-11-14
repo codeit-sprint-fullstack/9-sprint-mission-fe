@@ -44,9 +44,8 @@ export const cookieFetch = async (url, options = {}) => {
     headers: {
       "Content-Type": "application/json",
     },
-    // 쿠키 전송을 위한 설정
+
     credentials: "include",
-    // 서버 컴포넌트에서도 매번 재검증
     cache: "no-store",
   };
 
@@ -124,7 +123,7 @@ export const tokenFetch = async (url, options = {}) => {
         // 리프레시 실패 시 로그아웃
         localStorage.removeItem("token");
         localStorage.removeItem("refreshToken");
-        window.location.href = "/login";
+        // window.location.href = "/login"; 
         throw new Error("Authentication failed");
       }
     } catch (error) {

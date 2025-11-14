@@ -24,13 +24,13 @@ export default function Header() {
         </Link>
         <nav className="fex justify-center items-center">
           <Link
-            href="/page2"
+            href="/articles"
             className="w-[109px] h-[69px] p-[24px_16px_24px_15px] text-center font-pretended text-[18px] text-[#3692FF] font-bold cursor-pointer"
           >
             자유게시판
           </Link>
           <Link
-            href="/page3"
+            href="products"
             className="w-[109px] h-[69px] p-[24px_23px_24px_23px] text-center font-pretended text-[18px] font-bold  cursor-pointer"
           >
             중고게시판
@@ -52,7 +52,7 @@ export default function Header() {
             </span>
             <button
               onClick={logout}
-              className="flex items-center justify-center bg-gray-200 text-gray-800 text-[16px] w-20 h-9 rounded-lg "
+              className="flex items-center justify-center bg-gray-200 text-gray-800 text-[16px] w-20 h-10  rounded-lg "
             >
               로그아웃
             </button>
@@ -60,7 +60,7 @@ export default function Header() {
         ) : (
           <button
             onClick={() => router.push("/login")}
-            className=" flex justify-center items-center bg-[#3692FF] w-20 h-9 text-[16px] text-white px-[23px] py-3 rounded-lg gap-2.5 leading-[26px]"
+            className=" flex  justify-center items-center bg-[#3692FF] text-[16px] text-white px-[23px] py-3 rounded-lg gap-2.5 leading-[26px]"
           >
             로그인
           </button>
