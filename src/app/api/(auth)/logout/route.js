@@ -14,7 +14,7 @@ export async function POST() {
       });
     }
 
-    cookieStore().set('refreshToken', '', {
+    cookieStore.set('refreshToken', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV !== 'development',
       sameSite: 'strict',
@@ -22,7 +22,7 @@ export async function POST() {
       expires: new Date(0),
     });
 
-    cookieStore().set('accessToken', '', {
+    cookieStore.set('accessToken', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV !== 'development',
       sameSite: 'strict',

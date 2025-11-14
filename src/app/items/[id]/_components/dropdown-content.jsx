@@ -7,8 +7,7 @@ import { useFormStatus } from "react-dom"
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
 import { Modal } from "@/components/ui/dialog"
-import { deleteItemComment, updateItemComment } from "@/services/comment-service"
-// ! server action (Never trust data from the client)
+import { commentService, } from "@/services/comment-service"
 
 const contents = [
   { option: '수정하기', name: 'update' },
@@ -41,7 +40,7 @@ export function DropdownContent({ comment }) {
     setShowModal(false)
 
     try {
-      await deleteItemComment(id, comment.id)
+      await commentService.deleteComments(id, comment.id)
     } catch (error) {
       console.error(error)
       setModalMessage("삭제 중 오류 발생");
@@ -74,7 +73,7 @@ export function DropdownContent({ comment }) {
     }
 
     try {
-      await updateItemComment(id, formData);
+      await commentService.updateComments(id, formData);
 
     } catch (error) {
       console.error(error)

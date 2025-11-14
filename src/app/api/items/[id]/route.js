@@ -3,6 +3,7 @@ import { unstable_cache } from 'next/cache';
 import prisma from '@/libs/prisma';
 import { backendItemFormSchema } from '@/libs/schemas/item.schema';
 import { apiResponse } from '@/libs/utils/api-helper';
+import { getUserIdFromToken } from '@/libs/utils/auth-helper';
 
 export const GET = async (request, { params }) => {
   const { id } = await params;
@@ -71,22 +72,31 @@ export const GET = async (request, { params }) => {
 };
 
 export const PATCH = async (request, { params }) => {
+  let userId;
   try {
-    const { id } = await params;
-    if (!id) {
-      return apiResponse(false, '상품 아이디를 찾을수없습니다.', null, 404);
-    }
-    const body = await request.json();
-    const validateData = backendItemFormSchema.parse(body);
-    const { name, description, price, authorId, tags } = validateData;
+    userId = await getUserIdFromToken();
+  } catch (error) {
+    return apiResponse(false, error.message, null, 401);
+  }
 
+  const { id } = await params;
+
+  if (!id) {
+    return apiResponse(false, '상품 아이디를 찾을수없습니다.', null, 404);
+  }
+
+  const body = await request.json();
+  const validateData = backendItemFormSchema.parse(body);
+  const { name, description, price, tags } = validateData;
+
+  try {
     const updateItem = await prisma.item.update({
       where: { id: id },
       data: {
         name,
         description,
         price,
-        authorId,
+        authorId: userId,
         tags: {
           connectOrCreate: tags.map((tag) => ({
             where: { name: tag },
@@ -116,14 +126,23 @@ export const PATCH = async (request, { params }) => {
   }
 };
 
-export const DELETE = async (request, { params }) => {
+export const DELETE = async ({ params }) => {
+  let userId;
+  try {
+    userId = await getUserIdFromToken();
+  } catch (error) {
+    return apiResponse(false, error.message, null, 401);
+  }
+
   const { id } = await params;
-  if (!id)
+
+  if (!id) {
     return apiResponse(false, '상품 아이디를 찾을수없습니다.', null, 404);
+  }
 
   try {
     await prisma.item.delete({
-      where: { id: id },
+      where: { id: id, authorId: userId },
     });
 
     return apiResponse(true, '성공적으로 상품을 삭제하였습니다.', null, 200);

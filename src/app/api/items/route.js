@@ -1,6 +1,7 @@
 import prisma from '@/libs/prisma';
 import { backendItemFormSchema } from '@/libs/schemas/item.schema';
 import { apiResponse } from '@/libs/utils/api-helper';
+import { getUserIdFromToken } from '@/libs/utils/auth-helper';
 
 export const GET = async (request) => {
   try {
@@ -53,9 +54,16 @@ export const GET = async (request) => {
 };
 
 export const POST = async (request) => {
+  let userId;
+  try {
+    userId = await getUserIdFromToken();
+  } catch (error) {
+    return apiResponse(false, error.message, null, 401);
+  }
+
   const body = await request.json();
   const validateData = backendItemFormSchema.parse(body);
-  const { name, description, price, authorId, tags } = validateData;
+  const { name, description, price, tags } = validateData;
 
   try {
     const newItem = await prisma.item.create({
@@ -63,7 +71,7 @@ export const POST = async (request) => {
         name,
         description,
         price,
-        authorId,
+        authorId: userId,
         tags: {
           connectOrCreate: tags.map((tag) => ({
             where: { name: tag },

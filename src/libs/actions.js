@@ -1,4 +1,6 @@
 // @see https://www.youtube.com/watch?v=wh4kGL1EIGM
+// ! server action (Never trust data from the client)
+
 // 'use server';
 // 댓글 서버 액션 구현예제
 

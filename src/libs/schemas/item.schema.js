@@ -42,7 +42,6 @@ const backendItemFormSchema = z.object({
     .min(10, '내용은 10자 이상 입력해주세요.')
     .max(100, '내용은 100자 이내로 입력해주세요.'),
   price: z.string(),
-  authorId: z.string().min(1, '작성자 ID가 필요합니다.'),
   tags: z
     .array(
       z

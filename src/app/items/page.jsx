@@ -6,13 +6,14 @@ import { CardList } from '@/components/layouts/Items/card-list';
 // import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList";
 import { Dropdown } from '@/components/ui/dropdown';
 import { Search } from '@/components/ui/search';
-import { getItems } from '@/services/item-service';
+import { itemService } from '@/services/item-service';
 
 export default async function ProductPage(props) {
   const searchParams = await props.searchParams
   const keyword = searchParams.keyword || ''
   const orderBy = searchParams.orderBy || 'recent'
-  const { items } = await getItems(keyword, orderBy)
+  const itemData = await itemService.getItems(keyword, orderBy)
+  const { items } = itemData.data
   // custom hooks
   // const {
   //   currentPage,

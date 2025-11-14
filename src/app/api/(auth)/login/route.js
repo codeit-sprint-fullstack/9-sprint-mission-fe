@@ -39,13 +39,13 @@ export async function POST(request) {
       { userId: user.id, email: user.email },
       JWT_SECRET,
       {
-        expiresIn: '15m',
+        expiresIn: '30m',
       },
     );
 
-    const accessExpiresAt = new Date(Date.now() + 15 * 60 * 1000);
+    const accessExpiresAt = new Date(Date.now() + 30 * 60 * 1000); // 30 min
     const refreshToken = uuidv4();
-    const refreshExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+    const refreshExpiresAt = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000); // 3 days
 
     // refreshToken 생성
     await prisma.refreshToken.create({

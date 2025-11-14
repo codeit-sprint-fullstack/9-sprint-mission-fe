@@ -7,11 +7,11 @@ import { formatDate } from "@/libs/utils/format";
 
 import { DropdownContent } from '../dropdown-content'
 
-export function ItemCommentSection({ item }) {
+export function ItemCommentSection({ comments }) {
   return (
     <section className="flex flex-col gap-6 no-underline list-none">
-      {item.comment && item.comment.length > 0 ? (
-        item.comment.map((comment) => (
+      {comments && comments.length > 0 ? (
+        comments.map((comment) => (
           <li key={comment.id} className="flex flex-col border-2.5 border-t-0 border-r-0 border-l-0 border border-solid border-gray-300 py-3 px-0 gap-6 bg-gray-50">
             <div className="flex justify-between">
               <DropdownContent comment={comment} />

@@ -7,14 +7,12 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/dialog";
 import { itemFormSchema } from '@/libs/schemas/item.schema';
-import { useAuth } from '@/providers/auth-provider';
-import { updateItem } from '@/services/item-service';
+import { itemService } from '@/services/item-service';
 
 export default function ItemRegistration({ params }) {
   const [showModal, setShowModal] = useState(false);
 
   const { id } = React.use(params)
-  const { user } = useAuth();
   const router = useRouter();
 
   const {
@@ -26,15 +24,11 @@ export default function ItemRegistration({ params }) {
     mode: 'onChange', // 실시간 유효성 검사
   })
 
-  const onSubmit = async (data) => {
-    const updateData = {
-      ...data,
-      authorId: user.data.id
-    }
+  const onSubmit = async (formData) => {
     try {
-      await updateItem(id, updateData)
+      await itemService.updateItem(id, formData)
 
-      router.push(`/items/detail/${id}`)
+      router.replace(`/items/${id}`)
 
     } catch (error) {
       console.error("등록중 오류 발생:", error);

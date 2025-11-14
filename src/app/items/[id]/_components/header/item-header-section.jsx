@@ -7,7 +7,7 @@ import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import DefaultImg from "@/assets/items/Img_default.png"
 import { Button } from "@/components/ui/button"
 import { Modal } from "@/components/ui/dialog"
-import { deleteItem } from "@/services/item-service"
+import { itemService } from "@/services/item-service"
 
 import { ItemAuthor } from "./item-author"
 
@@ -16,7 +16,7 @@ const contents = [
   { option: '삭제하기', name: 'delete' }
 ]
 
-export function ItemTitleSection({ item }) {
+export function ItemHeaderSection({ itemId, item }) {
   const [showPanel, setShowPanel] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
@@ -30,7 +30,7 @@ export function ItemTitleSection({ item }) {
     setShowModal(false)
 
     try {
-      await deleteItem(item.id);
+      await itemService.deleteItem(itemId);
 
       router.push('/items')
     } catch (error) {
@@ -44,7 +44,7 @@ export function ItemTitleSection({ item }) {
     setShowPanel(false);
 
     if (name === 'update') {
-      router.push(`${item.id}/update/`)
+      router.push(`${itemId}/update/`)
     }
     if (name === 'delete') {
       setModalMessage("정말로 삭제하시겠습니까")
@@ -53,7 +53,7 @@ export function ItemTitleSection({ item }) {
   }
 
   return (
-    <>
+    <section className="container w-full items-center pb-4 mb-6 border-b border-gray-200">
       <div className="container max-w-480 flex flex-col md:flex-row md:gap-2.5">
         <div className="flex items-center relative w-85 h-85 shrink-0 md:mr-6 xl:w-121.5 xl:h-121.5 ">
           <Image
@@ -109,7 +109,7 @@ export function ItemTitleSection({ item }) {
           <section>
             <h3 className="mb-4 font-pretendard text-base font-semibold text-gray-600 leading-6.5">상품 태그</h3>
             <ul className="flex gap-4">
-              {item.tags.map((tag) => (
+              {item.tags?.map((tag) => (
                 <li
                   key={tag.id}
                   className="bg-gray-100 h-9 py-1.5 px-4 rounded-3xl"
@@ -132,6 +132,6 @@ export function ItemTitleSection({ item }) {
         </Modal>
       )
       }
-    </>
+    </section >
   )
 }

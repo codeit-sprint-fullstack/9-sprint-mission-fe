@@ -5,11 +5,9 @@ import { useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
 import { itemCommentSchema } from "@/libs/schemas/comment.schema"
-import { useAuth } from "@/providers/auth-provider"
-import { createItemComment } from "@/services/comment-service"
+import { commentService } from "@/services/comment-service"
 
-export function ItemCommentForm({ item }) {
-  const { user } = useAuth()
+export function ItemCommentForm({ itemId }) {
 
   const {
     register,
@@ -23,12 +21,11 @@ export function ItemCommentForm({ item }) {
   const onSubmit = async (data) => {
     const newComment = {
       ...data,
-      authorId: user.data.id,
-      itemId: item.id
+      itemId
     }
 
     try {
-      await createItemComment(item.id, newComment)
+      await commentService.createComments(itemId, newComment)
     } catch (error) {
       console.error("등록중 오류 발생", error)
     }

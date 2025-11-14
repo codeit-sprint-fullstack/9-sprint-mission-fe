@@ -7,14 +7,11 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/dialog";
 import { itemFormSchema } from '@/libs/schemas/item.schema';
-import { useAuth } from '@/providers/auth-provider';
-import { createItem } from '@/services/item-service';
+import { itemService } from '@/services/item-service';
 
 export default function ItemRegistration() {
   const [showModal, setShowModal] = useState(false);
-
   const router = useRouter();
-  const { user } = useAuth()
 
   const {
     register,
@@ -26,13 +23,8 @@ export default function ItemRegistration() {
   })
 
   const onSubmit = async (data) => {
-    const newData = {
-      ...data,
-      authorId: user.data.id
-    }
-
     try {
-      await createItem(newData);
+      await itemService.createItem(data);
 
       router.push('/items')
 
