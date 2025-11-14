@@ -2,7 +2,7 @@ import { cache } from "react";
 import { defaultFetch, serverFetch, tokenFetch } from "./fetchClient";
 
 export const getArticlesList = async ({ pageSize = 30, keyword = "" }) => {
-  return serverFetch(
+  return defaultFetch(
     `/articles?orderBy=recent&page=1&pageSize=${pageSize}&keyword=${keyword}`
   );
 };

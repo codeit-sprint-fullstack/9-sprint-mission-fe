@@ -15,7 +15,7 @@ export const getProductList = (
   orderBy = DEFULR_ORDERBY,
   keyword = ""
 ) => {
-  return serverFetch(
+  return defaultFetch(
     `/products?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`
   );
 };
