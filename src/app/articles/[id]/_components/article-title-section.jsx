@@ -5,7 +5,7 @@ import { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/modal"
+import { Modal } from "@/components/ui/dialog"
 import { deleteArticle } from "@/services/article-service"
 
 const contents = [

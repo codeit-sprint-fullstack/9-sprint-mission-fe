@@ -6,7 +6,7 @@ import { useFormStatus } from "react-dom"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/modal"
+import { Modal } from "@/components/ui/dialog"
 import { deleteItemComment, updateItemComment } from "@/services/comment-service"
 // ! server action (Never trust data from the client)
 

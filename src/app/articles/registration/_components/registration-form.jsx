@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { Modal } from "@/components/ui/modal";
+import { Modal } from "@/components/ui/dialog";
 import { articleFormSchema } from '@/libs/schemas/article.schema';
 import { createArticle } from '@/services/article-service';
 

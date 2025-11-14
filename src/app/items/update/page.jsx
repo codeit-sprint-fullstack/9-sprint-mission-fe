@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { Modal } from "@/components/ui/modal";
+import { Modal } from "@/components/ui/dialog";
 import { itemFormSchema } from '@/libs/schemas/item.schema';
 import { useAuth } from '@/providers/auth-provider';
 import { updateItem } from '@/services/item-service';

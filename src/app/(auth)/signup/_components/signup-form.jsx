@@ -8,7 +8,7 @@ import { z } from 'zod'
 
 import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'
-import { Modal } from '@/components/ui/modal';
+import { Modal } from '@/components/ui/dialog';
 import { cn } from '@/libs/cn';
 import { useAuth } from '@/providers/auth-provider';
 

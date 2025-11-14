@@ -6,7 +6,7 @@ import React, { useState } from "react"
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import DefaultImg from "@/assets/items/Img_default.png"
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/modal"
+import { Modal } from "@/components/ui/dialog"
 import { deleteItem } from "@/services/item-service"
 
 import { ItemAuthor } from "./item-author"
