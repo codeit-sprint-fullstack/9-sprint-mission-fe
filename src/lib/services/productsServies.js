@@ -49,6 +49,18 @@ export const deleteProductById = async ({ id }) => {
   return tokenFetch(`/products/${id}`, { method: "DELETE" });
 };
 
+export const addProductFavorite = ({ id }) => {
+  return tokenFetch(`/products/${id}/favorite`, {
+    method: "POST",
+  });
+};
+
+export const deleteProductFavorite = ({ id }) => {
+  return tokenFetch(`/products/${id}/favorite`, {
+    method: "DELETE",
+  });
+};
+
 export const getProductCommentsList = async ({ productId }) => {
   console.log(productId);
   return tokenFetch(`/products/${productId}/comments?limit=30`);

@@ -6,11 +6,11 @@ import ProfileOnPosts from "@/components/common/profile/ProfileOnPosts";
 import LikesOnPosts from "@/components/common/profile/LikesOnPosts";
 import KebabDropDown from "@/components/common/KebabDropDown";
 import { getProductByIdClient } from "@/lib/services/productsServies";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter, useParams } from "next/navigation";
 
-export default function ItemDetail() {
-  const { id } = useParams();
+export default function ItemDetail({ itemId }) {
+  const id = itemId;
   const router = useRouter();
   const getItem = (id) => getProductByIdClient({ id });
   const {
@@ -24,6 +24,10 @@ export default function ItemDetail() {
       name: "중고 마켓 페이지",
     },
   });
+
+  // const queryClient = useQueryClient();
+
+  // const likeMutation = useMutation({});
 
   if (isPending)
     return (
@@ -66,13 +70,13 @@ export default function ItemDetail() {
 
             <div className="mt-6 text-(--secondary-600)">
               <h4 className="font-semibold">상품 태그</h4>
-              <ul className="mt-4">
-                <li>
-                  {itemData.tags.length !== 0 &&
-                    itemData.tags.map((tag) => (
-                      <TagCapsule key={tag} tagValue={tag} btnActive={false} />
-                    ))}
-                </li>
+              <ul className="mt-4 flex gap-2">
+                {itemData.tags.length !== 0 &&
+                  itemData.tags.map((tag) => (
+                    <li key={tag}>
+                      <TagCapsule tagValue={tag} btnActive={false} />
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>

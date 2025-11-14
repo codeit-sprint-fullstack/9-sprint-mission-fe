@@ -14,17 +14,7 @@ export default function CommentDropDown({ id, onEdit }) {
     setIsDropDownActive(!isDropDownActive);
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("정말 삭제하시겠습니까?")) {
-      return;
-    }
-    const result = await deleteComment(id);
-    if (result) {
-      router.refresh();
-    } else {
-      alert(result.error || "댓글 삭제에 실패했습니다");
-    }
-  };
+  const handleDelete = async (id) => {};
 
   return (
     <div className="relative w-32 text-base font-normal leading-10.5 text-center text-(--secondary-800)">

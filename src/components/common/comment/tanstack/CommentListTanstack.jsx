@@ -1,8 +1,8 @@
 import Image from "next/image";
 import emptyCommentsImg from "@/assets/img/Img_reply_empty.png";
-import DynamicCommentItem from "./DynamicCommentItem";
+import CommentItemTanstack from "./CommentItemTanstack";
 
-export default function CommentList({ comments }) {
+export default function CommentListTanstack({ comments, parentsId }) {
   console.log(comments);
 
   return (
@@ -20,7 +20,11 @@ export default function CommentList({ comments }) {
       ) : (
         <ul className="space-y-4">
           {comments.list.map((comment) => (
-            <DynamicCommentItem key={comment.id} comment={comment} />
+            <CommentItemTanstack
+              key={comment.id}
+              comment={comment}
+              parentsId={parentsId}
+            />
           ))}
         </ul>
       )}
