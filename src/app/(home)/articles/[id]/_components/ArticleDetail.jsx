@@ -1,10 +1,24 @@
+"use client";
 import React from "react";
-import KebabDropDown from "./KebabDropDown";
-import Image from "next/image";
-import heartIcon from "@/assets/img/ic_heart.svg";
-import profileImg from "@/assets/img/ic_profile.svg";
+//import KebabDropDown from "./KebabDropDown";
+import ProfileOnPosts from "@/components/common/profile/ProfileOnPosts";
+import LikesOnPosts from "@/components/common/profile/LikesOnPosts";
+import KebabDropDown from "@/components/common/KebabDropDown";
+import { deleteArticleById } from "@/lib/services/articlesServices";
 
 export default function ArticleDetail({ article }) {
+  const handleDelete = async (id) => {
+    if (!window.confirm("정말 삭제하시겠습니까?")) {
+      return;
+    }
+    const result = await deleteArticleById(id);
+    if (result.success) {
+      alert("글 삭제에 성공했습니다");
+      router.push(`/articles`);
+    } else {
+      alert(result.error || "글 삭제에 실패했습니다");
+    }
+  };
   return (
     <div>
       <div className="border-b border-(--secondary-200) pb-4">
@@ -12,32 +26,15 @@ export default function ArticleDetail({ article }) {
           <h2 className="text-(--secondary-800) text-xl font-bold">
             {article.title}
           </h2>
-          <KebabDropDown id={article.id}></KebabDropDown>
+          <KebabDropDown
+            id={article.id}
+            path={"articles"}
+            handleDelete={handleDelete}
+          ></KebabDropDown>
         </div>
         <div className="flex mt-4 items-center text-base gap-8">
-          <div className="flex text-(--secondary-600) items-center gap-2 pr-8 border-r border-(--secondary-200)">
-            <div className="flex gap-4 items-center">
-              <figure className="relative w-10 h-10">
-                <Image
-                  src={profileImg}
-                  alt="프로필 이미지"
-                  fill
-                  sizes="100vw"
-                />
-              </figure>
-              <span className="">닉네임</span>
-            </div>
-            <p className="text-(--secondary-400)">
-              {article.createdAt.split("T")[0]}
-            </p>
-          </div>
-
-          <div className="flex items-center gap-1 py-1 px-3 border border-(--secondary-400) rounded-full ">
-            <figure className="relative w-8 h-8">
-              <Image src={heartIcon} alt="좋아요" fill sizes="100vw" />
-            </figure>
-            <span>9999+</span>
-          </div>
+          <ProfileOnPosts createdTime={article.createdAt} />
+          <LikesOnPosts />
         </div>
       </div>
       <div className="mt-6">

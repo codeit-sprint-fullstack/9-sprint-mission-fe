@@ -1,10 +1,10 @@
 import { getArticleById } from "@/lib/services/articlesServices";
 import ArticleDetail from "./_components/ArticleDetail";
-import CommentList from "./_components/ArticleCommentList";
-import CommentForm from "./_components/ArticleCommentForm";
 import Link from "next/link";
 import Image from "next/image";
 import backIcon from "@/assets/img/ic_back.svg";
+import ArticleCommentForm from "./_components/ArticleCommentForm";
+import ArticleCommentList from "./_components/ArticleCommentList";
 
 export default async function ArticleDetailPage({ params }) {
   const { id } = await params;
@@ -17,8 +17,8 @@ export default async function ArticleDetailPage({ params }) {
         <h2 className="text(--secondary-900) text-base font-semibold">
           댓글 달기
         </h2>
-        <CommentForm articleId={article.id}></CommentForm>
-        <CommentList articleId={article.id}></CommentList>
+        <ArticleCommentForm articleId={article.id}></ArticleCommentForm>
+        <ArticleCommentList articleId={article.id}></ArticleCommentList>
       </div>
       <Link
         href="/articles"

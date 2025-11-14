@@ -4,28 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import kebabIcon from "@/assets/img/ic_kebab.svg";
 import Link from "next/link";
-import { deleteArticleById } from "@/lib/services/articlesServices";
-import { useRouter } from "next/navigation";
 
-export default function KebabDropDown({ id }) {
-  const router = useRouter();
+export default function KebabDropDown({ id, path, handleDelete }) {
   const [isDropDownActive, setIsDropDownActive] = useState(false);
 
   const handleDropDownBtnClick = () => {
     setIsDropDownActive(!isDropDownActive);
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm("정말 삭제하시겠습니까?")) {
-      return;
-    }
-    const result = await deleteArticleById(id);
-    if (result.success) {
-      alert("글 삭제에 성공했습니다");
-      router.push(`/articles`);
-    } else {
-      alert(result.error || "글 삭제에 실패했습니다");
-    }
   };
 
   return (
@@ -45,7 +29,7 @@ export default function KebabDropDown({ id }) {
       >
         <li className="w-full h-10.5 border-b border-(--secondary-200) last:border-b-0">
           <Link
-            href={`/articles/${id}/modify`}
+            href={`/${path}/${id}/modify`}
             className="w-full h-full bg-transparent border-none"
           >
             수정하기
@@ -53,7 +37,10 @@ export default function KebabDropDown({ id }) {
         </li>
         <li className="w-full h-10.5 border-b border-(--secondary-200) last:border-b-0">
           <button
-            onClick={() => handleDelete({ id: id })}
+            onClick={async () => {
+              console.log("DL: ", id);
+              await handleDelete({ id });
+            }}
             className="w-full h-full bg-transparent border-none"
           >
             삭제하기
