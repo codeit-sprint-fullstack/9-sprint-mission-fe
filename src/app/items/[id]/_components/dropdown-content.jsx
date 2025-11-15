@@ -6,7 +6,8 @@ import { useFormStatus } from "react-dom"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/dialog"
+import { DeleteDialog } from "@/components/ui/dialog/delete-dialog"
+import { useDialog } from "@/providers/modal-context"
 import { commentService, } from "@/services/comment-service"
 
 const contents = [
@@ -31,16 +32,20 @@ export function DropdownContent({ comment }) {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [context, setContext] = useState('');
+  const { openDialog } = useDialog();
 
   const handlePanel = () => {
     setShowPanel(!showPanel);
   }
 
+  // 삭제
   const handleDelete = async () => {
     setShowModal(false)
 
     try {
       await commentService.deleteComments(id, comment.id)
+
+      openDialog('댓글 삭제를 성공 하였습니다.')
     } catch (error) {
       console.error(error)
       setModalMessage("삭제 중 오류 발생");
@@ -60,7 +65,7 @@ export function DropdownContent({ comment }) {
     }
   }
 
-  // 서버 액션을 호출하는 래퍼 함수
+  // 업데이트 함수
   const onSubmit = async (e) => {
     e.preventDefault()
 
@@ -143,13 +148,13 @@ export function DropdownContent({ comment }) {
       </div >
 
       {showModal && (
-        <Modal
+        <DeleteDialog
           close={() => setShowModal(false)}
           msg={modalMessage}
+          deleteClick={handleDelete}
         >
-          정말로 삭제 하시겠습니까?
-          <Button className='flex w-full' onClick={handleDelete} >예</Button>
-        </Modal>
+          정말로 상품을 삭제하시겠어요?
+        </DeleteDialog>
       )}
     </>
   )

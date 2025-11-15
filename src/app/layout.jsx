@@ -4,6 +4,7 @@ import './globals.css'
 import Pretendard from 'next/font/local'
 import Rokaf from 'next/font/local'
 
+import { GlobalDialog } from '@/components/ui/dialog/global-dialog'
 import { rootMetadata } from '#/config/metadata'
 
 import { Providers } from './providers'
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
         <Providers>
           {children}
+          <GlobalDialog />
         </Providers>
       </body>
     </html>
