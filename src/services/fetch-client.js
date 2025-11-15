@@ -46,7 +46,7 @@ export const cookieFetch = async (url, options = {}) => {
     },
   };
 
-  let response = await fetch(`${url}`, mergedOptions);
+  let response = await fetch(`${API_URL}${url}`, mergedOptions);
 
   if (response.status === 401 && url !== '/api/refresh-token') {
     try {

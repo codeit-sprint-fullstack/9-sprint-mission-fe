@@ -13,6 +13,9 @@ export const paths = {
     items: {
       getHref: () => '/items',
     },
+    itemDetail: {
+      getHref: (id) => `/items/${id}`,
+    },
   },
 
   auth: {

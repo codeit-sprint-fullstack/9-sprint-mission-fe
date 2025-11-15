@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
+import { paths } from "#/config/paths";
 
 export function CardList({ items }) {
   return (
@@ -8,7 +9,7 @@ export function CardList({ items }) {
       {items.map((item) => (
         <Link
           key={item.id}
-          href={`items/detail/${item.id}`}
+          href={paths.app.itemDetail.getHref(item.id)}
         >
           <Card
             name={item.name}

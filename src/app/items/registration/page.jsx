@@ -6,12 +6,11 @@ import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/dialog";
-import { articleFormSchema } from '@/libs/schemas/article.schema';
-import { createArticle } from '@/services/article-service';
+import { itemFormSchema } from '@/libs/schemas/item.schema';
+import { itemService } from '@/services/item-service';
 
-export function ArticleRegistration() {
+export default function ItemRegistration() {
   const [showModal, setShowModal] = useState(false);
-
   const router = useRouter();
 
   const {
@@ -19,16 +18,15 @@ export function ArticleRegistration() {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    resolver: zodResolver(articleFormSchema),
+    resolver: zodResolver(itemFormSchema),
     mode: 'onChange', // 실시간 유효성 검사
   })
 
   const onSubmit = async (data) => {
-
     try {
-      await createArticle(data);
+      await itemService.createItem(data);
 
-      router.push('/articles')
+      router.push('/items')
 
     } catch (error) {
       console.error("등록중 오류 발생:", error);
@@ -47,7 +45,9 @@ export function ArticleRegistration() {
         className='px-6 w-full'
       >
         <div className="flex w-full justify-between mb-9">
-          <h2 className='font-pretendard text-2xl font-bold leading-9'>게시물 쓰기</h2>
+          <h2 className='font-pretendard text-2xl font-bold leading-9'>
+            상품 등록
+          </h2>
           <Button
             type="submit"
             disabled={!isValid}
@@ -58,39 +58,78 @@ export function ArticleRegistration() {
         <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
-            htmlFor="article_name"
+            htmlFor="item_name"
           >
             제목
           </label>
           <input
             className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             type="text"
-            id="article_name"
+            id="item_name"
             placeholder="제목을 입력해주세요"
             aria-label="제목을 입력해주세요"
-            {...register('title')}
+            {...register('name')}
           />
-          {errors.title && (
-            <span className='text-error-red'>{errors.title.message}</span>
+          {errors.name && (
+            <span className='text-error-red'>{errors.name.message}</span>
           )}
         </div>
 
         <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
-            htmlFor="article_describe"
+            htmlFor="item_describe"
           >
             내용
           </label>
           <textarea
             className='max-w-full w-full h-70.5 py-4 px-6 resize-none border-0 rounded-xl bg-gray-100'
-            id="article_describe"
+            id="item_describe"
             placeholder="내용을 입력해주세요"
             aria-label="내용을 입력해주세요"
-            {...register('content')}
+            {...register('description')}
           ></textarea>
-          {errors.content && (
-            <span className='text-error-red'>{errors.content.message}</span>
+          {errors.description && (
+            <span className='text-error-red'>{errors.description.message}</span>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-4 w-full mb-8">
+          <label
+            className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
+            htmlFor="item_price"
+          >
+            가격
+          </label>
+          <input
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
+            type="text"
+            id="item_price"
+            placeholder="제목을 입력해주세요"
+            aria-label="제목을 입력해주세요"
+            {...register('price')}
+          />
+          {errors.price && (
+            <span className='text-error-red'>{errors.price.message}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-4 w-full mb-8">
+          <label
+            className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
+            htmlFor="item_tags"
+          >
+            태그
+          </label>
+          <input
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
+            type="text"
+            id="item_tags"
+            placeholder="테스트 태그 예시: #아이패드미니, #애플, #가성비"
+            aria-label="태그를 입력해주세요 (쉼표 구분)"
+            {...register('tags')}
+          />
+          {errors.tags && (
+            <span className='text-error-red'>{errors.tags.message}</span>
           )}
         </div>
       </form>
@@ -106,4 +145,5 @@ export function ArticleRegistration() {
     </>
   );
 }
+
 

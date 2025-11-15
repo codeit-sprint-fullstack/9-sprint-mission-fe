@@ -6,13 +6,14 @@ import { CardList } from '@/components/layouts/Items/card-list';
 // import { FavoriteCardList } from "@/components/UI/Card/FavoriteCardList";
 import { Dropdown } from '@/components/ui/dropdown';
 import { Search } from '@/components/ui/search';
-import { getItems } from '@/services/item-service';
+import { itemService } from '@/services/item-service';
 
 export default async function ProductPage(props) {
   const searchParams = await props.searchParams
   const keyword = searchParams.keyword || ''
   const orderBy = searchParams.orderBy || 'recent'
-  const { items } = await getItems(keyword, orderBy)
+  const itemData = await itemService.getItems(keyword, orderBy)
+  const { items } = itemData.data
   // custom hooks
   // const {
   //   currentPage,
@@ -30,7 +31,7 @@ export default async function ProductPage(props) {
 
   return (
     <>
-      <main className="container w-full min-h-screen flex flex-col items-center mx-auto py-0 max-w-480">
+      <main className="container w-full min-h-screen flex flex-col items-center mx-auto py-0 max-w-7xl">
 
         <div className="pt-6.5 flex flex-col max-w-480">
           <p className="font-pretendard text-gray-900 font-bold m-0">베스트 상품</p>
@@ -45,7 +46,9 @@ export default async function ProductPage(props) {
             <div className="flex items-center gap-3">
               <Search />
               <Dropdown />
-              <Link href="/items/registration" className="flex justify-center items-center gap-2.5 h-10.5 px-3 py-5.75 border-0 rounded-lg bg-primary-100 text-gray-100 font-pretendard text-lg font-semibold leading-6.5 no-underline cursor-pointer" >상품 등록하기</Link>
+              <Link href="/items/registration" className="flex justify-center items-center gap-2.5 h-10.5 px-3 py-5.75 border-0 rounded-lg bg-primary-100 text-gray-100 font-pretendard text-lg font-semibold leading-6.5 no-underline cursor-pointer" >
+                상품 등록하기
+              </Link>
             </div>
           </div>
           {items.length > 0 ? (

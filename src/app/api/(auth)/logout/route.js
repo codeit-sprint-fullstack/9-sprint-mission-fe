@@ -1,11 +1,11 @@
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
 
 import prisma from '@/libs/prisma';
+import { apiResponse } from '@/libs/utils/api-helper';
 
 export async function POST() {
+  const cookieStore = cookies();
   try {
-    const cookieStore = cookies();
     const refreshToken = cookieStore.get('refreshToken')?.value;
 
     if (refreshToken) {
@@ -14,7 +14,7 @@ export async function POST() {
       });
     }
 
-    cookies().set('refreshToken', '', {
+    cookieStore.set('refreshToken', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV !== 'development',
       sameSite: 'strict',
@@ -22,11 +22,22 @@ export async function POST() {
       expires: new Date(0),
     });
 
-    return NextResponse.json({ message: 'Logged out successfully' });
+    cookieStore.set('accessToken', '', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== 'development',
+      sameSite: 'strict',
+      path: '/',
+      expires: new Date(0),
+    });
+
+    return apiResponse(true, '로그아웃 성공', null, 200);
   } catch (error) {
-    return NextResponse.json(
-      { message: 'An error occurred during logout', error: error.message },
-      { status: 500 },
+    return apiResponse(
+      false,
+      '로그아웃 진행중 에러발생',
+      null,
+      error.message,
+      500,
     );
   }
 }

@@ -1,34 +1,37 @@
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { cookieFetch, defaultFetch } from './fetch-client';
 
-export async function getItems(searchParams) {
-  const res = await fetch(
-    `${BASE_URL}/api/items?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
-    {
-      next: { revalidate: 500 },
-    },
-  );
+export const itemService = {
+  getItems: (searchParams) =>
+    defaultFetch(
+      `/api/items?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
+      {
+        next: { revalidate: 500 },
+      },
+    ),
 
-  if (!res.ok) {
-    throw new Error('상품 데이터를 가져오는 데 실패했습니다.');
-  }
-
-  const result = await res.json();
-  return result.data;
-}
-
-export async function getItemById(id) {
-  try {
-    const res = await fetch(`http://localhost:3000/api/items/detail/${id}`, {
+  getItemById: (id) =>
+    defaultFetch(`/api/items/${id}`, {
       cache: 'no-store',
+    }),
+
+  createItem: (formData) =>
+    cookieFetch(`/api/items`, {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    }),
+
+  updateItem: (id, formData) => {
+    if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
+    cookieFetch(`/api/items/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(formData),
     });
+  },
 
-    if (!res.ok) {
-      throw new Error('상풍 상세 데이터를 가져오는 데 실패했습니다.');
-    }
-
-    const result = await res.json();
-    return result.data; // 최대 3개의 게시글 배열
-  } catch (error) {
-    console.error(error);
-  }
-}
+  deleteItem: (id) => {
+    if (!id) throw new Error('상품아이디를 찾을수없습니다.');
+    cookieFetch(`/api/items/${id}`, {
+      method: 'DELETE',
+    });
+  },
+};

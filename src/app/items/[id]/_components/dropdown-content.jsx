@@ -1,13 +1,14 @@
 "use client"
 import Image from "next/image"
+import { useParams } from "next/navigation"
 import { useState } from "react"
 import { useFormStatus } from "react-dom"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/modal"
-import { deleteComment } from "@/libs/actions"
-// ! server action (Never trust data from the client)
+import { DeleteDialog } from "@/components/ui/dialog/delete-dialog"
+import { useDialog } from "@/providers/modal-context"
+import { commentService, } from "@/services/comment-service"
 
 const contents = [
   { option: '수정하기', name: 'update' },
@@ -23,22 +24,28 @@ function SubmitButton() {
     </Button>
   );
 }
-export function DropdownContent({ comment, action }) {
+export function DropdownContent({ comment }) {
+  const params = useParams()
+  const { id } = params
   const [showPanel, setShowPanel] = useState(false);
   const [update, setUpdate] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [context, setContext] = useState('');
+  const { openDialog } = useDialog();
 
   const handlePanel = () => {
     setShowPanel(!showPanel);
   }
 
+  // 삭제
   const handleDelete = async () => {
     setShowModal(false)
 
     try {
-      const data = await deleteComment(comment.id)
+      await commentService.deleteComments(id, comment.id)
+
+      openDialog('댓글 삭제를 성공 하였습니다.')
     } catch (error) {
       console.error(error)
       setModalMessage("삭제 중 오류 발생");
@@ -54,19 +61,30 @@ export function DropdownContent({ comment, action }) {
       setUpdate(!update)
     }
     if (name === 'delete') {
+      setModalMessage('정말로 댓글을 삭제하시겠어요?')
       setShowModal(!showModal)
     }
   }
 
-  // 서버 액션을 호출하는 래퍼 함수
-  const handleClientAction = async (formData) => {
-    const result = await action(formData);
+  // 업데이트 함수
+  const onSubmit = async (e) => {
+    e.preventDefault()
 
-    if (result.success) {
-      console.log(result.message);
-      setUpdate(false);
-    } else {
-      console.error(result.message);
+    const commentId = comment.id
+    const newContext = context
+
+    const formData = {
+      commentId: commentId,
+      context: newContext
+    }
+
+    try {
+      await commentService.updateComments(id, formData);
+      openDialog("댓글 업데이트를 성공했습니다.")
+    } catch (error) {
+      console.error(error)
+      setModalMessage('업데이트 중 오류 발생')
+      setShowModal(true)
     }
   };
 
@@ -74,7 +92,9 @@ export function DropdownContent({ comment, action }) {
     <>
       <div className="font-pretendard text-sm text-gray-900 leading-6 w-full">
         {update ? (
-          <form action={handleClientAction} className="flex flex-col w-full">
+          <form
+            className="flex flex-col w-full"
+            onSubmit={onSubmit}>
             <input
               type="hidden"
               name="commentId"
@@ -127,15 +147,13 @@ export function DropdownContent({ comment, action }) {
           </div>
         )}
       </div >
-
       {showModal && (
-        <Modal
+        <DeleteDialog
           close={() => setShowModal(false)}
           msg={modalMessage}
+          deleteClick={handleDelete}
         >
-          정말로 삭제 하시겠습니까?
-          <Button className='flex w-full' onClick={handleDelete} >예</Button>
-        </Modal>
+        </DeleteDialog>
       )}
     </>
   )

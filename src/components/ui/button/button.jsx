@@ -9,6 +9,9 @@ const buttonVariants = cva(
     variants: {
       intent: {
         active: "bg-primary-100 hover:bg-primary-200 active:bg-primary-300",
+        // 에러상태일때 처리할 버튼 스타일 
+        ghost: "bg-gray-50 text-error-red border border-error-red hover:bg-gray-200",
+        danger: "bg-error-red hover:bg-red-600 active:bg-red-700 text-white"
       },
       size: {
         default: "h-10.5 py-3 px-5.75",
