@@ -1,16 +1,16 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { Modal } from "@/components/ui/dialog";
 import { itemFormSchema } from '@/libs/schemas/item.schema';
+import { useDialog } from '@/providers/modal-context';
 import { itemService } from '@/services/item-service';
 
 export default function ItemRegistration() {
-  const [showModal, setShowModal] = useState(false);
+  const { openDialog } = useDialog()
   const router = useRouter();
 
   const {
@@ -22,20 +22,24 @@ export default function ItemRegistration() {
     mode: 'onChange', // 실시간 유효성 검사
   })
 
-  const onSubmit = async (data) => {
-    try {
-      await itemService.createItem(data);
-
+  const createMutation = useMutation({
+    mutationFn: (formData) => {
+      return itemService.createItem(formData)
+    },
+    onSuccess: () => {
       router.push('/items')
-
-    } catch (error) {
-      console.error("등록중 오류 발생:", error);
-      setShowModal(true);
+      openDialog('상품 등록에 성공했습니다.')
+    },
+    onError: (error) => {
+      console.error(error);
+      openDialog("등록중 오류 발생", error.message)
     }
-  };
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  })
+
+  const onSubmit = (data) => {
+    createMutation.mutate(data)
+  }
+
   return (
     <>
       <form
@@ -50,9 +54,9 @@ export default function ItemRegistration() {
           </h2>
           <Button
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || createMutation.isPending}
           >
-            등록
+            {createMutation.isPending ? "등록 중..." : "등록"}
           </Button>
         </div>
         <div className="flex flex-col gap-4 w-full mb-8">
@@ -133,15 +137,6 @@ export default function ItemRegistration() {
           )}
         </div>
       </form>
-
-      {showModal && (
-        <Modal
-          close={handleCloseModal}
-          msg={
-            "등록중 예기치 못한 오류가 발생했습니다.\n 잠시후 다시시도해 주십시오 \n 문의(meta-os@zohomail.com)"
-          }
-        />
-      )}
     </>
   );
 }

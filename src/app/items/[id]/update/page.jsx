@@ -1,7 +1,7 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation';
-import React from "react";
+import { useMutation } from '@tanstack/react-query';
+import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -11,8 +11,7 @@ import { itemService } from '@/services/item-service';
 
 export default function ItemRegistration({ params }) {
   const { openDialog } = useDialog()
-
-  const { id } = React.use(params)
+  const { id: itemId } = useParams()
   const router = useRouter();
 
   const {
@@ -24,19 +23,23 @@ export default function ItemRegistration({ params }) {
     mode: 'onChange', // 실시간 유효성 검사
   })
 
-  const onSubmit = async (formData) => {
-    try {
-      await itemService.updateItem(id, formData)
-
+  const updateMutation = useMutation({
+    mutationFn: (formData) => {
+      return itemService.updateItem(itemId, formData)
+    },
+    onSuccess: () => {
       openDialog('업데이트에 성공하였습니다.');
-
-      router.replace(`/items/${id}`)
-
-    } catch (error) {
+      router.replace(`/items/${itemId}`)
+    },
+    onError: (error) => {
       console.error(error)
-      openDialog('등록중 오류 발생', error)
+      openDialog('등록중 오류 발생', error.message)
     }
-  };
+  })
+
+  const onSubmit = (data) => {
+    updateMutation.mutate(data);
+  }
 
   return (
     <>
@@ -52,9 +55,9 @@ export default function ItemRegistration({ params }) {
           </h2>
           <Button
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || updateMutation.isPending}
           >
-            등록
+            {updateMutation.isPending ? '수정 중...' : '수정'}
           </Button>
         </div>
         <div className="flex flex-col gap-4 w-full mb-8">
