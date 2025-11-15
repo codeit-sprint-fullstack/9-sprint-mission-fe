@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
 import { itemCommentSchema } from "@/libs/schemas/comment.schema"
+import { useDialog } from "@/providers/modal-context"
 import { commentService } from "@/services/comment-service"
 
 export function ItemCommentForm({ itemId }) {
+  const { openDialog } = useDialog()
 
   const {
     register,
@@ -26,8 +28,9 @@ export function ItemCommentForm({ itemId }) {
 
     try {
       await commentService.createComments(itemId, newComment)
+      openDialog('댓글 등록을 성공했습니다')
     } catch (error) {
-      console.error("등록중 오류 발생", error)
+      openDialog('댓글 등록중 오류가 발생했습니다.', error)
     }
   }
 

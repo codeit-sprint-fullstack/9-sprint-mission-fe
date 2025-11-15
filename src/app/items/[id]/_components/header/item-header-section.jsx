@@ -5,8 +5,8 @@ import React, { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import DefaultImg from "@/assets/items/Img_default.png"
-import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/dialog"
+import { DeleteDialog } from "@/components/ui/dialog/delete-dialog"
+import { useDialog } from "@/providers/modal-context"
 import { itemService } from "@/services/item-service"
 
 import { ItemAuthor } from "./item-author"
@@ -20,6 +20,7 @@ export function ItemHeaderSection({ itemId, item }) {
   const [showPanel, setShowPanel] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const { openDialog } = useDialog()
   const router = useRouter();
 
   const handlePanel = () => {
@@ -32,6 +33,7 @@ export function ItemHeaderSection({ itemId, item }) {
     try {
       await itemService.deleteItem(itemId);
 
+      openDialog('성공적으로 상품을 삭제하였습니다.')
       router.push('/items')
     } catch (error) {
       console.error("Failed Delete:", error);
@@ -47,7 +49,7 @@ export function ItemHeaderSection({ itemId, item }) {
       router.push(`${itemId}/update/`)
     }
     if (name === 'delete') {
-      setModalMessage("정말로 삭제하시겠습니까")
+      setModalMessage("정말로 상품을 삭제하시겠어요?")
       setShowModal(true);
     }
   }
@@ -124,14 +126,13 @@ export function ItemHeaderSection({ itemId, item }) {
       </div >
 
       {showModal && (
-        <Modal
+        <DeleteDialog
           close={() => setShowModal(false)}
           msg={modalMessage}
+          deleteClick={handleDelete}
         >
-          <Button className='flex w-full' onClick={handleDelete} >예</Button>
-        </Modal>
-      )
-      }
+        </DeleteDialog>
+      )}
     </section >
   )
 }

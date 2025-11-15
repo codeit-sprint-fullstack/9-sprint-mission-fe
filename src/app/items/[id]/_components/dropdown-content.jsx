@@ -61,6 +61,7 @@ export function DropdownContent({ comment }) {
       setUpdate(!update)
     }
     if (name === 'delete') {
+      setModalMessage('정말로 댓글을 삭제하시겠어요?')
       setShowModal(!showModal)
     }
   }
@@ -79,7 +80,7 @@ export function DropdownContent({ comment }) {
 
     try {
       await commentService.updateComments(id, formData);
-
+      openDialog("댓글 업데이트를 성공했습니다.")
     } catch (error) {
       console.error(error)
       setModalMessage('업데이트 중 오류 발생')
@@ -146,14 +147,12 @@ export function DropdownContent({ comment }) {
           </div>
         )}
       </div >
-
       {showModal && (
         <DeleteDialog
           close={() => setShowModal(false)}
           msg={modalMessage}
           deleteClick={handleDelete}
         >
-          정말로 상품을 삭제하시겠어요?
         </DeleteDialog>
       )}
     </>

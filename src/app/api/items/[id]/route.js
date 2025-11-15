@@ -126,7 +126,7 @@ export const PATCH = async (request, { params }) => {
   }
 };
 
-export const DELETE = async ({ params }) => {
+export const DELETE = async (request, { params }) => {
   let userId;
   try {
     userId = await getUserIdFromToken();

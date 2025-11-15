@@ -1,16 +1,16 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation';
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { Modal } from "@/components/ui/dialog";
 import { itemFormSchema } from '@/libs/schemas/item.schema';
+import { useDialog } from '@/providers/modal-context';
 import { itemService } from '@/services/item-service';
 
 export default function ItemRegistration({ params }) {
-  const [showModal, setShowModal] = useState(false);
+  const { openDialog } = useDialog()
 
   const { id } = React.use(params)
   const router = useRouter();
@@ -28,16 +28,14 @@ export default function ItemRegistration({ params }) {
     try {
       await itemService.updateItem(id, formData)
 
+      openDialog('업데이트에 성공하였습니다.');
+
       router.replace(`/items/${id}`)
 
     } catch (error) {
-      console.error("등록중 오류 발생:", error);
-      setShowModal(true);
+      console.error(error)
+      openDialog('등록중 오류 발생', error)
     }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
   };
 
   return (
@@ -136,15 +134,6 @@ export default function ItemRegistration({ params }) {
           )}
         </div>
       </form>
-
-      {showModal && (
-        <Modal
-          close={handleCloseModal}
-          msg={
-            "등록중 예기치 못한 오류가 발생했습니다.\n 잠시후 다시시도해 주십시오 \n 문의(meta-os@zohomail.com)"
-          }
-        />
-      )}
     </>
   );
 }

@@ -75,14 +75,14 @@ export const DELETE = async (request, { params }) => {
     return apiResponse(false, error.message, null, 401);
   }
 
-  const id = request.nextUrl.searchParams.get('commentId');
+  const commentId = await request.nextUrl.searchParams.get('commentId');
 
-  if (!id) {
+  if (!commentId) {
     return apiResponse(false, '문의댓글 아이디를 찾을수 없습니다.', null, 404);
   }
   try {
     await prisma.itemComment.delete({
-      where: { id: id, authorId: userId },
+      where: { id: commentId, authorId: userId },
     });
 
     return apiResponse(true, '성공적으로 댓글을 삭제하였습니다.', null, 200);
