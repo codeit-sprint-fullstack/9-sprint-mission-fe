@@ -4,15 +4,9 @@ export const itemService = {
   getItems: (searchParams) =>
     defaultFetch(
       `/api/items?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
-      {
-        next: { revalidate: 500 },
-      },
     ),
 
-  getItemById: (id) =>
-    defaultFetch(`/api/items/${id}`, {
-      cache: 'no-store',
-    }),
+  getItemById: (id) => defaultFetch(`/api/items/${id}`),
 
   createItem: (formData) =>
     cookieFetch(`/api/items`, {

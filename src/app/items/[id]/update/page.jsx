@@ -1,6 +1,6 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
@@ -10,6 +10,7 @@ import { useDialog } from '@/providers/modal-context';
 import { itemService } from '@/services/item-service';
 
 export default function ItemRegistration({ params }) {
+  const queryClient = useQueryClient()
   const { openDialog } = useDialog()
   const { id: itemId } = useParams()
   const router = useRouter();
@@ -28,6 +29,9 @@ export default function ItemRegistration({ params }) {
       return itemService.updateItem(itemId, formData)
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['item', itemId]
+      })
       openDialog('업데이트에 성공하였습니다.');
       router.replace(`/items/${itemId}`)
     },

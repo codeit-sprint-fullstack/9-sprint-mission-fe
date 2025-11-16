@@ -8,7 +8,7 @@ import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
 import { DeleteDialog } from "@/components/ui/dialog/delete-dialog"
 import { useDialog } from "@/providers/modal-context"
-import { commentService, } from "@/services/comment-service"
+import { commentService } from "@/services/comment-service"
 
 const contents = [
   { option: '수정하기', name: 'update' },
@@ -31,7 +31,9 @@ export function DropdownContent({ comment }) {
   const deleteMutation = useMutation({
     mutationFn: () => commentService.deleteComments(itemId, comment.id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['comments', itemId] });
+      queryClient.invalidateQueries({
+        queryKey: ['item', itemId]
+      });
       openDialog('댓글 삭제를 성공 하였습니다.')
       setShowDeleteDialog(false)
     },
@@ -45,14 +47,14 @@ export function DropdownContent({ comment }) {
   const updateMutation = useMutation({
     mutationFn: (context) => {
       const formData = {
-        commentId: comment.id,
-        context: context
-      };
-
-      return commentService.updateComments(itemId, formData)
+        context
+      }
+      return commentService.updateComments(itemId, comment.id, formData)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['comments', [itemId]] });
+      queryClient.invalidateQueries({
+        queryKey: ['item', itemId]
+      });
       openDialog("댓글 업데이트를 성공했습니다.")
       setUpdate(false)
     },
@@ -104,11 +106,6 @@ export function DropdownContent({ comment }) {
             className="flex flex-col w-full"
             onSubmit={onSubmit}>
             <input
-              type="hidden"
-              name="commentId"
-              value={comment.id}
-            />
-            <input
               name="context"
               className="bg-gray-100 w-full"
               value={context}
@@ -141,7 +138,7 @@ export function DropdownContent({ comment }) {
               {showPanel && (
                 <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white -left-20">
                   {contents.map((c) => (
-                    <li key={c.name} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
+                    <li key={c.name} className="font-pretendard cursor-pointer mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
                       <button
                         className="border-0 bg-white"
                         onClick={() => handleOnChange(c.name)}

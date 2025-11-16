@@ -9,9 +9,9 @@ export const commentService = {
     });
   },
 
-  updateComments: (id, formData) => {
+  updateComments: (id, commentId, formData) => {
     if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
-    cookieFetch(`/api/items/${id}/comment`, {
+    cookieFetch(`/api/items/${id}/comment/${commentId}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),
     });
@@ -19,7 +19,7 @@ export const commentService = {
 
   deleteComments: (id, commentId) => {
     if (!id) throw new Error('상품아이디를 찾을수없습니다.');
-    cookieFetch(`/api/items/${id}/comment?commentId=${commentId}`, {
+    cookieFetch(`/api/items/${id}/comment/${commentId}`, {
       method: 'DELETE',
     });
   },

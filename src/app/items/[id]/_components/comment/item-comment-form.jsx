@@ -16,7 +16,7 @@ export function ItemCommentForm({ itemId }) {
   const {
     register,
     handleSubmit,
-    reset, //폼 리셋
+    // reset, //폼 리셋
     formState: { errors, isValid }
   } = useForm({
     resolver: zodResolver(itemCommentSchema),
@@ -25,20 +25,14 @@ export function ItemCommentForm({ itemId }) {
 
   const mutation = useMutation({
     mutationFn: (formData) => {
-      const newComment = {
-        ...formData,
-        itemId: itemId
-      };
-
-      return commentService.createComments(itemId, newComment)
+      return commentService.createComments(itemId, formData)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['comments', itemId]
+        queryKey: ['item', itemId]
       });
-
       openDialog('댓글 등록을 성공했습니다.')
-      reset();
+      // reset()
     },
     onError: (error) => {
       openDialog('댓글 등록중 오류가 발생했습니다.', error.message)

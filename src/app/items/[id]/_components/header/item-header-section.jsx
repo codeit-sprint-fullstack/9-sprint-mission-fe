@@ -1,7 +1,7 @@
 "use client"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import React, { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
@@ -17,16 +17,27 @@ const contents = [
   { option: '삭제하기', name: 'delete' }
 ]
 
-export function ItemHeaderSection({ itemId, item }) {
+export function ItemHeaderSection({ itemId }) {
+  const queryClient = useQueryClient()
   const [showPanel, setShowPanel] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [dialogDeleteMessage, setDialogDeleteMessage] = useState('');
   const { openDialog } = useDialog()
   const router = useRouter();
 
+  const { data: itemData, error } = useQuery({
+    queryKey: ["item", itemId],
+    queryFn: () => itemService.getItemById(itemId)
+  })
+
+  const item = itemData?.data;
+
   const deleteMutation = useMutation({
     mutationFn: () => itemService.deleteItem(itemId),
     onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['item', itemId]
+      })
       openDialog('성공적으로 상품을 삭제하였습니다.')
       router.push('/items')
     },
@@ -57,6 +68,9 @@ export function ItemHeaderSection({ itemId, item }) {
       setShowDialog(true);
     }
   }
+
+  if (!item) return redirect('/not-found');
+  if (error) return <div className="container mx-auto px-4 py-8 text-center text-red-500">{error.message}</div>
 
   return (
     <section className="container w-full items-center pb-4 mb-6 border-b border-gray-200">
