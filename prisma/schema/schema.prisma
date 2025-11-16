@@ -23,6 +23,7 @@ model User {
   articleComments ArticleComment[]
   items           Item[]
   refreshTokens   RefreshToken[]
+  likes           ItemLike[]
 }
 
 model UserProfile {

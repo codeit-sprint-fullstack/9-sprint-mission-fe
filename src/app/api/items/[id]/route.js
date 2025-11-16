@@ -40,6 +40,9 @@ export const GET = async (request, { params }) => {
           },
         },
         tags: true,
+        _count: {
+          select: { itemLikes: true },
+        },
       },
     });
     if (!item) {

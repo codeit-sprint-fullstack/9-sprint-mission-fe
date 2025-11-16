@@ -10,8 +10,9 @@ model Item {
 
   comment ItemComment[]
 
-  user User  @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  tags Tag[]
+  user      User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags      Tag[]
+  itemLikes ItemLike[]
 }
 
 model ItemComment {
@@ -24,6 +25,19 @@ model ItemComment {
 
   author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
   item   Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model ItemLike {
+  id        String   @id @default(cuid())
+  userId    String
+  itemId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  // 한 사용자는 한 아이템에 한번만 좋아여
+  @@unique([itemId, userId])
 }
 
 model Tag {

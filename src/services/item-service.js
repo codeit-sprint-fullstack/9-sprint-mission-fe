@@ -28,4 +28,11 @@ export const itemService = {
       method: 'DELETE',
     });
   },
+
+  toggleLike: (id) =>
+    cookieFetch(`/api/items/${id}/like`, {
+      method: 'POST',
+    }),
+
+  getLikesStatus: (id) => cookieFetch(`/api/items/${id}/like-status`),
 };
