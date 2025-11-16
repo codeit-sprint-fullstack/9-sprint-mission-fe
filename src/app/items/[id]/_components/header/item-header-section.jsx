@@ -1,6 +1,7 @@
 "use client"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import React, { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
@@ -16,30 +17,44 @@ const contents = [
   { option: '삭제하기', name: 'delete' }
 ]
 
-export function ItemHeaderSection({ itemId, item }) {
+export function ItemHeaderSection({ itemId }) {
+  const queryClient = useQueryClient()
   const [showPanel, setShowPanel] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+  const [showDialog, setShowDialog] = useState(false);
+  const [dialogDeleteMessage, setDialogDeleteMessage] = useState('');
   const { openDialog } = useDialog()
   const router = useRouter();
+
+  const { data: itemData, error } = useQuery({
+    queryKey: ["item", itemId],
+    queryFn: () => itemService.getItemById(itemId)
+  })
+
+  const item = itemData?.data;
+
+  const deleteMutation = useMutation({
+    mutationFn: () => itemService.deleteItem(itemId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['item', itemId]
+      })
+      openDialog('성공적으로 상품을 삭제하였습니다.')
+      router.push('/items')
+    },
+    onError: (error) => {
+      console.error("Failed Delete:", error);
+      setDialogDeleteMessage("삭제 중 오류 발생", error.message)
+      setShowDialog(true)
+    }
+  });
 
   const handlePanel = () => {
     setShowPanel(!showPanel)
   }
 
-  const handleDelete = async () => {
-    setShowModal(false)
-
-    try {
-      await itemService.deleteItem(itemId);
-
-      openDialog('성공적으로 상품을 삭제하였습니다.')
-      router.push('/items')
-    } catch (error) {
-      console.error("Failed Delete:", error);
-      setModalMessage("삭제 중 오류 발생")
-      setShowModal(true)
-    }
+  const handleDelete = () => {
+    setShowPanel(false)
+    deleteMutation.mutate()
   }
 
   const handleOnChange = (name) => {
@@ -49,10 +64,13 @@ export function ItemHeaderSection({ itemId, item }) {
       router.push(`${itemId}/update/`)
     }
     if (name === 'delete') {
-      setModalMessage("정말로 상품을 삭제하시겠어요?")
-      setShowModal(true);
+      setDialogDeleteMessage("정말로 상품을 삭제하시겠어요?")
+      setShowDialog(true);
     }
   }
+
+  if (!item) return redirect('/not-found');
+  if (error) return <div className="container mx-auto px-4 py-8 text-center text-red-500">{error.message}</div>
 
   return (
     <section className="container w-full items-center pb-4 mb-6 border-b border-gray-200">
@@ -125,10 +143,10 @@ export function ItemHeaderSection({ itemId, item }) {
         </div>
       </div >
 
-      {showModal && (
+      {showDialog && (
         <DeleteDialog
-          close={() => setShowModal(false)}
-          msg={modalMessage}
+          close={() => setShowDialog(false)}
+          msg={dialogDeleteMessage}
           deleteClick={handleDelete}
         >
         </DeleteDialog>

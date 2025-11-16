@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
@@ -9,29 +10,38 @@ import { useDialog } from "@/providers/modal-context"
 import { commentService } from "@/services/comment-service"
 
 export function ItemCommentForm({ itemId }) {
+  const queryClient = useQueryClient();
   const { openDialog } = useDialog()
 
   const {
     register,
     handleSubmit,
+    // reset, //폼 리셋
     formState: { errors, isValid }
   } = useForm({
     resolver: zodResolver(itemCommentSchema),
     mode: 'onChange'
   })
 
-  const onSubmit = async (data) => {
-    const newComment = {
-      ...data,
-      itemId
+  const mutation = useMutation({
+    mutationFn: (formData) => {
+      return commentService.createComments(itemId, formData)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['item', itemId]
+      });
+      openDialog('댓글 등록을 성공했습니다.')
+      // reset()
+    },
+    onError: (error) => {
+      openDialog('댓글 등록중 오류가 발생했습니다.', error.message)
     }
+  });
 
-    try {
-      await commentService.createComments(itemId, newComment)
-      openDialog('댓글 등록을 성공했습니다')
-    } catch (error) {
-      openDialog('댓글 등록중 오류가 발생했습니다.', error)
-    }
+
+  const onSubmit = async (data) => {
+    mutation.mutate(data)
   }
 
   return (
@@ -54,9 +64,9 @@ export function ItemCommentForm({ itemId }) {
         <div className="flex justify-end">
           <Button
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || mutation.isPending}
           >
-            등록
+            {mutation.isPending ? '등록 중...' : '등록'}
           </Button>
         </div>
       </form>

@@ -1,8 +1,9 @@
 import Image from "next/image"
 
 import DefaultAvatar from '@/assets/ic_default_avatar.svg'
-import HeartIcon from '@/assets/icons/ic_heart.svg'
 import { truncateDate } from "@/libs/utils/format"
+
+import { ItemLikeButton } from "./like/item-like-btn"
 
 export function ItemAuthor({ item }) {
   return (
@@ -22,19 +23,7 @@ export function ItemAuthor({ item }) {
         </div>
       </div>
       <div className="flex items-baseline h-6 border border-dotted border-gray-200 mx-4 md:mx-8"></div>
-      <button className="flex items-center gap-1 border border-solid border-gray-200 rounded-4xl bg-white cursor-pointer px-3 py-1">
-        <div className="relative text-base w-6 h-6 md:w-8 md:h-8 shrink-0">
-          <Image
-            className="object-cover"
-            fill
-            src={HeartIcon}
-            alt="heart-icon"
-          />
-        </div>
-        <span className="font-pretendard font-medium leading-6.5 text-gray-500">
-          123
-        </span>
-      </button>
+      <ItemLikeButton itemId={item.id} initialLikeCount={item._count.itemLikes} />
     </div>
   )
 }

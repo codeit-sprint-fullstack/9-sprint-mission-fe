@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useState } from "react"
 
 const DialogContext = createContext();
 
-export const DialogProvider = ({ children }) => {
+export default function DialogProvider({ children }) {
   const [dialogContent, setDialogContent] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
