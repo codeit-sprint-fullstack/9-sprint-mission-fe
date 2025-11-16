@@ -37,6 +37,11 @@ export const GET = async (request) => {
             userProfile: true,
           },
         },
+        _count: {
+          select: {
+            itemLikes: true,
+          },
+        },
       },
       orderBy: sortOptions,
       skip: limit * (page - 1),
