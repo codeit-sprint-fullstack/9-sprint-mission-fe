@@ -14,7 +14,7 @@ const protectedPaths = [
   "/items/[id]/modify",
 ];
 // 미인증 사용자만 접근 가능한 경로
-const publicPaths = ["/login", "/signup"];
+const publicPaths = ["/", "/login", "/signup"];
 
 export default function RouteGuard({ children }) {
   const { user, isInitialized } = useAuth();
