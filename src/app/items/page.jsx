@@ -11,23 +11,13 @@ export default async function ProductPage(props) {
   const searchParams = await props.searchParams
   const keyword = searchParams.keyword || ''
   const orderBy = searchParams.orderBy || 'recent'
-  const itemData = await itemService.getItems(keyword, orderBy)
-  const { items } = itemData.data
-  // custom hooks
-  // const {
-  //   currentPage,
-  //   setTotalItems,
-  //   goToPage,
-  //   totalPages
-  // } = usePagination(1, itemsPerPage);
-  // 모바일 기기별 가져올 페이지 세팅 (초기에 먼저 렌더링)
-  console.log(items)
+  const page = parseInt(searchParams.page || "1")
 
-  // search
-  // const handleSearch = (value) => {
-  //   setKeyword(value);
-  //   goToPage(1); // 검색 시 첫페이지로
-  // };
+  const itemData = await itemService.getItems(keyword, orderBy, page)
+
+  const items = itemData.data.items;
+  const pagination = itemData.data.pagination;
+  console.log(pagination)
 
   return (
     <>
@@ -60,11 +50,13 @@ export default async function ProductPage(props) {
           </ul>
         </div >
       </main >
-      <div>
+      <>
         {/* * pagination */}
         <Pagination
+          currentPage={pagination.page}
+          totalPages={pagination.totalPage}
         />
-      </div>
+      </>
     </>
   );
 }

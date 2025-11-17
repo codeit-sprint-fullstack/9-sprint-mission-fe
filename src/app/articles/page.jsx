@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Pagination } from "@/components/layouts/Pagination";
 import { Dropdown } from "@/components/ui/dropdown";
 import { Search } from "@/components/ui/search";
 import { articleService } from "@/services/article-service";
@@ -9,16 +10,20 @@ import { ArticleBestSection } from "./_components/article-best-section";
 import { ArticleSection } from "./_components/article-section";
 
 export default async function ArticlePage(props) {
-  const searchParams = await props.searchParams;
+  const searchParams = await props.searchParams
   const keyword = searchParams.keyword || '';
   const orderBy = searchParams.orderBy || 'recent';
+  const page = parseInt(searchParams.page || '1', 10);
+
   const [articlesData, bestArticlesData] = await Promise.all([
-    articleService.getArticles(keyword, orderBy).catch(error => { console.error(error); return []; }),
-    articleService.getBestArticles().catch(error => { console.error(error); return [] }),
+    articleService.getArticles(keyword, orderBy, page),
+    articleService.getBestArticles()
   ]);
 
   const bestArticles = bestArticlesData.data
   const articles = articlesData.data
+
+  const pagination = articlesData.pagination;
 
   return (
     <main className="container max-w-7xl min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
@@ -49,6 +54,12 @@ export default async function ArticlePage(props) {
       ) : (
         <p className="text-center text-gray-500 py-10">등록된 게시글이 없습니다.</p>
       )}
+
+      <Pagination
+        currentPage={pagination.page}
+        totalPages={pagination.totalPage}
+      />
     </main>
+
   );
 }

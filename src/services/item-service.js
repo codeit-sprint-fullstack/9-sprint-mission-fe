@@ -1,9 +1,9 @@
 import { cookieFetch, defaultFetch } from './fetch-client';
 
 export const itemService = {
-  getItems: (searchParams) =>
+  getItems: (keyword, orderBy, page) =>
     defaultFetch(
-      `/api/items?limit=5&page=1&keyword=${searchParams}&orderBy=recent`,
+      `/api/items?limit=5&page=${page}&keyword=${keyword}&orderBy=${orderBy}`,
     ),
 
   getItemById: (id) => defaultFetch(`/api/items/${id}`),
