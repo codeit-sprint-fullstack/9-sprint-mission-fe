@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Dropdown } from "@/components/ui/dropdown";
 import { Search } from "@/components/ui/search";
-import { getArticles, getBestArticles } from "@/services/article-service";
+import { articleService } from "@/services/article-service";
 import { paths } from "#/config/paths";
 
 import { ArticleBestSection } from "./_components/article-best-section";
@@ -12,10 +12,13 @@ export default async function ArticlePage(props) {
   const searchParams = await props.searchParams;
   const keyword = searchParams.keyword || '';
   const orderBy = searchParams.orderBy || 'recent';
-  const [articles, bestArticles] = await Promise.all([
-    getArticles(keyword, orderBy).catch(error => { console.error(error); return []; }),
-    getBestArticles().catch(error => { console.error(error); return [] }),
+  const [articlesData, bestArticlesData] = await Promise.all([
+    articleService.getArticles(keyword, orderBy).catch(error => { console.error(error); return []; }),
+    articleService.getBestArticles().catch(error => { console.error(error); return [] }),
   ]);
+
+  const bestArticles = bestArticlesData.data
+  const articles = articlesData.data
 
   return (
     <main className="container max-w-7xl min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">

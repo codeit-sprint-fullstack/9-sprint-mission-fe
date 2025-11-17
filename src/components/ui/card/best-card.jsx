@@ -3,11 +3,11 @@ import Image from "next/image";
 import Heart from "@/assets/icons/ic_heart.svg"
 import DefaultItemImage from "@/assets/items/Img_default_items.svg"
 
-export function Card({ name, price, images, type, likes }) {
+export function BestCard({ name, price, images, likes }) {
   return (
     <div className="flex flex-col gap-4 cursor-pointer hover:bg-gray-200 hover:transition duration-200 ease-in">
       <Image
-        className={type === 'favorite' ? "bg-gray-100 w-[282px] h-[282px] rounded-2xl" : "bg-gray-100 w-[221px] h-[221px] rounded-2xl"}
+        className="bg-gray-100 w-[282px] h-[282px] rounded-2xl"
         src={images?.[0] || DefaultItemImage}
         alt="image" />
       <div className="flex flex-col gap-1.5">

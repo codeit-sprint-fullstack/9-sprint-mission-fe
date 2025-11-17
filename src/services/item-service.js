@@ -34,5 +34,5 @@ export const itemService = {
       method: 'POST',
     }),
 
-  getLikesStatus: (id) => cookieFetch(`/api/items/${id}/like-status`),
+  getLikeStatus: (id) => cookieFetch(`/api/items/${id}/like`),
 };

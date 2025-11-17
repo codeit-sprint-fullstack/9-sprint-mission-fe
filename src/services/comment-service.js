@@ -1,6 +1,26 @@
 import { cookieFetch } from './fetch-client';
 
 export const commentService = {
+  articleCreateComment: (id, formData) =>
+    cookieFetch(`/api/articles/${id}/comment`, {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    }),
+
+  articleUpdateComments: (id, commentId, formData) => {
+    cookieFetch(`/api/articles/${id}/comment/${commentId}`, {
+      method: 'PATCH',
+      body: JSON.stringify(formData),
+    });
+  },
+
+  articleDeleteComments: (id, commentId) => {
+    cookieFetch(`/api/articles/${id}/comment/${commentId}`, {
+      method: 'DELETE',
+    });
+  },
+
+  // item
   createComments: (id, formData) => {
     if (!id) throw new Error('문의 댓글을 가져오지 못했습니다.');
     cookieFetch(`/api/items/${id}/comment`, {

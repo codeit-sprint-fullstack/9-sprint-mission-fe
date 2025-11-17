@@ -81,12 +81,11 @@ export const PATCH = async (request, { params }) => {
 
   try {
     const updateItem = await prisma.item.update({
-      where: { id: id },
+      where: { id: id, authorId: userId },
       data: {
         name,
         description,
         price,
-        authorId: userId,
         tags: {
           connectOrCreate: tags.map((tag) => ({
             where: { name: tag },
