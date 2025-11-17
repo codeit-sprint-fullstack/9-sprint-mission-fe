@@ -21,7 +21,6 @@ export async function GET() {
     return apiResponse(true, 'Success Getting Best Articles', articles, 200);
   } catch (error) {
     console.error('Best Articles API Error:', error);
-
     return apiResponse(false, 'Internal Server Error', null, 500);
   }
 }

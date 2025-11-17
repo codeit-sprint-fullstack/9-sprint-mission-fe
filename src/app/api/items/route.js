@@ -33,7 +33,9 @@ export const GET = async (request) => {
       },
       include: {
         user: {
-          include: {
+          select: {
+            id: true,
+            name: true,
             userProfile: true,
           },
         },
@@ -48,10 +50,15 @@ export const GET = async (request) => {
       take: limit,
     });
 
-    return apiResponse(true, '성공적으로 아이템을 가져왔습니다.', {
-      items,
-      pagination: { page, limit, total, totalPage },
-    });
+    return apiResponse(
+      true,
+      '성공적으로 아이템을 가져왔습니다.',
+      {
+        items,
+        pagination: { page, limit, total, totalPage },
+      },
+      200,
+    );
   } catch (error) {
     console.error('API Error:', error);
     return apiResponse(false, 'Internal Server Error', null, 500);

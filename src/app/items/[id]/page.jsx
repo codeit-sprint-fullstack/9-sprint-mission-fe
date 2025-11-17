@@ -11,7 +11,6 @@ export default async function ItemsDetailPage({ params }) {
   const queryClient = new QueryClient()
   const { id } = await params
 
-  // 상세정보는 패치(SSR 컴포넌트에서 즉시 보여주기위함), 댓글 프리패치
   await queryClient.prefetchQuery({
     queryKey: ["item", id],
     queryFn: () => itemService.getItemById(id)

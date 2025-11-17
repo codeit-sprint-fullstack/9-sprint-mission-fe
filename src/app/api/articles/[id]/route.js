@@ -1,54 +1,44 @@
-import { unstable_cache } from 'next/cache';
-
 import prisma from '@/libs/prisma';
 import { articleFormSchema } from '@/libs/schemas/article.schema';
 import { apiResponse } from '@/libs/utils/api-helper';
+import { getUserIdFromToken } from '@/libs/utils/auth-helper';
 
 export const GET = async (request, { params }) => {
   const { id } = await params;
   if (!id) {
-    return apiResponse(false, 'Not Found Article', null, 400);
+    return apiResponse(false, 'Not Found Article', null, 404);
   }
   /** @see https://nextjs.org/docs/app/api-reference/functions/unstable_cache */
-  const articleCached = unstable_cache(
-    async (id) => {
-      const article = await prisma.article.findUnique({
-        where: {
-          id: id,
+  try {
+    const article = await prisma.article.findUnique({
+      where: {
+        id: id,
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            userProfile: true,
+          },
         },
-        include: {
-          Comment: {
-            include: {
-              author: {
-                include: {
-                  userProfile: true,
-                },
+        comment: {
+          include: {
+            author: {
+              select: {
+                id: true,
+                name: true,
+                userProfile: true,
               },
             },
           },
-          author: {
-            include: {
-              userProfile: true,
-            },
-          },
         },
-      });
-      return article;
-    },
-    [`article-detail-${id}`],
-    {
-      tags: ['article', 'comment', `article-${id}`],
-      revalidate: 3,
-    },
-  );
-
-  try {
-    const article = await articleCached(id);
-
+      },
+    });
     if (!article) {
       return apiResponse(false, `ID ${id} not found`, null, 404);
     }
-    return apiResponse(true, 'Success Get Article', article, 200);
+    return apiResponse(true, '상품 조회를 성공하였습니다.', article, 200);
   } catch (error) {
     console.error('API Error', error);
     return apiResponse(
@@ -62,17 +52,26 @@ export const GET = async (request, { params }) => {
 };
 
 export const PATCH = async (request, { params }) => {
+  let userId;
   try {
-    const { id } = await params;
-    if (!id) {
-      return apiResponse(false, 'Not Found Article', null, 400);
-    }
-    const body = await request.json();
-    const validateData = articleFormSchema.parse(body);
-    const { title, content } = validateData;
+    userId = await getUserIdFromToken();
+  } catch (error) {
+    return apiResponse(false, error.message, null, 401);
+  }
 
+  const { id: articleId } = await params;
+
+  if (!articleId) {
+    return apiResponse(false, '아티클을 찾을수없습니다.', null, 404);
+  }
+
+  const body = await request.json();
+  const validateData = articleFormSchema.parse(body);
+  const { title, content } = validateData;
+
+  try {
     const updateArticle = await prisma.article.update({
-      where: { id: parseInt(id) },
+      where: { id: articleId, authorId: userId },
       data: {
         title,
         content,
@@ -93,14 +92,21 @@ export const PATCH = async (request, { params }) => {
 };
 
 export const DELETE = async (request, { params }) => {
-  const { id } = await params;
-  if (!id) {
+  let userId;
+  try {
+    userId = await getUserIdFromToken();
+  } catch (error) {
+    return apiResponse(false, error.message, null, 401);
+  }
+
+  const { id: articleId } = await params;
+  if (!articleId) {
     return apiResponse(false, 'Not Found Article Id', null, 404);
   }
-  const articleId = parseInt(id);
+
   try {
     await prisma.article.delete({
-      where: { id: articleId },
+      where: { id: articleId, authorId: userId },
     });
 
     return apiResponse(true, 'Article Deleted Successfully', null, 200);
