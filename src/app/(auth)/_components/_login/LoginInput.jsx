@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import EasyLogin from "./EasyLogin";
 import { useAuth } from "@/providers/AuthProvider";
+import Modal from "@/components/ui/modal/Modal";
 
 export default function LoginInput() {
   const [showEye, setShowEye] = useState(false);
@@ -16,6 +17,8 @@ export default function LoginInput() {
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const { login } = useAuth();
   const router = useRouter();
 
@@ -60,11 +63,12 @@ export default function LoginInput() {
       setLoading(true);
 
       const result = await login(email, password);
-      console.log("로그인 성공:", result);
-      alert("로그인 성공!");
+      setModalMessage("로그인 성공!");
+      setModalOpen(true);
       // router.push("/items");
     } catch (error) {
-      setError("로그인에 실패했습니다!" || error.message);
+      setModalMessage("로그인에 실패했습니다!");
+      setModalOpen(true);
     } finally {
       setLoading(false);
     }
@@ -117,6 +121,7 @@ export default function LoginInput() {
             )}
           </button>
         </div>
+
         {passwordError && (
           <p className="text-[#F74747] text-sm mt-1 ">{passwordError}</p>
         )}
@@ -133,6 +138,11 @@ export default function LoginInput() {
         {loading ? "로그인 중..." : "로그인"}
       </button>
       {error && <p className="text-[#F74747] text-sm mt-1">{error}</p>}
+      <Modal
+        isOpen={modalOpen}
+        message={modalMessage}
+        onClose={() => setModalOpen(false)}
+      />
     </form>
   );
 }
