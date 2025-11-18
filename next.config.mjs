@@ -13,6 +13,8 @@ const nextConfig = {
       "cdn.choicenews.co.kr",
       "health.chosun.com",
       "via.placeholder.com",
+      "i.imgur.com",
+      "images.samsung.com",
     ],
   },
 };

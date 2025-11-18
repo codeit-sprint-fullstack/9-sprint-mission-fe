@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { defaultFetch } from "./fetchClient";
 
 // products 목록조회
@@ -13,5 +14,10 @@ export async function getProducts({
 
 //개별 상품조회
 export async function getProductById(productId) {
-  return defaultFetch(`/products/${productId}`);
+  const result = await defaultFetch(`/products/${productId}`);
+  return {
+    ...result,
+
+    date: dayjs(result.createdAt).locale("ko").format("YYYY.MM.DD"),
+  };
 }
