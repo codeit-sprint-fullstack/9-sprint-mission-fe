@@ -19,6 +19,7 @@ export default function ProductsDetailPage({ product }) {
     ownerNickname,
     date,
   } = product;
+
   const { user } = useAuth();
 
   console.log("title:", name);
