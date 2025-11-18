@@ -35,6 +35,7 @@ export default function ProductsComment() {
         <h2>문의하기</h2>
         <input
           type="text"
+          value={content}
           onChange={handleInput}
           placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법
         정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은
@@ -52,13 +53,13 @@ export default function ProductsComment() {
           </button>
         </div>
       </div>
-      <div className="mt-6">
-        <ul>
+      <div className="mt-6 ">
+        <ul className="flex flex-col gap-3">
           {comments.map((comment, i) => (
             <li key={i}>
-              <div className=" w-full pb-3 bg-[#FCFCFC] border-b border-gray-200">
-                <div className="flex justify-between mb-6">
-                  <p>{comment.text}</p>
+              <div className=" w-full py-3 px-3 pb-3 bg-[#FCFCFC] border-b border-gray-200 shrink-0 rounded-xl">
+                <div className="flex   justify-between mb-6">
+                  <p className="">{comment.text}</p>
                   <OptionsMenu />
                 </div>
 
