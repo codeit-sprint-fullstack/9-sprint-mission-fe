@@ -1,0 +1,243 @@
+:root {
+  --primary-color: #3692FF;
+  --text-color: #374151;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  color: var(--text-color);
+}
+
+/* Container */
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 200px;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid #DFDFDF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 200px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.logo img {
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  color: var(--primary-color);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 48px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Hero & Bottom Section */
+.landing-hero,
+.landing-bottom {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 540px;
+  background-color: #d3e7ff;
+  width: 100%;       
+  max-width: 1920px; 
+  margin: 0 auto;    
+  padding: 0 200px;  
+}
+
+.landing-hero .landing-illustration,
+.landing-bottom .landing-illustration {
+  align-self: flex-end; /* 컨테이너 내에서 해당 요소만 바닥 정렬 */
+}
+
+.landing-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.landing-illustration img {
+  max-width: 745px;
+  height: auto;
+}
+
+/* Section 공통 */
+.section-1, .section-2, .section-3 {
+  background: #ffffff;
+  padding: 138px 344px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-landing-desktop-02,
+.img-landing-desktop-03,
+.img-landing-desktop-04 {
+  background: #fcfcfc;
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  justify-content: center;
+  width: 988px;
+}
+
+.img-home-01, .img-home-02, .img-home-03 {
+  flex-shrink: 0;
+  width: 588px;
+  height: 444px;
+}
+
+.img-home-01 img,
+.img-home-02 img,
+.img-home-03 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section1-content,
+.section2-content,
+.section3-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  min-width: 400px;
+}
+
+.section1-hot-item,
+.section2-search,
+.section3-hot-item {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.section1-texts,
+.section2-texts,
+.section3-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section1-title,
+.section2-title,
+.section3-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: pre-line; 
+}
+
+.section1-subtitle,
+.section2-subtitle,
+.section3-subtitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+/* Footer */
+.site-footer {
+  background: #0f1724;
+  color: #e5e7eb;
+  padding: 0 0 36px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 200px; 
+}
+
+.footer-nav a {
+  color: #e5e7eb;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.footer-nav a:last-child {
+  margin-right: 0;
+}
+
+.social a img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.social a:last-child img {
+  margin-right: 0;
+}
