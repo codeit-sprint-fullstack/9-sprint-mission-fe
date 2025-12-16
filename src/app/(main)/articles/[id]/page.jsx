@@ -1,12 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { getArticleById } from "@/lib/services/articles";
 import Image from "next/image";
-import { Flamenco } from "next/font/google";
-import Link from "next/link";
 import ReserveButton from "@/components/ui/button/ReserveButton";
+import OptionsMenu from "@/components/ui/button/OptionsMenu";
 
 export default function ArticleDetail() {
   const { id } = useParams();
@@ -36,13 +34,7 @@ export default function ArticleDetail() {
       <section className="border-b border-gray-200">
         <div className="flex justify-between ">
           <h1 className="text-gray-800 text-[20px] font-bold">{title}</h1>
-          <button className="relative group p-2 rounded-full hover:bg-gray-200">
-            <BsThreeDotsVertical className="cursor-pointer" />
-            <ul className="absolute top-full right-0 mt-2 w-32 bg-white border border-gray-300 rounded shadow-lg hidden group-hover:block">
-              <li className="p-2 hover:bg-gray-100">수정하기</li>
-              <li className="p-2 hover:bg-gray-100 ">삭제하기</li>
-            </ul>
-          </button>
+          <OptionsMenu />
         </div>
         <div className="flex items-center  gap-6 w-[400px] ">
           <div className="flex items-center gap-2 my-4">
@@ -104,13 +96,7 @@ export default function ArticleDetail() {
       <section className="w-[1200px] pb-3 bg-[#FCFCFC] border-b border-gray-200">
         <div className="flex justify-between mb-6">
           <p>혹시 사용기간이 어떻게 되실까요!?</p>
-          <button className="relative group p-2 rounded-full hover:bg-gray-200">
-            <BsThreeDotsVertical className="cursor-pointer" />
-            <ul className="absolute top-full right-0 mt-2 w-32 bg-white border border-gray-300 rounded shadow-lg hidden group-hover:block">
-              <li className="p-2 hover:bg-gray-100">수정하기</li>
-              <li className="p-2 hover:bg-gray-100 ">삭제하기</li>
-            </ul>
-          </button>
+          <OptionsMenu />
         </div>
         <div className="flex gap-2">
           <div>
@@ -132,7 +118,7 @@ export default function ArticleDetail() {
           </div>
         </div>
       </section>
-      <ReserveButton />
+      <ReserveButton href="/" />
     </>
   );
 }
