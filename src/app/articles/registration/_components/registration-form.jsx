@@ -1,16 +1,15 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation';
-import { useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { Modal } from "@/components/ui/modal";
 import { articleFormSchema } from '@/libs/schemas/article.schema';
-import { createArticle } from '@/services/article-service';
+import { useDialog } from '@/providers/modal-context';
+import { articleService } from '@/services/article-service';
 
 export function ArticleRegistration() {
-  const [showModal, setShowModal] = useState(false);
+  const { openDialog } = useDialog()
 
   const router = useRouter();
 
@@ -24,20 +23,16 @@ export function ArticleRegistration() {
   })
 
   const onSubmit = async (data) => {
-
     try {
-      await createArticle(data);
-
+      await articleService.createArticle(data);
+      openDialog("아티클 작성을 완료했습니다.")
       router.push('/articles')
-
     } catch (error) {
-      console.error("등록중 오류 발생:", error);
-      setShowModal(true);
+      console.error(error);
+      openDialog("등록중 오류 발생")
     }
   };
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+
   return (
     <>
       <form
@@ -94,15 +89,6 @@ export function ArticleRegistration() {
           )}
         </div>
       </form>
-
-      {showModal && (
-        <Modal
-          close={handleCloseModal}
-          msg={
-            "등록중 예기치 못한 오류가 발생했습니다.\n 잠시후 다시시도해 주십시오 \n 문의(meta-os@zohomail.com)"
-          }
-        />
-      )}
     </>
   );
 }

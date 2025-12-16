@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 
 import prisma from '@/libs/prisma';
 import { articleFormSchema } from '@/libs/schemas/article.schema';
 import { apiResponse } from '@/libs/utils/api-helper';
+import { getUserIdFromToken } from '@/libs/utils/auth-helper';
 
 /**
  * @see https://nextjs.org/docs/app/api-reference/functions/next-response
@@ -64,19 +66,23 @@ export const GET = async (request) => {
 };
 
 export const POST = async (request) => {
+  let userId;
   try {
-    const body = await request.json();
-    const validateData = articleFormSchema.parse(body);
-    const { title, content } = validateData;
+    userId = await getUserIdFromToken();
+  } catch (error) {
+    return apiResponse(false, error.message, null, 401);
+  }
 
-    const FAKE_ID = 72;
+  const body = await request.json();
+  const validateData = articleFormSchema.parse(body);
+  const { title, content } = validateData;
 
-    // TODO: userId
+  try {
     const newArticle = await prisma.article.create({
       data: {
         title,
         content,
-        authorId: FAKE_ID,
+        authorId: userId,
         view: 0,
       },
     });

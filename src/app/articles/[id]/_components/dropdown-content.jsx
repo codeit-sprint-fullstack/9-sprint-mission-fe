@@ -5,9 +5,7 @@ import { useFormStatus } from "react-dom"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/modal"
-import { deleteComment } from "@/libs/actions"
-// ! server action (Never trust data from the client)
+import { Modal } from "@/components/ui/dialog"
 
 const contents = [
   { option: '수정하기', name: 'update' },
@@ -23,7 +21,7 @@ function SubmitButton() {
     </Button>
   );
 }
-export function DropdownContent({ comment, action }) {
+export function DropdownContent({ comment }) {
   const [showPanel, setShowPanel] = useState(false);
   const [update, setUpdate] = useState(false);
   const [showModal, setShowModal] = useState(false);

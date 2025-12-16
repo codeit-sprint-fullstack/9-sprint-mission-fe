@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
 
 import prisma from '@/libs/prisma';
 import { apiResponse } from '@/libs/utils/api-helper';
@@ -8,8 +7,8 @@ import { apiResponse } from '@/libs/utils/api-helper';
 const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-key';
 
 export async function POST() {
+  const cookieStore = await cookies();
   try {
-    const cookieStore = await cookies();
     const refreshToken = cookieStore.get('refreshToken')?.value;
 
     if (!refreshToken) {
@@ -25,10 +24,7 @@ export async function POST() {
     // 저장된 토큰이 없거나 (현재시간이 만료시간을 넘은 즉,만료된 경우)
     if (!storedToken || new Date() > storedToken.expiresAt) {
       // 이 경우 이부분에서 다시 로그인을 해야하므로...
-      return NextResponse.json(
-        { message: 'Invalid or expired refresh token' },
-        { status: 401 },
-      );
+      return apiResponse(false, '토큰 만료 Refresh Token', null, 401);
     }
 
     const newAccessToken = jwt.sign(
@@ -37,7 +33,17 @@ export async function POST() {
       { expiresIn: '15m' },
     );
 
-    return NextResponse.json({ accessToken: newAccessToken });
+    const accessExpiresAt = new Date(Date.now() + 15 * 60 * 1000);
+
+    cookieStore.set('accessToken', newAccessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== 'development',
+      sameSite: 'strict',
+      path: '/',
+      expires: accessExpiresAt,
+    });
+
+    return apiResponse(true, '토큰 재생성이 성공적인듯', null, 200);
   } catch (error) {
     console.error(error);
     // prettier-ignore

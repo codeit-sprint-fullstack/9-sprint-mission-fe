@@ -5,8 +5,8 @@ import { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
-import { Modal } from "@/components/ui/modal"
-import { deleteArticle } from "@/services/article-service"
+import { Modal } from "@/components/ui/dialog"
+import { articleService } from "@/services/article-service"
 
 const contents = [
   { option: '수정하기', name: 'update' },
@@ -27,7 +27,7 @@ export function ArticleTitleSection({ article }) {
     setShowModal(false)
 
     try {
-      await deleteArticle(article.id);
+      await articleService.deleteArticle(article.id);
 
       router.push('/articles')
     } catch (error) {

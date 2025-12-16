@@ -6,6 +6,7 @@ import { useAuth } from "./auth-provider";
 
 const protectedPaths = [
   '/articles',
+  '/items',
 ]
 
 const publicPaths = [
@@ -32,7 +33,7 @@ export default function RouteGuard({ children }) {
     )
 
     if (isProtectedRoute && !user) {
-      router.push("login")
+      router.push("/login")
     }
 
     if (isPublicRoute && user) {

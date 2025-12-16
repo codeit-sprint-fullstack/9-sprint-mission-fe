@@ -10,6 +10,12 @@ export const paths = {
     registration: {
       getHref: () => '/articles/registration',
     },
+    items: {
+      getHref: () => '/items',
+    },
+    itemDetail: {
+      getHref: (id) => `/items/${id}`,
+    },
   },
 
   auth: {

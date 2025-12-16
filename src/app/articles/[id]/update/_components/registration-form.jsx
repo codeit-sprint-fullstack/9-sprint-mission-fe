@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button';
-import { Modal } from "@/components/ui/modal";
+import { Modal } from "@/components/ui/dialog";
 import { updateArticle } from '@/services/article-service';
 
 const articleFormSchema = z.object({

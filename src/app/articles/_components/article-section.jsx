@@ -27,13 +27,14 @@ export function ArticleSection({ articles }) {
           </div>
           <div className="flex justify-between">
             <div className="flex gap-2">
-              <Image
-                className="rounded-[50%]"
-                width={24}
-                height={24}
-                src={article.author.userProfile.photoUrl}
-                alt="author-avatar"
-              />
+              <div className="relative w-6 h-6 rounded-[50%]">
+                <Image
+                  className="absolute"
+                  fill
+                  src={article.author.userProfile?.photoUrl || DefaultImg}
+                  alt="author-avatar"
+                />
+              </div>
               <p className="font-pretendard text-sm leading-6 text-gray-600">{article.author.name}</p>
               <p className="font-pretendard text-sm leading-6 text-gray-400">
                 {formatDate(article.createdAt)}

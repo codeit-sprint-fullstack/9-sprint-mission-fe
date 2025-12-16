@@ -5,7 +5,10 @@ import { usePathname } from 'next/navigation'
 
 import PandaLogo from '@/assets/logo.svg'
 import { cn } from '@/libs/cn';
+import { useAuth } from '@/providers/auth-provider'
 import { paths } from '#/config/paths'
+
+import { Avatar } from '../avatar/avatar'
 
 const navLink = [
   { name: '자유게시판', href: '/articles' },
@@ -13,18 +16,19 @@ const navLink = [
 ]
 
 export function Navigation() {
+  const { user } = useAuth();
   const pathname = usePathname();
 
   return (
-    <nav className="max-w-[768px] w-full md:max-w-full h-17.5 bg-white z-1">
-      <div className="flex justify-between items-center h-full py-0 px-0 my-0 mx-auto border-b border-solid border-gray-300 gap-0 xl:gap-3 md:px-50">
-        <div className="inline-flex items-center">
+    <nav className="container mx-auto w-full max-w-600 h-17.5">
+      <div className="flex justify-between items-center h-full py-0 my-0 mx-auto border-b border-solid border-gray-300 gap-0 xl:gap-3">
+        <div className="inline-flex items-center px-4 md:px-6 xl:px-50">
           <div className='flex items-center gap-2 ml-6 md:ml-0'>
             <Link
-              className="relative hidden md:block w-10 h-10"
+              className="relative w-10 h-10"
               href={paths.home.getHref()}>
               <Image
-                className="hidden mr-1.5 object-fit md:block"
+                className="mr-1.5 object-fit"
                 fill
                 src={PandaLogo}
                 alt="panda-market"
@@ -49,7 +53,14 @@ export function Navigation() {
             ))}
           </nav>
         </div>
-        <Link className="bg-primary-100 text-white px-3 py-1.75 rounded-lg text-nowrap mr-4 md:mr-0" href="/login">로그인</Link>
+        {user ? (
+          <div className='flex items-center gap-1.5 px-4 md:px-6 xl:px-50'>
+            <Avatar size='medium' alt="유저 이미지" />
+            <p className='text-gray-600 text-lg'>{user.data.name}</p>
+          </div>
+        ) : (
+          <Link className="bg-primary-100 text-white px-3 py-1.75 rounded-lg text-nowrap mr-4 md:mr-0" href="/login">로그인</Link>
+        )}
       </div >
     </nav >
   );

@@ -1,24 +1,32 @@
 import Link from "next/link";
 
+import { Pagination } from "@/components/layouts/Pagination";
 import { Dropdown } from "@/components/ui/dropdown";
 import { Search } from "@/components/ui/search";
-import { getArticles, getBestArticles } from "@/services/article-service";
+import { articleService } from "@/services/article-service";
 import { paths } from "#/config/paths";
 
 import { ArticleBestSection } from "./_components/article-best-section";
 import { ArticleSection } from "./_components/article-section";
 
 export default async function ArticlePage(props) {
-  const searchParams = await props.searchParams;
+  const searchParams = await props.searchParams
   const keyword = searchParams.keyword || '';
   const orderBy = searchParams.orderBy || 'recent';
-  const [articles, bestArticles] = await Promise.all([
-    getArticles(keyword, orderBy).catch(error => { console.error(error); return []; }),
-    getBestArticles().catch(error => { console.error(error); return [] }),
+  const page = parseInt(searchParams.page || '1', 10);
+
+  const [articlesData, bestArticlesData] = await Promise.all([
+    articleService.getArticles(keyword, orderBy, page),
+    articleService.getBestArticles()
   ]);
 
+  const bestArticles = bestArticlesData.data
+  const articles = articlesData.data
+
+  const pagination = articlesData.pagination;
+
   return (
-    <main className="max-w-full min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
+    <main className="container max-w-7xl min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
       {/* 베스트 게시글 영역 */}
       <ArticleBestSection articles={bestArticles} />
 
@@ -36,7 +44,7 @@ export default async function ArticlePage(props) {
           </Link>
         </div>
       </section>
-      <div className="flex max-w-300 justify-between mb-6 gap-4">
+      <div className="flex max-w-480 justify-between mb-6 gap-4">
         <Search placeholder="검색할 상품을 입력해주세요" />
         <Dropdown />
       </div>
@@ -46,6 +54,12 @@ export default async function ArticlePage(props) {
       ) : (
         <p className="text-center text-gray-500 py-10">등록된 게시글이 없습니다.</p>
       )}
+
+      <Pagination
+        currentPage={pagination.page}
+        totalPages={pagination.totalPage}
+      />
     </main>
+
   );
 }
