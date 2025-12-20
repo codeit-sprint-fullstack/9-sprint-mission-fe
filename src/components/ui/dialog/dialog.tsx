@@ -1,4 +1,9 @@
-export function Modal({ close, msg, children }) {
+interface ModalProps {
+  close: () => void
+  msg: string;
+  children?: React.ReactNode
+}
+export function Modal({ close, msg, children }: ModalProps) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.7)] z-10">
