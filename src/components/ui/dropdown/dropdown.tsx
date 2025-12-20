@@ -7,7 +7,14 @@ import DropdownArrow from '@/assets/icons/ic_dropdown_arrow.svg'
 import MobileDropdownArrow from '@/assets/icons/ic_sort.svg'
 import { cn } from '@/libs/cn';
 
-const contents = [
+type OrderBy = "recent" | "favorite";
+
+interface DropdownOption {
+  title: string;
+  value: OrderBy;
+}
+
+const contents: DropdownOption[] = [
   { title: '최신순', value: 'recent' },
   { title: '좋아요순', value: 'favorite' },
 ]
@@ -17,13 +24,15 @@ export function Dropdown() {
   const pathname = usePathname();
   const { replace } = useRouter();
   const [showPanel, setShowPanel] = useState(false);
-  const [filterTitle, setFilterTitle] = useState('최신순');
+
+  const currentOrderBy = (searchParams.get("orderBy") as OrderBy) || "recent";
+  const filterTitle = contents.find((c) => c.value === currentOrderBy)?.title || "최신 순"
 
   const handleOnClick = () => {
-    setShowPanel(!showPanel);
+    setShowPanel((prev) => !prev);
   };
 
-  const handleOnChange = useCallback((value) => {
+  const handleOnChange = useCallback((value: OrderBy) => {
     const params = new URLSearchParams(searchParams.toString())
 
     if (value) {
@@ -33,9 +42,8 @@ export function Dropdown() {
     }
     params.set('page', '1')
 
-    const newTitle = contents.find(c => c.value === value)?.title || '최신순';
-    setFilterTitle(newTitle);
-
+    // const newTitle = contents.find(c => c.value === value)?.title || '최신순';
+    // setFilterTitle(newTitle);
     replace(`${pathname}?${params.toString()}`);
     setShowPanel(false);
   },
@@ -64,7 +72,7 @@ export function Dropdown() {
         <Image
           className='block md:hidden'
           src={MobileDropdownArrow}
-          alt='dropdown-arrow'
+          alt='sort-icon'
           width={24} height={24}
           unoptimized
         />
@@ -73,8 +81,11 @@ export function Dropdown() {
       {showPanel && (
         <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white">
           {contents.map((c) => (
-            <li key={c.title} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
+            <li
+              key={c.title}
+              className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
               <button
+                type='button'
                 className="border-0 bg-white"
                 onClick={() => handleOnChange(c.value)}
               >
