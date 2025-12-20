@@ -4,7 +4,14 @@ import CheckIcon from "@/assets/icons/ic_check.svg"
 
 import { Button } from "../button";
 
-export function DeleteDialog({ close, msg, deleteClick, children }) {
+interface DeleteDialogProps {
+  close: () => void;                        // close fn
+  deleteClick: () => void;              // delete fn
+  msg: string;                               // message
+  children?: React.ReactNode;   //  option
+}
+
+export function DeleteDialog({ close, msg, deleteClick, children }: DeleteDialogProps) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.7)] z-10">
