@@ -32,8 +32,6 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@ngneat/falso": "^8.0.2",
-    "@prisma/client": "^6.18.0",
-    "@prisma/extension-accelerate": "^2.0.2",
     "@tanstack/react-query": "^5.90.9",
     "@tanstack/react-query-devtools": "^5.90.2",
     "bcrypt": "^6.0.0",
@@ -50,7 +48,10 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/node": "^25.0.3",
+    "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
+    "baseline-browser-mapping": "^2.9.11",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "eslint-config-prettier": "^10.1.8",
@@ -61,7 +62,7 @@
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
-    "prisma": "^6.18.0",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5.9.3"
   }
 }
