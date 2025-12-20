@@ -1,5 +1,5 @@
-import { cva } from "class-variance-authority";
-import { forwardRef } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { type ButtonHTMLAttributes, forwardRef } from "react";
 
 import { cn } from "@/libs/cn";
 
@@ -29,7 +29,11 @@ const buttonVariants = cva(
   }
 );
 
-const Button = forwardRef(
+/** VariantProps: cva에서 정의한 intent, size 등의 타입을 자동으로 가져옵니다.*/
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> { }
+
+/** 첫 번째는 ref의 타입, 두 번째는 props의 타입*/
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
@@ -42,16 +46,16 @@ const Button = forwardRef(
   ) => {
     return (
       <button
+        ref={ref}
+        disabled={disabled}
         className={cn(
           buttonVariants({
             intent,
             size,
-            isDisabled: disabled,
+            isDisabled: !!disabled, //boolean 으로 타입 강제
             className
           })
         )}
-        disabled={disabled}
-        ref={ref}
         {...props}
       />
     )
