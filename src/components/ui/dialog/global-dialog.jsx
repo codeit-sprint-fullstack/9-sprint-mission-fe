@@ -1,6 +1,8 @@
 "use client"
 import { useDialog } from "@/providers/modal-context";
 
+import { Button } from "../button";
+
 export function GlobalDialog() {
   const { isOpen, dialogContent, closeDialog } = useDialog()
 
@@ -16,12 +18,12 @@ export function GlobalDialog() {
         </div>
 
         <div className="p-4 flex justify-center">
-          <button
+          <Button
             className="rounded-lg w-full h-12 py-3 px-6 text-center bg-blue-500 hover:bg-blue-600 font-pretendard text-base font-semibold text-white transition duration-200"
             onClick={closeDialog}
           >
             확인
-          </button>
+          </Button>
         </div>
       </div>
     </div >
