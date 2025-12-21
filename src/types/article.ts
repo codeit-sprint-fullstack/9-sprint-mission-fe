@@ -14,5 +14,8 @@ export type Article = {
 
 export type ArticleListResponse = {
   list: Article[];
-  totalCount: number;
+  pagination: {
+    totalPage: number;
+    page: number;
+  };
 };

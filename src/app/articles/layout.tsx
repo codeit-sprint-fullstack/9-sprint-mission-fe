@@ -1,8 +1,10 @@
+import { type PropsWithChildren } from 'react'
+
 import { Footer } from '@/components/layouts/Footer'
 import { Navigation } from '@/components/ui/navigation'
 import { articleMetadata } from '#/config/metadata'
 
-export default function ArticleLayout({ children }) {
+export default function ArticleLayout({ children }: PropsWithChildren) {
   return (
     <div className='flex flex-col justify-center mx-auto'>
       <Navigation />

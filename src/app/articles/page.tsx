@@ -9,19 +9,27 @@ import { paths } from "#/config/paths";
 import { ArticleBestSection } from "./_components/article-best-section";
 import { ArticleSection } from "./_components/article-section";
 
-export default async function ArticlePage(props) {
-  const searchParams = await props.searchParams
-  const keyword = searchParams.keyword || '';
-  const orderBy = searchParams.orderBy || 'recent';
-  const page = parseInt(searchParams.page || '1', 10);
+interface ArticlePageProps {
+  searchParams: Promise<{
+    keyword?: string;
+    orderBy?: string;
+    page?: string;
+  }>
+}
+
+export default async function ArticlePage({ searchParams }: ArticlePageProps) {
+  const params = await searchParams;
+  const keyword = params.keyword || '';
+  const orderBy = params.orderBy || 'recent';
+  const page = parseInt(params.page || '1', 10);
 
   const [articlesData, bestArticlesData] = await Promise.all([
     articleService.getArticles(keyword, orderBy, page),
     articleService.getBestArticles()
   ]);
 
-  const bestArticles = bestArticlesData.data
-  const articles = articlesData.data
+  const bestArticles = bestArticlesData
+  const articles = articlesData.list
 
   const pagination = articlesData.pagination;
 
