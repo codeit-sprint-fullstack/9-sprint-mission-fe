@@ -21,12 +21,9 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
-    "seed": "node ./prisma/seed.js",
     "prepare": "husky",
-    "postinstall": "prisma generate --no-engine --schema=./prisma/schema",
-    "migrate:dev": "prisma -- migrate dev --schema=./prisma/schema",
     "lint-staged": "eslint --fix --max-warning=0"
   },
   "dependencies": {
@@ -48,6 +45,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.0.3",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
