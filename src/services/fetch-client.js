@@ -47,9 +47,9 @@ export const cookieFetch = async (url, options = {}) => {
 
   let response = await fetch(`${API_URL}${url}`, mergedOptions);
 
-  if (response.status === 401 && url !== '/api/refresh-token') {
+  if (response.status === 401 && url !== '/api/v1/auth/refresh-token') {
     try {
-      const refreshResponse = await fetch(`/api/refresh-token`, {
+      const refreshResponse = await fetch(`/api/v1/auth/refresh-token`, {
         method: 'POST',
         credentials: 'include',
         cache: 'no-store',

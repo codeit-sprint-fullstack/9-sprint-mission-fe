@@ -1,10 +1,10 @@
 import { cookieFetch } from './fetch-client';
 
 export const userService = {
-  getMe: () => cookieFetch('/api/user'),
+  getMe: () => cookieFetch('/api/v1/users/me'),
 
   updateMe: (formData) =>
-    cookieFetch('/api/user', {
+    cookieFetch('/api/v1/users', {
       method: 'PATCH',
       body: formData,
     }),

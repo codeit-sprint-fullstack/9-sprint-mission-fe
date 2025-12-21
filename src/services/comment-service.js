@@ -2,20 +2,20 @@ import { cookieFetch } from './fetch-client';
 
 export const commentService = {
   articleCreateComment: (id, formData) =>
-    cookieFetch(`/api/articles/${id}/comment`, {
+    cookieFetch(`/api/v1/articles/${id}/comment`, {
       method: 'POST',
       body: JSON.stringify(formData),
     }),
 
   articleUpdateComments: (id, commentId, formData) => {
-    cookieFetch(`/api/articles/${id}/comment/${commentId}`, {
+    cookieFetch(`/api/v1/articles/${id}/comment/${commentId}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),
     });
   },
 
   articleDeleteComments: (id, commentId) => {
-    cookieFetch(`/api/articles/${id}/comment/${commentId}`, {
+    cookieFetch(`/api/v1/articles/${id}/comment/${commentId}`, {
       method: 'DELETE',
     });
   },
@@ -23,7 +23,7 @@ export const commentService = {
   // item
   createComments: (id, formData) => {
     if (!id) throw new Error('문의 댓글을 가져오지 못했습니다.');
-    cookieFetch(`/api/items/${id}/comment`, {
+    cookieFetch(`/api/v1/items/${id}/comment`, {
       method: 'POST',
       body: JSON.stringify(formData),
     });
@@ -31,7 +31,7 @@ export const commentService = {
 
   updateComments: (id, commentId, formData) => {
     if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
-    cookieFetch(`/api/items/${id}/comment/${commentId}`, {
+    cookieFetch(`/api/v1/items/${id}/comment/${commentId}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),
     });
@@ -39,7 +39,7 @@ export const commentService = {
 
   deleteComments: (id, commentId) => {
     if (!id) throw new Error('상품아이디를 찾을수없습니다.');
-    cookieFetch(`/api/items/${id}/comment/${commentId}`, {
+    cookieFetch(`/api/v1/items/${id}/comment/${commentId}`, {
       method: 'DELETE',
     });
   },
