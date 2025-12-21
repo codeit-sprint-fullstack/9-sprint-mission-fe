@@ -9,3 +9,7 @@ export type Comment = {
     image: string | null;
   };
 };
+
+export type CommentRequest = {
+  content: string;
+};
