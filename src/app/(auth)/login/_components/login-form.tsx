@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from 'next/navigation'
 import { useState } from "react";
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
 import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'

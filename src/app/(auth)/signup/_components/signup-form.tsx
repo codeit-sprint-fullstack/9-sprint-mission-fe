@@ -4,13 +4,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod'
 
 import VisibilityOff from '@/assets/icons/ic_visibility_off.svg'
 import VisibilityOn from '@/assets/icons/ic_visibility_on.svg'
 import { Modal } from '@/components/ui/dialog';
 import { cn } from '@/libs/cn';
-import { signupFormSchema } from '@/libs/schemas/auth.schema';
+import { type signupFormSchema, signupSchema } from '@/libs/schemas/auth.schema';
 import { useAuth } from '@/providers/auth-provider';
 
 const defaultErrorMessage = '회원가입 중 알 수 없는 오류가 발생했습니다.'
@@ -22,30 +21,30 @@ export default function SignUpForm() {
     handleSubmit,
     formState: { errors, isValid }
   } = useForm({
-    resolver: zodResolver(signupFormSchema),
+    resolver: zodResolver(signupSchema),
     mode: "onChange"
   })
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [passwordCheckerVisible, setPasswordCheckerVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState(defaultErrorMessage)
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [passwordCheckerVisible, setPasswordCheckerVisible] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>(defaultErrorMessage)
 
   const router = useRouter();
 
   const handlePasswordVisible = () => {
-    setPasswordVisible(!passwordVisible);
+    setPasswordVisible((prev) => !prev);
   };
 
   const handlePasswordCheckerVisible = () => {
-    setPasswordCheckerVisible(!passwordCheckerVisible);
+    setPasswordCheckerVisible((prev) => !prev);
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: signupFormSchema) => {
     try {
       await signUp(data.email, data.nickname, data.password, data.passwordConfirmation)
       router.replace("/items");
     } catch (error) {
-      const errorMessage = error?.message || defaultErrorMessage
+      const errorMessage = error instanceof Error ? error?.message : defaultErrorMessage
       setModalMessage(errorMessage)
       setShowModal(true);
     }
@@ -60,7 +59,6 @@ export default function SignUpForm() {
     <>
       <form
         className='flex flex-col justify-center'
-        method="POST"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >

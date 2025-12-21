@@ -11,11 +11,8 @@ export default function SignupView() {
   return (
     <>
       <AuthTitle />
-
       <SignUpForm />
-
       <SocialLogin />
-
       <div className="flex justify-center items-center gap-1 mb-52.25">
         <p className="flex font-pretendard text-sm/normal font-medium gap-4 mt-6 text-gray-800">
           이미 회원이신가요?
