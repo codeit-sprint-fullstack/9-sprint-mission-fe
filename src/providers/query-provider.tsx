@@ -3,7 +3,7 @@
 import { isServer, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-function makeQueryClient() {
+function makeQueryClient(): QueryClient {
   const queryCache = new QueryCache({
     onError: (error, query) => {
       alert(
@@ -23,9 +23,9 @@ function makeQueryClient() {
   });
 }
 
-let browserQueryClient = undefined;
+let browserQueryClient: QueryClient | undefined = undefined;
 
-function getQueryClient() {
+function getQueryClient(): QueryClient {
   if (isServer) {
     return makeQueryClient();
   } else {
@@ -34,7 +34,11 @@ function getQueryClient() {
   }
 }
 
-export default function QueryProvider({ children }) {
+interface QueryProviderProps {
+  children: React.ReactNode
+}
+
+export default function QueryProvider({ children }: QueryProviderProps) {
   const queryClient = getQueryClient()
 
   return (
