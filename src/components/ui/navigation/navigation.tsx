@@ -10,7 +10,12 @@ import { paths } from '#/config/paths'
 
 import { Avatar } from '../avatar/avatar'
 
-const navLink = [
+interface navLinkItems {
+  name: string;
+  href: string;
+}
+
+const navLink: navLinkItems[] = [
   { name: '자유게시판', href: '/articles' },
   { name: '중고마켓', href: '/items' }
 ]
@@ -55,8 +60,11 @@ export function Navigation() {
         </div>
         {user ? (
           <div className='flex items-center gap-1.5 px-4 md:px-6 xl:px-50'>
-            <Avatar size='medium' alt="유저 이미지" />
-            <p className='text-gray-600 text-lg'>{user.data.name}</p>
+            <Avatar
+              size='medium'
+              src={user.image}
+              alt={`${user.nickname}}유저 이미지`} />
+            <p className='text-gray-600 text-lg'>{user.nickname}</p>
           </div>
         ) : (
           <Link className="bg-primary-100 text-white px-3 py-1.75 rounded-lg text-nowrap mr-4 md:mr-0" href="/login">로그인</Link>

@@ -3,13 +3,24 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 import { authService } from "@/services/auth-service";
 import { userService } from "@/services/user-service";
+import type { User } from "@/types/auth";
 
-const AuthContext = createContext({
-  user: null,
-  login: () => { },
-  signUp: () => { },
-  isInitialized: false,
-});
+interface AuthContextType {
+  user: User | null;
+  isInitialized: boolean;
+  login: (email: string, password: string) => Promise<void>
+  signUp: (
+    email: string,
+    nickname: string,
+    password: string,
+    passwordConfirmation: string,
+  ) => Promise<void>
+}
+
+interface AuthProviderProps {
+  children: React.ReactNode
+}
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
   const context = useContext(AuthContext)
@@ -19,9 +30,9 @@ export const useAuth = () => {
   return context;
 };
 
-export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [isInitialized, setIsInitialized] = useState(false);
+export default function AuthProvider({ children }: AuthProviderProps) {
+  const [user, setUser] = useState<User | null>(null);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   const getUser = async () => {
     try {
@@ -39,7 +50,7 @@ export default function AuthProvider({ children }) {
     getUser();
   }, [])
 
-  const login = async (email, password) => {
+  const login = async (email: string, password: string) => {
     try {
       await authService.login(email, password);
       await getUser();
@@ -50,8 +61,12 @@ export default function AuthProvider({ children }) {
   };
 
   //TODO: logout 기능 추후 
-
-  const signUp = async (email, nickname, password, passwordConfirmation) => {
+  const signUp = async (
+    email: string,
+    nickname: string,
+    password: string,
+    passwordConfirmation: string
+  ) => {
     try {
       await authService.register(email, nickname, password, passwordConfirmation)
       await login(email, password);
@@ -61,12 +76,9 @@ export default function AuthProvider({ children }) {
     }
   }
 
-
   return (
     <AuthContext.Provider value={{ user, login, signUp, isInitialized }}>
       {children}
     </AuthContext.Provider>
   )
 }
-
-
