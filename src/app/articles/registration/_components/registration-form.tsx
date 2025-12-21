@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { articleFormSchema } from '@/libs/schemas/article.schema';
+import { articleFormSchema, type ArticleFormValues } from '@/libs/schemas/article.schema';
 import { useDialog } from '@/providers/modal-context';
 import { articleService } from '@/services/article-service';
 
@@ -17,26 +17,30 @@ export function ArticleRegistration() {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<ArticleFormValues>({
     resolver: zodResolver(articleFormSchema),
     mode: 'onChange', // 실시간 유효성 검사
+    defaultValues: {
+      title: '',
+      content: ''
+    }
   })
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ArticleFormValues) => {
     try {
       await articleService.createArticle(data);
       openDialog("아티클 작성을 완료했습니다.")
       router.push('/articles')
     } catch (error) {
+      const message = error instanceof Error ? error.message : "등록 중 오류가 발생했습니다."
       console.error(error);
-      openDialog("등록중 오류 발생")
+      openDialog(message)
     }
   };
 
   return (
     <>
       <form
-        method="POST"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
         className='px-6 w-full'
@@ -60,7 +64,7 @@ export function ArticleRegistration() {
           <input
             className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             type="text"
-            id="article_name"
+            id="title"
             placeholder="제목을 입력해주세요"
             aria-label="제목을 입력해주세요"
             {...register('title')}
