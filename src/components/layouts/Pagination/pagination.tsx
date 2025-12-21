@@ -8,7 +8,12 @@ import { cn } from '@/libs/cn';
 /**
  * @see https://www.notion.so/Pagination-jsx-26f856d064408013b3eef306e810566e?source=copy_link
  */
-export function Pagination({ currentPage, totalPages }) {
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+}
+
+export function Pagination({ currentPage, totalPages }: PaginationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -28,7 +33,7 @@ export function Pagination({ currentPage, totalPages }) {
 
   const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;
 
     // 현재 searchParams를 복사
@@ -50,7 +55,6 @@ export function Pagination({ currentPage, totalPages }) {
           alt="페이지전환 왼쪽 화살표"
           width={3.5}
           height={7}
-          strokeWidth={1.8}
         />
       </button>
 
@@ -76,7 +80,6 @@ export function Pagination({ currentPage, totalPages }) {
           alt='페이지 전환 오른쪽 화살표'
           width={3.5}
           height={7}
-          strokeWidth={1.8}
         />
       </button>
     </div>
