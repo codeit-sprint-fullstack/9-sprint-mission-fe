@@ -1,38 +1,46 @@
 import z from 'zod';
 
-const loginFormSchema = z.object({
-  email: z.string().email('이메일이 올바르지 않습니다.'),
-  password: z
+const passwordSchema = z
+  .string()
+  .min(1, '비밀번호를 입력해주세요')
+  .min(8, '비밀번호는 8자 이상 입력해주세요.')
+  .max(50, '비밀번호는 50자 이내로 입력해주세요.')
+  .trim();
+
+export const loginSchema = z.object({
+  email: z
     .string()
-    .min(1, '비밀번호를 입력해주세요')
-    .min(8, '비밀번호는 8자 이상 입력해주세요.')
-    .max(50, '비밀번호는 50자 이내로 입력해주세요.'),
+    .min(1, '이메일을 입력해주세요')
+    .email('이메일이 올바르지 않습니다.')
+    .trim(),
+  password: passwordSchema,
 });
 
-const signupFormSchema = z
+export const signupSchema = z
   .object({
-    email: z.string().email('이메일이 올바르지 않습니다.'),
+    email: z
+      .string()
+      .min(1, '이메일을 입력해주세요')
+      .email('이메일이 올바르지 않습니다.')
+      .trim(),
 
     nickname: z
       .string()
       .min(1, '닉네임을 입력해주세요')
       .min(2, '닉네임은 2자 이상 입력해주세요')
-      .max(20, '닉네임은 20자 이내로 입력해주세요'),
+      .max(20, '닉네임은 20자 이내로 입력해주세요')
+      .trim(),
 
-    password: z
-      .string()
-      .min(1, '비밀번호를 입력해주세요')
-      .min(8, '비밀번호는 8자 이상 입력해주세요.')
-      .max(50, '비밀번호는 50자 이내로 입력해주세요.'),
-
+    password: passwordSchema,
     passwordConfirmation: z
       .string()
-      .min(1, '패스워드 확인을 위해 입력해주세요'),
+      .min(1, '패스워드 확인을 위해 입력해주세요')
+      .trim(),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
     path: ['passwordConfirmation'],
     message: '패스워드가 일치하지 않습니다.',
   });
 
-export type loginFormSchema = z.infer<typeof loginFormSchema>;
-export type signupFormSchema = z.infer<typeof signupFormSchema>;
+export type loginFormSchema = z.infer<typeof loginSchema>;
+export type signupFormSchema = z.infer<typeof signupSchema>;
