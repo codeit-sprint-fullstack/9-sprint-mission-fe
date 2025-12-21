@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
 import PandaTopImg from "@/assets/landing/Img_home_top.png"
 
 export function HeroSection() {
+  const imageSrc = (PandaTopImg as StaticImageData).src
+
   return (
     <section className="flex justify-center items-end left-0 right-0 h-135 shrink-0 bg-[#CFE5FF]">
       <div className="inline-flex flex-col justify-center items-center gap-3 mx-30 my-30">
@@ -22,11 +24,12 @@ export function HeroSection() {
 
       {/*https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture */}
       <picture>
-        <source media="(min-width: 650px)" srcSet={PandaTopImg} />
+        <source media="(min-width: 650px)" srcSet={imageSrc} />
         <Image
           className="flex w-186.5 h-85"
           src={PandaTopImg}
           alt="판다이미지"
+          priority
         />
       </picture>
     </section>

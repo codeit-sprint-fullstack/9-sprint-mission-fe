@@ -1,8 +1,10 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 import HomeBottomImg from '@/assets/landing/Img_home_bottom.png'
 
 export function CTASection() {
+  const imageSrc = (HomeBottomImg as StaticImageData).src
+
   return (
     <section className="bg-[#CFE5FF] text-2xl font-pretendard font-medium leading-8 text-gray-700">
       <div className="flex justify-center items-center gap-17.25">
@@ -12,12 +14,13 @@ export function CTASection() {
         </h2>
         <div className="mt-35.75">
           <picture>
-            <source media="(min-width: 650px)" srcSet={HomeBottomImg} />
+            <source media="(min-width: 650px)" srcSet={imageSrc} />
             <Image
               src={HomeBottomImg}
               alt="pandas!"
               width={746}
               height={397}
+              priority
             />
           </picture>
         </div>

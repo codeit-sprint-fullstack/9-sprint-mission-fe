@@ -4,7 +4,6 @@ import HomeFirstImg from "@/assets/landing/Img_home_01.png";
 import HomeSecondImg from "@/assets/landing/Img_home_02.png";
 import HomeThirdImg from "@/assets/landing/Img_home_03.png";
 
-
 export function FeatureSection() {
   return (
     <main>
@@ -16,6 +15,7 @@ export function FeatureSection() {
               width={580}
               height={444}
               alt="panda-first-img"
+              priority
             />
             <div className="flex flex-col gap-3 text-left text-[1.125rem] leading-6.5 font-pretendard">
               <p className="text-[1.125rem] font-bold leading-6.5 text-primary-100">Hot item</p>
@@ -36,6 +36,7 @@ export function FeatureSection() {
               alt="panda-second-img"
               width={580}
               height={444}
+              priority
             />
             <div className="flex flex-col items-end text-right gap-3 text-[1.125rem] font-bold leading-6.5">
               <p className="text-[1.125rem] font-bold leading-6.5 text-primary-100 font-pretendard">search</p>
@@ -56,6 +57,7 @@ export function FeatureSection() {
               alt="panda-third-img"
               width={580}
               height={444}
+              priority
             />
             <div className="flex flex-col gap-3 text-left text-[1.125rem] leading-6.5 font-pretendard">
               <p className="text-[1.125rem] font-bold leading-6.5 text-primary-100 font-pretendarda">Register</p>
