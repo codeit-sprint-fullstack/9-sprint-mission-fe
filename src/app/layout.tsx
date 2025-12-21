@@ -3,6 +3,7 @@ import './globals.css'
 
 import Pretendard from 'next/font/local'
 import Rokaf from 'next/font/local'
+import { type PropsWithChildren } from 'react'
 
 import { GlobalDialog } from '@/components/ui/dialog/global-dialog'
 import { rootMetadata } from '#/config/metadata'
@@ -23,7 +24,7 @@ const rokaf = Rokaf({
   variable: '--font-rokaf',
 })
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} ${rokaf.variable} antialiased`}>
