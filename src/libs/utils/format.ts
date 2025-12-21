@@ -1,4 +1,6 @@
-export const formatDate = (dataString) => {
+export const formatDate = (
+  dataString: string | number | Date | undefined | null,
+) => {
   if (!dataString) return '';
 
   const date = new Date(dataString);
@@ -9,13 +11,19 @@ export const formatDate = (dataString) => {
   });
 };
 
-export const truncateText = (text, maxLength) => {
+export const truncateText = (
+  text: string | undefined | null,
+  maxLength: number,
+): string => {
   if (!text) return '';
   if (text.length > maxLength) return `${text.slice(0, maxLength)}...`;
   return text;
 };
 
-export const truncateDate = (text, maxLength) => {
+export const truncateDate = (
+  text: string | undefined | null,
+  maxLength: number,
+): string => {
   if (!text) return '';
   if (text.length > maxLength) return `${text.slice(0, maxLength)}`;
   return text;
