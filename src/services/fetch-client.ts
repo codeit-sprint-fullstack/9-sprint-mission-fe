@@ -1,18 +1,35 @@
 const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const defaultFetch = async (url, options = {}) => {
-  const defaultOptions = {
+/** Next.js 전용 fetch 옵션과 호환되는 인터페이스 정의   */
+interface CustomRequestInit extends Omit<RequestInit, 'cache'> {
+  cache?: RequestCache;
+  next?: {
+    // Next 전용 확장 속성 정의
+    revalidate?: number | false;
+    tags?: string[];
+  };
+}
+
+type FetchResponse<T> = T | { status: number; ok: boolean };
+
+export const defaultFetch = async <T>(
+  url: string,
+  options: CustomRequestInit = {},
+): Promise<T> => {
+  const defaultOptions: CustomRequestInit = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
-  const mergedOptions = {
+  const { headers: customHeaders, ...restOptions } = options;
+
+  const mergedOptions: RequestInit = {
     ...defaultOptions,
-    ...options,
+    ...restOptions,
     headers: {
       ...defaultOptions.headers,
-      ...options.headers,
+      ...(customHeaders as Record<string, string>),
     },
   };
 
@@ -27,8 +44,11 @@ export const defaultFetch = async (url, options = {}) => {
   return response.json();
 };
 
-export const cookieFetch = async (url, options = {}) => {
-  const defaultOptions = {
+export const cookieFetch = async <T>(
+  url: string,
+  options: CustomRequestInit = {},
+): Promise<FetchResponse<T>> => {
+  const defaultOptions: CustomRequestInit = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -36,12 +56,14 @@ export const cookieFetch = async (url, options = {}) => {
     cache: 'no-store',
   };
 
-  const mergedOptions = {
+  const { headers: customHeaders, ...restOptions } = options;
+
+  const mergedOptions: RequestInit = {
     ...defaultOptions,
-    ...options,
+    ...restOptions,
     headers: {
       ...defaultOptions.headers,
-      ...options.headers,
+      ...(customHeaders as Record<string, string>),
     },
   };
 
