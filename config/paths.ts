@@ -14,7 +14,7 @@ export const paths = {
       getHref: () => '/items',
     },
     itemDetail: {
-      getHref: (id) => `/items/${id}`,
+      getHref: (id: number | string) => `/items/${id}`,
     },
   },
 
