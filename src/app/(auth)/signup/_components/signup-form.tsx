@@ -20,7 +20,7 @@ export default function SignUpForm() {
     register,
     handleSubmit,
     formState: { errors, isValid }
-  } = useForm({
+  } = useForm<signupFormSchema>({
     resolver: zodResolver(signupSchema),
     mode: "onChange"
   })
