@@ -4,39 +4,43 @@ import { useEffect } from "react";
 
 import { useAuth } from "./auth-provider";
 
-const protectedPaths = [
+interface RouteGuardProps {
+  children: React.ReactNode
+}
+
+const PROTECTED_PATHS = [
   '/articles',
   '/items',
-]
+] as const
 
-const publicPaths = [
+const PUBLIC_PATHS = [
   '/',
   '/login',
   '/signup'
-];
+] as const
 
-export default function RouteGuard({ children }) {
+export default function RouteGuard({ children }: RouteGuardProps) {
   const { user, isInitialized } = useAuth()
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
     if (!isInitialized) return;
-    const path = pathname.split("?")[0]
+    const currentPath = pathname?.split("?")[0] ?? "";
 
-    const isProtectedRoute = protectedPaths.some(
-      (route) => path === route || (path.startsWith(route + "/") && route !== "/")
+    const isProtectedRoute = PROTECTED_PATHS.some(
+      (route) => currentPath === route || currentPath.startsWith(`${route}/`)
     );
 
-    const isPublicRoute = publicPaths.some(
-      (route) => path === route || (path.startsWith(route + "/") && route !== "/")
+    const isPublicRoute = PUBLIC_PATHS.some(
+      (route) => currentPath === route || (currentPath.startsWith(route + "/") && route !== "/")
     )
 
     if (isProtectedRoute && !user) {
       router.push("/login")
     }
 
-    if (isPublicRoute && user) {
+    if (isPublicRoute && user && currentPath !== "/") {
       router.push("/articles")
     }
 
