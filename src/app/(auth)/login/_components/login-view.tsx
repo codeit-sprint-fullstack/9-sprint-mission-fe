@@ -10,11 +10,8 @@ export default function LoginView() {
   return (
     <>
       <AuthTitle />
-
       <LoginForm />
-
       <SocialLogin />
-
       <div className='flex justify-center items-center gap-1 mb-52.25'>
         <p className="flex font-pretendard text-sm/normal font-medium gap-4 mt-6 text-gray-800">
           판다마켓이 처음이신가요?
