@@ -2,10 +2,11 @@ import Image from "next/image"
 
 import DefaultAvatar from '@/assets/ic_default_avatar.svg'
 import { truncateDate } from "@/libs/utils/format"
+import type { Item } from "@/types/item"
 
 import { ItemLikeButton } from "./like/item-like-btn"
 
-export function ItemAuthor({ item }) {
+export function ItemAuthor({ item }: { item: Item }) {
   return (
     <div className="container flex items-baseline justify-between">
       <div className="flex text-nowrap mb-6">

@@ -2,7 +2,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import Image from "next/image"
 import { redirect, useRouter } from "next/navigation"
-import React, { useState } from "react"
+import { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import DefaultImg from "@/assets/items/Img_default.png"
@@ -12,16 +12,11 @@ import { itemService } from "@/services/item-service"
 
 import { ItemAuthor } from "./item-author"
 
-const contents = [
-  { option: '수정하기', name: 'update' },
-  { option: '삭제하기', name: 'delete' }
-]
-
-export function ItemHeaderSection({ itemId }) {
+export function ItemHeaderSection({ itemId }: { itemId: string }) {
   const queryClient = useQueryClient()
-  const [showPanel, setShowPanel] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
-  const [dialogDeleteMessage, setDialogDeleteMessage] = useState('');
+  const [showPanel, setShowPanel] = useState<boolean>(false);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
+  const [dialogDeleteMessage, setDialogDeleteMessage] = useState<string>('');
   const { openDialog } = useDialog()
   const router = useRouter();
 
@@ -30,9 +25,9 @@ export function ItemHeaderSection({ itemId }) {
     queryFn: () => itemService.getItemById(itemId)
   })
 
-  const item = itemData?.data;
+  const item = itemData
 
-  const deleteMutation = useMutation({
+  const deleteMutation = useMutation<{ status: number, ok: boolean }, Error, void>({
     mutationFn: () => itemService.deleteItem(itemId),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -43,21 +38,12 @@ export function ItemHeaderSection({ itemId }) {
     },
     onError: (error) => {
       console.error("Failed Delete:", error);
-      setDialogDeleteMessage("삭제 중 오류 발생", error.message)
+      setDialogDeleteMessage(`삭제 중 오류 발생 ${error.message}`)
       setShowDialog(true)
     }
   });
 
-  const handlePanel = () => {
-    setShowPanel(!showPanel)
-  }
-
-  const handleDelete = () => {
-    setShowPanel(false)
-    deleteMutation.mutate()
-  }
-
-  const handleOnChange = (name) => {
+  const handleOnChange = (name: "update" | "delete") => {
     setShowPanel(false);
 
     if (name === 'update') {
@@ -93,7 +79,7 @@ export function ItemHeaderSection({ itemId }) {
             </h1>
             <div
               className="relative w-2 h-2 cursor-pointer"
-              onClick={handlePanel}
+              onClick={() => setShowPanel((prev) => !prev)}
             >
               <Image
                 className="flex shrink md:mr-3.5"
@@ -105,16 +91,12 @@ export function ItemHeaderSection({ itemId }) {
               />
               {showPanel && (
                 <ul className="absolute z-2 mt-2 shrink-0 rounded-xl border border-solid border-gray-200 bg-white -left-20">
-                  {contents.map((c) => (
-                    <li key={c.name} className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
-                      <button
-                        className="border-0 bg-white"
-                        onClick={() => handleOnChange(c.name)}
-                      >
-                        {c.option}
-                      </button>
-                    </li>
-                  ))}
+                  <li className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
+                    <button className="border-0 bg-white" onClick={() => handleOnChange('update')}>수정하기</button>
+                  </li>
+                  <li className="font-pretendard cursor-point mt-0.5 flex h-10.5 w-31.25 shrink-0 items-center justify-center text-gray-800 text-lg leading-6.5">
+                    <button className="border-0 bg-white" onClick={() => handleOnChange('delete')}>삭제하기</button>
+                  </li>
                 </ul>
               )}
             </div>
@@ -147,7 +129,7 @@ export function ItemHeaderSection({ itemId }) {
         <DeleteDialog
           close={() => setShowDialog(false)}
           msg={dialogDeleteMessage}
-          deleteClick={handleDelete}
+          deleteClick={() => deleteMutation.mutate()}
         >
         </DeleteDialog>
       )}

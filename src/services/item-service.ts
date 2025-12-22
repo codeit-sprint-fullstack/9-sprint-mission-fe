@@ -26,7 +26,7 @@ export const itemService = {
 
   deleteItem: (id: string) => {
     if (!id) throw new Error('상품아이디를 찾을수없습니다.');
-    cookieFetch(`/api/v1/items/${id}`, {
+    return cookieFetch<{ status: number; ok: boolean }>(`/api/v1/items/${id}`, {
       method: 'DELETE',
     });
   },
