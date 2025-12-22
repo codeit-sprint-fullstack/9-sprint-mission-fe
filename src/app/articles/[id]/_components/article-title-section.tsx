@@ -7,20 +7,25 @@ import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
 import { Button } from "@/components/ui/button"
 import { Modal } from "@/components/ui/dialog"
 import { articleService } from "@/services/article-service"
+import type { Article } from "@/types/article"
+
+interface ArticleTitleSectionProps {
+  article: Article
+}
 
 const contents = [
   { option: '수정하기', name: 'update' },
   { option: '삭제하기', name: 'delete' }
 ]
 
-export function ArticleTitleSection({ article }) {
-  const [showPanel, setShowPanel] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+export function ArticleTitleSection({ article }: ArticleTitleSectionProps) {
+  const [showPanel, setShowPanel] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>('');
   const router = useRouter();
 
   const handlePanel = () => {
-    setShowPanel(!showPanel)
+    setShowPanel((prev) => !prev)
   }
 
   const handleDelete = async () => {
@@ -37,7 +42,7 @@ export function ArticleTitleSection({ article }) {
     }
   }
 
-  const handleOnChange = (name) => {
+  const handleOnChange = (name: string) => {
     setShowPanel(false);
 
     if (name === 'update') {
