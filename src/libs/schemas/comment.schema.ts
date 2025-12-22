@@ -13,4 +13,7 @@ const updateItemCommentSchema = z.object({
   context: z.string().min(1, '수정할 댓글 내용을 입력해주세요.'),
 });
 
+export type UpdateItemCommentValue = z.infer<typeof updateCommentSchema>;
+export type ItemCommentValue = z.infer<typeof itemCommentSchema>;
+
 export { itemCommentSchema, updateCommentSchema, updateItemCommentSchema };

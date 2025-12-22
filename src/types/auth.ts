@@ -25,7 +25,7 @@ export type AuthResponse = {
 
 // 토큰 관련 타입 (필요 시)
 export type RefreshToken = {
-  id: number;
+  id: string;
   token: string;
   expiresAt: string | Date;
   userId: string;

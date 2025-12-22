@@ -1,4 +1,5 @@
 import type { CommentRequest } from '@/types/comment';
+import type { ItemComment } from '@/types/item';
 
 import { cookieFetch } from './fetch-client';
 
@@ -35,18 +36,24 @@ export const commentService = {
     });
   },
 
-  updateComments: (id: number, commentId: number, formData: CommentRequest) => {
+  updateComments: (id: string, commentId: string, formData: CommentRequest) => {
     if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
-    return cookieFetch<Comment>(`/api/v1/items/${id}/comment/${commentId}`, {
-      method: 'PATCH',
-      body: JSON.stringify(formData),
-    });
+    return cookieFetch<{ status: number; ok: boolean }>(
+      `/api/v1/items/${id}/comment/${commentId}`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify(formData),
+      },
+    );
   },
 
-  deleteComments: (id: number, commentId: number) => {
+  deleteComments: (id: string, commentId: string) => {
     if (!id) throw new Error('상품아이디를 찾을수없습니다.');
-    return cookieFetch<void>(`/api/v1/items/${id}/comment/${commentId}`, {
-      method: 'DELETE',
-    });
+    return cookieFetch<{ status: number; ok: boolean }>(
+      `/api/v1/items/${id}/comment/${commentId}`,
+      {
+        method: 'DELETE',
+      },
+    );
   },
 };
