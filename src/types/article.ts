@@ -11,9 +11,7 @@ export type Article = {
   updatedAt: string;
   author: User;
 
-  _count: {
-    comment: number;
-  };
+  comment: ArticleComment[];
 };
 
 export type ArticleComment = {
