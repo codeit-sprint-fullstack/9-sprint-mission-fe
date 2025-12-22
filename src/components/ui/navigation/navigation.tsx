@@ -63,8 +63,8 @@ export function Navigation() {
             <Avatar
               size='medium'
               src={user.image}
-              alt={`${user.nickname}}유저 이미지`} />
-            <p className='text-gray-600 text-lg'>{user.nickname}</p>
+              alt={`${user.name}}유저 이미지`} />
+            <p className='text-gray-600 text-lg'>{user.name}</p>
           </div>
         ) : (
           <Link className="bg-primary-100 text-white px-3 py-1.75 rounded-lg text-nowrap mr-4 md:mr-0" href="/login">로그인</Link>

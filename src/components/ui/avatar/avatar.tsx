@@ -28,7 +28,7 @@ const avatarVariants = cva(
  *  경로는 문자열이거나 import된 이미지 객체 일수도 있음 
  */
 interface AvatarProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof avatarVariants> {
-  src?: string | StaticImageData | null;
+  src?: string | StaticImageData | null | undefined;
   alt?: string;
 }
 
