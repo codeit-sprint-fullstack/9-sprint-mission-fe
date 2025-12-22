@@ -23,7 +23,7 @@ export function ArticleCommentSection({ article }: ArticleCommentSectionProps) {
               <p className='font-pretendard text-gray-800 flex-1 px-2'>
                 {comment.context}
               </p>
-              <DropdownContent comment={comment} />
+              <DropdownContent articleId={article.id} comment={comment} />
             </div>
             <div className="flex items-center gap-2 mb-1.5">
               <Image

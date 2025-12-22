@@ -10,8 +10,8 @@ export const commentService = {
     }),
 
   articleUpdateComments: (
-    id: number,
-    commentId: number,
+    id: string,
+    commentId: string,
     formData: CommentRequest,
   ) => {
     cookieFetch<Comment>(`/api/v1/articles/${id}/comment/${commentId}`, {
@@ -20,7 +20,7 @@ export const commentService = {
     });
   },
 
-  articleDeleteComments: (id: number, commentId: number) => {
+  articleDeleteComments: (id: string, commentId: string) => {
     cookieFetch<void>(`/api/v1/articles/${id}/comment/${commentId}`, {
       method: 'DELETE',
     });

@@ -1,7 +1,7 @@
 import type { User } from './auth';
 
 export type Article = {
-  id: number;
+  id: string;
   authorId: number;
   title: string;
   content: string;

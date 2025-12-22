@@ -11,5 +11,5 @@ export type Comment = {
 };
 
 export type CommentRequest = {
-  content: string;
+  context: string;
 };
