@@ -5,26 +5,29 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
-import { itemCommentSchema } from "@/libs/schemas/comment.schema"
+import { itemCommentSchema, type ItemCommentValue } from "@/libs/schemas/comment.schema"
 import { useDialog } from "@/providers/modal-context"
 import { commentService } from "@/services/comment-service"
 
-export function ItemCommentForm({ itemId }) {
+export function ItemCommentForm({ itemId }: { itemId: string }) {
   const queryClient = useQueryClient();
   const { openDialog } = useDialog()
 
   const {
     register,
     handleSubmit,
-    // reset, //폼 리셋
+    reset, //폼 리셋
     formState: { errors, isValid }
-  } = useForm({
+  } = useForm<ItemCommentValue>({
     resolver: zodResolver(itemCommentSchema),
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: {
+      context: ''
+    }
   })
 
-  const mutation = useMutation({
-    mutationFn: (formData) => {
+  const mutation = useMutation<{ status: number, ok: boolean }, Error, ItemCommentValue>({
+    mutationFn: (formData: ItemCommentValue) => {
       return commentService.createComments(itemId, formData)
     },
     onSuccess: () => {
@@ -32,15 +35,15 @@ export function ItemCommentForm({ itemId }) {
         queryKey: ['item', itemId]
       });
       openDialog('댓글 등록을 성공했습니다.')
-      // reset()
+      reset()
     },
     onError: (error) => {
-      openDialog('댓글 등록중 오류가 발생했습니다.', error.message)
+      openDialog(`댓글 등록중 오류가 발생했습니다: ${error.message}`)
     }
   });
 
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ItemCommentValue) => {
     mutation.mutate(data)
   }
 

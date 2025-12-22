@@ -1,22 +1,24 @@
 "use client"
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
-import React from 'react'
 
 import CommentEmptyImg from '@/assets/article/Img_reply_empty.svg'
 import DefaultImg from '@/assets/logo.svg'
 import { formatDate } from "@/libs/utils/format";
+import { commentService } from '@/services/comment-service'
 import { itemService } from '@/services/item-service'
+import type { Item, ItemComment, ItemListResponse } from '@/types/item'
 
 import { DropdownContent } from '../dropdown-content'
 
-export function ItemCommentSection({ itemId }) {
-  const { data: itemData } = useQuery({
+export function ItemCommentSection({ itemId }: { itemId: string }) {
+  const { data: response } = useQuery({
     queryKey: ["item", itemId],
     queryFn: () => itemService.getItemById(itemId)
   })
 
-  const comments = itemData?.data.comment;
+  const item: Item | undefined = response;
+  const comments: ItemComment[] = item?.itemComments || [];
 
   return (
     <section className="flex flex-col gap-6 no-underline list-none">

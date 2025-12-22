@@ -30,10 +30,13 @@ export const commentService = {
   // item
   createComments: (id: number | string, formData: CommentRequest) => {
     if (!id) throw new Error('문의 댓글을 가져오지 못했습니다.');
-    return cookieFetch<Comment>(`/api/v1/items/${id}/comment`, {
-      method: 'POST',
-      body: JSON.stringify(formData),
-    });
+    return cookieFetch<{ status: number; ok: boolean }>(
+      `/api/v1/items/${id}/comment`,
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      },
+    );
   },
 
   updateComments: (id: string, commentId: string, formData: CommentRequest) => {

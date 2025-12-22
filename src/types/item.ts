@@ -19,6 +19,7 @@ export type Item = {
   };
   type?: string;
   isLiked?: boolean;
+  itemComments?: ItemComment[];
 };
 
 export type ItemListResponse = {
