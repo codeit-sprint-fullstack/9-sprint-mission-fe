@@ -7,7 +7,7 @@ import { ItemCommentForm } from "./_components/comment/item-comment-form";
 import { ItemCommentSection } from "./_components/comment/item-comment-section";
 import { ItemHeaderSection } from "./_components/header/item-header-section";
 
-export default async function ItemsDetailPage({ params }) {
+export default async function ItemsDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const queryClient = new QueryClient()
   const { id } = await params
 
