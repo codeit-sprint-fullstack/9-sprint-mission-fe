@@ -1,59 +1,78 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useParams, useRouter } from 'next/navigation';
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
-import { z } from 'zod'
 
 import { Button } from '@/components/ui/button';
 import { Modal } from "@/components/ui/dialog";
-import { updateArticle } from '@/services/article-service';
+import { articleFormSchema, type ArticleFormValues } from '@/libs/schemas/article.schema';
+import { articleService } from '@/services/article-service';
 
-const articleFormSchema = z.object({
-  title: z
-    .string()
-    .min(1, '제목을 입력해주세요.')
-    .max(30, '제목은 30자 이내로 입력해주세요.'),
-  content: z.string()
-    .min(10, '내용은 10자 이상 입력해주세요.')
-    .max(100, '내용은 100자 이내로 입력해주세요.'),
-})
+interface ArticleRegistrationProps {
+  params: Promise<{ id: string }>
+}
+export function ArticleRegistration({ params }: ArticleRegistrationProps) {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-export function ArticleRegistration() {
-  const [showModal, setShowModal] = useState(false);
-
-  const params = useParams();
+  // const params = useParams<{ id: string }>()
+  // const id = params.id;
+  // React19 use hook 사용 (Promise -> resolve 까지 대기 후  결과값 반환)
+  const { id } = use(params)
   const router = useRouter();
-  const id = params.id;
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<ArticleFormValues>({
     resolver: zodResolver(articleFormSchema),
     mode: 'onChange', // 실시간 유효성 검사
+    defaultValues: {
+      title: "",
+      content: "",
+    }
   })
 
-  const onSubmit = async (data) => {
+  // 기존 데이터 불러오기 (수정시)
+  useEffect(() => {
+    if (id) {
+      const fetchArticle = async () => {
+        try {
+          const data = await articleService.getArticlesById(id);
+          reset({
+            title: data.title,
+            content: data.content
+          })
+        } catch (error) {
+          console.error("데이터 로드 실패:", error)
+        }
+      }
+      fetchArticle();
+    }
+  }, [id, reset])
 
+  const onSubmit = async (data: ArticleFormValues) => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     try {
-      await updateArticle(id, data);
+      await articleService.updateArticle(id, data)
 
-      router.push(`/articles/${id}}`)
-
+      router.push(`/articles/${id}`)
+      router.refresh()
     } catch (error) {
       console.error("등록중 오류 발생:", error);
       setShowModal(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+
   return (
     <>
       <form
-        method="POST"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
         className='px-6 w-full'
@@ -64,22 +83,22 @@ export function ArticleRegistration() {
           </h2>
           <Button
             type="submit"
-            disabled={!isValid}
+            disabled={!isValid || isSubmitting}
           >
-            등록
+            {isSubmitting ? '수정 중...' : '등록'}
           </Button>
         </div>
         <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
-            htmlFor="article_name"
+            htmlFor="title"
           >
             제목
           </label>
           <input
-            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
+            id="title"
             type="text"
-            id="article_name"
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             placeholder="제목을 입력해주세요"
             aria-label="제목을 입력해주세요"
             {...register('title')}
@@ -92,17 +111,17 @@ export function ArticleRegistration() {
         <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
-            htmlFor="article_describe"
+            htmlFor="content"
           >
             내용
           </label>
           <textarea
+            id="content"
             className='max-w-full w-full h-70.5 py-4 px-6 resize-none border-0 rounded-xl bg-gray-100'
-            id="article_describe"
             placeholder="내용을 입력해주세요"
             aria-label="내용을 입력해주세요"
             {...register('content')}
-          ></textarea>
+          />
           {errors.content && (
             <span className='text-error-red'>{errors.content.message}</span>
           )}
@@ -111,7 +130,7 @@ export function ArticleRegistration() {
 
       {showModal && (
         <Modal
-          close={handleCloseModal}
+          close={() => setShowModal(false)}
           msg={
             "등록중 예기치 못한 오류가 발생했습니다.\n 잠시후 다시시도해 주십시오 \n 문의(meta-os@zohomail.com)"
           }
