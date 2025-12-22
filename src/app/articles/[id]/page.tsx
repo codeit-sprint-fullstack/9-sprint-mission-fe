@@ -1,4 +1,4 @@
-// ! server action (Never trust data from the client)
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import { articleService } from "@/services/article-service";
@@ -9,9 +9,17 @@ import { ArticleDetailSection } from "./_components/article-detail-section";
 import { BackToArticles } from "./_components/back-to-articles";
 import Loading from "./loading";
 
-export default async function ArticleDetailPage({ params }) {
+interface ArticleDetailPageProps {
+  params: Promise<{ id: string }>
+}
+
+export default async function ArticleDetailPage({ params }: ArticleDetailPageProps) {
   const { id } = await params;
   const article = await articleService.getArticlesById(id)
+
+  if (!article) {
+    notFound()
+  }
 
   return (
     <main className="flex flex-1 flex-col min-h-screen w-full max-w-7xl my-8 mx-auto p-6">
@@ -24,7 +32,7 @@ export default async function ArticleDetailPage({ params }) {
       </section>
 
       {/* 댓글 입력 */}
-      <ArticleCommentForm article={article} />
+      <ArticleCommentForm articleId={article.id} />
 
       {/* 댓글 리스트 */}
       <Suspense fallback={<Loading />} >
