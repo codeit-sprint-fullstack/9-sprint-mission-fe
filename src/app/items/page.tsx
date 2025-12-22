@@ -7,17 +7,24 @@ import { Dropdown } from '@/components/ui/dropdown';
 import { Search } from '@/components/ui/search';
 import { itemService } from '@/services/item-service';
 
-export default async function ProductPage(props) {
-  const searchParams = await props.searchParams
-  const keyword = searchParams.keyword || ''
-  const orderBy = searchParams.orderBy || 'recent'
-  const page = parseInt(searchParams.page || "1")
+interface ProductPageProps {
+  searchParams: Promise<{
+    keyword?: string;
+    orderBy?: string;
+    page?: string;
+  }>
+}
+
+export default async function ProductPage({ searchParams }: ProductPageProps) {
+  const params = await searchParams
+  const keyword = params.keyword || ''
+  const orderBy = params.orderBy || 'recent'
+  const page = parseInt(params.page || "1", 10)
 
   const itemData = await itemService.getItems(keyword, orderBy, page)
 
-  const items = itemData.data.items;
-  const pagination = itemData.data.pagination;
-  console.log(pagination)
+  const items = itemData.list || [];
+  const pagination = itemData.pagination;
 
   return (
     <>
@@ -25,7 +32,7 @@ export default async function ProductPage(props) {
 
         <div className="pt-6.5 flex flex-col w-full mx-auto ustify-center">
           <p className="font-pretendard text-gray-900 font-bold m-0">베스트 상품</p>
-          <BestCardList items={items} />
+          <BestCardList items={items.slice(0, 4)} />
         </div>
 
         <div className="flex flex-col m-0 w-full max-md:flex max-md:flex-row max-md:justify-around max-md:pr-11.25 max-md:full">
