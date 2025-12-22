@@ -1,18 +1,23 @@
 import Image from "next/image"
 
 import HeartIcon from '@/assets/icons/ic_heart.svg'
+import DefaultImg from '@/assets/logo.svg'
 import { truncateDate } from "@/libs/utils/format"
+import type { Article } from "@/types/article"
 
 import { ArticleTitleSection } from "./article-title-section"
 
-export function ArticleDetailSection({ article }) {
+interface ArticleDetailSectionProps {
+  article: Article
+}
+export function ArticleDetailSection({ article }: ArticleDetailSectionProps) {
   return (
     <section className="w-full items-center border-b border-solid border-gray-200 pb-4 mb-6">
       <ArticleTitleSection article={article} />
       <div className="flex items-center">
         <div className="flex content-baseline flex-wrap">
           <Image
-            src={article.author?.userProfile?.photoUrl}
+            src={article.author?.userProfile?.photoUrl || DefaultImg}
             alt="authorAvatar"
             className="rounded-[50%]"
             width={40}

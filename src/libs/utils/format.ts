@@ -21,10 +21,12 @@ export const truncateText = (
 };
 
 export const truncateDate = (
-  text: string | undefined | null,
+  text: string | Date | undefined | null,
   maxLength: number,
 ): string => {
   if (!text) return '';
-  if (text.length > maxLength) return `${text.slice(0, maxLength)}`;
-  return text;
+  // Date Object 라면 문자열 ISO형식으로 변환
+  const targetString = text instanceof Date ? text.toISOString() : String(text);
+  if (targetString.length > maxLength) return targetString.slice(0, maxLength);
+  return targetString;
 };
