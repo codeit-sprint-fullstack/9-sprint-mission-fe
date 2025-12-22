@@ -8,7 +8,29 @@ import { itemService } from "@/services/item-service";
 
 const DEFAULT_IS_LIKED = false;
 
-export function ItemLikeButton({ itemId, initialLikeCount }) {
+interface ItemData {
+  data: {
+    likeCount: number;
+    [key: string]: any;
+  }
+}
+interface LikeStatus {
+  data: {
+    isLiked: boolean;
+  };
+}
+
+interface ItemLikeButtonProps {
+  itemId: string;
+  initialLikeCount?: number;
+}
+
+interface LikeContext {
+  previousItems?: ItemData | undefined;
+  previousStatus?: LikeStatus | undefined
+}
+
+export function ItemLikeButton({ itemId, initialLikeCount = 0 }: ItemLikeButtonProps) {
   const queryClient = useQueryClient();
   const results = useQueries({
     queries: [
@@ -19,26 +41,29 @@ export function ItemLikeButton({ itemId, initialLikeCount }) {
     ]
   });
 
-  const itemQuery = results[0];
-  const statusQuery = results[1];
+  const itemQuery = results[0]
+  const statusQuery = results[1]
 
-  const currentLikeCount = Number(itemQuery.data?.data?.likeCount ?? initialLikeCount ?? 0);
-  const currentIsLiked = statusQuery.data?.data?.isLiked ?? DEFAULT_IS_LIKED;
+  const itemData = itemQuery.data as unknown as ItemData | undefined;
+  const statusData = statusQuery.data as unknown as LikeStatus | undefined;
 
-  const likeMutation = useMutation({
+  const currentLikeCount = Number(itemData?.data?.likeCount ?? initialLikeCount ?? 0);
+  const currentIsLiked = statusData?.data?.isLiked ?? DEFAULT_IS_LIKED;
+
+  const likeMutation = useMutation<any, Error, void, LikeContext>({
     mutationFn: () => itemService.toggleLike(itemId),
-    onMutate: async () => {
+    onMutate: async (): Promise<LikeContext> => {
       await queryClient.cancelQueries({ queryKey: ['item', itemId] })
       await queryClient.cancelQueries({ queryKey: ['like-status', itemId] });
 
-      const previousItems = queryClient.getQueryData(['item', itemId]);
-      const previousStatus = queryClient.getQueryData(['like-status', itemId]);
+      const previousItems = queryClient.getQueryData<ItemData>(['item', itemId]);
+      const previousStatus = queryClient.getQueryData<LikeStatus>(['like-status', itemId]);
 
       const isCurrentlyLiked = previousStatus?.data?.isLiked ?? currentIsLiked
       const countBeforeMutate = Number(previousItems?.data?.likeCount ?? currentLikeCount);
       const newCount = isCurrentlyLiked ? countBeforeMutate - 1 : countBeforeMutate + 1;
 
-      queryClient.setQueryData(["item", itemId], (old) => {
+      queryClient.setQueryData<ItemData>(["item", itemId], (old) => {
         if (!old || !old.data) return old
         return {
           ...old,
@@ -49,7 +74,7 @@ export function ItemLikeButton({ itemId, initialLikeCount }) {
         };
       });
 
-      queryClient.setQueryData(["like-status", itemId], (old) => {
+      queryClient.setQueryData<LikeStatus>(["like-status", itemId], (old) => {
         const newStatusData = { isLiked: !isCurrentlyLiked }
 
         if (old) return { ...old, data: newStatusData }
@@ -59,7 +84,7 @@ export function ItemLikeButton({ itemId, initialLikeCount }) {
       return { previousItems, previousStatus };
     },
     // rollback
-    onError: (error, context) => {
+    onError: (error, _variables, context) => {
       if (context?.previousItems) {
         queryClient.setQueryData(["item", itemId], context.previousItems);
       }
@@ -80,6 +105,7 @@ export function ItemLikeButton({ itemId, initialLikeCount }) {
 
   return (
     <button
+      type="button"
       className="flex items-center gap-1 border border-solid border-gray-200 rounded-4xl bg-white cursor-pointer px-3 py-1"
       onClick={() => likeMutation.mutate()}
       disabled={likeMutation.isPending}
