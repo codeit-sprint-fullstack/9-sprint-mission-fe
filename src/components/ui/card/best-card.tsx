@@ -5,7 +5,7 @@ import DefaultItemImage from "@/assets/items/Img_default_items.svg"
 
 interface BestCardProps {
   name: string;
-  price: number;
+  price: string;
   images: string[] | string | null;
   likes: number;
 }
