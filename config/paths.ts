@@ -7,6 +7,9 @@ export const paths = {
     articles: {
       getHref: () => '/articles',
     },
+    articleDetail: {
+      getHref: (id: number | string) => `/article/${id}`,
+    },
     registration: {
       getHref: () => '/articles/registration',
     },
