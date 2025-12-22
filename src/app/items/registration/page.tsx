@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { itemFormSchema } from '@/libs/schemas/item.schema';
+import { type ItemFormInput, type ItemFormOutput, itemFormSchema } from '@/libs/schemas/item.schema';
 import { useDialog } from '@/providers/modal-context';
 import { itemService } from '@/services/item-service';
+import type { Item } from '@/types/item';
 
 export default function ItemRegistration() {
   const { openDialog } = useDialog()
@@ -17,27 +18,36 @@ export default function ItemRegistration() {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<ItemFormInput, any, ItemFormOutput>({
     resolver: zodResolver(itemFormSchema),
     mode: 'onChange', // 실시간 유효성 검사
-  })
-
-  const createMutation = useMutation({
-    mutationFn: (formData) => {
-      return itemService.createItem(formData)
-    },
-    onSuccess: () => {
-      router.push('/items')
-      openDialog('상품 등록에 성공했습니다.')
-    },
-    onError: (error) => {
-      console.error(error);
-      openDialog("등록중 오류 발생", error.message)
+    defaultValues: {
+      name: "",
+      description: "",
+      price: "",
+      tags: "",
     }
   })
 
-  const onSubmit = (data) => {
-    createMutation.mutate(data)
+  const createMutation = useMutation<Item, Error, ItemFormOutput>({
+    mutationFn: async (formData) => {
+      const response = await itemService.createItem(formData)
+      const { ok, status, ...itemData } = response as any;
+      return itemData as Item;
+    },
+    onSuccess: () => {
+      openDialog('상품 등록에 성공했습니다.')
+      router.push('/items')
+      router.refresh()
+    },
+    onError: (error) => {
+      console.error(error);
+      openDialog(`등록중 오류 발생 ${error.message}`)
+    }
+  })
+
+  const onSubmit = (data: ItemFormOutput) => {
+    createMutation.mutate(data as unknown as ItemFormOutput)
   }
 
   return (
