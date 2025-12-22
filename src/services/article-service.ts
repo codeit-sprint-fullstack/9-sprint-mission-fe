@@ -13,7 +13,8 @@ export const articleService = {
       `/api/v1/articles?limit=5&page=${page}&keyword=${keyword}&orderBy=${orderBy}`,
     ),
 
-  getArticlesById: (id: number) => defaultFetch<Article>(`/api/articles/${id}`),
+  getArticlesById: (id: number | string) =>
+    defaultFetch<Article>(`/api/articles/${id}`),
 
   createArticle: (formData: object) =>
     cookieFetch<Article>(`/api/v1/articles`, {
@@ -21,13 +22,13 @@ export const articleService = {
       body: JSON.stringify(formData),
     }),
 
-  updateArticle: (id: number, formData: object) =>
+  updateArticle: (id: number | string, formData: object) =>
     cookieFetch<Article>(`/api/v1/articles/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),
     }),
 
-  deleteArticle: (id: number) =>
+  deleteArticle: (id: number | string) =>
     cookieFetch<Article>(`/api/v1/articles/${id}`, {
       method: 'DELETE',
     }),
