@@ -1,32 +1,54 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { use, useEffect } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { itemFormSchema } from '@/libs/schemas/item.schema';
+import { type ItemFormInput, type ItemFormOutput, itemFormSchema } from '@/libs/schemas/item.schema';
 import { useDialog } from '@/providers/modal-context';
 import { itemService } from '@/services/item-service';
+import type { Item } from '@/types/item';
 
-export default function ItemRegistration({ params }) {
+export default function ItemRegistration({ params }: { params: Promise<{ id: string }> }) {
+  const { id: itemId } = use(params)
   const queryClient = useQueryClient()
   const { openDialog } = useDialog()
-  const { id: itemId } = useParams()
   const router = useRouter();
+
+  //update 시 기존 데이터 가져오기
+  const { data: itemData } = useQuery({
+    queryKey: ['item', itemId],
+    queryFn: () => itemService.getItemById(itemId)
+  })
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<ItemFormInput, Item, ItemFormOutput>({
     resolver: zodResolver(itemFormSchema),
     mode: 'onChange', // 실시간 유효성 검사
   })
 
-  const updateMutation = useMutation({
-    mutationFn: (formData) => {
-      return itemService.updateItem(itemId, formData)
+  useEffect(() => {
+    if (itemData) {
+      reset({
+        name: itemData.name ?? "",
+        description: itemData.description,
+        price: String(itemData.price),
+        tags: Array.isArray(itemData.tags) ? itemData.tags.join(', ') : ""
+      })
+    }
+  }, [itemData, reset])
+
+  const updateMutation = useMutation<Item, Error, ItemFormOutput>({
+    mutationFn: async (formData) => {
+      const response = await itemService.updateItem(itemId, formData)
+      const { ok, status, ...itemData } = response as any;
+      return itemData as Item
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -37,18 +59,17 @@ export default function ItemRegistration({ params }) {
     },
     onError: (error) => {
       console.error(error)
-      openDialog('등록중 오류 발생', error.message)
+      openDialog(`등록중 오류 발생 ${error.message}`)
     }
   })
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<ItemFormOutput> = (data) => {
     updateMutation.mutate(data);
   }
 
   return (
     <>
       <form
-        method="POST"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
         className='px-6 w-full'
@@ -72,11 +93,10 @@ export default function ItemRegistration({ params }) {
             상품명
           </label>
           <input
-            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
-            type="text"
             id="item_name"
             placeholder="상품명을 입력해주세요"
             aria-label="상품명을 입력해주세요"
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             {...register('name')}
           />
           {errors.name && (
@@ -92,12 +112,12 @@ export default function ItemRegistration({ params }) {
             내용
           </label>
           <textarea
-            className='max-w-full w-full h-70.5 py-4 px-6 resize-none border-0 rounded-xl bg-gray-100'
             id="item_describe"
             placeholder="내용을 입력해주세요"
             aria-label="내용을 입력해주세요"
+            className='max-w-full w-full h-70.5 py-4 px-6 resize-none border-0 rounded-xl bg-gray-100'
             {...register('description')}
-          ></textarea>
+          />
           {errors.description && (
             <span className='text-error-red'>{errors.description.message}</span>
           )}
@@ -105,16 +125,15 @@ export default function ItemRegistration({ params }) {
         <div className="flex flex-col gap-4 w-full mb-8">
           <label
             className='text-gray-800 font-pretendard text-lg font-bold leading-6.5'
-            htmlFor="item_name"
+            htmlFor="item_price"
           >
             가격
           </label>
           <input
-            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
-            type="text"
             id="item_price"
             placeholder="가격 입력해주세요"
             aria-label="가격 입력해주세요"
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             {...register('price')}
           />
           {errors.price && (
@@ -129,11 +148,10 @@ export default function ItemRegistration({ params }) {
             태그
           </label>
           <input
-            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
-            type="text"
             id="item_tags"
             placeholder="테스트 태그 예시: #아이패드미니, #애플, #가성비"
             aria-label="태그를 입력해주세요 (쉼표 구분)"
+            className='w-full h-14 py-4 px-6 rounded-xl bg-gray-100'
             {...register('tags')}
           />
           {errors.tags && (
