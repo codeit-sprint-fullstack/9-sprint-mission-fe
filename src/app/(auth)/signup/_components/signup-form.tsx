@@ -41,7 +41,7 @@ export default function SignUpForm() {
 
   const onSubmit = async (data: signupFormSchema) => {
     try {
-      await signUp(data.email, data.nickname, data.password, data.passwordConfirmation)
+      await signUp(data)
       router.replace("/items");
     } catch (error) {
       const errorMessage = error instanceof Error ? error?.message : defaultErrorMessage

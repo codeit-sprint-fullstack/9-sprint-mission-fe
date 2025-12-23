@@ -37,7 +37,7 @@ export function LoginForm() {
 
   const onSubmit = async (data: loginFormSchema) => {
     try {
-      await login(data.email, data.password)
+      await login(data)
       router.replace('/items');
     } catch (error) {
       const errorMessage = error instanceof Error ? error?.message : defaultErrorMessage
