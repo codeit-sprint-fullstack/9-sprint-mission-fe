@@ -19,7 +19,7 @@ export default async function ProductPage({ searchParams }: ProductPageProps) {
   const params = await searchParams
   const keyword = params.keyword || ''
   const orderBy = params.orderBy || 'recent'
-  const page = parseInt(params.page || "1", 10)
+  const page = params.page || "1"
 
   const itemData = await itemService.getItems(keyword, orderBy, page)
 
