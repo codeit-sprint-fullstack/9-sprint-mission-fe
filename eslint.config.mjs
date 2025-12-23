@@ -14,7 +14,7 @@ import globals from 'globals';
 // 기본 설정 (모든 파일에 적용)
 const baseConfig = [
   {
-    files: ['**/**.{js,mjs,cjs,jsx}'],
+    files: ['**/**.{js,mjs,cjs,jsx,ts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser, // window. document 브라우저 전역변수 허용
