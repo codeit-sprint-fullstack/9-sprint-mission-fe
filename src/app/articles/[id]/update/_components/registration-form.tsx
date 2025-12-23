@@ -1,6 +1,6 @@
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { use, useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 
