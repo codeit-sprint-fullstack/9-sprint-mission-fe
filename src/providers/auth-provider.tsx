@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 import type { loginFormSchema, signupFormSchema } from "@/libs/schemas/auth.schema";
 import { authService } from "@/services/auth-service";
@@ -28,7 +28,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const [user, setUser] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
-  const getUser = async () => {
+  const getUser = useCallback(async () => {
     try {
       const response = await userService.getMe();
       if (response.ok) {
@@ -40,11 +40,11 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     } finally {
       setIsInitialized(true)
     }
-  }
+  }, [user]);
 
   useEffect(() => {
     getUser();
-  }, [])
+  }, [getUser])
 
   const login = async (data: loginFormSchema) => {
     try {
