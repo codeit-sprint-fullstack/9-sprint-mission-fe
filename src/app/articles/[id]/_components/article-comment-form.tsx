@@ -32,7 +32,7 @@ export function ArticleCommentForm({ articleId }: ArticleCommentFormProps) {
   const onSubmit = async (data: ArticleCommentValues) => {
     try {
       await commentService.createComments(articleId, {
-        content: data.context
+        context: data.context
       });
       openDialog("댓글이 등록되었습니다.")
       reset();
