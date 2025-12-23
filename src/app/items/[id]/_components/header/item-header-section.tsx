@@ -1,7 +1,7 @@
 "use client"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import Image from "next/image"
-import { redirect, useRouter } from "next/navigation"
+import { notFound, useRouter } from "next/navigation"
 import { useState } from "react"
 
 import EllipsisVertical from '@/assets/icons/ic_ellipsis_vertical.svg'
@@ -20,7 +20,7 @@ export function ItemHeaderSection({ itemId }: { itemId: string }) {
   const { openDialog } = useDialog()
   const router = useRouter();
 
-  const { data: itemData, error } = useQuery({
+  const { data: itemData, error, isPending } = useQuery({
     queryKey: ["item", itemId],
     queryFn: () => itemService.getItemById(itemId)
   })
@@ -47,7 +47,7 @@ export function ItemHeaderSection({ itemId }: { itemId: string }) {
     setShowPanel(false);
 
     if (name === 'update') {
-      router.push(`${itemId}/update/`)
+      router.push(`/items/${itemId}/update`)
     }
     if (name === 'delete') {
       setDialogDeleteMessage("정말로 상품을 삭제하시겠어요?")
@@ -55,7 +55,7 @@ export function ItemHeaderSection({ itemId }: { itemId: string }) {
     }
   }
 
-  if (!item) return redirect('/not-found');
+  if (!item && !isPending) return notFound();
   if (error) return <div className="container mx-auto px-4 py-8 text-center text-red-500">{error.message}</div>
 
   return (
@@ -75,7 +75,7 @@ export function ItemHeaderSection({ itemId }: { itemId: string }) {
             <h1
               className="w-full font-pretendard text-base font-semibold leading-6.5 mt-4 text-gray-800 md:text-xl"
             >
-              {item.name}
+              {item!.name}
             </h1>
             <div
               className="relative w-2 h-2 cursor-pointer"
@@ -102,16 +102,16 @@ export function ItemHeaderSection({ itemId }: { itemId: string }) {
             </div>
           </div>
           <h2 className="text-[2rem] font-semibold font-pretendard leading-8 text-gray-800 border-b border-gray-200 pb-4">
-            {item.price}
+            {item!.price}
           </h2>
           <h3 className="font-pretendard text-base text-gray-600 font-semibold leading-6.5 mt-4 mb-2">상품 소개</h3>
           <section className="font-pretendard text-lg text-gray-800 mb-8 leading-6.5">
-            {item.description}
+            {item!.description}
           </section>
           <section>
             <h3 className="mb-4 font-pretendard text-base font-semibold text-gray-600 leading-6.5">상품 태그</h3>
             <ul className="flex gap-4">
-              {item.tags?.map((tag) => (
+              {item!.tags?.map((tag) => (
                 <li
                   key={tag.id}
                   className="bg-gray-100 h-9 py-1.5 px-4 rounded-3xl"
@@ -121,7 +121,7 @@ export function ItemHeaderSection({ itemId }: { itemId: string }) {
               ))}
             </ul>
           </section>
-          <ItemAuthor item={item} />
+          <ItemAuthor item={item!} />
         </div>
       </div >
 
