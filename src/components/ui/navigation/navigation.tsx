@@ -1,4 +1,5 @@
 "use client"
+import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -12,12 +13,12 @@ import { Avatar } from '../avatar/avatar'
 
 interface navLinkItems {
   name: string;
-  href: string;
+  href: Route;
 }
 
 const navLink: navLinkItems[] = [
-  { name: '자유게시판', href: '/articles' },
-  { name: '중고마켓', href: '/items' }
+  { name: '자유게시판', href: paths.app.articles.getHref() },
+  { name: '중고마켓', href: paths.app.items.getHref() }
 ]
 
 export function Navigation() {

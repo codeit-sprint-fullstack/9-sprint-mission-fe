@@ -1,4 +1,5 @@
 "use client"
+import type { Route } from 'next'
 import Image from 'next/image'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import type { ChangeEvent } from 'react'
@@ -25,7 +26,8 @@ export function Search({ placeholder }: SearchProps) {
     // 검색 시 페이지 초기화
     params.set("page", "1");
 
-    replace(`${pathname}?${params.toString()}`);
+    const nextUrl = `${pathname}?${params.toString()}` as Route
+    replace(nextUrl);
   }, 300)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

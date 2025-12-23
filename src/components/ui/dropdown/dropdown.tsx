@@ -1,4 +1,5 @@
 'use client';
+import type { Route } from 'next';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
@@ -42,9 +43,8 @@ export function Dropdown() {
     }
     params.set('page', '1')
 
-    // const newTitle = contents.find(c => c.value === value)?.title || '최신순';
-    // setFilterTitle(newTitle);
-    replace(`${pathname}?${params.toString()}`);
+    const nextUrl = `${pathname}?${params.toString()}` as Route
+    replace(nextUrl);
     setShowPanel(false);
   },
     [searchParams, pathname, replace]

@@ -46,7 +46,7 @@ export function ArticleTitleSection({ article }: ArticleTitleSectionProps) {
     setShowPanel(false);
 
     if (name === 'update') {
-      router.push(`${article.id}/update/`)
+      router.push(`/articles/${article.id}/update`)
     }
     if (name === 'delete') {
       setModalMessage("정말로 삭제하시겠습니까")

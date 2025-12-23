@@ -15,7 +15,7 @@ export function HeroSection() {
         </h1>
         <Link
           className="bg-primary-100 py-4 px-32 rounded-full font-pretendard text-gray-50 font-semibold leading-8"
-          href="/products"
+          href="/items"
           id="load-react"
         >
           구경하러 가기

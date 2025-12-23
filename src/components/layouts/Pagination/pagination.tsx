@@ -1,4 +1,5 @@
 "use client"
+import type { Route } from 'next';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
@@ -40,7 +41,8 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
     const params = new URLSearchParams(searchParams)
     params.set('page', page.toString());
     // URL을 변경하여 페이지 리렌더 (RSC용 리패칭)
-    router.replace(`${pathname}?${params.toString()}`);
+    const nextUrl = `${pathname}?${params.toString()}` as Route
+    router.replace(nextUrl);
   };
 
   return (

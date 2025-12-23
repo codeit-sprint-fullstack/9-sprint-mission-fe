@@ -9,8 +9,8 @@ export function Footer() {
         <div className="flex flex-row items-center justify-around w-full">
           <p className="hidden md:block text-gray-400 text-center font-pretendard font-normal">@codeit - 2024</p>
           <div className="flex gap-7.5 md:gap-16 text-base font-normal font-pretendard text-center no-underline text-[#E5E7EB]">
-            <Link className="text-base font-normal font-pretendard text-center no-underline text-[#E5E7EB]" href="./privacy">Privacy Policy</Link>
-            <Link className="text-base font-normal font-pretendard text-center no-underline text-[#E5E7EB]" href="./faq">FAQ</Link>
+            <Link className="text-base font-normal font-pretendard text-center no-underline text-[#E5E7EB]" href="#">Privacy Policy</Link>
+            <Link className="text-base font-normal font-pretendard text-center no-underline text-[#E5E7EB]" href="#">FAQ</Link>
           </div>
           <div className="flex gap-3 md:gap-7.5 items-center">
             <FooterIcons />
