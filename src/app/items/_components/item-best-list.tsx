@@ -20,7 +20,7 @@ export function ItemBestList({ items }: ItemBestListProps) {
           return (
 
             <Link
-              href={`items/${item.id}`}
+              href={`/items/${item.id}`}
               key={item.id}
               // 1개 일때 모두숨기고 하나씩 보여주기 
               className={cn("relative flex flex-col justify-center items-center flex-1 w-96 h-48.5 py-0 px-6 rounded-lg overflow-hidden text-gray-900 cursor-pointer duration-200 no-underline hover: translate-y-[-4px]",
