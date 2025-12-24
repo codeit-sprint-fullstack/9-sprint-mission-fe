@@ -1,35 +1,36 @@
-import type { Article, ArticleListResponse } from '@/types/article';
+import type { Article } from '@/types/article';
+import type { CommonResponse } from '@/types/common';
 
-import { cookieFetch, defaultFetch } from './fetch-client';
+import { cookieFetch } from './fetch-client';
 
 export const articleService = {
   getBestArticles: () =>
-    defaultFetch<Article[]>(`/api/v1/articles/best`, {
+    cookieFetch<CommonResponse<Article[]>>(`/api/v1/articles/best`, {
       next: { revalidate: 3600 },
     }),
 
   getArticles: (keyword: string, orderBy: string, page: number) =>
-    defaultFetch<ArticleListResponse>(
+    cookieFetch<CommonResponse<Article[]>>(
       `/api/v1/articles?limit=5&page=${page}&keyword=${keyword}&orderBy=${orderBy}`,
     ),
 
-  getArticlesById: (id: number | string) =>
-    defaultFetch<Article>(`/api/articles/${id}`),
+  getArticlesById: (id: string) =>
+    cookieFetch<CommonResponse<Article>>(`/api/v1/articles/${id}`),
 
   createArticle: (formData: object) =>
-    cookieFetch<Article>(`/api/v1/articles`, {
+    cookieFetch<CommonResponse<Article>>(`/api/v1/articles`, {
       method: 'POST',
       body: JSON.stringify(formData),
     }),
 
-  updateArticle: (id: number | string, formData: object) =>
-    cookieFetch<Article>(`/api/v1/articles/${id}`, {
+  updateArticle: (id: string, formData: object) =>
+    cookieFetch<CommonResponse<Article>>(`/api/v1/articles/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),
     }),
 
-  deleteArticle: (id: number | string) =>
-    cookieFetch<Article>(`/api/v1/articles/${id}`, {
+  deleteArticle: (id: string) =>
+    cookieFetch<CommonResponse<Article>>(`/api/v1/articles/${id}`, {
       method: 'DELETE',
     }),
 };
