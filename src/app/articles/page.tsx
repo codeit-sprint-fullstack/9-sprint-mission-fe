@@ -1,20 +1,20 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Pagination } from "@/components/layouts/Pagination";
-import { Dropdown } from "@/components/ui/dropdown";
-import { Search } from "@/components/ui/search";
-import { articleService } from "@/services/article-service";
-import { paths } from "#/config/paths";
+import { Pagination } from '@/components/layouts/Pagination';
+import { Dropdown } from '@/components/ui/dropdown';
+import { Search } from '@/components/ui/search';
+import { articleService } from '@/services/article-service';
+import { paths } from '#/config/paths';
 
-import { ArticleBestSection } from "./_components/article-best-section";
-import { ArticleSection } from "./_components/article-section";
+import { ArticleBestSection } from './_components/article-best-section';
+import { ArticleSection } from './_components/article-section';
 
 interface ArticlePageProps {
   searchParams: Promise<{
     keyword?: string;
     orderBy?: string;
     page?: string;
-  }>
+  }>;
 }
 
 export default async function ArticlePage({ searchParams }: ArticlePageProps) {
@@ -25,34 +25,34 @@ export default async function ArticlePage({ searchParams }: ArticlePageProps) {
 
   const [articlesData, bestArticlesData] = await Promise.all([
     articleService.getArticles(keyword, orderBy, page),
-    articleService.getBestArticles()
+    articleService.getBestArticles(),
   ]);
 
-  const bestArticles = bestArticlesData
-  const articles = articlesData.list
+  const bestArticles = bestArticlesData.data || [];
+  const articles = articlesData.data || [];
 
-  const pagination = articlesData.pagination;
+  const pagination = articlesData.pagination || { page: 1, totalPage: 1 };
 
   return (
-    <main className="container max-w-7xl min-h-screen flex-1 x-[21.4375rem] md:x-7xl my-0 mx-auto p-5">
+    <main className="x-[21.4375rem] md:x-7xl container mx-auto my-0 min-h-screen max-w-7xl flex-1 p-5">
       {/* 베스트 게시글 영역 */}
       <ArticleBestSection articles={bestArticles} />
 
       {/* 게시글 영역 */}
-      <section className="max-w-full m-0">
-        <div className="flex justify-between items-center mb-3">
-          <p className="font-pretendard text-xl font-bold mb-6 text-gray-900">
+      <section className="m-0 max-w-full">
+        <div className="mb-3 flex items-center justify-between">
+          <p className="font-pretendard mb-6 text-xl font-bold text-gray-900">
             게시글
           </p>
           <Link
-            className="flex justify-center items-center gap-2.5 h-10.5 px-3 py-5.5 rounded-lg bg-primary-100 text-gray-100 font-pretendard text-base font-semibold leading-6.5 no-underline cursor-pointer hover:bg-primary-200 active:bg-primary-300"
+            className="bg-primary-100 font-pretendard hover:bg-primary-200 active:bg-primary-300 flex h-10.5 cursor-pointer items-center justify-center gap-2.5 rounded-lg px-3 py-5.5 text-base leading-6.5 font-semibold text-gray-100 no-underline"
             href={paths.app.registration.getHref()}
           >
             글쓰기
           </Link>
         </div>
       </section>
-      <div className="flex max-w-480 justify-between mb-6 gap-4">
+      <div className="mb-6 flex max-w-480 justify-between gap-4">
         <Search placeholder="검색할 상품을 입력해주세요" />
         <Dropdown />
       </div>
@@ -60,7 +60,9 @@ export default async function ArticlePage({ searchParams }: ArticlePageProps) {
       {articles.length > 0 ? (
         <ArticleSection articles={articles} />
       ) : (
-        <p className="text-center text-gray-500 py-10">등록된 게시글이 없습니다.</p>
+        <p className="py-10 text-center text-gray-500">
+          등록된 게시글이 없습니다.
+        </p>
       )}
 
       <Pagination
@@ -68,6 +70,5 @@ export default async function ArticlePage({ searchParams }: ArticlePageProps) {
         totalPages={pagination.totalPage}
       />
     </main>
-
   );
 }

@@ -1,11 +1,12 @@
-
-import { ArticleRegistration } from "./_components/registration-form"
+import { ArticleRegistration } from './_components/registration-form';
 
 // export default async function ArticleUpdatePage({ params }: { params: Promise<{ id: string }> }) {
-export const ArticleUpdatePage = async (props: PageProps<'/articles/[id]/update'>) => {
+export default async function ArticleUpdatePage(
+  props: PageProps<'/articles/[id]/update'>,
+) {
   return (
-    <div className="flex flex-1 flex-col min-h-screen items-center justify-center">
+    <div className="flex min-h-screen flex-1 flex-col items-center justify-center">
       <ArticleRegistration params={props.params} />
     </div>
-  )
+  );
 }
