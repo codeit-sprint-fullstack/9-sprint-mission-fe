@@ -23,11 +23,3 @@ export type ArticleComment = {
   updatedAt: string | Date;
   author?: User;
 };
-
-export type ArticleListResponse = {
-  list: Article[];
-  pagination: {
-    totalPage: number;
-    page: number;
-  };
-};
