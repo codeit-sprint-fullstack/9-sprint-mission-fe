@@ -7,9 +7,10 @@ const titleRule = z
   .trim();
 
 const contentRule = (min: number, max: number) => {
-  z.string()
+  return z
+    .string()
     .min(min, `내용은 ${min}자 이상 입력해주세요.`)
-    .max(100, `내용은 ${max}자 이내로 입력해주세요.`)
+    .max(max, `내용은 ${max}자 이내로 입력해주세요.`)
     .trim();
 };
 
