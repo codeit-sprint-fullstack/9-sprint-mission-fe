@@ -10,7 +10,7 @@ export const authService = {
    * @param data - email, password 포함한 로그인 데이터
    */
   login: (data: loginFormSchema) =>
-    cookieFetch('/api/v1/auth/login', {
+    cookieFetch('/api/v1/auth/signIn', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
