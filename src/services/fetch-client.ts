@@ -10,8 +10,6 @@ interface CustomRequestInit extends Omit<RequestInit, 'cache'> {
   };
 }
 
-type FetchResponse<T> = T | { status: number; ok: boolean };
-
 export const defaultFetch = async <T>(
   url: string,
   options: CustomRequestInit = {},
@@ -47,7 +45,7 @@ export const defaultFetch = async <T>(
 export const cookieFetch = async <T>(
   url: string,
   options: CustomRequestInit = {},
-): Promise<FetchResponse<T>> => {
+): Promise<T & { status: number; ok: boolean }> => {
   const defaultOptions: CustomRequestInit = {
     headers: {
       'Content-Type': 'application/json',
@@ -91,9 +89,14 @@ export const cookieFetch = async <T>(
   }
 
   const contentType = response.headers.get('content-type');
+
   if (contentType && contentType.includes('application/json')) {
-    return response.json();
+    const data = await response.json();
+    return { ...data, status: response.status, ok: response.ok };
   }
 
-  return { status: response.status, ok: response.ok };
+  return { status: response.status, ok: response.ok } as T & {
+    status: number;
+    ok: boolean;
+  };
 };
