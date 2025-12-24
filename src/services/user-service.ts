@@ -1,9 +1,10 @@
 import type { User } from '@/types/auth';
+import type { CommonResponse } from '@/types/common';
 
 import { cookieFetch } from './fetch-client';
 
 export const userService = {
-  getMe: () => cookieFetch<{ status: number; ok: boolean }>('/api/v1/users/me'),
+  getMe: () => cookieFetch<CommonResponse<User>>('/api/v1/users/me'),
 
   /** 이미지  포함시 FormData Object  , etc JSON  Object */
   updateMe: (formData: FormData | object) => {
