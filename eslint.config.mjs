@@ -1,5 +1,6 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
 import prettierConfig from 'eslint-config-prettier';
 // 파일/폴더명 정렬 플러그인 - 캐밥케이스
 import checkFilePlugin from 'eslint-plugin-check-file';
@@ -38,7 +39,7 @@ const baseConfig = [
  * @see https://mariais.tistory.com/entry/Eslint-reactreact-in-jsx-scope-off%EA%B0%80-%EC%9E%91%EB%8F%99%EC%9D%B4-%EC%95%88%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0
  */
 const reactConfig = {
-  files: ['**/*.{jsx}'],
+  files: ['**/*.{jsx,tsx}'],
   // 플러그인 권장규칙으로
   rules: {
     'react/react-in-jsx-scope': 'off', // ! 최신버전에서 import React 필요 없음
@@ -68,7 +69,7 @@ const fileNamingConventionConfig = {
     // file-name
     'check-file/filename-naming-convention': [
       'error',
-      { '**/*.{js,jsx}': 'KEBAB_CASE' },
+      { '**/*.{js,jsx,ts,tsx}': 'KEBAB_CASE' },
       { ignoreMiddleExtensions: true }, // .module.css 같은 경우 예외로 중간 확장자를 무시하게
     ],
     // folder-name
@@ -98,6 +99,7 @@ const eslintConfig = defineConfig([
   // config export
   ...baseConfig,
   ...nextVitals,
+  ...nextTs,
   reactConfig,
   ImportSortConfig,
   fileNamingConventionConfig,
