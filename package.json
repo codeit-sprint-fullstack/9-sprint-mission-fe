@@ -23,7 +23,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prepare": "husky",
+    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky; fi",
     "lint-staged": "eslint --fix --max-warning=0"
   },
   "dependencies": {
