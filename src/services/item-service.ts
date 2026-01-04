@@ -19,7 +19,7 @@ export const itemService = {
     }),
 
   updateItem: (id: string, formData: object) => {
-    if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
+    // if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
     cookieFetch<CommonResponse<Item>>(`/api/v1/items/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),

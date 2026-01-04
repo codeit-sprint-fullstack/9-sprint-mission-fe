@@ -9,7 +9,7 @@ export type Item = {
   favoriteCount: number;
   createdAt: string | Date;
   updatedAt: string | Date;
-  deletedAt?: String | Date | null;
+  deletedAt?: string | Date | null;
   // prisma 관계형 데이터 카운트
   user?: User;
   tags?: Tag[];
