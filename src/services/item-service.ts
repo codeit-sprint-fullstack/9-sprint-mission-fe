@@ -18,13 +18,11 @@ export const itemService = {
       body: formData,
     }),
 
-  updateItem: (id: string, formData: object) => {
-    // if (!id) throw new Error('아이템 아이디를 찾지못하였습니다.');
+  updateItem: (id: string, formData: object) =>
     cookieFetch<CommonResponse<Item>>(`/api/v1/items/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(formData),
-    });
-  },
+    }),
 
   deleteItem: (id: string) => {
     if (!id) throw new Error('상품아이디를 찾을수없습니다.');
