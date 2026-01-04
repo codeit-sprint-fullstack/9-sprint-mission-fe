@@ -1,21 +1,21 @@
-import Image from "next/image"
+import Image from 'next/image';
 
-import HeartIcon from '@/assets/icons/ic_heart.svg'
-import DefaultImg from '@/assets/logo.svg'
-import { truncateDate } from "@/libs/utils/format"
-import type { Article } from "@/types/article"
+import HeartIcon from '@/assets/icons/ic_heart.svg';
+import DefaultImg from '@/assets/logo.svg';
+import { truncateDate } from '@/libs/utils/format';
+import type { Article } from '@/types/article';
 
-import { ArticleTitleSection } from "./article-title-section"
+import { ArticleTitleSection } from './article-title-section';
 
 interface ArticleDetailSectionProps {
-  article: Article
+  article: Article;
 }
 export function ArticleDetailSection({ article }: ArticleDetailSectionProps) {
   return (
-    <section className="w-full items-center border-b border-solid border-gray-200 pb-4 mb-6">
+    <section className="mb-6 w-full items-center border-b border-solid border-gray-200 pb-4">
       <ArticleTitleSection article={article} />
       <div className="flex items-center">
-        <div className="flex content-baseline flex-wrap">
+        <div className="flex flex-wrap content-baseline">
           <Image
             src={article.author?.userProfile?.photoUrl || DefaultImg}
             alt="authorAvatar"
@@ -23,12 +23,16 @@ export function ArticleDetailSection({ article }: ArticleDetailSectionProps) {
             width={40}
             height={40}
           />
-          <p className="content-center font-pretendard text-sm font-medium leading-6 ml-4">{article.author?.name}</p>
-          <span className="content-center font-pretendard text-sm leading-6 ml-2">{truncateDate(article.author?.updatedAt, 10)}</span>
+          <p className="font-pretendard ml-4 content-center text-sm leading-6 font-medium">
+            {article.author?.nickname}
+          </p>
+          <span className="font-pretendard ml-2 content-center text-sm leading-6">
+            {truncateDate(article.author?.updatedAt, 10)}
+          </span>
         </div>
-        <div className="flex h-6 border border-dotted border-gray-200 mx-4 md:mx-8"></div>
-        <button className="flex max-h-7 md:max-h-10 relative items-center gap-1 border border-solid border-gray-200 rounded-4xl bg-white cursor-pointer px-3 py-1">
-          <div className="relative text-base w-6 h-6 md:w-8 md:h-8 shrink-0">
+        <div className="mx-4 flex h-6 border border-dotted border-gray-200 md:mx-8"></div>
+        <button className="relative flex max-h-7 cursor-pointer items-center gap-1 rounded-4xl border border-solid border-gray-200 bg-white px-3 py-1 md:max-h-10">
+          <div className="relative h-6 w-6 shrink-0 text-base md:h-8 md:w-8">
             <Image
               className="object-cover"
               fill
@@ -36,11 +40,11 @@ export function ArticleDetailSection({ article }: ArticleDetailSectionProps) {
               alt="heart-icon"
             />
           </div>
-          <span className="font-pretendard font-medium leading-6.5 text-gray-500">
+          <span className="font-pretendard leading-6.5 font-medium text-gray-500">
             123
           </span>
         </button>
       </div>
-    </section >
-  )
+    </section>
+  );
 }
