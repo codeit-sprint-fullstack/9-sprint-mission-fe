@@ -3,6 +3,7 @@ import logoText from "@/assets/img/logo_text.png";
 import { NavMenuWrap } from "./NavMenuWrap";
 import Link from "next/link";
 import Image from "next/image";
+import NavBtnWarp from "./NavBtnWarp";
 
 export function Header() {
   return (
@@ -38,11 +39,7 @@ export function Header() {
           </h1>
           <NavMenuWrap />
         </div>
-        <div id="nav-right">
-          <Link id="btn-login" className="btns" href="/login">
-            로그인
-          </Link>
-        </div>
+        <NavBtnWarp />
       </nav>
     </header>
   );
